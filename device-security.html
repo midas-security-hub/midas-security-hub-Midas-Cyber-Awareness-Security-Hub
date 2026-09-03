@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Security Guide - Midas Cyber Security Hub</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-dark: #020617;
+            --blue: #2563eb;
+            --blue-hover: #1d4ed8;
+            --blue-light: #eff6ff;
+            --accent: #f59e0b;
+            --accent-bg: #fffbeb;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+
+            /* Platform specific branding */
+            --win-blue: #0078d4;
+            --android-green: #3ddc84;
+            --android-dark: #15803d;
+            --apple-dark: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 24px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        /* Banner Header Card */
+        .banner-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-content {
+            max-width: 620px;
+            z-index: 2;
+        }
+
+        .banner-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .banner-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .banner-illustration {
+            width: 340px;
+            height: 160px;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        /* Quick Section Jump Navigation Bar */
+        .jump-nav-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 14px 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .jump-buttons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .jump-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-right: 4px;
+        }
+
+        .jump-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: #f1f5f9;
+            color: var(--text-dark);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .jump-btn:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        .jump-btn.win:hover {
+            background: #e0f2fe;
+            color: var(--win-blue);
+            border-color: #bae6fd;
+        }
+
+        .jump-btn.android:hover {
+            background: #f0fdf4;
+            color: var(--android-dark);
+            border-color: #bbf7d0;
+        }
+
+        .jump-btn.ios:hover {
+            background: #f8fafc;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        .jump-help-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Platform Sections */
+        .platform-section {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 36px;
+            scroll-margin-top: 24px;
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .platform-title-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .platform-icon-wrapper {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .platform-icon-wrapper.win {
+            background: #e0f2fe;
+            color: var(--win-blue);
+        }
+
+        .platform-icon-wrapper.android {
+            background: #dcfce7;
+            color: var(--android-dark);
+        }
+
+        .platform-icon-wrapper.ios {
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        .platform-title-group h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .platform-title-group p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .section-badge {
+            background: #f1f5f9;
+            color: var(--blue);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+        }
+
+        /* Steps List inside Platform Section */
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-row {
+            display: grid;
+            grid-template-columns: 48px 1fr 280px;
+            gap: 20px;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            transition: all 0.2s ease;
+        }
+
+        .step-row:hover {
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .step-num-badge {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-main-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .step-icon-bg {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-text-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .step-text-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .step-tip-box {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .step-tip-box strong {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #b45309;
+            font-weight: 700;
+            margin-bottom: 2px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* Collapsible Extra Steps */
+        .extra-steps {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .extra-steps.show {
+            display: flex;
+        }
+
+        .expand-steps-btn {
+            width: 100%;
+            padding: 10px;
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: var(--radius-sm);
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s ease;
+            margin-bottom: 20px;
+        }
+
+        .expand-steps-btn:hover {
+            background: #f1f5f9;
+        }
+
+        /* Golden Rule Callout Banner */
+        .golden-rule-banner {
+            border-radius: var(--radius-md);
+            padding: 14px 20px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .golden-rule-banner.win {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            color: var(--win-blue);
+        }
+
+        .golden-rule-banner.android {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: var(--android-dark);
+        }
+
+        .golden-rule-banner.ios {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            color: #1e293b;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .step-row {
+                grid-template-columns: 36px 1fr;
+            }
+
+            .step-tip-box {
+                grid-column: 1 / -1;
+            }
+
+            .banner-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .banner-illustration {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Site Header for Midas Cyber Awareness & Security -->
+    <style>
+        .midas-header-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 28px;
+            border: 1px solid #1e293b;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .header-top-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 110px;
+            overflow: hidden;
+        }
+
+        .header-bg-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-logo-svg {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+        }
+
+        .header-title-text {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .header-nav-item {
+            position: relative;
+        }
+
+        .header-nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .header-nav-link:hover {
+            color: #ffffff;
+        }
+
+        .header-nav-link.active {
+            color: #ffffff;
+        }
+
+        .header-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .header-nav-item:hover .header-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .header-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+            min-width: 220px;
+            z-index: 100;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link:hover {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        .header-actions-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-action-btn {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px 8px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .header-action-btn:hover {
+            color: #ffffff;
+        }
+    </style>
+
+    <div class="midas-header-container">
+        <div class="header-top-banner">
+            <!-- Background Cyber Tech SVG -->
+            <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4"/>
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3"/>
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8"/>
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8"/>
+                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7"/>
+
+                <!-- Email Hexagon Motif -->
+                <g transform="translate(680, 20)">
+                    <polygon points="30,0 60,17 60,52 30,69 0,52 0,17" stroke="#0088FF" stroke-width="2.2" fill="#061A3A" opacity="0.85"/>
+                    <path d="M18 26 L30 36 L42 26 M18 26 H42 V44 H18 Z" stroke="#00BFFF" stroke-width="2.2" fill="none"/>
+                </g>
+
+                <path d="M740 55 H820" stroke="#0099FF" stroke-width="2" opacity="0.5"/>
+
+                <!-- Digital Lock Shield Glow Motif -->
+                <g transform="translate(850, -10)">
+                    <circle cx="60" cy="70" r="55" fill="#0066FF" opacity="0.18"/>
+                    <path d="M60 15 C60 15 95 25 105 35 C105 80 85 110 60 125 C35 110 15 80 15 35 C25 25 60 15 60 15 Z" stroke="#00BFFF" stroke-width="3" fill="#082046" opacity="0.9"/>
+                    <rect x="47" y="65" width="26" height="22" rx="4" fill="#00D2FF"/>
+                    <path d="M52 65 V55 C52 50.5 55.5 47 60 47 C64.5 47 68 50.5 68 55 V65" stroke="#00D2FF" stroke-width="3" fill="none"/>
+                </g>
+
+                <!-- Dot Grid World Map Motif -->
+                <g opacity="0.25" fill="#00BFFF">
+                    <circle cx="1020" cy="30" r="1.5"/><circle cx="1035" cy="30" r="1.5"/><circle cx="1050" cy="30" r="1.5"/><circle cx="1065" cy="30" r="1.5"/>
+                    <circle cx="1012" cy="45" r="1.5"/><circle cx="1027" cy="45" r="1.5"/><circle cx="1042" cy="45" r="1.5"/><circle cx="1057" cy="45" r="1.5"/><circle cx="1072" cy="45" r="1.5"/><circle cx="1087" cy="45" r="1.5"/>
+                    <circle cx="1020" cy="60" r="1.5"/><circle cx="1035" cy="60" r="1.5"/><circle cx="1050" cy="60" r="1.5"/><circle cx="1065" cy="60" r="1.5"/><circle cx="1080" cy="60" r="1.5"/><circle cx="1095" cy="60" r="1.5"/><circle cx="1110" cy="60" r="1.5"/>
+                </g>
+            </svg>
+
+            <!-- Brand Logo & Title -->
+            <div class="header-brand">
+                <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer Headset Band -->
+                    <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+                    <!-- Left & Right Ear Cushions -->
+                    <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
+                    <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
+                    <!-- Mic Boom Arm -->
+                    <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                    <circle cx="49" cy="90" r="5.5" fill="#FFFFFF"/>
+                    <!-- M Shield Geometric Icon -->
+                    <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF"/>
+                    <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF"/>
+                    <!-- Gold Slash Bar Accent -->
+                    <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B"/>
+                </svg>
+                <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="header-navbar">
+            <div class="header-nav-links">
+                <div class="header-nav-item">
+                    <a href="account-password-security.html" class="header-nav-link">Home</a>
+                </div>
+
+                <!-- Topics Dropdown -->
+                <div class="header-nav-item">
+                    <button class="header-nav-link" type="button">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="account-password-security.html#tab-steps" class="header-dropdown-link">🔑 Account & Password Security</a>
+                        <a href="account-password-security.html#tab-steps" class="header-dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
+                        <a href="account-password-security.html#tab-steps" class="header-dropdown-link">🎣 Phishing & Email Protection</a>
+                        <a href="device-security.html" class="header-dropdown-link active">📱 Device Security Guide (Win / Android / iOS)</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html#tab-checklist" class="header-nav-link">Policies</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html#tab-steps" class="header-nav-link">News</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html#tab-checklist" class="header-nav-link">FAQ</a>
+                </div>
+
+                <!-- Resources Dropdown -->
+                <div class="header-nav-item">
+                    <button class="header-nav-link" type="button">
+                        Resources
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="account-password-security.html#tab-evaluator" class="header-dropdown-link">⚡ Passphrase Strength Evaluator</a>
+                        <a href="account-password-security.html#tab-checklist" class="header-dropdown-link">📋 Security Readiness Checklist</a>
+                        <a href="account-password-security.html#tab-checkup" class="header-dropdown-link">🚀 Quick Security Checkup</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link" style="color: #38bdf8;">Security Incident Report</a>
+                </div>
+            </div>
+
+            <div class="header-actions-right">
+                <button class="header-action-btn" onclick="toggleFavorite(this)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <span id="favText">Add to favorites</span>
+                </button>
+                <button class="header-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Site access
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Header Banner -->
+    <div class="banner-card">
+        <div class="banner-content">
+            <h1 class="banner-title">Device Security</h1>
+            <p class="banner-subtitle">
+                Follow these simple steps to protect your company data and keep your devices safe every day across
+                Windows, Android, and iOS platforms.
+            </p>
+        </div>
+
+        <div class="banner-illustration">
+            <svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background ambient glow -->
+                <circle cx="200" cy="90" r="85" fill="#F1F5F9" />
+
+                <!-- Desktop Monitor (Center back) -->
+                <rect x="145" y="25" width="150" height="95" rx="8" fill="#0F172A" />
+                <rect x="153" y="32" width="134" height="81" rx="4" fill="#1E293B" />
+                <rect x="205" y="120" width="30" height="30" fill="#64748B" />
+                <path d="M185 150H255" stroke="#475569" stroke-width="6" stroke-linecap="round" />
+                <!-- Screen lock icon -->
+                <circle cx="220" cy="72" r="14" fill="#2563EB" opacity="0.2" />
+                <rect x="214" y="68" width="12" height="12" rx="2" fill="#38BDF8" />
+                <path d="M217 68V64C217 62.3431 218.343 61 220 61C221.657 61 223 62.3431 223 64V68" stroke="#38BDF8"
+                    stroke-width="2" />
+
+                <!-- Laptop (Left front) -->
+                <rect x="50" y="65" width="115" height="72" rx="6" fill="#1E293B" />
+                <rect x="56" y="71" width="103" height="60" rx="3" fill="#FFFFFF" />
+                <path d="M35 137H180C184 137 186 142 182 146L176 150H39L33 146C29 142 31 137 35 137Z" fill="#334155" />
+                <!-- Laptop Lock -->
+                <rect x="102" y="96" width="11" height="10" rx="2" fill="#0F172A" />
+                <path d="M104 96V92C104 90.3 105.3 89 107.5 89C109.7 89 111 90.3 111 92V96" stroke="#0F172A"
+                    stroke-width="2" />
+
+                <!-- Mobile Smartphone & Tablet (Right front) -->
+                <rect x="295" y="45" width="60" height="100" rx="8" fill="#0F172A" />
+                <rect x="299" y="52" width="52" height="86" rx="4" fill="#FFFFFF" />
+                <!-- Mobile Lock -->
+                <rect x="320" y="90" width="10" height="9" rx="2" fill="#0F172A" />
+                <path d="M322 90V87C322 85.5 323 84.5 325 84.5C327 84.5 328 85.5 328 87V90" stroke="#0F172A"
+                    stroke-width="2" />
+
+                <!-- Golden Security Badge Shield -->
+                <g filter="url(#badge-shadow)">
+                    <path
+                        d="M345 110C345 110 365 103 377 97C377 138 362 161 345 175C328 161 313 138 313 97C325 103 345 110 345 110Z"
+                        fill="#F59E0B" />
+                    <path
+                        d="M345 114C345 114 362 108 372 102C372 136 359 156 345 168C331 156 318 136 318 102C328 108 345 114 345 114Z"
+                        fill="#FBBF24" />
+                    <path d="M333 133L342 142L359 123" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+
+                <defs>
+                    <filter id="badge-shadow" x="300" y="85" width="90" height="105" filterUnits="userSpaceOnUse">
+                        <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.2" />
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Quick Jump to Section Bar -->
+    <div class="jump-nav-card">
+        <div class="jump-buttons">
+            <span class="jump-label">Jump to section:</span>
+            <button class="jump-btn win" onclick="scrollToSection('windows')">
+                <svg width="18" height="18" viewBox="0 0 88 88" fill="currentColor">
+                    <path d="M0 12.402l35.687-4.86.016 34.423-35.67.243zm35.67 33.529l.028 34.453L0 75.482l.033-29.322zm4.383-39.04L88 1l-.014 40.76-43.603.267zm43.63 43.125L88 87 40.053 80.37l.028-34.618z"/>
+                </svg>
+                Windows Devices
+            </button>
+            <button class="jump-btn android" onclick="scrollToSection('android')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5516 0 .9997.4482.9997.9993s-.4481.9997-.9997.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5516 0 .9997.4482.9997.9993s-.4481.9997-.9997.9997m11.4045-6.02l1.9973-3.4592c.1436-.2486.0584-.5662-.1902-.7098-.2484-.1436-.5662-.0584-.7098.1902l-2.0223 3.5028c-1.464-.6682-3.1364-1.0435-4.9565-1.0435s-3.4925.3753-4.9565 1.0435l-2.0223-3.5028c-.1436-.2486-.4614-.3338-.7098-.1902-.2486.1436-.3338.4612-.1902.7098l1.9973 3.4592c-3.1786 1.7303-5.3204 4.9567-5.5185 8.7307h22.8074c-.1981-3.774-2.3399-6.9999-5.5185-8.7307"/>
+                </svg>
+                Android Devices
+            </button>
+            <button class="jump-btn ios" onclick="scrollToSection('ios')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.78c.63-.78 1.07-1.85.95-2.93-.93.04-2.07.63-2.73 1.41-.59.68-1.11 1.78-.97 2.84 1.05.08 2.12-.54 2.75-1.32z"/>
+                </svg>
+                iOS Devices
+            </button>
+        </div>
+        <div class="jump-help-note">
+            💡 Not sure what you use? Check your device settings or ask your IT manager.
+        </div>
+    </div>
+
+    <!-- Section 1: Windows Device Security -->
+    <div id="section-windows" class="platform-section">
+        <div class="platform-header">
+            <div class="platform-title-group">
+                <div class="platform-icon-wrapper win">
+                    <svg width="30" height="30" viewBox="0 0 88 88" fill="currentColor">
+                        <path d="M0 12.402l35.687-4.86.016 34.423-35.67.243zm35.67 33.529l.028 34.453L0 75.482l.033-29.322zm4.383-39.04L88 1l-.014 40.76-43.603.267zm43.63 43.125L88 87 40.053 80.37l.028-34.618z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Windows Device Security</h2>
+                    <p>Simple steps to help you keep your Windows laptop or desktop and company data safe.</p>
+                </div>
+            </div>
+            <div class="section-badge">Section 1: Windows</div>
+        </div>
+
+        <div class="steps-list">
+            <!-- Step 1 -->
+            <div class="step-row">
+                <div class="step-num-badge">1</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Lock your computer when leaving</div>
+                        <div class="step-text-desc">Press <code>Windows + L</code> every time you step away from your desk or workstation.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Set automatic screen lock timeout to 5 minutes or less in Windows Settings.
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-row">
+                <div class="step-num-badge">2</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Keep BitLocker & Windows Defender Active</div>
+                        <div class="step-text-desc">Ensure full-disk BitLocker encryption and real-time antivirus protection remain enabled.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Never disable Windows Defender for unverified software or file downloads.
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-row">
+                <div class="step-num-badge">3</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Install Windows Updates & Patches Promptly</div>
+                        <div class="step-text-desc">Software updates fix security vulnerabilities before malicious actors can exploit them.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Restart your computer weekly to allow pending system updates to complete.
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-row">
+                <div class="step-num-badge">4</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Use Approved Software & Password Vaults</div>
+                        <div class="step-text-desc">Only install apps approved by IT Security and store work credentials in password managers.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Avoid saving corporate logins in plain browser password stores.
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapsible Steps 5-7 -->
+        <button class="expand-steps-btn" onclick="toggleExtraSteps('windows')" id="btn-windows">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+            Show steps 5–7
+        </button>
+
+        <div class="extra-steps" id="extra-windows">
+            <!-- Step 5 -->
+            <div class="step-row">
+                <div class="step-num-badge">5</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Secure Remote Work & VPN Connections</div>
+                        <div class="step-text-desc">Always activate corporate VPN when working remotely or connecting to public Wi-Fi networks.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Never use open airport or hotel Wi-Fi without active VPN encryption.
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-row">
+                <div class="step-num-badge">6</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Watch Out for Malicious Attachments</div>
+                        <div class="step-text-desc">Do not open unverified <code>.exe</code>, <code>.vbs</code>, or macro-enabled documents from unexpected emails.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Inspect the sender domain before opening attached files.
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-row">
+                <div class="step-num-badge">7</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Report Lost PC or Unusual Behavior Immediately</div>
+                        <div class="step-text-desc">Contact IT Helpdesk immediately if your computer is missing, stolen, or behaving strangely.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Quick reporting allows IT Security to isolate threats and protect credentials.
+                </div>
+            </div>
+        </div>
+
+        <div class="golden-rule-banner win">
+            🛡️ WINDOWS GOLDEN RULE: Never disable Windows Defender, BitLocker, or automatic security patches.
+        </div>
+    </div>
+
+    <!-- Section 2: Android Device Security -->
+    <div id="section-android" class="platform-section">
+        <div class="platform-header">
+            <div class="platform-title-group">
+                <div class="platform-icon-wrapper android">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5516 0 .9997.4482.9997.9993s-.4481.9997-.9997.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5516 0 .9997.4482.9997.9993s-.4481.9997-.9997.9997m11.4045-6.02l1.9973-3.4592c.1436-.2486.0584-.5662-.1902-.7098-.2484-.1436-.5662-.0584-.7098.1902l-2.0223 3.5028c-1.464-.6682-3.1364-1.0435-4.9565-1.0435s-3.4925.3753-4.9565 1.0435l-2.0223-3.5028c-.1436-.2486-.4614-.3338-.7098-.1902-.2486.1436-.3338.4612-.1902.7098l1.9973 3.4592c-3.1786 1.7303-5.3204 4.9567-5.5185 8.7307h22.8074c-.1981-3.774-2.3399-6.9999-5.5185-8.7307"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Android Device Security</h2>
+                    <p>Simple steps to help you keep your Android phone or tablet and company data safe.</p>
+                </div>
+            </div>
+            <div class="section-badge">Section 2: Android</div>
+        </div>
+
+        <div class="steps-list">
+            <!-- Step 1 -->
+            <div class="step-row">
+                <div class="step-num-badge">1</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#15803d">
+                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Keep your device locked</div>
+                        <div class="step-text-desc">Use a strong PIN, pattern or password. Enable biometric unlock (fingerprint or face) if available.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    A 6-digit PIN or longer is much better than a 4-digit PIN.
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-row">
+                <div class="step-num-badge">2</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#15803d">
+                            <path d="M4.05 3.01l11.49 11.49L3.5 20.55c-.32.18-.7.09-.92-.2-.14-.19-.18-.44-.1-.66L4.05 3.01zm.99-1.02l14.19 8.2c.45.26.45.92 0 1.18l-3.21 1.86L4.72 1.99c.11 0 .22 0 .32 0zm14.19 12.02l-3.7-2.14L4.05 22.36l15.18-8.77c.45-.26.45-.92 0-1.18z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Install apps only from Google Play</div>
+                        <div class="step-text-desc">Apps from unknown sources or sideloaded APKs can contain malware that steals your data.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    If it's not from the Play Store, don't install.
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-row">
+                <div class="step-num-badge">3</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#15803d" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Keep Android OS & apps up to date</div>
+                        <div class="step-text-desc">Updates fix security holes and protect you from the latest mobile threats and exploits.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Turn on "Auto-update" for apps in Google Play Store settings.
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-row">
+                <div class="step-num-badge">4</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#15803d" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Enable Find My Device</div>
+                        <div class="step-text-desc">Allows you to locate, lock, or remotely wipe your Android device if it is lost or stolen.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Check that Location & Find My Device are enabled in Google settings.
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapsible Steps 5-7 -->
+        <button class="expand-steps-btn" onclick="toggleExtraSteps('android')" id="btn-android">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+            Show steps 5–7
+        </button>
+
+        <div class="extra-steps" id="extra-android">
+            <!-- Step 5 -->
+            <div class="step-row">
+                <div class="step-num-badge">5</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#15803d" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Use Android Enterprise Work Profile</div>
+                        <div class="step-text-desc">Isolate work apps and emails from personal data using a managed Android Work Profile.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Keeps corporate files encrypted and separate from personal photos.
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-row">
+                <div class="step-num-badge">6</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#15803d" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                            <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Avoid Open Wi-Fi without VPN</div>
+                        <div class="step-text-desc">Never access confidential work tools on unencrypted public Wi-Fi without corporate VPN.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Turn off "Auto-connect to open networks" in Wi-Fi settings.
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-row">
+                <div class="step-num-badge">7</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#15803d" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Review App Permissions Regularly</div>
+                        <div class="step-text-desc">Revoke sensitive location, camera, and microphone permissions for unnecessary apps.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Check "Permission Manager" in Settings to inspect app access.
+                </div>
+            </div>
+        </div>
+
+        <div class="golden-rule-banner android">
+            ✅ ANDROID GOLDEN RULE: If it's not from the Play Store, don't install.
+        </div>
+    </div>
+
+    <!-- Section 3: iOS Device Security -->
+    <div id="section-ios" class="platform-section">
+        <div class="platform-header">
+            <div class="platform-title-group">
+                <div class="platform-icon-wrapper ios">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.78c.63-.78 1.07-1.85.95-2.93-.93.04-2.07.63-2.73 1.41-.59.68-1.11 1.78-.97 2.84 1.05.08 2.12-.54 2.75-1.32z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>iOS Device Security</h2>
+                    <p>Simple steps to help you keep your iPhone or iPad and company data safe.</p>
+                </div>
+            </div>
+            <div class="section-badge">Section 3: iOS</div>
+        </div>
+
+        <div class="steps-list">
+            <!-- Step 1 -->
+            <div class="step-row">
+                <div class="step-num-badge">1</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#0f172a">
+                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Use a strong passcode</div>
+                        <div class="step-text-desc">Use a 6-digit passcode or longer. Enable Face ID or Touch ID if available.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Avoid easy codes like 123456 or your birthdate.
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-row">
+                <div class="step-num-badge">2</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#0f172a">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.78c.63-.78 1.07-1.85.95-2.93-.93.04-2.07.63-2.73 1.41-.59.68-1.11 1.78-.97 2.84 1.05.08 2.12-.54 2.75-1.32z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Install apps only from the App Store</div>
+                        <div class="step-text-desc">Apps from outside the official App Store may be unsafe and can put your data at risk.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    If it's not from the App Store, don't install.
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-row">
+                <div class="step-num-badge">3</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#0f172a" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Keep iOS & apps up to date</div>
+                        <div class="step-text-desc">Updates include important security fixes and improve overall system protection.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Turn on "Automatic Updates" in Settings -> General -> Software Update.
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-row">
+                <div class="step-num-badge">4</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#0f172a" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Enable Find My iPhone</div>
+                        <div class="step-text-desc">Helps you locate, lock, or erase your iPhone or iPad if it is lost or stolen.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Ensure "Send Last Location" is enabled in Find My settings.
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapsible Steps 5-7 -->
+        <button class="expand-steps-btn" onclick="toggleExtraSteps('ios')" id="btn-ios">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+            Show steps 5–7
+        </button>
+
+        <div class="extra-steps" id="extra-ios">
+            <!-- Step 5 -->
+            <div class="step-row">
+                <div class="step-num-badge">5</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#0f172a" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Hide Sensitive Lock Screen Notifications</div>
+                        <div class="step-text-desc">Prevent message previews and verification codes from displaying when your screen is locked.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Set Notification Previews to "When Unlocked" in Settings.
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-row">
+                <div class="step-num-badge">6</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#0f172a" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Enable Encrypted Backups & Data Protection</div>
+                        <div class="step-text-desc">Protect iCloud backups and local computer backups with strong password encryption.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Ensures corporate app tokens in backups remain safe.
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-row">
+                <div class="step-num-badge">7</div>
+                <div class="step-main-content">
+                    <div class="step-icon-bg">
+                        <svg width="24" height="24" fill="none" stroke="#0f172a" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="step-text-title">Turn off Auto-Join Unverified Wi-Fi</div>
+                        <div class="step-text-desc">Prevent your iPhone from automatically connecting to rogue or unencrypted Wi-Fi hotspots.</div>
+                    </div>
+                </div>
+                <div class="step-tip-box">
+                    <strong>💡 TIP</strong>
+                    Set "Ask to Join Networks" to Notify or Off in Wi-Fi settings.
+                </div>
+            </div>
+        </div>
+
+        <div class="golden-rule-banner ios">
+            ✔ iOS GOLDEN RULE: If it's not from the App Store, don't install.
+        </div>
+    </div>
+
+    <!-- Corporate Footer for Midas Cyber Awareness & Security -->
+    <style>
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin-top: 40px;
+            box-sizing: border-box;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        /* Left Brand Section */
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+
+        .brand-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title-main {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .brand-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-top: 6px;
+        }
+
+        .tagline-line {
+            height: 2px;
+            width: 20px;
+            background-color: #f59e0b;
+        }
+
+        .contact-red-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e11d48;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 8px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+        }
+
+        .contact-red-btn:hover {
+            background-color: #be123c;
+            transform: translateY(-1px);
+        }
+
+        /* Center SOC Help Card */
+        .soc-card {
+            background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
+            border: 1px solid #1e3a5f;
+            border-radius: 14px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            flex: 1.3;
+            min-width: 280px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .soc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30%;
+            right: 30%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .soc-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #040c1a;
+            border: 1px solid #1e3a5f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .soc-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .soc-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .soc-subtext {
+            font-size: 0.88rem;
+            color: #94a3b8;
+        }
+
+        .soc-email-link {
+            color: #38bdf8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .soc-email-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        /* Right Action Items */
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 40px;
+            background-color: #1e293b;
+            flex-shrink: 0;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+            width: 72px;
+            text-align: center;
+        }
+
+        .action-btn-circle:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .circle-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            background: #040c1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 960px) {
+            .midas-footer-container {
+                padding: 24px 20px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .footer-left-brand {
+                align-items: center;
+                min-width: 100%;
+            }
+
+            .brand-top-row {
+                justify-content: center;
+            }
+
+            .soc-card {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .soc-content {
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-actions-grid {
+                width: 100%;
+                justify-content: center;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .action-item-divider {
+                display: none;
+            }
+        }
+    </style>
+
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <!-- Left Section: Logo, Title & Contact Button -->
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <!-- SVG Official Logo -->
+                    <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+                        <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF"/>
+                        <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF"/>
+                        <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                        <circle cx="50" cy="88" r="5" fill="#FFFFFF"/>
+                        <!-- M-Shield -->
+                        <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF"/>
+                        <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF"/>
+                        <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B"/>
+                    </svg>
+
+                    <div class="brand-title-group">
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                        <div class="brand-tagline">
+                            <div class="tagline-line"></div>
+                            <span>Never Trust. Always Verify</span>
+                            <div class="tagline-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+            </div>
+
+            <!-- Center Section: SOC Help Card -->
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                    </svg>
+                </div>
+                <div class="soc-content">
+                    <div class="soc-title">Need help or want to report something?</div>
+                    <div class="soc-subtext">
+                        Contact our Security Operations Center (SOC) at
+                        <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section: 4 Action Item Buttons -->
+            <div class="footer-actions-grid">
+                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <span class="action-label">Report Incident</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="account-password-security.html#tab-steps" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                    <span class="action-label">Security Tips</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="account-password-security.html#tab-checkup" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        </svg>
+                    </div>
+                    <span class="action-label">Alerts & Updates</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="account-password-security.html#tab-checklist" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <span class="action-label">About Portal</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modular Loader Script -->
+    <script src="js/components.js"></script>
+
+    <!-- Page Interaction Script -->
+    <script>
+        function scrollToSection(platform) {
+            const el = document.getElementById('section-' + platform);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function toggleExtraSteps(platform) {
+            const extraEl = document.getElementById('extra-' + platform);
+            const btnEl = document.getElementById('btn-' + platform);
+
+            if (!extraEl || !btnEl) return;
+
+            if (extraEl.classList.contains('show')) {
+                extraEl.classList.remove('show');
+                btnEl.innerHTML = `
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                    Show steps 5–7`;
+            } else {
+                extraEl.classList.add('show');
+                btnEl.innerHTML = `
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M5 15l7-7 7 7"></path>
+                    </svg>
+                    Hide steps 5–7`;
+            }
+        }
+
+        function toggleFavorite(btn) {
+            const favText = document.getElementById('favText');
+            if (btn.classList.contains('favorited')) {
+                btn.classList.remove('favorited');
+                if (favText) favText.textContent = 'Add to favorites';
+            } else {
+                btn.classList.add('favorited');
+                if (favText) favText.textContent = 'Added to favorites';
+            }
+        }
+    </script>
+</body>
+
+</html>

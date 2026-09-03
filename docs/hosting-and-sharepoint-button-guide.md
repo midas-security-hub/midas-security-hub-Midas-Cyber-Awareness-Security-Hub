@@ -1,6 +1,6 @@
 # Hosting Your Security Element & Linking via SharePoint Button
 
-Since `index.html` is a **100% serverless, zero-dependency client-side file**, you can host it easily without needing a backend server and link to it from any SharePoint Button, Hero banner, or Quick Links web part.
+Since `account-password-security.html` is a **100% serverless, zero-dependency client-side file**, you can host it easily without needing a backend server and link to it from any SharePoint Button, Hero banner, or Quick Links web part.
 
 ---
 
@@ -10,10 +10,10 @@ Since `index.html` is a **100% serverless, zero-dependency client-side file**, y
 
 Because SharePoint itself can host static web files:
 1. Go to your SharePoint Site -> **Site Contents** -> **Site Assets** (or **Documents**).
-2. Click **Upload** -> upload `index.html`.
-3. Click the three dots (`...`) next to `index.html` -> click **Copy link**.
+2. Click **Upload** -> upload `account-password-security.html`.
+3. Click the three dots (`...`) next to `account-password-security.html` -> click **Copy link**.
 4. *(Optional tip)*: Make sure the link is set to "People in your organization" or "Anyone with the link can view".
-5. Copy this URL (e.g., `https://yourcompany.sharepoint.com/sites/Intranet/SiteAssets/index.html`).
+5. Copy this URL (e.g., `https://yourcompany.sharepoint.com/sites/Intranet/SiteAssets/account-password-security.html`).
 
 ---
 
@@ -21,7 +21,7 @@ Because SharePoint itself can host static web files:
 
 Netlify provides free static hosting with zero installation:
 1. Open [app.netlify.com/drop](https://app.netlify.com/drop) in your browser.
-2. Drag and drop your `Embed` folder containing `index.html` onto the webpage.
+2. Drag and drop your `Embed` folder containing `account-password-security.html` onto the webpage.
 3. Within 5 seconds, Netlify will generate a live HTTPS link (e.g., `https://company-account-security.netlify.app`).
 
 ---
@@ -30,7 +30,7 @@ Netlify provides free static hosting with zero installation:
 
 If your team uses GitHub:
 1. Create a repository named `account-security-guide`.
-2. Push or upload `index.html`.
+2. Push or upload `account-password-security.html`.
 3. Go to **Settings** -> **Pages** -> Select `main` branch -> Click **Save**.
 4. Your page will be live at `https://<your-username>.github.io/account-security-guide/`.
 

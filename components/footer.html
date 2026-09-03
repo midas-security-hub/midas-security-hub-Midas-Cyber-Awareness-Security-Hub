@@ -10,13 +10,14 @@
         color: #ffffff;
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         margin-top: 40px;
+        box-sizing: border-box;
     }
 
     .footer-main-flex {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 32px;
+        gap: 24px;
         flex-wrap: wrap;
     }
 
@@ -24,8 +25,9 @@
     .footer-left-brand {
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        min-width: 300px;
+        gap: 14px;
+        flex: 1;
+        min-width: 260px;
     }
 
     .brand-top-row {
@@ -35,8 +37,8 @@
     }
 
     .footer-logo-svg {
-        width: 72px;
-        height: 72px;
+        width: 64px;
+        height: 64px;
         flex-shrink: 0;
     }
 
@@ -47,14 +49,14 @@
     }
 
     .brand-title-main {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         font-weight: 800;
         letter-spacing: 0.5px;
         color: #ffffff;
     }
 
     .brand-title-sub {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         font-weight: 800;
         letter-spacing: 0.5px;
         color: #f59e0b;
@@ -65,7 +67,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         font-weight: 600;
         color: #cbd5e1;
         margin-top: 6px;
@@ -73,7 +75,7 @@
 
     .tagline-line {
         height: 2px;
-        width: 24px;
+        width: 20px;
         background-color: #f59e0b;
     }
 
@@ -84,7 +86,7 @@
         background-color: #e11d48;
         color: #ffffff;
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         padding: 8px 24px;
         border-radius: 6px;
         text-decoration: none;
@@ -103,14 +105,14 @@
         background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
         border: 1px solid #1e3a5f;
         border-radius: 14px;
-        padding: 20px 28px;
+        padding: 18px 24px;
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 16px;
         position: relative;
         overflow: hidden;
-        flex: 1.2;
-        min-width: 320px;
+        flex: 1.3;
+        min-width: 280px;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 20px rgba(0,0,0,0.3);
     }
 
@@ -126,8 +128,8 @@
     }
 
     .soc-icon-circle {
-        width: 60px;
-        height: 60px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         background: #040c1a;
         border: 1px solid #1e3a5f;
@@ -144,13 +146,13 @@
     }
 
     .soc-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 700;
         color: #ffffff;
     }
 
     .soc-subtext {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         color: #94a3b8;
     }
 
@@ -170,31 +172,29 @@
     .footer-actions-grid {
         display: flex;
         align-items: center;
-        gap: 16px;
-    }
-
-    .action-item-wrap {
-        display: flex;
-        align-items: center;
-        gap: 16px;
+        justify-content: center;
+        gap: 12px;
+        flex: 1;
+        min-width: 280px;
     }
 
     .action-item-divider {
         width: 1px;
-        height: 48px;
+        height: 40px;
         background-color: #1e293b;
+        flex-shrink: 0;
     }
 
     .action-btn-circle {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         text-decoration: none;
         color: #cbd5e1;
         cursor: pointer;
         transition: transform 0.2s ease, color 0.2s ease;
-        width: 76px;
+        width: 72px;
         text-align: center;
     }
 
@@ -204,8 +204,8 @@
     }
 
     .circle-icon {
-        width: 52px;
-        height: 52px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
         border: 1px solid #334155;
         background: #040c1a;
@@ -221,20 +221,52 @@
     }
 
     .action-label {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         font-weight: 600;
         line-height: 1.2;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 960px) {
+        .midas-footer-container {
+            padding: 24px 20px;
+        }
+
         .footer-main-flex {
             flex-direction: column;
-            align-items: stretch;
+            align-items: center;
+            text-align: center;
+            gap: 24px;
+        }
+
+        .footer-left-brand {
+            align-items: center;
+            min-width: 100%;
+        }
+
+        .brand-top-row {
+            justify-content: center;
+        }
+
+        .soc-card {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .soc-content {
+            align-items: center;
+            text-align: center;
         }
 
         .footer-actions-grid {
-            justify-content: space-around;
+            width: 100%;
+            justify-content: center;
+            gap: 12px;
             flex-wrap: wrap;
+        }
+
+        .action-item-divider {
+            display: none;
         }
     }
 </style>

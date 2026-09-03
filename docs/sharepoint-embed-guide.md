@@ -1,6 +1,6 @@
 # How to Add This Element to a SharePoint Page
 
-This **Account & Password Security** element is built as a single, self-contained `index.html` file that can easily be embedded in Microsoft SharePoint Modern Pages.
+This **Account & Password Security** element is built as `account-password-security.html` file that can easily be embedded in Microsoft SharePoint Modern Pages.
 
 ---
 
@@ -8,8 +8,8 @@ This **Account & Password Security** element is built as a single, self-containe
 
 1. **Upload the file to SharePoint**:
    - Go to your SharePoint Site -> **Site Contents** -> **Documents** (or Site Assets).
-   - Click **Upload** -> **File** and select `index.html`.
-   - Click the three dots `...` next to `index.html` in SharePoint and select **Copy link**.
+   - Click **Upload** -> **File** and select `account-password-security.html`.
+   - Click the three dots `...` next to `account-password-security.html` in SharePoint and select **Copy link**.
 
 2. **Add to SharePoint Modern Page**:
    - Go to the SharePoint page where you want to display this element and click **Edit** (top right).
