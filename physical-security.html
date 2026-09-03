@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midas Cyber Security Hub - Physical & Social Engineering Security</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --accent-bg: #fffbeb;
+            --blue: #2563eb;
+            --blue-light: #eff6ff;
+            --blue-hover: #1d4ed8;
+            --green: #10b981;
+            --green-bg: #ecfdf5;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Top Master Header */
+        .midas-header-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 28px;
+            border: 1px solid #1e293b;
+        }
+
+        .header-top-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 110px;
+            overflow: hidden;
+        }
+
+        .header-bg-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-logo-svg {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+        }
+
+        .header-title-text {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .header-nav-item {
+            position: relative;
+        }
+
+        .header-nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .header-nav-link:hover,
+        .header-nav-link.active {
+            color: #ffffff;
+        }
+
+        .header-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .header-nav-item:hover .header-dropdown,
+        .header-nav-item:focus-within .header-dropdown,
+        .header-nav-item.open .header-dropdown {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            display: block !important;
+        }
+
+        .header-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 1000;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link:hover,
+        .header-dropdown-link.active {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        /* Hero Banner Section with Image */
+        .hero-physical-banner {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 36px 40px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 36px;
+            display: grid;
+            grid-template-columns: 1fr 480px;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .hero-left-content h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0b192e;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-left-content p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .hero-badges-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eff6ff;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .hero-img-box {
+            width: 100%;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .hero-img-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* 7 Habits Section Title */
+        .habits-section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .habits-header-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #0f172a;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .habits-header-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* 7 Habits Grid */
+        .habits-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .habit-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .habit-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .habit-sq-badge {
+            width: 40px;
+            height: 40px;
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.25rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .habit-icon-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 2rem;
+            color: #0f172a;
+        }
+
+        .habit-main-info {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .habit-title-text {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .habit-desc-text {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .habit-tip-card {
+            background: #fffbeb;
+            border: 1px solid #fef08a;
+            border-radius: 12px;
+            padding: 16px 20px;
+            width: 300px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .tip-card-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #b45309;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tip-card-body {
+            font-size: 0.86rem;
+            color: #78350f;
+            line-height: 1.45;
+            font-weight: 500;
+        }
+
+
+
+        /* Master Footer */
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-top: 48px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+
+        .brand-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title-main {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .brand-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-top: 6px;
+        }
+
+        .tagline-line {
+            height: 2px;
+            width: 20px;
+            background-color: #f59e0b;
+        }
+
+        .contact-red-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e11d48;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 8px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+        }
+
+        .contact-red-btn:hover {
+            background-color: #be123c;
+            transform: translateY(-1px);
+        }
+
+        .soc-card {
+            background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
+            border: 1px solid #1e3a5f;
+            border-radius: 14px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            flex: 1.3;
+            min-width: 280px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .soc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30%;
+            right: 30%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .soc-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #040c1a;
+            border: 1px solid #1e3a5f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .soc-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .soc-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .soc-subtext {
+            font-size: 0.88rem;
+            color: #94a3b8;
+        }
+
+        .soc-email-link {
+            color: #38bdf8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .soc-email-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 40px;
+            background-color: #1e293b;
+            flex-shrink: 0;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+            width: 72px;
+            text-align: center;
+        }
+
+        .action-btn-circle:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .circle-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            background: #040c1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 992px) {
+            .hero-physical-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .habit-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .habit-tip-card {
+                width: 100%;
+            }
+
+            .midas-footer-container {
+                padding: 24px 20px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Site Master Header -->
+    <div class="midas-header-container">
+        <div class="header-top-banner">
+            <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none">
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4" />
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3" />
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7" />
+            </svg>
+
+            <div class="header-brand">
+                <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                        stroke-linecap="round" />
+                    <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+                    <circle cx="49" cy="90" r="5.5" fill="#FFFFFF" />
+                    <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF" />
+                    <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF" />
+                    <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B" />
+                </svg>
+                <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="header-navbar">
+            <div class="header-nav-links">
+                <div class="header-nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="header-nav-link">Home</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="index.html" class="header-nav-link">Portal Directory</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html" class="header-nav-link">🔑 Account Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="device-security.html" class="header-nav-link">📱 Device Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="email-security.html" class="header-nav-link">📧 Email Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="physical-security.html" class="header-nav-link active">🏢 Physical Security</a>
+                </div>
+
+                <!-- Topics Dropdown -->
+                <div class="header-nav-item">
+                    <button class="header-nav-link" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="index.html" class="header-dropdown-link">🏠 Portal Directory (All Topics)</a>
+                        <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="header-dropdown-link">📱 Device Security</a>
+                        <a href="email-security.html" class="header-dropdown-link">📧 Email Security & Phishing Spotter</a>
+                        <a href="physical-security.html" class="header-dropdown-link active">🏢 Physical & Social Security Guide</a>
+                        <a href="index.html#topics" class="header-dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link"
+                        style="color: #38bdf8;">Report Incident</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Banner Section -->
+    <div class="hero-physical-banner">
+        <div class="hero-left-content">
+            <h1>Physical & Social Engineering Security</h1>
+            <p>
+                Security isn't just about technology — it's also about people and physical spaces. Small actions every day help protect our people, information, equipment, and facilities.
+            </p>
+
+            <div class="hero-badges-row">
+                <div class="hero-badge-item">
+                    <span>🛡️ Badge Discipline</span>
+                </div>
+                <div class="hero-badge-item">
+                    <span>👥 Visitor Verification</span>
+                </div>
+                <div class="hero-badge-item">
+                    <span>🔒 Tailgating Defense</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-img-box">
+            <img src="images/image-1.png" alt="Physical & Social Engineering Security at Workplace">
+        </div>
+    </div>
+
+    <!-- 7 Habits Section Header -->
+    <div class="habits-section-header">
+        <div class="habits-header-icon">🛡️</div>
+        <h2 class="habits-header-title">7 Simple Habits That Keep Us Safe</h2>
+    </div>
+
+    <!-- 7 Habits Grid -->
+    <div class="habits-grid">
+
+        <!-- Habit 1: Tailgating -->
+        <div class="habit-card">
+            <div class="habit-sq-badge">1</div>
+            <div class="habit-icon-circle">🚪</div>
+            <div class="habit-main-info">
+                <div class="habit-title-text">Don't tailgate through secure doors</div>
+                <div class="habit-desc-text">
+                    Never let unbadged people follow you into secure areas. If someone is waiting behind you, close the door and ask them to show their badge.
+                </div>
+            </div>
+            <div class="habit-tip-card">
+                <div class="tip-card-header">💡 TIP</div>
+                <div class="tip-card-body">
+                    One person holding the door open for someone else can put everyone at risk.
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit 2: Unknown USBs -->
+        <div class="habit-card">
+            <div class="habit-sq-badge">2</div>
+            <div class="habit-icon-circle">🔌</div>
+            <div class="habit-main-info">
+                <div class="habit-title-text">Never plug in unknown USB drives</div>
+                <div class="habit-desc-text">
+                    USB drives from unknown sources can carry malware that can harm our systems and steal sensitive company data.
+                </div>
+            </div>
+            <div class="habit-tip-card">
+                <div class="tip-card-header">💡 TIP</div>
+                <div class="tip-card-body">
+                    If you find a USB drive, report it to IT immediately. Don't plug it in.
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit 3: Shoulder Surfing -->
+        <div class="habit-card">
+            <div class="habit-sq-badge">3</div>
+            <div class="habit-icon-circle">👀</div>
+            <div class="habit-main-info">
+                <div class="habit-title-text">Be aware of shoulder surfing</div>
+                <div class="habit-desc-text">
+                    Others may try to look at your screen or watch you enter passwords, PINs, or other sensitive corporate information.
+                </div>
+            </div>
+            <div class="habit-tip-card">
+                <div class="tip-card-header">💡 TIP</div>
+                <div class="tip-card-body">
+                    Position your screen away from others and use privacy screen filters where possible.
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit 4: Access Badge -->
+        <div class="habit-card">
+            <div class="habit-sq-badge">4</div>
+            <div class="habit-icon-circle">🪪</div>
+            <div class="habit-main-info">
+                <div class="habit-title-text">Don't share your access badge</div>
+                <div class="habit-desc-text">
+                    Your badge is for you only. Never lend it to anyone or let others "borrow" it, even for a short time.
+                </div>
+            </div>
+            <div class="habit-tip-card">
+                <div class="tip-card-header">💡 TIP</div>
+                <div class="tip-card-body">
+                    Sharing badges can lead to unauthorized access and serious security consequences.
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit 5: Clean Desk -->
+        <div class="habit-card">
+            <div class="habit-sq-badge">5</div>
+            <div class="habit-icon-circle">💻</div>
+            <div class="habit-main-info">
+                <div class="habit-title-text">Practice clean desk habits</div>
+                <div class="habit-desc-text">
+                    Don't leave sensitive documents, devices, or printed material unattended. Lock computer screens (<code>Win + L</code>) whenever you step away.
+                </div>
+            </div>
+            <div class="habit-tip-card">
+                <div class="tip-card-header">💡 TIP</div>
+                <div class="tip-card-body">
+                    A clean desk keeps information safe and reduces the risk of loss or theft.
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit 6: Visitor Verification -->
+        <div class="habit-card">
+            <div class="habit-sq-badge">6</div>
+            <div class="habit-icon-circle">👥</div>
+            <div class="habit-main-info">
+                <div class="habit-title-text">Verify before you let anyone in</div>
+                <div class="habit-desc-text">
+                    Always verify the identity of visitors, contractors, and delivery personnel before granting access — especially in factory and production areas.
+                </div>
+            </div>
+            <div class="habit-tip-card">
+                <div class="tip-card-header">💡 TIP</div>
+                <div class="tip-card-body">
+                    Ask for ID, confirm their purpose, and strictly follow site visitor escort procedures.
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit 7: Lost Badge Reporting -->
+        <div class="habit-card">
+            <div class="habit-sq-badge">7</div>
+            <div class="habit-icon-circle">📋</div>
+            <div class="habit-main-info">
+                <div class="habit-title-text">Report lost or stolen badges immediately</div>
+                <div class="habit-desc-text">
+                    Report a lost or stolen badge right away so it can be deactivated and unauthorized facility access prevented immediately.
+                </div>
+            </div>
+            <div class="habit-tip-card">
+                <div class="tip-card-header">💡 TIP</div>
+                <div class="tip-card-body">
+                    The sooner you report it, the sooner we can protect our site, equipment, and people.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Master Footer -->
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                            stroke-linecap="round" />
+                        <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5"
+                            stroke-linecap="round" />
+                        <circle cx="50" cy="88" r="5" fill="#FFFFFF" />
+                        <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF" />
+                        <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF" />
+                        <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B" />
+                    </svg>
+
+                    <div class="brand-title-group">
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                        <div class="brand-tagline">
+                            <div class="tagline-line"></div>
+                            <span>Never Trust. Always Verify</span>
+                            <div class="tagline-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+            </div>
+
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                        <path
+                            d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                    </svg>
+                </div>
+                <div class="soc-content">
+                    <div class="soc-title">Need help or want to report something?</div>
+                    <div class="soc-subtext">
+                        Contact our Security Operations Center (SOC) at
+                        <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-actions-grid">
+                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Report Incident</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="index.html#topics" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Security Tips</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
