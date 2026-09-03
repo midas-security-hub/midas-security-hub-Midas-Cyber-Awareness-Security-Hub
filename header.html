@@ -1,0 +1,295 @@
+<!-- Modular Top Site Header for Midas Cyber Awareness & Security -->
+<style>
+    .midas-header-container {
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        margin-bottom: 28px;
+        border: 1px solid #1e293b;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .header-top-banner {
+        background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+        padding: 24px 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        min-height: 110px;
+        overflow: hidden;
+    }
+
+    .header-bg-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .header-logo-svg {
+        width: 54px;
+        height: 54px;
+        flex-shrink: 0;
+    }
+
+    .header-title-text {
+        color: #ffffff;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .header-navbar {
+        background-color: #030712;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        position: relative;
+        z-index: 10;
+    }
+
+    .header-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .header-nav-item {
+        position: relative;
+    }
+
+    .header-nav-link {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.92rem;
+        font-weight: 600;
+        padding: 14px 16px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+        border: none;
+        background: transparent;
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    .header-nav-link:hover {
+        color: #ffffff;
+    }
+
+    .header-nav-link.active {
+        color: #ffffff;
+    }
+
+    .header-nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 12px;
+        right: 12px;
+        height: 3px;
+        background-color: #38bdf8;
+        border-radius: 3px 3px 0 0;
+    }
+
+    .header-nav-item:hover .header-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .header-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #090d16;
+        border: 1px solid #1e293b;
+        border-radius: 8px;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+        min-width: 220px;
+        z-index: 100;
+        padding: 8px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(6px);
+        transition: all 0.2s ease;
+    }
+
+    .header-dropdown-link {
+        display: block;
+        padding: 10px 18px;
+        color: #cbd5e1;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .header-dropdown-link:hover {
+        background: #1e293b;
+        color: #38bdf8;
+        padding-left: 22px;
+    }
+
+    .header-actions-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .header-action-btn {
+        color: #94a3b8;
+        font-size: 0.88rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px 8px;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .header-action-btn:hover {
+        color: #ffffff;
+    }
+</style>
+
+<div class="midas-header-container">
+    <div class="header-top-banner">
+        <!-- Background Cyber Tech SVG -->
+        <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4"/>
+            <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8"/>
+            <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8"/>
+            <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7"/>
+
+            <!-- Email Hexagon Motif -->
+            <g transform="translate(680, 20)">
+                <polygon points="30,0 60,17 60,52 30,69 0,52 0,17" stroke="#0088FF" stroke-width="2.2" fill="#061A3A" opacity="0.85"/>
+                <path d="M18 26 L30 36 L42 26 M18 26 H42 V44 H18 Z" stroke="#00BFFF" stroke-width="2.2" fill="none"/>
+            </g>
+
+            <path d="M740 55 H820" stroke="#0099FF" stroke-width="2" opacity="0.5"/>
+
+            <!-- Digital Lock Shield Glow Motif -->
+            <g transform="translate(850, -10)">
+                <circle cx="60" cy="70" r="55" fill="#0066FF" opacity="0.18"/>
+                <path d="M60 15 C60 15 95 25 105 35 C105 80 85 110 60 125 C35 110 15 80 15 35 C25 25 60 15 60 15 Z" stroke="#00BFFF" stroke-width="3" fill="#082046" opacity="0.9"/>
+                <rect x="47" y="65" width="26" height="22" rx="4" fill="#00D2FF"/>
+                <path d="M52 65 V55 C52 50.5 55.5 47 60 47 C64.5 47 68 50.5 68 55 V65" stroke="#00D2FF" stroke-width="3" fill="none"/>
+            </g>
+
+            <!-- Dot Grid World Map Motif -->
+            <g opacity="0.25" fill="#00BFFF">
+                <circle cx="1020" cy="30" r="1.5"/><circle cx="1035" cy="30" r="1.5"/><circle cx="1050" cy="30" r="1.5"/><circle cx="1065" cy="30" r="1.5"/>
+                <circle cx="1012" cy="45" r="1.5"/><circle cx="1027" cy="45" r="1.5"/><circle cx="1042" cy="45" r="1.5"/><circle cx="1057" cy="45" r="1.5"/><circle cx="1072" cy="45" r="1.5"/><circle cx="1087" cy="45" r="1.5"/>
+                <circle cx="1020" cy="60" r="1.5"/><circle cx="1035" cy="60" r="1.5"/><circle cx="1050" cy="60" r="1.5"/><circle cx="1065" cy="60" r="1.5"/><circle cx="1080" cy="60" r="1.5"/><circle cx="1095" cy="60" r="1.5"/><circle cx="1110" cy="60" r="1.5"/>
+            </g>
+        </svg>
+
+        <!-- Brand Logo & Title -->
+        <div class="header-brand">
+            <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Headset Band -->
+                <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+                <!-- Left & Right Ear Cushions -->
+                <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
+                <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
+                <!-- Mic Boom Arm -->
+                <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="49" cy="90" r="5.5" fill="#FFFFFF"/>
+                <!-- M Shield Geometric Icon -->
+                <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF"/>
+                <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF"/>
+                <!-- Gold Slash Bar Accent -->
+                <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B"/>
+            </svg>
+            <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="header-navbar">
+        <div class="header-nav-links">
+            <div class="header-nav-item">
+                <a href="#" class="header-nav-link active">Home</a>
+            </div>
+
+            <!-- Topics Dropdown -->
+            <div class="header-nav-item">
+                <button class="header-nav-link" type="button">
+                    Topics 
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="header-dropdown">
+                    <a href="#tab-steps" onclick="switchTab('steps')" class="header-dropdown-link">🔑 Account & Password Security</a>
+                    <a href="#tab-steps" onclick="switchTab('steps')" class="header-dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
+                    <a href="#tab-steps" onclick="switchTab('steps')" class="header-dropdown-link">🎣 Phishing & Email Protection</a>
+                    <a href="#tab-steps" onclick="switchTab('steps')" class="header-dropdown-link">💻 Device Security & Screen Lock</a>
+                </div>
+            </div>
+
+            <div class="header-nav-item">
+                <a href="#tab-checklist" onclick="switchTab('checklist')" class="header-nav-link">Policies</a>
+            </div>
+
+            <div class="header-nav-item">
+                <a href="#tab-steps" onclick="switchTab('steps')" class="header-nav-link">News</a>
+            </div>
+
+            <div class="header-nav-item">
+                <a href="#tab-checklist" onclick="switchTab('checklist')" class="header-nav-link">FAQ</a>
+            </div>
+
+            <!-- Resources Dropdown -->
+            <div class="header-nav-item">
+                <button class="header-nav-link" type="button">
+                    Resources 
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="header-dropdown">
+                    <a href="#tab-evaluator" onclick="switchTab('evaluator')" class="header-dropdown-link">⚡ Passphrase Strength Evaluator</a>
+                    <a href="#tab-checklist" onclick="switchTab('checklist')" class="header-dropdown-link">📋 Security Readiness Checklist</a>
+                    <a href="#tab-checkup" onclick="switchTab('checkup')" class="header-dropdown-link">🚀 Quick Security Checkup</a>
+                </div>
+            </div>
+
+            <div class="header-nav-item">
+                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link" style="color: #38bdf8;">Security Incident Report</a>
+            </div>
+        </div>
+
+        <div class="header-actions-right">
+            <button class="header-action-btn" onclick="toggleFavorite(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span id="favText">Add to favorites</span>
+            </button>
+            <button class="header-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Site access
+            </button>
+        </div>
+    </nav>
+</div>

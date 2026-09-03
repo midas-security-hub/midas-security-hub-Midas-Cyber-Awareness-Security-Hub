@@ -1,0 +1,16 @@
+# Archives
+*.rar
+*.zip
+*.tar
+*.gz
+*.7z
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp

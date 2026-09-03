@@ -1,0 +1,342 @@
+<!-- Modular Corporate Footer for Midas Cyber Awareness & Security -->
+<style>
+    .midas-footer-container {
+        width: 100%;
+        background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+        border-radius: 16px;
+        border: 1px solid #1e293b;
+        padding: 28px 36px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        color: #ffffff;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        margin-top: 40px;
+    }
+
+    .footer-main-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+    }
+
+    /* Left Brand Section */
+    .footer-left-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-width: 300px;
+    }
+
+    .brand-top-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .footer-logo-svg {
+        width: 72px;
+        height: 72px;
+        flex-shrink: 0;
+    }
+
+    .brand-title-group {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+    }
+
+    .brand-title-main {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+    }
+
+    .brand-title-sub {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        color: #f59e0b;
+        margin-top: 2px;
+    }
+
+    .brand-tagline {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #cbd5e1;
+        margin-top: 6px;
+    }
+
+    .tagline-line {
+        height: 2px;
+        width: 24px;
+        background-color: #f59e0b;
+    }
+
+    .contact-red-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e11d48;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 8px 24px;
+        border-radius: 6px;
+        text-decoration: none;
+        width: fit-content;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+    }
+
+    .contact-red-btn:hover {
+        background-color: #be123c;
+        transform: translateY(-1px);
+    }
+
+    /* Center SOC Help Card */
+    .soc-card {
+        background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
+        border: 1px solid #1e3a5f;
+        border-radius: 14px;
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        overflow: hidden;
+        flex: 1.2;
+        min-width: 320px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .soc-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 30%;
+        right: 30%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+        box-shadow: 0 0 10px #f59e0b;
+    }
+
+    .soc-icon-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #040c1a;
+        border: 1px solid #1e3a5f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .soc-content {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .soc-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .soc-subtext {
+        font-size: 0.9rem;
+        color: #94a3b8;
+    }
+
+    .soc-email-link {
+        color: #38bdf8;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .soc-email-link:hover {
+        color: #7dd3fc;
+        text-decoration: underline;
+    }
+
+    /* Right Action Items */
+    .footer-actions-grid {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .action-item-wrap {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .action-item-divider {
+        width: 1px;
+        height: 48px;
+        background-color: #1e293b;
+    }
+
+    .action-btn-circle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: #cbd5e1;
+        cursor: pointer;
+        transition: transform 0.2s ease, color 0.2s ease;
+        width: 76px;
+        text-align: center;
+    }
+
+    .action-btn-circle:hover {
+        transform: translateY(-3px);
+        color: #ffffff;
+    }
+
+    .circle-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        border: 1px solid #334155;
+        background: #040c1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .action-btn-circle:hover .circle-icon {
+        border-color: #f59e0b;
+        box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .action-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    @media (max-width: 1024px) {
+        .footer-main-flex {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .footer-actions-grid {
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+    }
+</style>
+
+<footer class="midas-footer-container">
+    <div class="footer-main-flex">
+        <!-- Left Section: Logo, Title & Contact Button -->
+        <div class="footer-left-brand">
+            <div class="brand-top-row">
+                <!-- SVG Official Logo -->
+                <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+                    <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF"/>
+                    <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF"/>
+                    <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                    <circle cx="50" cy="88" r="5" fill="#FFFFFF"/>
+                    <!-- M-Shield -->
+                    <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF"/>
+                    <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF"/>
+                    <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B"/>
+                </svg>
+
+                <div class="brand-title-group">
+                    <div class="brand-title-main">CYBER AWARENESS</div>
+                    <div class="brand-title-sub">& SECURITY</div>
+                    <div class="brand-tagline">
+                        <div class="tagline-line"></div>
+                        <span>Never Trust. Always Verify</span>
+                        <div class="tagline-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+        </div>
+
+        <!-- Center Section: SOC Help Card -->
+        <div class="soc-card">
+            <div class="soc-icon-circle">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                </svg>
+            </div>
+            <div class="soc-content">
+                <div class="soc-title">Need help or want to report something?</div>
+                <div class="soc-subtext">
+                    Contact our Security Operations Center (SOC) at 
+                    <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section: 4 Action Item Buttons -->
+        <div class="footer-actions-grid">
+            <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
+                <div class="circle-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <span class="action-label">Report Incident</span>
+            </a>
+
+            <div class="action-item-divider"></div>
+
+            <a href="#tab-steps" onclick="switchTab('steps')" class="action-btn-circle">
+                <div class="circle-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                </div>
+                <span class="action-label">Security Tips</span>
+            </a>
+
+            <div class="action-item-divider"></div>
+
+            <a href="#tab-checkup" onclick="switchTab('checkup')" class="action-btn-circle">
+                <div class="circle-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                </div>
+                <span class="action-label">Alerts & Updates</span>
+            </a>
+
+            <div class="action-item-divider"></div>
+
+            <a href="#tab-checklist" onclick="switchTab('checklist')" class="action-btn-circle">
+                <div class="circle-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <span class="action-label">About Portal</span>
+            </a>
+        </div>
+    </div>
+</footer>
