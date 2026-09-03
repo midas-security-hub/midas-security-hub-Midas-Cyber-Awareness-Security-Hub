@@ -1092,6 +1092,143 @@
             line-height: 1.2;
         }
 
+        /* Email Verifier Tool Styling */
+        .email-verifier-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .verifier-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .verifier-icon-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: #eff6ff;
+            color: #2563eb;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .verifier-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .verifier-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .verifier-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .verifier-email-input {
+            flex: 1;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+            font-family: inherit;
+        }
+
+        .verifier-email-input:focus {
+            border-color: var(--blue);
+        }
+
+        .verifier-check-btn {
+            background: var(--blue);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .verifier-check-btn:hover {
+            background: var(--blue-hover);
+        }
+
+        .verifier-trust-note {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            line-height: 1.3;
+        }
+
+        .verifier-result-box {
+            display: none;
+            border-radius: 10px;
+            padding: 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .verifier-result-box.loading {
+            display: block;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .verifier-result-box.safe {
+            display: block;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+        }
+
+        .verifier-result-box.exposed {
+            display: block;
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            color: #9f1239;
+        }
+
+        .breach-tags-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .breach-tag-chip {
+            background: #ffe4e6;
+            color: #be123c;
+            border: 1px solid #f43f5e;
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
         @media (max-width: 992px) {
             .spotter-main-grid {
                 grid-template-columns: 1fr;
@@ -1545,6 +1682,27 @@
                     <strong>Report it. We'll take care of it.</strong>
                 </p>
             </div>
+
+            <!-- Email Exposure Verification Tool -->
+            <div class="email-verifier-card" id="emailBreachSection">
+                <div class="verifier-header">
+                    <div class="verifier-icon-badge">🔎</div>
+                    <div>
+                        <h3 class="verifier-title">Email Breach Exposure Checker</h3>
+                        <p class="verifier-subtitle">Verify if an email address has been leaked in public data breaches.</p>
+                    </div>
+                </div>
+
+                <div class="verifier-input-group">
+                    <input type="email" id="emailCheckInput" class="verifier-email-input" placeholder="name@company.com or personal email..." onkeyup="if(event.key === 'Enter') runEmailCheck()">
+                    <button class="verifier-check-btn" type="button" onclick="runEmailCheck()">Check Exposure</button>
+                </div>
+                <div class="verifier-trust-note">
+                    🔒 Powered by XposedOrNot open-source API. Your query is encrypted and never logged.
+                </div>
+
+                <div class="verifier-result-box" id="verifierResultBox"></div>
+            </div>
         </div>
 
     </div>
@@ -1752,6 +1910,88 @@
                 if (card) card.classList.add('card-hidden');
             }
         });
+
+        // Email Breach Exposure Verification via XposedOrNot API
+        async function runEmailCheck() {
+            const input = document.getElementById('emailCheckInput');
+            const box = document.getElementById('verifierResultBox');
+            const email = input ? input.value.trim() : '';
+
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                box.className = 'verifier-result-box exposed';
+                box.style.display = 'block';
+                box.innerHTML = '⚠️ Please enter a valid email address (e.g., user@company.com).';
+                return;
+            }
+
+            box.className = 'verifier-result-box loading';
+            box.style.display = 'block';
+            box.innerHTML = '⏳ Searching global breach databases for <strong>' + escapeHtml(email) + '</strong>...';
+
+            try {
+                const response = await fetch(`https://api.xposedornot.com/v1/check-email/${encodeURIComponent(email)}`);
+                
+                if (!response.ok && response.status !== 404) {
+                    throw new Error('HTTP status ' + response.status);
+                }
+
+                const data = await response.json();
+
+                if (data && data.Error === 'Not found') {
+                    box.className = 'verifier-result-box safe';
+                    box.innerHTML = `
+                        <div style="font-weight: 800; font-size: 1rem; color: #047857; margin-bottom: 4px;">
+                            🛡️ CLEAN & SAFE!
+                        </div>
+                        <div>No known data breaches found for <strong>${escapeHtml(email)}</strong>.</div>
+                        <div style="font-size: 0.8rem; margin-top: 8px; color: #065f46;">
+                            ✓ Great job! Continue practicing strong password hygiene and keep Multi-Factor Authentication (MFA) enabled.
+                        </div>
+                    `;
+                } else if (data && data.breaches && data.breaches.length > 0) {
+                    const rawList = data.breaches[0];
+                    const count = rawList.length;
+
+                    let tagsHtml = rawList.slice(0, 15).map(b => `<span class="breach-tag-chip">💥 ${escapeHtml(b)}</span>`).join('');
+                    if (rawList.length > 15) {
+                        tagsHtml += `<span class="breach-tag-chip">+ ${rawList.length - 15} more</span>`;
+                    }
+
+                    box.className = 'verifier-result-box exposed';
+                    box.innerHTML = `
+                        <div style="font-weight: 800; font-size: 1rem; color: #be123c; margin-bottom: 4px;">
+                            🚨 EXPOSED IN ${count} DATA BREACH${count > 1 ? 'ES' : ''}!
+                        </div>
+                        <div>This email address was compromised in the following public breaches:</div>
+                        <div class="breach-tags-wrapper">${tagsHtml}</div>
+                        <div style="font-size: 0.82rem; margin-top: 10px; background: rgba(225, 29, 72, 0.08); padding: 10px; border-radius: 6px;">
+                            <strong>Recommended Security Actions:</strong>
+                            <ul style="margin-top: 4px; padding-left: 18px; line-height: 1.4;">
+                                <li>Change passwords immediately on all accounts sharing this email.</li>
+                                <li>Enable Multi-Factor Authentication (MFA).</li>
+                                <li>Never reuse your Midas work password on personal websites.</li>
+                            </ul>
+                        </div>
+                    `;
+                } else {
+                    box.className = 'verifier-result-box safe';
+                    box.innerHTML = `
+                        <div style="font-weight: 800; font-size: 1rem; color: #047857; margin-bottom: 4px;">
+                            🛡️ CLEAN & SAFE!
+                        </div>
+                        <div>No known data breaches found for <strong>${escapeHtml(email)}</strong>.</div>
+                    `;
+                }
+            } catch (err) {
+                console.warn('Breach check error:', err);
+                box.className = 'verifier-result-box loading';
+                box.innerHTML = '⚠️ <em>Unable to reach breach service (Network/Offline error). Please try again later.</em>';
+            }
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
     </script>
 </body>
 
