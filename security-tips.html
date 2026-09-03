@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midas Cyber Security Hub - Practical Security Tips</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --accent-bg: #fffbeb;
+            --blue: #2563eb;
+            --blue-light: #eff6ff;
+            --blue-hover: #1d4ed8;
+            --green: #10b981;
+            --green-bg: #ecfdf5;
+            --purple: #7e22ce;
+            --purple-bg: #f3e8ff;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 24px 40px;
+            width: 100%;
+            max-width: 1680px;
+            margin: 0 auto;
+        }
+
+        /* Top Master Header */
+        .midas-header-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 28px;
+            border: 1px solid #1e293b;
+        }
+
+        .header-top-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 110px;
+            overflow: hidden;
+        }
+
+        .header-bg-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-logo-svg {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+        }
+
+        .header-title-text {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .header-nav-item {
+            position: relative;
+        }
+
+        .header-nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .header-nav-link:hover,
+        .header-nav-link.active {
+            color: #ffffff;
+        }
+
+        .header-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .header-nav-item:hover .header-dropdown,
+        .header-nav-item:focus-within .header-dropdown,
+        .header-nav-item.open .header-dropdown {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            display: block !important;
+        }
+
+        .header-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 1000;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link:hover,
+        .header-dropdown-link.active {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        /* Hero Banner Section */
+        .tips-hero-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 36px 44px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+        }
+
+        .tips-hero-left {
+            max-width: 680px;
+        }
+
+        .tips-hero-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #0b192e;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .tips-title-underline {
+            width: 48px;
+            height: 4px;
+            background: #f59e0b;
+            border-radius: 2px;
+            margin-bottom: 16px;
+        }
+
+        .tips-hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .tips-hero-illustration {
+            width: 320px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        /* Main Workspace Grid (Sidebar + Tips Grid) */
+        .tips-workspace-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 36px;
+            align-items: start;
+        }
+
+        /* Sidebar Filter Box */
+        .filter-sidebar {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: sticky;
+            top: 24px;
+        }
+
+        .filter-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filter-sidebar-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .clear-btn {
+            background: transparent;
+            border: none;
+            color: var(--blue);
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .filter-search-box {
+            position: relative;
+        }
+
+        .filter-search-input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+            font-family: inherit;
+        }
+
+        .filter-search-input:focus {
+            border-color: var(--blue);
+        }
+
+        .search-svg-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .filter-group-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 12px;
+        }
+
+        .filter-checkbox-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            user-select: none;
+            font-weight: 500;
+        }
+
+        .checkbox-label input {
+            accent-color: var(--blue);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .top5-callout-box {
+            background: #fffbeb;
+            border: 1px solid #fef08a;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .top5-title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #854d0e;
+        }
+
+        .top5-subtext {
+            font-size: 0.82rem;
+            color: #a16207;
+            line-height: 1.4;
+        }
+
+        .top5-btn {
+            background: #ffffff;
+            border: 1px solid #fde047;
+            color: #854d0e;
+            font-weight: 800;
+            font-size: 0.82rem;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .top5-btn:hover {
+            background: #fef08a;
+        }
+
+        /* Right Column Results Header */
+        .results-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .results-count-text {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .sort-select-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .sort-dropdown {
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            outline: none;
+            background: #ffffff;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* Tip Cards Grid */
+        .tips-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .tip-card-item {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .tip-card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .tip-card-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tip-icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .tip-icon-circle.yellow { background: #fffbeb; }
+        .tip-icon-circle.blue { background: #eff6ff; }
+        .tip-icon-circle.green { background: #ecfdf5; }
+        .tip-icon-circle.purple { background: #f3e8ff; }
+
+        .tag-category-pill {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        .tag-category-pill.email { color: #d97706; }
+        .tag-category-pill.passwords { color: #2563eb; }
+        .tag-category-pill.devices { color: #059669; }
+        .tag-category-pill.remote { color: #7e22ce; }
+        .tag-category-pill.wifi { color: #b45309; }
+        .tag-category-pill.physical { color: #1d4ed8; }
+        .tag-category-pill.general { color: #6b21a8; }
+
+        .tip-card-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+            align-self: flex-start;
+            text-align: left;
+        }
+
+        .tip-card-summary {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            align-self: flex-start;
+            text-align: left;
+        }
+
+        .read-more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 16px;
+            align-self: flex-start;
+            transition: gap 0.2s ease;
+        }
+
+        .read-more-link:hover {
+            gap: 10px;
+            color: #1d4ed8;
+        }
+
+        /* Slide-Over Article Drawer Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 3000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            opacity: 1;
+            justify-content: flex-end;
+        }
+
+        .article-drawer {
+            width: 100%;
+            max-width: 680px;
+            height: 100vh;
+            background: #ffffff;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.open .article-drawer {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            padding: 28px 36px;
+            background: #f8fafc;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .drawer-close-btn {
+            background: #e2e8f0;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: background 0.2s ease;
+        }
+
+        .drawer-close-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .drawer-body {
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .drawer-tag {
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .drawer-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        .drawer-intro {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-section h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .article-section p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .article-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .article-bullets li {
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            padding-left: 24px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .article-bullets li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 800;
+        }
+
+        .action-takeaway-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 16px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #1e40af;
+            line-height: 1.5;
+        }
+
+        .action-takeaway-box strong {
+            color: #1e3a8a;
+        }
+
+        /* Footer Container */
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-top: 48px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+
+        .brand-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title-main {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .brand-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-top: 6px;
+        }
+
+        .tagline-line {
+            height: 2px;
+            width: 20px;
+            background-color: #f59e0b;
+        }
+
+        .contact-red-btn {
+            display inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e11d48;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 8px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+        }
+
+        .contact-red-btn:hover {
+            background-color: #be123c;
+            transform: translateY(-1px);
+        }
+
+        .soc-card {
+            background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
+            border: 1px solid #1e3a5f;
+            border-radius: 14px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            flex: 1.3;
+            min-width: 280px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .soc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30%;
+            right: 30%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .soc-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #040c1a;
+            border: 1px solid #1e3a5f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .soc-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .soc-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .soc-subtext {
+            font-size: 0.88rem;
+            color: #94a3b8;
+        }
+
+        .soc-email-link {
+            color: #38bdf8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .soc-email-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 40px;
+            background-color: #1e293b;
+            flex-shrink: 0;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+            width: 72px;
+            text-align: center;
+        }
+
+        .action-btn-circle:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .circle-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            background: #040c1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 992px) {
+            .tips-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-sidebar {
+                position: static;
+            }
+
+            .midas-footer-container {
+                padding: 24px 20px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Master Top Site Header -->
+    <div class="midas-header-container">
+        <div class="header-top-banner">
+            <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none">
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4" />
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3" />
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7" />
+            </svg>
+
+            <div class="header-brand">
+                <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                        stroke-linecap="round" />
+                    <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+                    <circle cx="49" cy="90" r="5.5" fill="#FFFFFF" />
+                    <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF" />
+                    <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF" />
+                    <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B" />
+                </svg>
+                <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="header-navbar">
+            <div class="header-nav-links">
+                <div class="header-nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="header-nav-link">Home</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="index.html" class="header-nav-link">Portal Directory</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html" class="header-nav-link">🔑 Account Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="device-security.html" class="header-nav-link">📱 Device Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="email-security.html" class="header-nav-link">📧 Email Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="physical-security.html" class="header-nav-link">🏢 Physical Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="security-tips.html" class="header-nav-link active">💡 Security Tips</a>
+                </div>
+
+                <!-- Topics Dropdown -->
+                <div class="header-nav-item">
+                    <button class="header-nav-link" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="index.html" class="header-dropdown-link">🏠 Portal Directory (All Topics)</a>
+                        <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="header-dropdown-link">📱 Device Security</a>
+                        <a href="email-security.html" class="header-dropdown-link">📧 Email Security & Phishing Spotter</a>
+                        <a href="physical-security.html" class="header-dropdown-link">🏢 Physical & Social Security Guide</a>
+                        <a href="security-tips.html" class="header-dropdown-link active">💡 Practical Security Tips Library</a>
+                        <a href="index.html#topics" class="header-dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link"
+                        style="color: #38bdf8;">Report Incident</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Banner -->
+    <div class="tips-hero-card">
+        <div class="tips-hero-left">
+            <h1 class="tips-hero-title">Security Tips</h1>
+            <div class="tips-title-underline"></div>
+            <p class="tips-hero-subtitle">
+                Simple actions make a big difference. Use these practical tips to protect our information, our systems, and each other.
+            </p>
+        </div>
+
+        <div class="tips-hero-illustration">
+            <svg width="240" height="140" viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Laptop -->
+                <rect x="30" y="20" width="140" height="90" rx="8" fill="#1e293b"/>
+                <rect x="38" y="28" width="124" height="74" rx="4" fill="#0f172a"/>
+                <path d="M90 45 C90 45 100 40 100 52 C100 68 88 78 88 78 C88 78 76 68 76 52 C76 40 86 45 86 45 Z" fill="#2563eb" opacity="0.3"/>
+                <path d="M100 48 L88 42 L76 48 V60 C76 68 88 74 88 74 C88 74 100 68 100 60 V48 Z" fill="#2563eb"/>
+                <path d="M83 58 L87 62 L94 54" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                <rect x="10" y="110" width="180" height="10" rx="3" fill="#cbd5e1"/>
+                
+                <!-- Mug -->
+                <rect x="195" y="60" width="30" height="40" rx="6" fill="#f59e0b"/>
+                <path d="M225 70 C232 70 232 85 225 85" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+                <!-- Plant -->
+                <circle cx="15" cy="95" r="12" fill="#059669"/>
+                <path d="M15 95 V80" stroke="#047857" stroke-width="3"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Workspace Grid: Sidebar Filters + Cards -->
+    <div class="tips-workspace-grid">
+
+        <!-- Left Sidebar Filter Bar -->
+        <div class="filter-sidebar">
+            <div class="filter-header-row">
+                <div class="filter-sidebar-title">Filters</div>
+                <button class="clear-btn" type="button" onclick="clearFilters()">Clear all</button>
+            </div>
+
+            <!-- Keyword Search -->
+            <div class="filter-search-box">
+                <svg class="search-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="searchInput" class="filter-search-input" placeholder="Search by keyword..." oninput="filterTips()">
+            </div>
+
+            <!-- Category Filter Checkboxes -->
+            <div>
+                <div class="filter-group-title">Category</div>
+                <div class="filter-checkbox-list">
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="all" id="cat-all" checked onchange="toggleCategoryAll(this)">
+                        All categories
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="Email & Phishing" class="cat-check" onchange="filterTips()">
+                        Email & Phishing
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="Passwords & Accounts" class="cat-check" onchange="filterTips()">
+                        Passwords & Accounts
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="Devices & Data" class="cat-check" onchange="filterTips()">
+                        Devices & Data
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="Working Remotely" class="cat-check" onchange="filterTips()">
+                        Working Remotely
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="Wi-Fi & Internet" class="cat-check" onchange="filterTips()">
+                        Wi-Fi & Internet
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="Physical Security" class="cat-check" onchange="filterTips()">
+                        Physical Security
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="General Awareness" class="cat-check" onchange="filterTips()">
+                        General Awareness
+                    </label>
+                </div>
+            </div>
+
+            <!-- Audience Filter Radio Group -->
+            <div>
+                <div class="filter-group-title">Audience</div>
+                <div class="filter-checkbox-list">
+                    <label class="checkbox-label">
+                        <input type="radio" name="audience" value="all" checked onchange="filterTips()">
+                        All
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="audience" value="Office" onchange="filterTips()">
+                        Office
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="audience" value="Factory & Operations" onchange="filterTips()">
+                        Factory & Operations
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="audience" value="Field / On the Road" onchange="filterTips()">
+                        Field / On the Road
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="audience" value="Everyone" onchange="filterTips()">
+                        Everyone
+                    </label>
+                </div>
+            </div>
+
+            <!-- Top 5 Essential Tips Card -->
+            <div class="top5-callout-box">
+                <div class="top5-title-row">
+                    <span>💡 New here?</span>
+                </div>
+                <p class="top5-subtext">Start with our top 5 essential tips.</p>
+                <button class="top5-btn" type="button" onclick="filterTop5()">View top 5 tips ➔</button>
+            </div>
+        </div>
+
+        <!-- Right Results Column -->
+        <div>
+            <!-- Top Controls Row -->
+            <div class="results-top-bar">
+                <div class="results-count-text" id="resultsCount">Showing 12 tips</div>
+                <div class="sort-select-box">
+                    <span>Sort by:</span>
+                    <select class="sort-dropdown" id="sortSelect" onchange="filterTips()">
+                        <option value="relevant">Most relevant</option>
+                        <option value="az">Title (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 12 Security Tip Cards Grid -->
+            <div class="tips-cards-grid" id="tipsGrid">
+
+                <!-- Tip 1 -->
+                <div class="tip-card-item" data-id="1" data-cat="Email & Phishing" data-top5="true" data-title="Think before you click" data-audience="Everyone Office Field">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle yellow">✉️</div>
+                        <span class="tag-category-pill email">EMAIL & PHISHING</span>
+                        <h3 class="tip-card-title">Think before you click</h3>
+                        <p class="tip-card-summary">If an email asks for urgent action or sensitive info, pause and verify.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(1)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="tip-card-item" data-id="2" data-cat="Passwords & Accounts" data-top5="true" data-title="Use strong, unique passwords" data-audience="Everyone Office Factory">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle blue">🔑</div>
+                        <span class="tag-category-pill passwords">PASSWORDS & ACCOUNTS</span>
+                        <h3 class="tip-card-title">Use strong, unique passwords</h3>
+                        <p class="tip-card-summary">A strong password is your first line of defense. Don't reuse passwords.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(2)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="tip-card-item" data-id="3" data-cat="Devices & Data" data-top5="true" data-title="Lock your device" data-audience="Everyone Office Factory">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle green">💻</div>
+                        <span class="tag-category-pill devices">DEVICES & DATA</span>
+                        <h3 class="tip-card-title">Lock your device</h3>
+                        <p class="tip-card-summary">Lock your screen when stepping away, even for a minute.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(3)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 4 -->
+                <div class="tip-card-item" data-id="4" data-cat="Working Remotely" data-top5="false" data-title="Secure your home workspace" data-audience="Office Field">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle purple">🏠</div>
+                        <span class="tag-category-pill remote">WORKING REMOTELY</span>
+                        <h3 class="tip-card-title">Secure your home workspace</h3>
+                        <p class="tip-card-summary">Keep work devices in a private space and away from others.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(4)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 5 -->
+                <div class="tip-card-item" data-id="5" data-cat="Wi-Fi & Internet" data-top5="false" data-title="Avoid risky public Wi-Fi" data-audience="Field Office">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle yellow">📶</div>
+                        <span class="tag-category-pill wifi">WI-FI & INTERNET</span>
+                        <h3 class="tip-card-title">Avoid risky public Wi-Fi</h3>
+                        <p class="tip-card-summary">Don't do sensitive work on public Wi-Fi without using VPN.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(5)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 6 -->
+                <div class="tip-card-item" data-id="6" data-cat="Physical Security" data-top5="false" data-title="Protect IDs and access cards" data-audience="Everyone Office Factory">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle blue">🪪</div>
+                        <span class="tag-category-pill physical">PHYSICAL SECURITY</span>
+                        <h3 class="tip-card-title">Protect IDs and access cards</h3>
+                        <p class="tip-card-summary">Keep your ID and access cards safe and don't share them.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(6)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 7 -->
+                <div class="tip-card-item" data-id="7" data-cat="Devices & Data" data-top5="false" data-title="Back up important files" data-audience="Everyone Office Field">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle green">☁️</div>
+                        <span class="tag-category-pill devices">DEVICES & DATA</span>
+                        <h3 class="tip-card-title">Back up important files</h3>
+                        <p class="tip-card-summary">Back up your files regularly so you don't lose important data.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(7)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 8 -->
+                <div class="tip-card-item" data-id="8" data-cat="General Awareness" data-top5="true" data-title="Speak up, stay safe" data-audience="Everyone Office Factory Field">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle purple">💬</div>
+                        <span class="tag-category-pill general">GENERAL AWARENESS</span>
+                        <h3 class="tip-card-title">Speak up, stay safe</h3>
+                        <p class="tip-card-summary">If something doesn't look right, report it. You could stop an attack.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(8)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 9 -->
+                <div class="tip-card-item" data-id="9" data-cat="Passwords & Accounts" data-top5="true" data-title="Enable MFA" data-audience="Everyone Office Field">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle yellow">📱</div>
+                        <span class="tag-category-pill passwords">PASSWORDS & ACCOUNTS</span>
+                        <h3 class="tip-card-title">Enable MFA</h3>
+                        <p class="tip-card-summary">Multi-Factor Authentication adds extra protection to your accounts.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(9)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 10 -->
+                <div class="tip-card-item" data-id="10" data-cat="Email & Phishing" data-top5="false" data-title="Verify unexpected payment requests" data-audience="Office Field">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle blue">⚠️</div>
+                        <span class="tag-category-pill email">EMAIL & PHISHING</span>
+                        <h3 class="tip-card-title">Verify unexpected payment requests</h3>
+                        <p class="tip-card-summary">Always verify financial or wire changes via a separate trusted channel.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(10)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 11 -->
+                <div class="tip-card-item" data-id="11" data-cat="Devices & Data" data-top5="false" data-title="Beware of unauthorized USB drives" data-audience="Everyone Factory Office">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle green">🔌</div>
+                        <span class="tag-category-pill devices">DEVICES & DATA</span>
+                        <h3 class="tip-card-title">Beware of unauthorized USB drives</h3>
+                        <p class="tip-card-summary">Never plug unknown USB drives or peripherals into company computers.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(11)">Read more ➔</span>
+                </div>
+
+                <!-- Tip 12 -->
+                <div class="tip-card-item" data-id="12" data-cat="Working Remotely" data-top5="false" data-title="Keep mobile devices & apps updated" data-audience="Field Office Everyone">
+                    <div class="tip-card-top">
+                        <div class="tip-icon-circle purple">📲</div>
+                        <span class="tag-category-pill remote">WORKING REMOTELY</span>
+                        <h3 class="tip-card-title">Keep mobile devices & apps updated</h3>
+                        <p class="tip-card-summary">Install security patches promptly on iOS and Android work devices.</p>
+                    </div>
+                    <span class="read-more-link" onclick="openArticle(12)">Read more ➔</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Article Reader Slide-Over Modal Drawer -->
+    <div class="modal-overlay" id="articleModal" onclick="closeArticleOnBackdrop(event)">
+        <div class="article-drawer">
+            <div class="drawer-header">
+                <span class="drawer-tag" id="articleCategoryTag">CATEGORY</span>
+                <button class="drawer-close-btn" type="button" onclick="closeArticle()">✕</button>
+            </div>
+            <div class="drawer-body">
+                <h2 class="drawer-title" id="articleTitle">Article Title</h2>
+                <div class="drawer-intro" id="articleIntro">Introduction paragraph goes here</div>
+
+                <div class="article-section">
+                    <h4>Why This Matters</h4>
+                    <p id="articleWhy">Detailed explanation of why this topic is essential for enterprise security.</p>
+                </div>
+
+                <div class="article-section">
+                    <h4>Key Security Rules</h4>
+                    <ul class="article-bullets" id="articleBullets">
+                        <li>Rule 1</li>
+                        <li>Rule 2</li>
+                    </ul>
+                </div>
+
+                <div class="action-takeaway-box" id="articleTakeaway">
+                    <strong>💡 ACTION ITEM:</strong> Takeaway summary step.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Master Footer -->
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                            stroke-linecap="round" />
+                        <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5"
+                            stroke-linecap="round" />
+                        <circle cx="50" cy="88" r="5" fill="#FFFFFF" />
+                        <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF" />
+                        <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF" />
+                        <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B" />
+                    </svg>
+
+                    <div class="brand-title-group">
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                        <div class="brand-tagline">
+                            <div class="tagline-line"></div>
+                            <span>Never Trust. Always Verify</span>
+                            <div class="tagline-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+            </div>
+
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                        <path
+                            d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                    </svg>
+                </div>
+                <div class="soc-content">
+                    <div class="soc-title">Need help or want to report something?</div>
+                    <div class="soc-subtext">
+                        Contact our Security Operations Center (SOC) at
+                        <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-actions-grid">
+                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Report Incident</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="security-tips.html" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Security Tips</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Filtering & Article Modal Script -->
+    <script>
+        const articlesData = {
+            1: {
+                cat: "EMAIL & PHISHING",
+                title: "Think before you click: Spotting & Stopping Phishing",
+                intro: "Phishing emails are the single most common entry point for cyberattacks. Attackers disguise malicious links and attachments as routine corporate requests to deceive employees.",
+                why: "Clicking a malicious link can install malware, compromise your corporate network credentials, or give attackers remote access to internal business systems.",
+                bullets: [
+                    "Check the full sender email domain address — verify it matches @midassafety.com or official partner domains.",
+                    "Hover your mouse over all buttons and links to inspect the destination URL before clicking.",
+                    "Be alert for high-pressure panic words like 'URGENT', 'Immediate Action Required', or 'Account Suspended'.",
+                    "Never enter corporate passwords on external or unverified websites."
+                ],
+                takeaway: "💡 ACTION ITEM: If an email looks suspicious, click the Report button in Outlook or forward it to cic@midassafety.com."
+            },
+            2: {
+                cat: "PASSWORDS & ACCOUNTS",
+                title: "Use strong, unique passphrases across all systems",
+                intro: "Reusing passwords across multiple work and personal accounts means that a breach on a single third-party site compromises all your systems.",
+                why: "Attackers use automated credential stuffing tools to test leaked passwords across corporate Microsoft 365, VPNs, and internal portals.",
+                bullets: [
+                    "Create passphrases using 4 or more random words (e.g., 'BluePencilFalconRiver#9').",
+                    "Never reuse your Midas corporate network password on external personal accounts.",
+                    "Store all passwords in an approved enterprise password manager instead of writing them on sticky notes.",
+                    "Change your password immediately if you suspect it has been compromised in a breach."
+                ],
+                takeaway: "💡 ACTION ITEM: Test your passphrase strength using the interactive passphrase evaluator on our Account Security page."
+            },
+            3: {
+                cat: "DEVICES & DATA",
+                title: "Lock your device every time you step away",
+                intro: "Unattended laptops and workstations are vulnerable to physical tampering, unauthorized access to open files, and data theft by unauthorized visitors.",
+                why: "An unlocked computer allows anyone walking by to access your emails, confidential HR/financial records, and corporate network shares.",
+                bullets: [
+                    "Press Win + L (Windows) or Cmd + Ctrl + Q (Mac) to instantly lock your screen whenever you leave your desk.",
+                    "Ensure your screen timeout is set to 5 minutes or less.",
+                    "Never leave company laptops unattended in public areas, vehicles, or unlocked conference rooms.",
+                    "Use privacy screen filters when working in public spaces like airports or coffee shops."
+                ],
+                takeaway: "💡 ACTION ITEM: Practice the Win + L habit today whenever stepping away for coffee or meetings."
+            },
+            4: {
+                cat: "WORKING REMOTELY",
+                title: "Secure your home & remote workspace",
+                intro: "Working remotely extends our corporate security perimeter to your home. Simple steps ensure company data stays protected outside the office.",
+                why: "Unsecured home Wi-Fi networks and shared family devices can expose corporate data to malware or unauthorized viewing.",
+                bullets: [
+                    "Change default admin passwords on your home Wi-Fi router and enable WPA3/WPA2 encryption.",
+                    "Do not allow family members or friends to use your Midas corporate computer.",
+                    "Shred or securely destroy printed work documents before disposal.",
+                    "Mute smart home microphones (e.g. Alexa, Google Assistant) during sensitive confidential business calls."
+                ],
+                takeaway: "💡 ACTION ITEM: Ensure your home Wi-Fi uses strong encryption and password protection."
+            },
+            5: {
+                cat: "WI-FI & INTERNET",
+                title: "Avoid risky public Wi-Fi networks without VPN",
+                intro: "Public Wi-Fi networks in airports, hotels, and cafes are unencrypted and easily monitored by cybercriminals.",
+                why: "Attackers can deploy Man-in-the-Middle (MitM) attacks or fake 'Evil Twin' Wi-Fi hotspots to intercept your login sessions and web traffic.",
+                bullets: [
+                    "Always connect to corporate Always-On VPN when working on public Wi-Fi networks.",
+                    "Never log into sensitive corporate portals over unencrypted public Wi-Fi without VPN.",
+                    "Use your smartphone mobile hotspot instead of public Wi-Fi when conducting critical business tasks.",
+                    "Disable 'Auto-Connect to open networks' in your Wi-Fi settings."
+                ],
+                takeaway: "💡 ACTION ITEM: Turn on your company VPN before accessing work systems remotely."
+            },
+            6: {
+                cat: "PHYSICAL SECURITY",
+                title: "Protect IDs, badges, and physical access cards",
+                intro: "Physical security is the first line of defense protecting our factories, office facilities, and employees from unauthorized intruders.",
+                why: "An attacker who gains physical entry can tap into network ports, steal hardware, or plant malicious physical devices.",
+                bullets: [
+                    "Wear your official Midas ID access badge visibly at all times while inside company facilities.",
+                    "Never lend your access badge to anyone or allow others to 'borrow' it.",
+                    "Prevent tailgating: close badged doors behind you and ask unbadged individuals to verify their credentials.",
+                    "Report lost or stolen access badges immediately to Facility Security for instant deactivation."
+                ],
+                takeaway: "💡 ACTION ITEM: Report lost ID badges right away to prevent unauthorized physical entry."
+            },
+            7: {
+                cat: "DEVICES & DATA",
+                title: "Back up important files regularly to corporate cloud",
+                intro: "Data loss can happen from hardware failures, accidental deletion, lost devices, or ransomware infection.",
+                why: "Regular automated cloud backups ensure business continuity and prevent catastrophic data loss.",
+                bullets: [
+                    "Store all work files in official Midas OneDrive or SharePoint document libraries.",
+                    "Avoid saving important corporate documents exclusively on local desktop folders (C: drive).",
+                    "Verify that OneDrive sync is active and green on your taskbar.",
+                    "Report ransomware or file encryption warnings immediately to IT."
+                ],
+                takeaway: "💡 ACTION ITEM: Confirm your OneDrive folder synchronization is active on your device."
+            },
+            8: {
+                cat: "GENERAL AWARENESS",
+                title: "Speak up, stay safe: Report security concerns early",
+                intro: "Cybersecurity is a collective responsibility. Early reporting of suspicious events can stop a company-wide breach before it happens.",
+                why: "Attackers move fast once inside. Prompt reporting gives SOC engineers time to contain threats and isolate compromised accounts.",
+                bullets: [
+                    "Report suspicious emails, weird computer behavior, or lost devices without fear of blame.",
+                    "Contact our Security Operations Center (SOC) directly at cic@midassafety.com.",
+                    "Alert facility security if you notice unbadged strangers in restricted production areas.",
+                    "Encourage colleagues to practice safe cyber hygiene daily."
+                ],
+                takeaway: "💡 ACTION ITEM: Bookmark cic@midassafety.com in your email contact list."
+            },
+            9: {
+                cat: "PASSWORDS & ACCOUNTS",
+                title: "Enable & embrace Multi-Factor Authentication (MFA)",
+                intro: "MFA requires two or more verification factors to gain access, stopping 99.9% of automated account takeover attacks.",
+                why: "Even if an attacker steals your password, they cannot log in without your secondary MFA verification prompt.",
+                bullets: [
+                    "Use Microsoft Authenticator app push notifications or number matching prompts.",
+                    "Never approve unexpected MFA push notifications on your phone if you didn't initiate a login.",
+                    "Beware of 'MFA Fatigue' attacks where hackers send repeated login prompts hoping you approve one by mistake.",
+                    "Store your MFA recovery codes in a secure location."
+                ],
+                takeaway: "💡 ACTION ITEM: Always reject and report unexpected MFA push prompts."
+            },
+            10: {
+                cat: "EMAIL & PHISHING",
+                title: "Verify unexpected payment & bank detail changes",
+                intro: "Business Email Compromise (BEC) attacks target finance and operations teams with fake requests to alter vendor bank account numbers.",
+                why: "Attackers impersonate executives or legitimate suppliers to divert wire transfers into fraudulent overseas accounts.",
+                bullets: [
+                    "Always verify bank detail change requests by calling the vendor at a known, independently verified phone number.",
+                    "Never rely solely on email confirmation or phone numbers listed inside the suspicious email itself.",
+                    "Enforce dual-approval procedures for all outgoing wire transfers and supplier updates.",
+                    "Report executive impersonation emails to Security immediately."
+                ],
+                takeaway: "💡 ACTION ITEM: Perform out-of-band phone verification for all payment modification requests."
+            },
+            11: {
+                cat: "DEVICES & DATA",
+                title: "Beware of unauthorized USB drives & hardware",
+                intro: "USB drive drop attacks occur when cybercriminals leave infected flash drives in parking lots or lobbies hoping employees plug them in.",
+                why: "Plugging an unknown USB drive can instantly launch malicious scripts, keyloggers, or ransomware onto your work computer.",
+                bullets: [
+                    "Never plug unknown USB drives, memory cards, or hardware accessories into company computers.",
+                    "If you find a lost USB drive in or around company premises, hand it directly to IT.",
+                    "Use approved company cloud storage (OneDrive/SharePoint) instead of physical flash drives for file transfers.",
+                    "Request IT-encrypted USB drives if physical media is strictly required for factory equipment."
+                ],
+                takeaway: "💡 ACTION ITEM: Deliver any found USB drive directly to IT Security without plugging it in."
+            },
+            12: {
+                cat: "WORKING REMOTELY",
+                title: "Keep mobile devices, OS & applications updated",
+                intro: "Software updates contain critical security patches that fix vulnerabilities exploited by hackers and malware.",
+                why: "Outdated operating systems and applications allow attackers to execute remote code or bypass security controls.",
+                bullets: [
+                    "Enable automatic updates on Windows, Mac, iOS, and Android work devices.",
+                    "Restart your computer regularly when prompted to apply pending security updates.",
+                    "Only download corporate applications through official App Stores or Microsoft Intune Company Portal.",
+                    "Never jailbreak or root mobile devices used for work."
+                ],
+                takeaway: "💡 ACTION ITEM: Restart your computer today to apply any pending security updates."
+            }
+        };
+
+        function filterTips() {
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+            const sortVal = document.getElementById('sortSelect').value;
+            const selectedAudience = document.querySelector('input[name="audience"]:checked').value;
+            
+            const catAllChecked = document.getElementById('cat-all').checked;
+            const selectedCats = Array.from(document.querySelectorAll('.cat-check:checked')).map(cb => cb.value);
+
+            const cards = Array.from(document.querySelectorAll('.tip-card-item'));
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const cat = card.getAttribute('data-cat');
+                const audience = card.getAttribute('data-audience');
+
+                // Search match
+                const matchesSearch = !searchVal || title.includes(searchVal) || cat.toLowerCase().includes(searchVal);
+
+                // Category match
+                const matchesCat = catAllChecked || selectedCats.includes(cat);
+
+                // Audience match
+                const matchesAudience = (selectedAudience === 'all') || audience.includes(selectedAudience) || audience.includes('Everyone');
+
+                if (matchesSearch && matchesCat && matchesAudience) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Sort handling
+            const grid = document.getElementById('tipsGrid');
+            if (sortVal === 'az') {
+                cards.sort((a, b) => a.getAttribute('data-title').localeCompare(b.getAttribute('data-title')));
+            } else {
+                cards.sort((a, b) => parseInt(a.getAttribute('data-id'), 10) - parseInt(b.getAttribute('data-id'), 10));
+            }
+            cards.forEach(c => grid.appendChild(c));
+
+            document.getElementById('resultsCount').innerText = `Showing ${visibleCount} tips`;
+        }
+
+        function toggleCategoryAll(el) {
+            if (el.checked) {
+                document.querySelectorAll('.cat-check').forEach(cb => cb.checked = false);
+            }
+            filterTips();
+        }
+
+        document.querySelectorAll('.cat-check').forEach(cb => {
+            cb.addEventListener('change', function() {
+                if (this.checked) {
+                    document.getElementById('cat-all').checked = false;
+                } else {
+                    const anyChecked = Array.from(document.querySelectorAll('.cat-check')).some(c => c.checked);
+                    if (!anyChecked) document.getElementById('cat-all').checked = true;
+                }
+                filterTips();
+            });
+        });
+
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('cat-all').checked = true;
+            document.querySelectorAll('.cat-check').forEach(cb => cb.checked = false);
+            document.querySelector('input[name="audience"][value="all"]').checked = true;
+            document.getElementById('sortSelect').value = 'relevant';
+            filterTips();
+        }
+
+        function filterTop5() {
+            clearFilters();
+            const cards = document.querySelectorAll('.tip-card-item');
+            let count = 0;
+            cards.forEach(card => {
+                if (card.getAttribute('data-top5') === 'true') {
+                    card.style.display = 'flex';
+                    count++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            document.getElementById('resultsCount').innerText = `Showing Top 5 Essential Tips`;
+        }
+
+        function openArticle(id) {
+            const data = articlesData[id];
+            if (!data) return;
+
+            document.getElementById('articleCategoryTag').innerText = data.cat;
+            document.getElementById('articleTitle').innerText = data.title;
+            document.getElementById('articleIntro').innerText = data.intro;
+            document.getElementById('articleWhy').innerText = data.why;
+
+            const bulletsUl = document.getElementById('articleBullets');
+            bulletsUl.innerHTML = '';
+            data.bullets.forEach(b => {
+                const li = document.createElement('li');
+                li.innerText = b;
+                bulletsUl.appendChild(li);
+            });
+
+            document.getElementById('articleTakeaway').innerHTML = `<strong>💡 ACTION ITEM:</strong> ` + data.takeaway.replace('💡 ACTION ITEM: ', '');
+
+            const modal = document.getElementById('articleModal');
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticle() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function closeArticleOnBackdrop(e) {
+            if (e.target.id === 'articleModal') {
+                closeArticle();
+            }
+        }
+    </script>
+</body>
+
+</html>
