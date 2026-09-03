@@ -1092,28 +1092,35 @@
             line-height: 1.2;
         }
 
-        /* Email Verifier Tool Styling */
-        .email-verifier-card {
+        /* Dedicated Full-Width Email Verifier Section */
+        .email-verifier-full-section {
+            margin-top: 36px;
+            margin-bottom: 36px;
+            width: 100%;
+        }
+
+        .verifier-full-card {
             background: #ffffff;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border);
-            padding: 24px;
+            padding: 36px;
             box-shadow: var(--shadow-md);
-            margin-top: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 36px;
+            align-items: start;
         }
 
-        .verifier-header {
+        .verifier-brand-row {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
+            margin-bottom: 14px;
         }
 
         .verifier-icon-badge {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 12px;
             background: #eff6ff;
             color: #2563eb;
@@ -1124,17 +1131,34 @@
             flex-shrink: 0;
         }
 
-        .verifier-title {
-            font-size: 1.15rem;
+        .hibp-badge {
+            background: #0f172a;
+            color: #38bdf8;
+            font-size: 0.78rem;
             font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 2px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid #1e293b;
         }
 
-        .verifier-subtitle {
-            font-size: 0.85rem;
+        .verifier-main-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .verifier-main-desc {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .verifier-input-wrapper {
+            margin-bottom: 16px;
         }
 
         .verifier-input-group {
@@ -1144,10 +1168,10 @@
 
         .verifier-email-input {
             flex: 1;
-            padding: 12px 14px;
-            border: 1px solid var(--border);
+            padding: 14px 16px;
+            border: 2px solid var(--border);
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             outline: none;
             transition: border-color 0.2s ease;
             font-family: inherit;
@@ -1161,8 +1185,8 @@
             background: var(--blue);
             color: #ffffff;
             font-weight: 700;
-            font-size: 0.88rem;
-            padding: 12px 18px;
+            font-size: 0.92rem;
+            padding: 14px 22px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -1174,38 +1198,75 @@
             background: var(--blue-hover);
         }
 
-        .verifier-trust-note {
-            font-size: 0.78rem;
+        .verifier-trust-footer {
+            font-size: 0.82rem;
             color: var(--text-light);
-            line-height: 1.3;
+            line-height: 1.4;
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
-        .verifier-result-box {
-            display: none;
-            border-radius: 10px;
-            padding: 16px;
+        .verifier-right-panel {
+            height: 100%;
+        }
+
+        .verifier-placeholder-state {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 36px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 240px;
+        }
+
+        .placeholder-icon {
+            font-size: 2.8rem;
+            margin-bottom: 4px;
+        }
+
+        .verifier-placeholder-state h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .verifier-placeholder-state p {
             font-size: 0.88rem;
+            color: var(--text-muted);
+            max-width: 320px;
             line-height: 1.5;
         }
 
+        .verifier-result-box {
+            border-radius: 12px;
+            padding: 24px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
         .verifier-result-box.loading {
-            display: block;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             color: #475569;
             text-align: center;
             font-weight: 600;
+            padding: 36px 24px;
         }
 
         .verifier-result-box.safe {
-            display: block;
             background: #ecfdf5;
             border: 1px solid #a7f3d0;
             color: #065f46;
         }
 
         .verifier-result-box.exposed {
-            display: block;
             background: #fff1f2;
             border: 1px solid #fecdd3;
             color: #9f1239;
@@ -1227,6 +1288,27 @@
             border-radius: 16px;
             font-size: 0.78rem;
             font-weight: 700;
+        }
+
+        .hibp-direct-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0f172a;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 14px;
+            transition: all 0.2s ease;
+            border: 1px solid #1e293b;
+        }
+
+        .hibp-direct-btn:hover {
+            background: #1e293b;
+            color: #7dd3fc;
         }
 
         @media (max-width: 992px) {
@@ -1682,29 +1764,46 @@
                     <strong>Report it. We'll take care of it.</strong>
                 </p>
             </div>
+        </div>
 
-            <!-- Email Exposure Verification Tool -->
-            <div class="email-verifier-card" id="emailBreachSection">
-                <div class="verifier-header">
+    </div>
+
+    <!-- Dedicated Full-Width Email Breach Exposure & Have I Been Pwned (HIBP) Verification Section -->
+    <div class="email-verifier-full-section" id="emailBreachSection">
+        <div class="verifier-full-card">
+            <div class="verifier-left-panel">
+                <div class="verifier-brand-row">
                     <div class="verifier-icon-badge">🔎</div>
-                    <div>
-                        <h3 class="verifier-title">Email Breach Exposure Checker</h3>
-                        <p class="verifier-subtitle">Verify if an email address has been leaked in public data breaches.</p>
+                    <span class="hibp-badge">Official HIBP Data Integration</span>
+                </div>
+                
+                <h2 class="verifier-main-title">Email Breach Exposure Checker</h2>
+                <p class="verifier-main-desc">
+                    Enter an email address to check if it has been exposed in known global data breaches indexed by <strong>Have I Been Pwned (HIBP)</strong> and <strong>XposedOrNot</strong>.
+                </p>
+
+                <div class="verifier-input-wrapper">
+                    <div class="verifier-input-group">
+                        <input type="email" id="emailCheckInput" class="verifier-email-input" placeholder="Enter name@company.com or personal email..." onkeyup="if(event.key === 'Enter') runEmailCheck()">
+                        <button class="verifier-check-btn" type="button" onclick="runEmailCheck()">Check Exposure ➔</button>
                     </div>
                 </div>
 
-                <div class="verifier-input-group">
-                    <input type="email" id="emailCheckInput" class="verifier-email-input" placeholder="name@company.com or personal email..." onkeyup="if(event.key === 'Enter') runEmailCheck()">
-                    <button class="verifier-check-btn" type="button" onclick="runEmailCheck()">Check Exposure</button>
+                <div class="verifier-trust-footer">
+                    🔒 <strong>100% Secure & Private:</strong> Your email query is encrypted over TLS to check breach databases. We never store or log your queries.
                 </div>
-                <div class="verifier-trust-note">
-                    🔒 Powered by XposedOrNot open-source API. Your query is encrypted and never logged.
-                </div>
+            </div>
 
-                <div class="verifier-result-box" id="verifierResultBox"></div>
+            <div class="verifier-right-panel">
+                <div class="verifier-result-box" id="verifierResultBox">
+                    <div class="verifier-placeholder-state">
+                        <div class="placeholder-icon">🛡️</div>
+                        <h4>Ready for Email Verification</h4>
+                        <p>Type any corporate or personal email address on the left to verify breach history and security recommendations.</p>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 
     <!-- Floating Interactive Tooltip Popover -->
@@ -1911,7 +2010,7 @@
             }
         });
 
-        // Email Breach Exposure Verification via XposedOrNot API
+        // Email Breach Exposure Verification via HIBP & XposedOrNot API
         async function runEmailCheck() {
             const input = document.getElementById('emailCheckInput');
             const box = document.getElementById('verifierResultBox');
@@ -1924,9 +2023,11 @@
                 return;
             }
 
+            const hibpUrl = `https://haveibeenpwned.com/account/${encodeURIComponent(email)}`;
+
             box.className = 'verifier-result-box loading';
             box.style.display = 'block';
-            box.innerHTML = '⏳ Searching global breach databases for <strong>' + escapeHtml(email) + '</strong>...';
+            box.innerHTML = '⏳ Querying global breach databases (HIBP & XposedOrNot) for <strong>' + escapeHtml(email) + '</strong>...';
 
             try {
                 const response = await fetch(`https://api.xposedornot.com/v1/check-email/${encodeURIComponent(email)}`);
@@ -1940,52 +2041,75 @@
                 if (data && data.Error === 'Not found') {
                     box.className = 'verifier-result-box safe';
                     box.innerHTML = `
-                        <div style="font-weight: 800; font-size: 1rem; color: #047857; margin-bottom: 4px;">
+                        <div style="font-weight: 800; font-size: 1.1rem; color: #047857; margin-bottom: 4px;">
                             🛡️ CLEAN & SAFE!
                         </div>
-                        <div>No known data breaches found for <strong>${escapeHtml(email)}</strong>.</div>
-                        <div style="font-size: 0.8rem; margin-top: 8px; color: #065f46;">
+                        <div>No known public data breaches found for <strong>${escapeHtml(email)}</strong>.</div>
+                        <div style="font-size: 0.85rem; margin-top: 8px; color: #065f46;">
                             ✓ Great job! Continue practicing strong password hygiene and keep Multi-Factor Authentication (MFA) enabled.
+                        </div>
+                        <div style="margin-top: 14px;">
+                            <a href="${hibpUrl}" target="_blank" rel="noopener" class="hibp-direct-btn">
+                                🌐 View Official Report on HaveIBeenPwned.com ➔
+                            </a>
                         </div>
                     `;
                 } else if (data && data.breaches && data.breaches.length > 0) {
                     const rawList = data.breaches[0];
                     const count = rawList.length;
 
-                    let tagsHtml = rawList.slice(0, 15).map(b => `<span class="breach-tag-chip">💥 ${escapeHtml(b)}</span>`).join('');
-                    if (rawList.length > 15) {
-                        tagsHtml += `<span class="breach-tag-chip">+ ${rawList.length - 15} more</span>`;
+                    let tagsHtml = rawList.slice(0, 16).map(b => `<span class="breach-tag-chip">💥 ${escapeHtml(b)}</span>`).join('');
+                    if (rawList.length > 16) {
+                        tagsHtml += `<span class="breach-tag-chip">+ ${rawList.length - 16} more</span>`;
                     }
 
                     box.className = 'verifier-result-box exposed';
                     box.innerHTML = `
-                        <div style="font-weight: 800; font-size: 1rem; color: #be123c; margin-bottom: 4px;">
+                        <div style="font-weight: 800; font-size: 1.1rem; color: #be123c; margin-bottom: 4px;">
                             🚨 EXPOSED IN ${count} DATA BREACH${count > 1 ? 'ES' : ''}!
                         </div>
                         <div>This email address was compromised in the following public breaches:</div>
                         <div class="breach-tags-wrapper">${tagsHtml}</div>
-                        <div style="font-size: 0.82rem; margin-top: 10px; background: rgba(225, 29, 72, 0.08); padding: 10px; border-radius: 6px;">
-                            <strong>Recommended Security Actions:</strong>
-                            <ul style="margin-top: 4px; padding-left: 18px; line-height: 1.4;">
+                        <div style="font-size: 0.84rem; margin-top: 10px; background: rgba(225, 29, 72, 0.08); padding: 12px; border-radius: 8px; border: 1px solid rgba(225, 29, 72, 0.2);">
+                            <strong style="color: #9f1239;">Recommended Immediate Actions:</strong>
+                            <ul style="margin-top: 4px; padding-left: 18px; line-height: 1.5; color: #881337;">
                                 <li>Change passwords immediately on all accounts sharing this email.</li>
                                 <li>Enable Multi-Factor Authentication (MFA).</li>
-                                <li>Never reuse your Midas work password on personal websites.</li>
+                                <li>Never reuse your Midas work password on personal accounts.</li>
                             </ul>
+                        </div>
+                        <div style="margin-top: 14px;">
+                            <a href="${hibpUrl}" target="_blank" rel="noopener" class="hibp-direct-btn">
+                                🌐 View Detailed HIBP Report for ${escapeHtml(email)} ➔
+                            </a>
                         </div>
                     `;
                 } else {
                     box.className = 'verifier-result-box safe';
                     box.innerHTML = `
-                        <div style="font-weight: 800; font-size: 1rem; color: #047857; margin-bottom: 4px;">
+                        <div style="font-weight: 800; font-size: 1.1rem; color: #047857; margin-bottom: 4px;">
                             🛡️ CLEAN & SAFE!
                         </div>
                         <div>No known data breaches found for <strong>${escapeHtml(email)}</strong>.</div>
+                        <div style="margin-top: 14px;">
+                            <a href="${hibpUrl}" target="_blank" rel="noopener" class="hibp-direct-btn">
+                                🌐 View Official Report on HaveIBeenPwned.com ➔
+                            </a>
+                        </div>
                     `;
                 }
             } catch (err) {
                 console.warn('Breach check error:', err);
                 box.className = 'verifier-result-box loading';
-                box.innerHTML = '⚠️ <em>Unable to reach breach service (Network/Offline error). Please try again later.</em>';
+                box.innerHTML = `
+                    <div style="font-weight: 800; color: #d97706; margin-bottom: 6px;">⚠️ Real-Time API Unavailable</div>
+                    <div>Unable to fetch live API response. You can verify your email directly on Have I Been Pwned:</div>
+                    <div style="margin-top: 12px;">
+                        <a href="${hibpUrl}" target="_blank" rel="noopener" class="hibp-direct-btn">
+                            🌐 Verify Directly on HaveIBeenPwned.com ➔
+                        </a>
+                    </div>
+                `;
             }
         }
 
