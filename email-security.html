@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midas Cyber Security Hub - Email Security & Phishing Spotter</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --accent-bg: #fffbeb;
+            --blue: #2563eb;
+            --blue-light: #eff6ff;
+            --blue-hover: #1d4ed8;
+            --red: #e11d48;
+            --red-light: #fff1f2;
+            --red-border: #fecdd3;
+            --green: #10b981;
+            --green-bg: #ecfdf5;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Top Site Header */
+        .midas-header-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 28px;
+            border: 1px solid #1e293b;
+        }
+
+        .header-top-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 110px;
+            overflow: hidden;
+        }
+
+        .header-bg-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-logo-svg {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+        }
+
+        .header-title-text {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .header-nav-item {
+            position: relative;
+        }
+
+        .header-nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .header-nav-link:hover,
+        .header-nav-link.active {
+            color: #ffffff;
+        }
+
+        .header-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .header-nav-item:hover .header-dropdown,
+        .header-nav-item:focus-within .header-dropdown,
+        .header-nav-item.open .header-dropdown {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            display: block !important;
+        }
+
+        .header-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 1000;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link:hover,
+        .header-dropdown-link.active {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        /* Top Module Header Banner */
+        .spotter-hero-banner {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 28px 36px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .spotter-title-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .red-flag-icon-bg {
+            width: 48px;
+            height: 48px;
+            background: var(--red-light);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .spotter-hero-text h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .spotter-hero-text p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .report-callout-card {
+            background: #fffbeb;
+            border: 1px solid #fef08a;
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            min-width: 300px;
+        }
+
+        .report-callout-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .report-btn-red {
+            background: #e11d48;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.88rem;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .report-btn-red:hover {
+            background: #be123c;
+            transform: translateY(-1px);
+        }
+
+        .report-subtext {
+            font-size: 0.8rem;
+            color: #a16207;
+            font-weight: 600;
+        }
+
+        /* Two Column Main Workspace Grid */
+        .spotter-main-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 28px;
+            align-items: start;
+        }
+
+        /* Mock Outlook Window */
+        .outlook-window {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        /* Outlook Top Action Ribbon */
+        .outlook-toolbar {
+            background: #f8fafc;
+            border-bottom: 1px solid var(--border);
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .outlook-tool-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            position: relative;
+        }
+
+        .outlook-tool-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .outlook-tool-btn.highlight-report {
+            background: #fff1f2;
+            color: #e11d48;
+            border: 1px solid #fecdd3;
+        }
+
+        /* Email Header Section */
+        .email-header-area {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border);
+            background: #ffffff;
+        }
+
+        .email-field-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .email-field-row.active-highlight {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.2);
+        }
+
+        .email-label {
+            width: 70px;
+            font-weight: 700;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .email-val {
+            font-weight: 600;
+            color: var(--text-dark);
+            word-break: break-all;
+        }
+
+        .email-val.suspicious-address {
+            color: #e11d48;
+            font-family: monospace;
+            background: #fff1f2;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .email-val.urgent-subject {
+            color: #b91c1c;
+            font-weight: 800;
+        }
+
+        /* Red Flag Badge (Numbered Hotspots 1 to 7) */
+        .red-hotspot-badge {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e11d48;
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.25);
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            animation: pulse-ring 2s infinite;
+        }
+
+        .red-hotspot-badge:hover,
+        .red-hotspot-badge.active {
+            transform: scale(1.25);
+            background: #9f1239;
+            box-shadow: 0 0 0 6px rgba(225, 29, 72, 0.4);
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(225, 29, 72, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(225, 29, 72, 0);
+            }
+        }
+
+        /* Email Body Container */
+        .email-body-card {
+            padding: 28px;
+            background: #ffffff;
+        }
+
+        .fake-email-content {
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            padding: 28px;
+            background: #ffffff;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .fake-ms-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .fake-ms-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ms-grid-logo {
+            width: 24px;
+            height: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .ms-grid-logo div:nth-child(1) { background: #f25022; }
+        .ms-grid-logo div:nth-child(2) { background: #7fba00; }
+        .ms-grid-logo div:nth-child(3) { background: #00a4ef; }
+        .ms-grid-logo div:nth-child(4) { background: #ffb900; }
+
+        .ms-brand-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #5e5e5e;
+        }
+
+        .fake-email-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .fake-email-text {
+            font-size: 0.95rem;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .action-button-area {
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .fake-cta-btn {
+            background: #0067b8;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            transition: background 0.2s ease;
+        }
+
+        .fake-cta-btn:hover {
+            background: #005da6;
+        }
+
+        .fake-url-preview {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #2563eb;
+            text-decoration: underline;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .fake-attachment-box {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .attachment-icon {
+            font-size: 1.5rem;
+        }
+
+        .attachment-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .attachment-size {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Floating Tooltip Popover */
+        .spotter-popover {
+            position: absolute;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            z-index: 2000;
+            max-width: 320px;
+            display: none;
+            border: 1px solid #334155;
+            pointer-events: none;
+        }
+
+        .spotter-popover-title {
+            color: #f59e0b;
+            font-weight: 800;
+            font-size: 0.92rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .spotter-popover-desc {
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        /* 7 Red Flags Detailed Section */
+        .red-flags-section {
+            margin-top: 36px;
+        }
+
+        .section-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .flags-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .flag-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .flag-card:hover,
+        .flag-card.active-target {
+            border-color: #fecdd3;
+            background: #fff1f2;
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .flag-num-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .flag-card.active-target .flag-num-circle {
+            background: #e11d48;
+        }
+
+        .flag-info {
+            flex-grow: 1;
+        }
+
+        .flag-header {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .flag-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .flag-tip-box {
+            background: #fffbeb;
+            border-left: 3px solid #f59e0b;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #78350f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flag-tip-box strong {
+            color: #b45309;
+        }
+
+        /* Right Column: Outlook Reporting Guide */
+        .outlook-guide-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .guide-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 28px 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .guide-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .guide-steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .guide-step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .step-circle-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #0067b8;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .step-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .step-mini-img-box {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-soc-card {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .contact-soc-icon {
+            font-size: 1.6rem;
+            color: #2563eb;
+        }
+
+        .contact-soc-text h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+
+        .contact-soc-text p {
+            font-size: 0.82rem;
+            color: #1e40af;
+            line-height: 1.4;
+        }
+
+        .unsure-reassurance-card {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .unsure-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #9f1239;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .unsure-desc {
+            font-size: 0.85rem;
+            color: #be123c;
+            line-height: 1.4;
+        }
+
+        /* Footer Container */
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-top: 48px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+
+        .brand-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title-main {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .brand-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-top: 6px;
+        }
+
+        .tagline-line {
+            height: 2px;
+            width: 20px;
+            background-color: #f59e0b;
+        }
+
+        .contact-red-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e11d48;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 8px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+        }
+
+        .contact-red-btn:hover {
+            background-color: #be123c;
+            transform: translateY(-1px);
+        }
+
+        .soc-card {
+            background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
+            border: 1px solid #1e3a5f;
+            border-radius: 14px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            flex: 1.3;
+            min-width: 280px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .soc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30%;
+            right: 30%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .soc-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #040c1a;
+            border: 1px solid #1e3a5f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .soc-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .soc-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .soc-subtext {
+            font-size: 0.88rem;
+            color: #94a3b8;
+        }
+
+        .soc-email-link {
+            color: #38bdf8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .soc-email-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 40px;
+            background-color: #1e293b;
+            flex-shrink: 0;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+            width: 72px;
+            text-align: center;
+        }
+
+        .action-btn-circle:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .circle-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            background: #040c1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 992px) {
+            .spotter-main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spotter-hero-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .report-callout-card {
+                width: 100%;
+                align-items: flex-start;
+            }
+
+            .midas-footer-container {
+                padding: 24px 20px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Site Master Header -->
+    <div class="midas-header-container">
+        <div class="header-top-banner">
+            <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none">
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4" />
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3" />
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7" />
+            </svg>
+
+            <div class="header-brand">
+                <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                        stroke-linecap="round" />
+                    <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+                    <circle cx="49" cy="90" r="5.5" fill="#FFFFFF" />
+                    <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF" />
+                    <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF" />
+                    <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B" />
+                </svg>
+                <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="header-navbar">
+            <div class="header-nav-links">
+                <div class="header-nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="header-nav-link">Home</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="index.html" class="header-nav-link">Portal Directory</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html" class="header-nav-link">🔑 Account Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="device-security.html" class="header-nav-link">📱 Device Security</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="email-security.html" class="header-nav-link active">📧 Email Security</a>
+                </div>
+
+                <!-- Topics Dropdown -->
+                <div class="header-nav-item">
+                    <button class="header-nav-link" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="index.html" class="header-dropdown-link">🏠 Portal Directory (All Topics)</a>
+                        <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="header-dropdown-link">📱 Device Security</a>
+                        <a href="email-security.html" class="header-dropdown-link active">📧 Email Security & Phishing Spotter</a>
+                        <a href="index.html#topics" class="header-dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
+                        <a href="index.html#topics" class="header-dropdown-link">🌐 Safe Web Browsing & Wi-Fi</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link"
+                        style="color: #38bdf8;">Report Incident</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Top Module Header Banner -->
+    <div class="spotter-hero-banner">
+        <div class="spotter-title-box">
+            <div class="red-flag-icon-bg">🚩</div>
+            <div class="spotter-hero-text">
+                <h1>Email Security: Spot the Red Flags</h1>
+                <p>Attackers hide in plain sight. Hover over or tap any red numbered hotspot (1 to 7) to reveal warning signs.</p>
+            </div>
+        </div>
+
+        <div class="report-callout-card">
+            <div class="report-callout-top">
+                <span>🛡️ Think it's suspicious?</span>
+            </div>
+            <a href="mailto:cic@midassafety.com?subject=Suspicious%20Phishing%20Email%20Report" class="report-btn-red">
+                🚨 REPORT SUSPICIOUS EMAIL
+            </a>
+            <span class="report-subtext">cic@midassafety.com</span>
+        </div>
+    </div>
+
+    <!-- Interactive Workspace Grid -->
+    <div class="spotter-main-grid">
+
+        <!-- Left Column: Interactive Outlook Email Client Mockup -->
+        <div>
+            <div class="outlook-window">
+                <!-- Outlook Top Action Ribbon -->
+                <div class="outlook-toolbar">
+                    <button class="outlook-tool-btn" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        Delete
+                    </button>
+                    <button class="outlook-tool-btn" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+                        Archive
+                    </button>
+                    
+                    <!-- Red Flag 7: Report Button -->
+                    <button class="outlook-tool-btn highlight-report" type="button" onmouseenter="showSpotterTooltip(7, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(7)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Report ▾
+                        <span class="red-hotspot-badge" id="badge-7">7</span>
+                    </button>
+
+                    <button class="outlook-tool-btn" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                        Block
+                    </button>
+                    <button class="outlook-tool-btn" type="button">Reply</button>
+                    <button class="outlook-tool-btn" type="button">Reply All</button>
+                    <button class="outlook-tool-btn" type="button">Forward</button>
+                </div>
+
+                <!-- Email Header Fields Area -->
+                <div class="email-header-area">
+                    <!-- Red Flag 1: From -->
+                    <div class="email-field-row" id="field-1" onmouseenter="showSpotterTooltip(1, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(1)">
+                        <span class="red-hotspot-badge" id="badge-1">1</span>
+                        <span class="email-label">From:</span>
+                        <span class="email-val">IT Support &lt;<span class="suspicious-address">support@microsoft-security.com</span>&gt;</span>
+                    </div>
+
+                    <!-- Red Flag 2: To -->
+                    <div class="email-field-row" id="field-2" onmouseenter="showSpotterTooltip(2, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(2)">
+                        <span class="red-hotspot-badge" id="badge-2">2</span>
+                        <span class="email-label">To:</span>
+                        <span class="email-val">you@midassafety.com</span>
+                    </div>
+
+                    <!-- Red Flag 3: Date -->
+                    <div class="email-field-row" id="field-3" onmouseenter="showSpotterTooltip(3, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(3)">
+                        <span class="red-hotspot-badge" id="badge-3">3</span>
+                        <span class="email-label">Date:</span>
+                        <span class="email-val">Monday, May 20, 2024 at 08:47 AM</span>
+                    </div>
+
+                    <!-- Red Flag 4: Subject -->
+                    <div class="email-field-row" id="field-4" onmouseenter="showSpotterTooltip(4, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(4)">
+                        <span class="red-hotspot-badge" id="badge-4">4</span>
+                        <span class="email-label">Subject:</span>
+                        <span class="email-val urgent-subject">URGENT: Action Required - Verify Your Account</span>
+                    </div>
+                </div>
+
+                <!-- Email Body Area -->
+                <div class="email-body-card">
+                    <div class="fake-email-content">
+                        <div class="fake-ms-header">
+                            <div class="fake-ms-logo">
+                                <div class="ms-grid-logo">
+                                    <div></div><div></div><div></div><div></div>
+                                </div>
+                                <span class="ms-brand-name">Microsoft</span>
+                            </div>
+                        </div>
+
+                        <h2 class="fake-email-title">Action Required: Verify Your Account</h2>
+                        
+                        <p class="fake-email-text">
+                            We noticed unusual sign-in activity on your account.<br>
+                            To keep your account secure, please verify your details immediately.
+                        </p>
+
+                        <!-- Red Flag 5: Link / CTA Button -->
+                        <div class="action-button-area" id="field-5" onmouseenter="showSpotterTooltip(5, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(5)">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <a href="javascript:void(0)" onclick="alert('SECURITY ALERT: This is a simulated phishing link! Never click suspicious links.')" class="fake-cta-btn">
+                                    Verify My Account Now
+                                </a>
+                                <span class="red-hotspot-badge" id="badge-5">5</span>
+                            </div>
+
+                            <div class="fake-url-preview">
+                                <span>🔗 Hover Link: https://microsoft-security.com/verify-account/login</span>
+                            </div>
+                        </div>
+
+                        <p class="fake-email-text" style="font-size: 0.88rem; color: #6b7280; margin-bottom: 20px;">
+                            Thank you,<br>
+                            Microsoft Account Team
+                        </p>
+
+                        <!-- Red Flag 6: Dangerous Attachment -->
+                        <div class="fake-attachment-box" id="field-6" onmouseenter="showSpotterTooltip(6, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(6)">
+                            <span class="red-hotspot-badge" id="badge-6">6</span>
+                            <span class="attachment-icon">📎</span>
+                            <div>
+                                <div class="attachment-name">Account_Verification_Form.html</div>
+                                <div class="attachment-size">1.2 MB</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 Red Flags Detailed Section -->
+            <div class="red-flags-section">
+                <div class="section-title-row">
+                    <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary);">
+                        🚨 7 Red Flags in This Email
+                    </h3>
+                </div>
+
+                <div class="flags-grid">
+
+                    <!-- Flag 1 Card -->
+                    <div class="flag-card" id="flag-card-1">
+                        <div class="flag-num-circle">1</div>
+                        <div class="flag-info">
+                            <div class="flag-header">Suspicious sender address</div>
+                            <div class="flag-desc">
+                                The email address <code>support@microsoft-security.com</code> is NOT an official Microsoft domain. Attackers register look-alike domain names to deceive you.
+                            </div>
+                            <div class="flag-tip-box">
+                                💡 <strong>TIP:</strong> Real Microsoft emails come from <code>@microsoft.com</code>, not look-alike domains.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flag 2 Card -->
+                    <div class="flag-card" id="flag-card-2">
+                        <div class="flag-num-circle">2</div>
+                        <div class="flag-info">
+                            <div class="flag-header">Unexpected recipient</div>
+                            <div class="flag-desc">
+                                You weren't expecting account verification or the message was sent to a generic address / mass employee mailing list.
+                            </div>
+                            <div class="flag-tip-box">
+                                💡 <strong>TIP:</strong> Attackers often send phishing emails to many people at once.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flag 3 Card -->
+                    <div class="flag-card" id="flag-card-3">
+                        <div class="flag-num-circle">3</div>
+                        <div class="flag-info">
+                            <div class="flag-header">Urgent timing</div>
+                            <div class="flag-desc">
+                                Sent early morning (08:47 AM) or outside normal business hours. Creates psychological pressure to act fast before fully waking up or checking.
+                            </div>
+                            <div class="flag-tip-box">
+                                💡 <strong>TIP:</strong> Urgency is a common trick to make you rush and ignore warning signs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flag 4 Card -->
+                    <div class="flag-card" id="flag-card-4">
+                        <div class="flag-num-circle">4</div>
+                        <div class="flag-info">
+                            <div class="flag-header">High-pressure subject line</div>
+                            <div class="flag-desc">
+                                Uses panic words like <code>URGENT: Action Required</code> to bypass your critical thinking and force immediate compliance.
+                            </div>
+                            <div class="flag-tip-box">
+                                💡 <strong>TIP:</strong> Legitimate IT departments give advance notice and don't threaten instant account termination.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flag 5 Card -->
+                    <div class="flag-card" id="flag-card-5">
+                        <div class="flag-num-circle">5</div>
+                        <div class="flag-info">
+                            <div class="flag-header">Deceptive call-to-action link</div>
+                            <div class="flag-desc">
+                                The button leads to a fake malicious URL (<code>microsoft-security.com</code>) designed to capture your login credentials.
+                            </div>
+                            <div class="flag-tip-box">
+                                💡 <strong>TIP:</strong> Always hover your mouse over links before clicking to inspect the true URL destination.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flag 6 Card -->
+                    <div class="flag-card" id="flag-card-6">
+                        <div class="flag-num-circle">6</div>
+                        <div class="flag-info">
+                            <div class="flag-header">Dangerous file attachment (.html / .exe)</div>
+                            <div class="flag-desc">
+                                Contains an attached <code>.html</code> file (<code>Account_Verification_Form.html</code>). HTML attachments execute scripts locally or open fake offline login forms.
+                            </div>
+                            <div class="flag-tip-box">
+                                💡 <strong>TIP:</strong> Never open unexpected <code>.html</code>, <code>.exe</code>, or macro-enabled file attachments.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flag 7 Card -->
+                    <div class="flag-card" id="flag-card-7">
+                        <div class="flag-num-circle">7</div>
+                        <div class="flag-info">
+                            <div class="flag-header">Report Phishing button in Outlook</div>
+                            <div class="flag-desc">
+                                Your Outlook ribbon includes a dedicated <strong>Report Phishing</strong> button. Clicking it instantly notifies SOC and purges the email across the company.
+                            </div>
+                            <div class="flag-tip-box">
+                                💡 <strong>TIP:</strong> One click on the Outlook Report button protects all your colleagues from the same threat.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: How to Report in Outlook Step-by-Step -->
+        <div class="outlook-guide-panel">
+            <div class="guide-card">
+                <div class="guide-header-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#0067b8"><path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z"/></svg>
+                    How to Report in Outlook
+                </div>
+
+                <div class="guide-steps-list">
+                    <!-- Step 1 -->
+                    <div class="guide-step-item">
+                        <div class="step-circle-num">1</div>
+                        <div class="step-content">
+                            <h4>Open the email</h4>
+                            <p>Select the suspicious email in your inbox list.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="guide-step-item">
+                        <div class="step-circle-num">2</div>
+                        <div class="step-content">
+                            <h4>Click Report</h4>
+                            <p>Click the <strong>Report</strong> button in the top Outlook toolbar.</p>
+                            <div class="step-mini-img-box">
+                                <span style="font-size: 0.8rem; font-weight: 700; color: #0067b8;">🛡️ Report ▾</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="guide-step-item">
+                        <div class="step-circle-num">3</div>
+                        <div class="step-content">
+                            <h4>Choose Report Phishing</h4>
+                            <p>Select <strong>Report Phishing</strong> from the dropdown menu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="guide-step-item">
+                        <div class="step-circle-num">4</div>
+                        <div class="step-content">
+                            <h4 style="color: #10b981;">You're all set!</h4>
+                            <p>The email & attachment will be sent securely to the Midas SOC team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Support Card -->
+            <div class="contact-soc-card">
+                <div class="contact-soc-icon">✉️</div>
+                <div class="contact-soc-text">
+                    <h4>Can't find the Report button?</h4>
+                    <p>Forward the email to <a href="mailto:cic@midassafety.com" style="color: #2563eb; font-weight: 700;">cic@midassafety.com</a>.<br>We're here 24/7.</p>
+                </div>
+            </div>
+
+            <!-- Still Unsure Card -->
+            <div class="unsure-reassurance-card">
+                <div class="unsure-title">
+                    <span>❓ Still unsure?</span>
+                </div>
+                <p class="unsure-desc">
+                    It's always better to report. If in doubt, do not click links or open attachments.<br><br>
+                    <strong>Report it. We'll take care of it.</strong>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating Interactive Tooltip Popover -->
+    <div class="spotter-popover" id="spotterPopover">
+        <div class="spotter-popover-title" id="popoverTitle">🚩 Red Flag #1</div>
+        <div class="spotter-popover-desc" id="popoverDesc">Description goes here</div>
+    </div>
+
+    <!-- Master Footer -->
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                            stroke-linecap="round" />
+                        <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5"
+                            stroke-linecap="round" />
+                        <circle cx="50" cy="88" r="5" fill="#FFFFFF" />
+                        <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF" />
+                        <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF" />
+                        <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B" />
+                    </svg>
+
+                    <div class="brand-title-group">
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                        <div class="brand-tagline">
+                            <div class="tagline-line"></div>
+                            <span>Never Trust. Always Verify</span>
+                            <div class="tagline-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+            </div>
+
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                        <path
+                            d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                    </svg>
+                </div>
+                <div class="soc-content">
+                    <div class="soc-title">Need help or want to report something?</div>
+                    <div class="soc-subtext">
+                        Contact our Security Operations Center (SOC) at
+                        <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-actions-grid">
+                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Report Incident</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="index.html#topics" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Security Tips</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Hotspot Script -->
+    <script>
+        const flagDetails = {
+            1: {
+                title: "🚩 Red Flag #1: Suspicious Sender Address",
+                desc: "The email address support@microsoft-security.com is fake! Official Microsoft emails come from @microsoft.com, not look-alike domains."
+            },
+            2: {
+                title: "🚩 Red Flag #2: Unexpected Recipient",
+                desc: "You weren't expecting account verification or this email was broadcast to many employees at once."
+            },
+            3: {
+                title: "🚩 Red Flag #3: Urgent Timing",
+                desc: "Sent early in the morning (08:47 AM) or off-hours to create pressure before you check carefully."
+            },
+            4: {
+                title: "🚩 Red Flag #4: High-Pressure Subject Line",
+                desc: "Uses panic words like 'URGENT: Action Required' to make you act fast without thinking."
+            },
+            5: {
+                title: "🚩 Red Flag #5: Deceptive Call-to-Action Link",
+                desc: "The button links to microsoft-security.com instead of microsoft.com. Always hover over links before clicking!"
+            },
+            6: {
+                title: "🚩 Red Flag #6: Dangerous Attachment (.html)",
+                desc: "Contains an Account_Verification_Form.html attachment. HTML files can launch fake login pages or malware scripts."
+            },
+            7: {
+                title: "🚩 Red Flag #7: Outlook Report Phishing Button",
+                desc: "Clicking Report -> Report Phishing in Outlook immediately alerts the SOC team and protects the company."
+            }
+        };
+
+        function showSpotterTooltip(id, el, e) {
+            const popover = document.getElementById('spotterPopover');
+            const popTitle = document.getElementById('popoverTitle');
+            const popDesc = document.getElementById('popoverDesc');
+
+            popTitle.innerText = flagDetails[id].title;
+            popDesc.innerText = flagDetails[id].desc;
+
+            const rect = el.getBoundingClientRect();
+            popover.style.display = 'block';
+            popover.style.left = (rect.left + window.scrollX) + 'px';
+            popover.style.top = (rect.bottom + window.scrollY + 8) + 'px';
+
+            // Highlight field
+            if (id <= 6) {
+                const target = document.getElementById('field-' + id);
+                if (target) target.classList.add('active-highlight');
+            }
+            const badge = document.getElementById('badge-' + id);
+            if (badge) badge.classList.add('active');
+        }
+
+        function hideSpotterTooltip() {
+            const popover = document.getElementById('spotterPopover');
+            popover.style.display = 'none';
+
+            document.querySelectorAll('.email-field-row, .action-button-area, .fake-attachment-box').forEach(row => {
+                row.classList.remove('active-highlight');
+            });
+            document.querySelectorAll('.red-hotspot-badge').forEach(b => {
+                b.classList.remove('active');
+            });
+        }
+
+        function selectFlag(id) {
+            hideSpotterTooltip();
+
+            // Clear card highlights
+            document.querySelectorAll('.flag-card').forEach(card => {
+                card.classList.remove('active-target');
+            });
+
+            // Highlight target card and scroll
+            const targetCard = document.getElementById('flag-card-' + id);
+            if (targetCard) {
+                targetCard.classList.add('active-target');
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    </script>
+</body>
+
+</html>
