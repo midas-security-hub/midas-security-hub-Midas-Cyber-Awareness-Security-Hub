@@ -160,13 +160,20 @@
             border-radius: 3px 3px 0 0;
         }
 
-        .header-nav-item:hover .header-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        .header-nav-item:hover .header-dropdown,
+        .header-nav-item:focus-within .header-dropdown,
+        .header-nav-item.open .header-dropdown,
+        .nav-item:hover .nav-dropdown,
+        .nav-item:focus-within .nav-dropdown,
+        .nav-item.open .nav-dropdown {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            display: block !important;
         }
 
-        .header-dropdown {
+        .header-dropdown,
+        .nav-dropdown {
             position: absolute;
             top: 100%;
             left: 0;
@@ -174,8 +181,8 @@
             border: 1px solid #1e293b;
             border-radius: 8px;
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
-            min-width: 240px;
-            z-index: 100;
+            min-width: 260px;
+            z-index: 1000;
             padding: 8px 0;
             opacity: 0;
             visibility: hidden;
@@ -861,23 +868,24 @@
     <div class="midas-header-container">
         <div class="header-top-banner">
             <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none">
-                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4"/>
-                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3"/>
-                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8"/>
-                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8"/>
-                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7"/>
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4" />
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3" />
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7" />
             </svg>
 
             <div class="header-brand">
                 <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
-                    <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
-                    <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
-                    <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
-                    <circle cx="49" cy="90" r="5.5" fill="#FFFFFF"/>
-                    <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF"/>
-                    <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF"/>
-                    <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B"/>
+                    <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                        stroke-linecap="round" />
+                    <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+                    <circle cx="49" cy="90" r="5.5" fill="#FFFFFF" />
+                    <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF" />
+                    <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF" />
+                    <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B" />
                 </svg>
                 <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
             </div>
@@ -886,50 +894,51 @@
         <nav class="header-navbar">
             <div class="header-nav-links">
                 <div class="header-nav-item">
-                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="header-nav-link">Home</a>
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub"
+                        class="header-nav-link active">Home</a>
                 </div>
 
                 <div class="header-nav-item">
-                    <a href="index.html" class="header-nav-link active">Portal Directory</a>
-                </div>
-
-                <div class="header-nav-item">
-                    <a href="account-password-security.html" class="header-nav-link">🔑 Account Security</a>
-                </div>
-
-                <div class="header-nav-item">
-                    <a href="device-security.html" class="header-nav-link">📱 Device Security</a>
-                </div>
-
-                <!-- Topics Dropdown -->
-                <div class="header-nav-item">
-                    <button class="header-nav-link" type="button">
-                        Topics 
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                    <button class="header-nav-link" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </button>
                     <div class="header-dropdown">
-                        <a href="account-password-security.html" class="header-dropdown-link">🔑 1. Account & Password Security</a>
-                        <a href="device-security.html" class="header-dropdown-link">📱 2. Device Security Guide</a>
-                        <a href="#topics" class="header-dropdown-link">🛡️ 3. Multi-Factor Authentication (MFA)</a>
-                        <a href="#topics" class="header-dropdown-link">🎣 4. Phishing & Email Protection</a>
-                        <a href="#topics" class="header-dropdown-link">🌐 5. Safe Web Browsing & Wi-Fi</a>
-                        <a href="#topics" class="header-dropdown-link">💾 6. Data Protection & Privacy</a>
-                        <a href="#topics" class="header-dropdown-link">👥 7. Social Engineering Awareness</a>
-                        <a href="#topics" class="header-dropdown-link">🚀 8. Incident Reporting & Response</a>
-                        <a href="#topics" class="header-dropdown-link">☁️ 9. Cloud & SaaS Security</a>
-                        <a href="#topics" class="header-dropdown-link">🔌 10. Removable Media & Hardware</a>
-                        <a href="#topics" class="header-dropdown-link">🏢 11. Physical & Workplace Security</a>
+                        <a href="index.html" class="header-dropdown-link active">🏠 Portal Directory (All Topics)</a>
+                        <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password
+                            Security</a>
+                        <a href="device-security.html" class="header-dropdown-link">📱 Device Security</a>
+                        <a href="#topics" class="header-dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
+                        <a href="#topics" class="header-dropdown-link">🎣 Phishing & Email Protection</a>
+                        <a href="#topics" class="header-dropdown-link">🌐 Safe Web Browsing & Wi-Fi</a>
                     </div>
                 </div>
 
                 <div class="header-nav-item">
-                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link" style="color: #38bdf8;">Report Incident</a>
+                    <a href="account-password-security.html#tab-checklist" class="header-nav-link">Policies</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html#tab-checkup" class="header-nav-link">News & Alerts</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link"
+                        style="color: #38bdf8;">Report Incident</a>
                 </div>
             </div>
 
             <div class="header-actions-right">
                 <button class="header-action-btn" onclick="alert('Site Access: Active Employee Portal.')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
                     Employee Access
                 </button>
             </div>
@@ -944,7 +953,8 @@
             </div>
             <h1 class="hero-title">Cyber Awareness & Training Directory</h1>
             <p class="hero-description">
-                Explore interactive cybersecurity training modules, essential workplace defense guides, and real-time security tools designed to keep Midas Safety personnel and corporate assets safe.
+                Explore interactive cybersecurity training modules, essential workplace defense guides, and real-time
+                security tools designed to keep Midas Safety personnel and corporate assets safe.
             </p>
             <div class="hero-stats-row">
                 <div class="hero-stat-item">
@@ -969,15 +979,18 @@
             <h2 class="section-header-title">
                 <span>📚</span> Security Awareness Modules
             </h2>
-            <p class="section-header-subtitle">Select a topic below to open its dedicated interactive guide and tools.</p>
+            <p class="section-header-subtitle">Select a topic below to open its dedicated interactive guide and tools.
+            </p>
         </div>
 
         <div class="filter-input-wrap">
-            <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" id="topicSearch" class="filter-input" placeholder="Search security topics..." onkeyup="filterTopics()">
+            <input type="text" id="topicSearch" class="filter-input" placeholder="Search security topics..."
+                onkeyup="filterTopics()">
         </div>
     </div>
 
@@ -993,7 +1006,8 @@
                 </div>
                 <h3 class="card-title">Account & Password Security</h3>
                 <p class="card-desc">
-                    Interactive 9-step account safety guide, real-time passphrase strength evaluator, HIBP data breach check, and readiness checklist.
+                    Interactive 9-step account safety guide, real-time passphrase strength evaluator, HIBP data breach
+                    check, and readiness checklist.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1012,7 +1026,8 @@
                 </div>
                 <h3 class="card-title">Device Security Guide</h3>
                 <p class="card-desc">
-                    Comprehensive hardening guides for Windows laptops, Android smartphones, and iOS Apple devices with golden security rules.
+                    Comprehensive hardening guides for Windows laptops, Android smartphones, and iOS Apple devices with
+                    golden security rules.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1031,7 +1046,8 @@
                 </div>
                 <h3 class="card-title">Multi-Factor Authentication (MFA)</h3>
                 <p class="card-desc">
-                    Microsoft Authenticator setup, anti-MFA fatigue prompts, hardware security keys, and emergency backup codes.
+                    Microsoft Authenticator setup, anti-MFA fatigue prompts, hardware security keys, and emergency
+                    backup codes.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1048,7 +1064,8 @@
                 </div>
                 <h3 class="card-title">Phishing & Email Protection</h3>
                 <p class="card-desc">
-                    Spotting deceptive email headers, fake domain links, CEO fraud impersonation, and reporting suspicious emails.
+                    Spotting deceptive email headers, fake domain links, CEO fraud impersonation, and reporting
+                    suspicious emails.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1065,7 +1082,8 @@
                 </div>
                 <h3 class="card-title">Safe Web Browsing & Wi-Fi</h3>
                 <p class="card-desc">
-                    HTTPS verification, public Wi-Fi risks, corporate VPN usage, malicious browser extension safety, and popup protection.
+                    HTTPS verification, public Wi-Fi risks, corporate VPN usage, malicious browser extension safety, and
+                    popup protection.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1082,7 +1100,8 @@
                 </div>
                 <h3 class="card-title">Data Protection & Privacy</h3>
                 <p class="card-desc">
-                    Handling confidential files, corporate data classification rules, clean desk guidelines, and secure document shredding.
+                    Handling confidential files, corporate data classification rules, clean desk guidelines, and secure
+                    document shredding.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1099,7 +1118,8 @@
                 </div>
                 <h3 class="card-title">Social Engineering Awareness</h3>
                 <p class="card-desc">
-                    Defending against pretexting, phone vishing scams, tailgating into facilities, and urgent psychological manipulation.
+                    Defending against pretexting, phone vishing scams, tailgating into facilities, and urgent
+                    psychological manipulation.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1133,7 +1153,8 @@
                 </div>
                 <h3 class="card-title">Cloud & SaaS Security</h3>
                 <p class="card-desc">
-                    SharePoint external sharing permissions, Microsoft Teams link safety, OneDrive file sync, and cloud access control.
+                    SharePoint external sharing permissions, Microsoft Teams link safety, OneDrive file sync, and cloud
+                    access control.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1150,7 +1171,8 @@
                 </div>
                 <h3 class="card-title">Removable Media & Hardware</h3>
                 <p class="card-desc">
-                    USB drive malware risks, unauthorized external hardware peripherals, auto-run infection prevention, and media wiping.
+                    USB drive malware risks, unauthorized external hardware peripherals, auto-run infection prevention,
+                    and media wiping.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1167,7 +1189,8 @@
                 </div>
                 <h3 class="card-title">Physical & Workplace Security</h3>
                 <p class="card-desc">
-                    ID badge enforcement, visitor escort requirements, privacy screen filters, and locking physical file cabinets.
+                    ID badge enforcement, visitor escort requirements, privacy screen filters, and locking physical file
+                    cabinets.
                 </p>
             </div>
             <div class="card-footer-action">
@@ -1180,7 +1203,8 @@
     <!-- Quick Tools & Resources Bar -->
     <div class="quick-tools-section">
         <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">⚡ Quick Security Tools & Contacts</h3>
-        <p style="font-size: 0.9rem; color: var(--text-muted);">Access live security utilities and contact the Midas SOC team directly.</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Access live security utilities and contact the Midas SOC
+            team directly.</p>
 
         <div class="quick-tools-grid">
             <a href="account-password-security.html#tab-evaluator" class="tool-card">
@@ -1215,14 +1239,16 @@
             <div class="footer-left-brand">
                 <div class="brand-top-row">
                     <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
-                        <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF"/>
-                        <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF"/>
-                        <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
-                        <circle cx="50" cy="88" r="5" fill="#FFFFFF"/>
-                        <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF"/>
-                        <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF"/>
-                        <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B"/>
+                        <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                            stroke-linecap="round" />
+                        <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5"
+                            stroke-linecap="round" />
+                        <circle cx="50" cy="88" r="5" fill="#FFFFFF" />
+                        <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF" />
+                        <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF" />
+                        <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B" />
                     </svg>
 
                     <div class="brand-title-group">
@@ -1241,9 +1267,11 @@
 
             <div class="soc-card">
                 <div class="soc-icon-circle">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
-                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                        <path
+                            d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
                     </svg>
                 </div>
                 <div class="soc-content">
@@ -1259,8 +1287,8 @@
                 <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
                         </svg>
                     </div>
                     <span class="action-label">Report Incident</span>
@@ -1271,8 +1299,8 @@
                 <a href="account-password-security.html#tab-steps" class="action-btn-circle">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
                         </svg>
                     </div>
                     <span class="action-label">Security Tips</span>
@@ -1283,8 +1311,8 @@
                 <a href="account-password-security.html#tab-checkup" class="action-btn-circle">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                         </svg>
                     </div>
                     <span class="action-label">Alerts & Updates</span>
@@ -1295,10 +1323,10 @@
                 <a href="account-password-security.html#tab-checklist" class="action-btn-circle">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                         </svg>
                     </div>
                     <span class="action-label">About Portal</span>
