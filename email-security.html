@@ -597,15 +597,9 @@
         }
 
         /* 7 Red Flags Detailed Section */
+        /* 7 Red Flags Detailed Cards Section */
         .red-flags-section {
             margin-top: 36px;
-        }
-
-        .section-title-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
         }
 
         .flags-grid {
@@ -618,72 +612,131 @@
             background: #ffffff;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 20px 24px;
+            padding: 20px;
             display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            transition: all 0.2s ease;
+            align-items: center;
+            gap: 18px;
             box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
         }
 
         .flag-card:hover,
         .flag-card.active-target {
             border-color: #fecdd3;
             background: #fff1f2;
-            transform: translateX(4px);
             box-shadow: var(--shadow-md);
+            transform: translateX(4px);
         }
 
-        .flag-num-circle {
+        .flag-sq-badge {
             width: 36px;
             height: 36px;
-            border-radius: 50%;
-            background: var(--primary);
+            background: #0f172a;
             color: #ffffff;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
 
-        .flag-card.active-target .flag-num-circle {
+        .flag-card.active-target .flag-sq-badge {
             background: #e11d48;
         }
 
-        .flag-info {
-            flex-grow: 1;
+        .flag-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #0f172a;
         }
 
-        .flag-header {
+        .flag-main-info {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .flag-title-text {
             font-size: 1.05rem;
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 4px;
         }
 
-        .flag-desc {
-            font-size: 0.9rem;
+        .flag-desc-text {
+            font-size: 0.88rem;
             color: var(--text-muted);
             line-height: 1.5;
-            margin-bottom: 12px;
         }
 
-        .flag-tip-box {
+        .flag-tip-card {
             background: #fffbeb;
-            border-left: 3px solid #f59e0b;
-            padding: 8px 14px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            color: #78350f;
+            border: 1px solid #fef08a;
+            border-radius: 10px;
+            padding: 12px 16px;
+            width: 260px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .tip-card-header {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #b45309;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .flag-tip-box strong {
-            color: #b45309;
+        .tip-card-body {
+            font-size: 0.84rem;
+            color: #78350f;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .show-more-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .toggle-flags-btn {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 10px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .toggle-flags-btn:hover {
+            background: #f8fafc;
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .card-hidden {
+            display: none !important;
         }
 
         /* Right Column: Outlook Reporting Guide */
@@ -1284,7 +1337,7 @@
             <div class="red-flags-section">
                 <div class="section-title-row">
                     <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary);">
-                        🚨 7 Red Flags in This Email
+                        🚩 7 Red Flags in This Email
                     </h3>
                 </div>
 
@@ -1292,102 +1345,122 @@
 
                     <!-- Flag 1 Card -->
                     <div class="flag-card" id="flag-card-1">
-                        <div class="flag-num-circle">1</div>
-                        <div class="flag-info">
-                            <div class="flag-header">Suspicious sender address</div>
-                            <div class="flag-desc">
-                                The email address <code>support@microsoft-security.com</code> is NOT an official Microsoft domain. Attackers register look-alike domain names to deceive you.
-                            </div>
-                            <div class="flag-tip-box">
-                                💡 <strong>TIP:</strong> Real Microsoft emails come from <code>@microsoft.com</code>, not look-alike domains.
-                            </div>
+                        <div class="flag-sq-badge">1</div>
+                        <div class="flag-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                        <div class="flag-main-info">
+                            <div class="flag-title-text">Suspicious sender address</div>
+                            <div class="flag-desc-text">The email is not from an official Microsoft domain. Check for misspellings or unfamiliar domains.</div>
+                        </div>
+                        <div class="flag-tip-card">
+                            <div class="tip-card-header">💡 TIP</div>
+                            <div class="tip-card-body">Real Microsoft emails come from <code>@microsoft.com</code>, not look-alike domains.</div>
                         </div>
                     </div>
 
                     <!-- Flag 2 Card -->
                     <div class="flag-card" id="flag-card-2">
-                        <div class="flag-num-circle">2</div>
-                        <div class="flag-info">
-                            <div class="flag-header">Unexpected recipient</div>
-                            <div class="flag-desc">
-                                You weren't expecting account verification or the message was sent to a generic address / mass employee mailing list.
-                            </div>
-                            <div class="flag-tip-box">
-                                💡 <strong>TIP:</strong> Attackers often send phishing emails to many people at once.
-                            </div>
+                        <div class="flag-sq-badge">2</div>
+                        <div class="flag-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        </div>
+                        <div class="flag-main-info">
+                            <div class="flag-title-text">Unexpected recipient</div>
+                            <div class="flag-desc-text">You weren't expecting this email or it was sent to a generic address / mass recipient list.</div>
+                        </div>
+                        <div class="flag-tip-card">
+                            <div class="tip-card-header">💡 TIP</div>
+                            <div class="tip-card-body">Attackers often send phishing emails to many people at once.</div>
                         </div>
                     </div>
 
                     <!-- Flag 3 Card -->
                     <div class="flag-card" id="flag-card-3">
-                        <div class="flag-num-circle">3</div>
-                        <div class="flag-info">
-                            <div class="flag-header">Urgent timing</div>
-                            <div class="flag-desc">
-                                Sent early morning (08:47 AM) or outside normal business hours. Creates psychological pressure to act fast before fully waking up or checking.
-                            </div>
-                            <div class="flag-tip-box">
-                                💡 <strong>TIP:</strong> Urgency is a common trick to make you rush and ignore warning signs.
-                            </div>
+                        <div class="flag-sq-badge">3</div>
+                        <div class="flag-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="flag-main-info">
+                            <div class="flag-title-text">Urgent timing</div>
+                            <div class="flag-desc-text">Early morning or outside normal business hours. Creates pressure to act fast.</div>
+                        </div>
+                        <div class="flag-tip-card">
+                            <div class="tip-card-header">💡 TIP</div>
+                            <div class="tip-card-body">Urgency is a common trick to make you rush and ignore the warning signs.</div>
                         </div>
                     </div>
 
                     <!-- Flag 4 Card -->
                     <div class="flag-card" id="flag-card-4">
-                        <div class="flag-num-circle">4</div>
-                        <div class="flag-info">
-                            <div class="flag-header">High-pressure subject line</div>
-                            <div class="flag-desc">
-                                Uses panic words like <code>URGENT: Action Required</code> to bypass your critical thinking and force immediate compliance.
-                            </div>
-                            <div class="flag-tip-box">
-                                💡 <strong>TIP:</strong> Legitimate IT departments give advance notice and don't threaten instant account termination.
-                            </div>
+                        <div class="flag-sq-badge">4</div>
+                        <div class="flag-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="flag-main-info">
+                            <div class="flag-title-text">High-pressure subject line</div>
+                            <div class="flag-desc-text">Uses panic phrases like <code>URGENT: Action Required</code> to force compliance.</div>
+                        </div>
+                        <div class="flag-tip-card">
+                            <div class="tip-card-header">💡 TIP</div>
+                            <div class="tip-card-body">Legitimate IT teams give advance notice and don't threaten lockouts.</div>
                         </div>
                     </div>
 
                     <!-- Flag 5 Card -->
                     <div class="flag-card" id="flag-card-5">
-                        <div class="flag-num-circle">5</div>
-                        <div class="flag-info">
-                            <div class="flag-header">Deceptive call-to-action link</div>
-                            <div class="flag-desc">
-                                The button leads to a fake malicious URL (<code>microsoft-security.com</code>) designed to capture your login credentials.
-                            </div>
-                            <div class="flag-tip-box">
-                                💡 <strong>TIP:</strong> Always hover your mouse over links before clicking to inspect the true URL destination.
-                            </div>
+                        <div class="flag-sq-badge">5</div>
+                        <div class="flag-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        </div>
+                        <div class="flag-main-info">
+                            <div class="flag-title-text">Deceptive call-to-action link</div>
+                            <div class="flag-desc-text">Button points to a fake domain (<code>microsoft-security.com</code>) to steal credentials.</div>
+                        </div>
+                        <div class="flag-tip-card">
+                            <div class="tip-card-header">💡 TIP</div>
+                            <div class="tip-card-body">Always hover over links before clicking to inspect the true URL destination.</div>
                         </div>
                     </div>
 
                     <!-- Flag 6 Card -->
                     <div class="flag-card" id="flag-card-6">
-                        <div class="flag-num-circle">6</div>
-                        <div class="flag-info">
-                            <div class="flag-header">Dangerous file attachment (.html / .exe)</div>
-                            <div class="flag-desc">
-                                Contains an attached <code>.html</code> file (<code>Account_Verification_Form.html</code>). HTML attachments execute scripts locally or open fake offline login forms.
-                            </div>
-                            <div class="flag-tip-box">
-                                💡 <strong>TIP:</strong> Never open unexpected <code>.html</code>, <code>.exe</code>, or macro-enabled file attachments.
-                            </div>
+                        <div class="flag-sq-badge">6</div>
+                        <div class="flag-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                        </div>
+                        <div class="flag-main-info">
+                            <div class="flag-title-text">Dangerous attachment (.html / .exe)</div>
+                            <div class="flag-desc-text">Contains <code>Account_Verification_Form.html</code> which executes malicious scripts.</div>
+                        </div>
+                        <div class="flag-tip-card">
+                            <div class="tip-card-header">💡 TIP</div>
+                            <div class="tip-card-body">HTML attachments can open fake login forms offline or execute scripts.</div>
                         </div>
                     </div>
 
                     <!-- Flag 7 Card -->
                     <div class="flag-card" id="flag-card-7">
-                        <div class="flag-num-circle">7</div>
-                        <div class="flag-info">
-                            <div class="flag-header">Report Phishing button in Outlook</div>
-                            <div class="flag-desc">
-                                Your Outlook ribbon includes a dedicated <strong>Report Phishing</strong> button. Clicking it instantly notifies SOC and purges the email across the company.
-                            </div>
-                            <div class="flag-tip-box">
-                                💡 <strong>TIP:</strong> One click on the Outlook Report button protects all your colleagues from the same threat.
-                            </div>
+                        <div class="flag-sq-badge">7</div>
+                        <div class="flag-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="flag-main-info">
+                            <div class="flag-title-text">Report Phishing button in Outlook</div>
+                            <div class="flag-desc-text">The built-in Outlook Report button allows 1-click incident escalation to SOC.</div>
+                        </div>
+                        <div class="flag-tip-card">
+                            <div class="tip-card-header">💡 TIP</div>
+                            <div class="tip-card-body">Reporting phishing alerts SOC immediately and protects all company colleagues.</div>
                         </div>
                     </div>
 
+                </div>
+
+                <div class="show-more-row">
+                    <button class="toggle-flags-btn" id="toggleFlagsBtn" onclick="toggleFlags()">
+                        <span id="toggleBtnText">∨ Show 4–7</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1617,6 +1690,16 @@
         function selectFlag(id) {
             hideSpotterTooltip();
 
+            // Unhide cards if targeting 4-7
+            if (id >= 4) {
+                for (let i = 4; i <= 7; i++) {
+                    const card = document.getElementById('flag-card-' + i);
+                    if (card) card.classList.remove('card-hidden');
+                }
+                const btnText = document.getElementById('toggleBtnText');
+                if (btnText) btnText.innerText = '∧ Show Less';
+            }
+
             // Clear card highlights
             document.querySelectorAll('.flag-card').forEach(card => {
                 card.classList.remove('active-target');
@@ -1629,6 +1712,35 @@
                 targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
+
+        function toggleFlags() {
+            const btnText = document.getElementById('toggleBtnText');
+            const card4 = document.getElementById('flag-card-4');
+            const isHidden = card4 ? card4.classList.contains('card-hidden') : false;
+
+            for (let i = 4; i <= 7; i++) {
+                const card = document.getElementById('flag-card-' + i);
+                if (card) {
+                    if (isHidden) {
+                        card.classList.remove('card-hidden');
+                    } else {
+                        card.classList.add('card-hidden');
+                    }
+                }
+            }
+
+            if (btnText) {
+                btnText.innerText = isHidden ? '∧ Show Less' : '∨ Show 4–7';
+            }
+        }
+
+        // Initially hide cards 4-7 on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            for (let i = 4; i <= 7; i++) {
+                const card = document.getElementById('flag-card-' + i);
+                if (card) card.classList.add('card-hidden');
+            }
+        });
     </script>
 </body>
 
