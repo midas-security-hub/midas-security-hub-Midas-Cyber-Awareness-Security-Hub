@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account & Password Security</title>
+    <title>Midas Cyber Awareness & Security Hub - Portal Directory</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
     <style>
         :root {
             --primary: #0f172a;
@@ -19,6 +22,8 @@
             --blue: #2563eb;
             --blue-light: #eff6ff;
             --blue-hover: #1d4ed8;
+            --green: #10b981;
+            --green-bg: #ecfdf5;
             --text-dark: #0f172a;
             --text-muted: #475569;
             --text-light: #64748b;
@@ -28,9 +33,9 @@
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --radius-lg: 16px;
-            --radius-md: 12px;
             --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
         }
 
         * {
@@ -40,533 +45,28 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-body);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.5;
             padding: 24px;
-            max-width: 1280px;
+            max-width: 1240px;
             margin: 0 auto;
         }
 
-        /* Banner Container */
-        .banner-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 40px;
-            align-items: center;
-            position: relative;
+        /* Top Site Header */
+        .midas-header-container {
+            width: 100%;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 32px;
-        }
-
-        .banner-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--accent) 0%, var(--blue) 100%);
-        }
-
-        .banner-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .banner-title {
-            font-size: 2.75rem;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: -0.025em;
-            line-height: 1.15;
-        }
-
-        .banner-subtitle {
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: var(--primary-light);
-            line-height: 1.3;
-        }
-
-        .accent-line {
-            width: 72px;
-            height: 5px;
-            background-color: var(--accent);
-            border-radius: 4px;
-            margin: 4px 0 8px 0;
-        }
-
-        .banner-description {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            max-width: 640px;
-        }
-
-        .banner-illustration {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .illustration-svg {
-            width: 100%;
-            max-width: 380px;
-            height: auto;
-            filter: drop-shadow(0 12px 20px rgba(15, 23, 42, 0.08));
-            transition: transform 0.3s ease;
-        }
-
-        .banner-card:hover .illustration-svg {
-            transform: translateY(-4px);
-        }
-
-        /* Navigation Tabs */
-        .tab-nav {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 8px;
-            overflow-x: auto;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            padding: 10px 20px;
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            border-radius: var(--radius-sm);
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tab-btn:hover {
-            color: var(--blue);
-            background: var(--blue-light);
-        }
-
-        .tab-btn.active {
-            color: var(--blue);
-            background: var(--blue-light);
-            border-bottom: 3px solid var(--blue);
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(6px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Grid Layout for Steps */
-        .section-header {
-            margin-bottom: 20px;
-        }
-
-        .section-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .section-header p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .step-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.25s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .step-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-3px);
-            border-color: #cbd5e1;
-        }
-
-        .step-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .step-number {
-            background: var(--blue-light);
-            color: var(--blue);
-            font-weight: 800;
-            font-size: 1.1rem;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .step-card:nth-child(even) .step-number {
-            background: var(--accent-bg);
-            color: var(--accent);
-        }
-
-        .step-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-top: 4px;
-        }
-
-        .step-body {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            flex-grow: 1;
-        }
-
-        .tip-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #f1f5f9;
-            color: var(--text-dark);
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            border-left: 3px solid var(--blue);
-        }
-
-        /* Interactive Password Evaluator Tool */
-        .evaluator-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
-            margin-top: 16px;
-        }
-
-        .evaluator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--primary);
-        }
-
-        .input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-wrapper input {
-            width: 100%;
-            padding: 14px 16px;
-            padding-right: 48px;
-            font-size: 1rem;
-            font-family: inherit;
-            border: 2px solid var(--border);
-            border-radius: var(--radius-sm);
-            outline: none;
-            transition: border-color 0.2s ease;
-        }
-
-        .input-wrapper input:focus {
-            border-color: var(--blue);
-        }
-
-        .toggle-btn {
-            position: absolute;
-            right: 12px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .strength-meter {
-            height: 8px;
-            width: 100%;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-
-        .meter-bar {
-            height: 100%;
-            width: 0%;
-            transition: width 0.3s ease, background-color 0.3s ease;
-        }
-
-        .strength-label {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .eval-results {
-            background: #f8fafc;
-            border-radius: var(--radius-md);
-            padding: 20px;
-            border: 1px dashed #cbd5e1;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-        }
-
-        .result-item span:first-child {
-            color: var(--text-muted);
-        }
-
-        .result-item span:last-child {
-            font-weight: 700;
-        }
-
-        /* Interactive Checklist */
-        .checklist-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
-        }
-
-        .checklist-items {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .check-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 18px;
-            background: #f8fafc;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            user-select: none;
-        }
-
-        .check-item:hover {
-            background: #f1f5f9;
-        }
-
-        .check-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--blue);
-            cursor: pointer;
-        }
-
-        .check-text {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .score-box {
-            margin-top: 24px;
-            padding: 20px;
-            background: var(--blue-light);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .score-val {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--blue);
-        }
-
-        /* Quick & Easy Checkup Section */
-        .checkup-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
-            margin-bottom: 24px;
-        }
-
-        .checkup-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .checkup-link-card {
-            background: #ffffff;
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.25s ease;
-            position: relative;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .checkup-link-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .checkup-link-card.google:hover {
-            border-color: #ea4335;
-            background: #fffbfb;
-        }
-
-        .checkup-link-card.microsoft:hover {
-            border-color: #00a4ef;
-            background: #f4fbfe;
-        }
-
-        .checkup-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        .brand-icon {
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            background: #f8fafc;
-            border: 1px solid var(--border);
-        }
-
-        .checkup-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .checkup-desc {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .checkup-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: gap 0.2s ease;
-        }
-
-        .checkup-link-card.google .checkup-btn {
-            color: #4285f4;
-        }
-
-        .checkup-link-card.microsoft .checkup-btn {
-            color: #0078d4;
-        }
-
-        .checkup-link-card:hover .checkup-btn {
-            gap: 12px;
-        }
-
-        /* Site Header Navigation & Dropdowns */
-        .site-header-container {
-            width: 100%;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 28px;
             border: 1px solid #1e293b;
         }
 
-        .site-header-banner {
+        .header-top-banner {
             background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
-            padding: 26px 36px;
+            padding: 24px 36px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -575,7 +75,7 @@
             overflow: hidden;
         }
 
-        .site-header-bg-svg {
+        .header-bg-svg {
             position: absolute;
             top: 0;
             left: 0;
@@ -584,7 +84,7 @@
             pointer-events: none;
         }
 
-        .site-brand {
+        .header-brand {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -592,25 +92,21 @@
             z-index: 2;
         }
 
-        .brand-logo-badge {
+        .header-logo-svg {
             width: 54px;
             height: 54px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-shrink: 0;
         }
 
-        .site-title-text {
+        .header-title-text {
             color: #ffffff;
-            font-size: 1.55rem;
+            font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: -0.01em;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Sub-Navigation Bar */
-        .site-navbar {
+        .header-navbar {
             background-color: #030712;
             padding: 0 24px;
             display: flex;
@@ -621,17 +117,17 @@
             z-index: 10;
         }
 
-        .nav-links-left {
+        .header-nav-links {
             display: flex;
             align-items: center;
             gap: 2px;
         }
 
-        .nav-item {
+        .header-nav-item {
             position: relative;
         }
 
-        .nav-link {
+        .header-nav-link {
             color: #94a3b8;
             text-decoration: none;
             font-size: 0.92rem;
@@ -640,24 +136,20 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            position: relative;
             transition: color 0.2s ease;
             white-space: nowrap;
-            cursor: pointer;
             border: none;
             background: transparent;
             font-family: inherit;
+            cursor: pointer;
         }
 
-        .nav-link:hover {
+        .header-nav-link:hover,
+        .header-nav-link.active {
             color: #ffffff;
         }
 
-        .nav-link.active {
-            color: #ffffff;
-        }
-
-        .nav-link.active::after {
+        .header-nav-link.active::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -668,22 +160,21 @@
             border-radius: 3px 3px 0 0;
         }
 
-        /* Dropdown Menu */
-        .nav-item:hover .nav-dropdown {
+        .header-nav-item:hover .header-dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        .nav-dropdown {
+        .header-dropdown {
             position: absolute;
             top: 100%;
             left: 0;
             background: #090d16;
             border: 1px solid #1e293b;
-            border-radius: var(--radius-sm);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.5);
-            min-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 240px;
             z-index: 100;
             padding: 8px 0;
             opacity: 0;
@@ -692,7 +183,7 @@
             transition: all 0.2s ease;
         }
 
-        .dropdown-link {
+        .header-dropdown-link {
             display: block;
             padding: 10px 18px;
             color: #cbd5e1;
@@ -702,19 +193,19 @@
             transition: all 0.2s ease;
         }
 
-        .dropdown-link:hover {
+        .header-dropdown-link:hover {
             background: #1e293b;
             color: #38bdf8;
             padding-left: 22px;
         }
 
-        .nav-actions-right {
+        .header-actions-right {
             display: flex;
             align-items: center;
             gap: 16px;
         }
 
-        .nav-action-btn {
+        .header-action-btn {
             color: #94a3b8;
             font-size: 0.88rem;
             font-weight: 600;
@@ -730,748 +221,388 @@
             white-space: nowrap;
         }
 
-        .nav-action-btn:hover {
+        .header-action-btn:hover {
             color: #ffffff;
         }
 
-        /* Corporate Site Footer */
-        .site-footer {
-            margin-top: 48px;
-            background: linear-gradient(180deg, #090d16 0%, #030712 100%);
+        /* Hero Directory Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             border-radius: var(--radius-lg);
-            border: 1px solid #1e293b;
-            padding: 40px 36px 24px 36px;
-            color: #94a3b8;
-            box-shadow: var(--shadow-md);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.8fr 1.1fr 1.1fr 1.4fr;
-            gap: 36px;
-            margin-bottom: 32px;
-        }
-
-        .footer-brand-title {
+            padding: 40px 48px;
             color: #ffffff;
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 36px;
+            box-shadow: var(--shadow-lg);
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer-desc {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #64748b;
-            margin-bottom: 16px;
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
         }
 
-        .footer-col-title {
-            color: #ffffff;
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .hero-text {
+            max-width: 680px;
+            z-index: 2;
         }
 
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.88rem;
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: #38bdf8;
-        }
-
-        .footer-action-btn {
-            background: var(--blue);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 0.88rem;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: background-color 0.2s ease;
+        .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
 
-        .footer-action-btn:hover {
-            background: var(--blue-hover);
+        .hero-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #ffffff;
         }
 
-        .footer-bottom {
-            border-top: 1px solid #1e293b;
-            padding-top: 20px;
+        .hero-description {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .hero-stats-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #f59e0b;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Section Header */
+        .section-header-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
             flex-wrap: wrap;
             gap: 16px;
-            font-size: 0.85rem;
-            color: #64748b;
         }
 
-        .footer-bottom-links {
+        .section-header-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 12px;
         }
 
-        .footer-bottom-links a {
-            color: #64748b;
-            text-decoration: none;
-            transition: color 0.2s ease;
+        .section-header-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 4px;
         }
 
-        .footer-bottom-links a:hover {
+        /* Search Filter Input */
+        .filter-input-wrap {
+            position: relative;
+            min-width: 280px;
+        }
+
+        .filter-input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: #ffffff;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .filter-input:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .filter-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
             color: #94a3b8;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 900px) {
-            .banner-card {
-                grid-template-columns: 1fr;
-                padding: 28px;
-                gap: 24px;
-            }
-
-            .banner-title {
-                font-size: 2.1rem;
-            }
-
-            .banner-subtitle {
-                font-size: 1.15rem;
-            }
-
-            .evaluator-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        /* Topic Cards Grid */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
         }
 
-        @media (max-width: 600px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
+        .topic-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 28px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            position: relative;
+            overflow: hidden;
         }
-    </style>
-</head>
 
-<body>
+        .topic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
 
-    <!-- Top Site Header: Midas Cyber Awareness & Security Hub -->
-    <div class="site-header-container">
-        <div class="site-header-banner">
-            <!-- Background Cyber Tech SVG Illustration -->
-            <svg class="site-header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Circuit lines & nodes -->
-                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4"/>
-                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3"/>
-                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8"/>
-                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8"/>
-                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7"/>
+        .topic-card.active-module {
+            border-top: 4px solid var(--blue);
+        }
 
-                <!-- Hexagon with Mail Envelope (Email Security Motif) -->
-                <g transform="translate(680, 20)">
-                    <polygon points="30,0 60,17 60,52 30,69 0,52 0,17" stroke="#0088FF" stroke-width="2.2" fill="#061A3A" opacity="0.85"/>
-                    <path d="M18 26 L30 36 L42 26 M18 26 H42 V44 H18 Z" stroke="#00BFFF" stroke-width="2.2" fill="none"/>
-                </g>
+        .topic-card.coming-soon {
+            opacity: 0.85;
+            background: #fafafa;
+        }
 
-                <!-- Circuit line leading to lock shield -->
-                <path d="M740 55 H820" stroke="#0099FF" stroke-width="2" opacity="0.5"/>
+        .card-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
 
-                <!-- Digital Lock Shield Glow Motif -->
-                <g transform="translate(850, -10)">
-                    <circle cx="60" cy="70" r="55" fill="#0066FF" opacity="0.18"/>
-                    <path d="M60 15 C60 15 95 25 105 35 C105 80 85 110 60 125 C35 110 15 80 15 35 C25 25 60 15 60 15 Z" stroke="#00BFFF" stroke-width="3" fill="#082046" opacity="0.9"/>
-                    <rect x="47" y="65" width="26" height="22" rx="4" fill="#00D2FF"/>
-                    <path d="M52 65 V55 C52 50.5 55.5 47 60 47 C64.5 47 68 50.5 68 55 V65" stroke="#00D2FF" stroke-width="3" fill="none"/>
-                </g>
+        .topic-icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            background: #f1f5f9;
+        }
 
-                <!-- World Map Dot Grid on Far Right -->
-                <g opacity="0.25" fill="#00BFFF">
-                    <circle cx="1020" cy="30" r="1.5"/><circle cx="1035" cy="30" r="1.5"/><circle cx="1050" cy="30" r="1.5"/><circle cx="1065" cy="30" r="1.5"/>
-                    <circle cx="1012" cy="45" r="1.5"/><circle cx="1027" cy="45" r="1.5"/><circle cx="1042" cy="45" r="1.5"/><circle cx="1057" cy="45" r="1.5"/><circle cx="1072" cy="45" r="1.5"/><circle cx="1087" cy="45" r="1.5"/>
-                    <circle cx="1020" cy="60" r="1.5"/><circle cx="1035" cy="60" r="1.5"/><circle cx="1050" cy="60" r="1.5"/><circle cx="1065" cy="60" r="1.5"/><circle cx="1080" cy="60" r="1.5"/><circle cx="1095" cy="60" r="1.5"/><circle cx="1110" cy="60" r="1.5"/>
-                    <circle cx="1027" cy="75" r="1.5"/><circle cx="1042" cy="75" r="1.5"/><circle cx="1057" cy="75" r="1.5"/><circle cx="1072" cy="75" r="1.5"/><circle cx="1087" cy="75" r="1.5"/>
-                    <circle cx="1035" cy="90" r="1.5"/><circle cx="1050" cy="90" r="1.5"/><circle cx="1065" cy="90" r="1.5"/>
-                </g>
-            </svg>
+        .topic-icon-box.blue {
+            background: #eff6ff;
+            color: #2563eb;
+        }
 
-            <!-- Brand Logo & Title -->
-            <div class="site-brand">
-                <div class="brand-logo-badge">
-                    <svg width="56" height="56" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Outer Headset Band -->
-                        <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
-                        <!-- Left & Right Ear Cushions -->
-                        <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
-                        <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
-                        <!-- Mic Boom Arm -->
-                        <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
-                        <circle cx="49" cy="90" r="5.5" fill="#FFFFFF"/>
-                        <!-- M Shield Geometric Icon -->
-                        <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF"/>
-                        <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF"/>
-                        <!-- Gold Slash Bar Accent -->
-                        <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B"/>
-                    </svg>
-                </div>
-                <h1 class="site-title-text">Midas Cyber Awareness & Security Hub</h1>
-            </div>
-        </div>
+        .topic-icon-box.gold {
+            background: #fffbeb;
+            color: #d97706;
+        }
 
-        <!-- Sub-Navigation Bar -->
-        <nav class="site-navbar">
-            <div class="nav-links-left">
-                <div class="nav-item">
-                    <a href="#" class="nav-link active">Home</a>
-                </div>
+        .topic-icon-box.green {
+            background: #ecfdf5;
+            color: #059669;
+        }
 
-                <!-- Topics Dropdown -->
-                <div class="nav-item">
-                    <button class="nav-link" type="button">
-                        Topics 
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                    <div class="nav-dropdown">
-                        <a href="#tab-steps" onclick="switchTab('steps')" class="dropdown-link">🔑 Account & Password Security</a>
-                        <a href="#tab-steps" onclick="switchTab('steps')" class="dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
-                        <a href="#tab-steps" onclick="switchTab('steps')" class="dropdown-link">🎣 Phishing & Email Protection</a>
-                        <a href="device-security.html" class="dropdown-link">📱 Device Security</a>
-                    </div>
-                </div>
+        .topic-icon-box.purple {
+            background: #f3e8ff;
+            color: #7e22ce;
+        }
 
-                <div class="nav-item">
-                    <a href="#tab-checklist" onclick="switchTab('checklist')" class="nav-link">Policies</a>
-                </div>
+        .status-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
 
-                <div class="nav-item">
-                    <a href="#tab-steps" onclick="switchTab('steps')" class="nav-link">News</a>
-                </div>
+        .status-tag.active {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
 
-                <div class="nav-item">
-                    <a href="#tab-checklist" onclick="switchTab('checklist')" class="nav-link">FAQ</a>
-                </div>
+        .status-tag.planned {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
 
-                <!-- Resources Dropdown -->
-                <div class="nav-item">
-                    <button class="nav-link" type="button">
-                        Resources 
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                    <div class="nav-dropdown">
-                        <a href="#tab-evaluator" onclick="switchTab('evaluator')" class="dropdown-link">⚡ Passphrase Strength Evaluator</a>
-                        <a href="#tab-checklist" onclick="switchTab('checklist')" class="dropdown-link">📋 Security Readiness Checklist</a>
-                        <a href="#tab-checkup" onclick="switchTab('checkup')" class="dropdown-link">🚀 Quick Security Checkup</a>
-                    </div>
-                </div>
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
 
-                <div class="nav-item">
-                    <a href="https://mysignins.microsoft.com/security-info" target="_blank" class="nav-link" style="color: #38bdf8;">Security Incident Report</a>
-                </div>
-            </div>
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
 
-            <div class="nav-actions-right">
-                <button class="nav-action-btn" onclick="toggleFavorite(this)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <span id="favText">Add to favorites</span>
-                </button>
-                <button class="nav-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    Site access
-                </button>
-            </div>
-        </nav>
-    </div>
+        .card-footer-action {
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    <!-- Main Header Banner Recreated from User Image -->
-    <div class="banner-card">
-        <div class="banner-content">
-            <h1 class="banner-title">Account & Password Security</h1>
-            <h2 class="banner-subtitle">Strong accounts keep our people, data, and operations safe.</h2>
-            <div class="accent-line"></div>
-            <p class="banner-description">
-                Follow these 9 simple steps to protect your accounts and prevent unauthorized access.
-                Small habits today stop big problems tomorrow.
-            </p>
-        </div>
+        .action-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
 
-        <div class="banner-illustration">
-            <svg class="illustration-svg" viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Outer background glow -->
-                <circle cx="360" cy="160" r="120" fill="#F1F5F9" />
-                <circle cx="430" cy="90" r="40" fill="#FEF3C7" opacity="0.6" />
+        .action-btn-primary:hover {
+            background: var(--blue-hover);
+        }
 
-                <!-- Gear behind laptop -->
-                <path
-                    d="M410 125C408.3 125 406.8 123.7 406.6 122L405.6 114.7C403.9 114 402.3 113 400.8 111.9L393.8 114.5C392.2 115.1 390.4 114.4 389.6 112.9L385.6 106C384.8 104.5 385.2 102.7 386.5 101.6L392.2 96.9C392 95.2 392 93.5 392.2 91.8L386.5 87.1C385.2 86 384.8 84.2 385.6 82.7L389.6 75.8C390.4 74.3 392.2 73.6 393.8 74.2L400.8 76.8C402.3 75.7 403.9 74.7 405.6 74L406.6 66.7C406.8 65 408.3 63.7 410 63.7H418C419.7 63.7 421.2 65 421.4 66.7L422.4 74C424.1 74.7 425.7 75.7 427.2 76.8L434.2 74.2C435.8 73.6 437.6 74.3 438.4 75.8L442.4 82.7C443.2 84.2 442.8 86 441.5 87.1L435.8 91.8C436 93.5 436 95.2 435.8 96.9L441.5 101.6C442.8 102.7 443.2 104.5 442.4 106L438.4 112.9C437.6 114.4 435.8 115.1 434.2 114.5L427.2 111.9C425.7 113 424.1 114 422.4 114.7L421.4 122C421.2 123.7 419.7 125 418 125H410Z"
-                    fill="#CBD5E1" />
+        .action-btn-disabled {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e2e8f0;
+            color: #94a3b8;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.82rem;
+            cursor: not-allowed;
+        }
 
-                <!-- Laptop Frame -->
-                <rect x="70" y="40" width="310" height="200" rx="14" fill="#0F172A" />
-                <rect x="80" y="50" width="290" height="180" rx="8" fill="#FFFFFF" />
+        /* Quick Features Grid */
+        .quick-tools-section {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+        }
 
-                <!-- Screen Elements -->
-                <!-- Lock Icon on Screen -->
-                <rect x="205" y="98" width="40" height="34" rx="6" fill="#0F172A" />
-                <path d="M213 98V86C213 79.3726 218.373 74 225 74C231.627 74 237 79.3726 237 86V98" stroke="#0F172A"
-                    stroke-width="6" stroke-linecap="round" />
-                <circle cx="225" cy="112" r="3" fill="#FFFFFF" />
-                <path d="M225 115V122" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+        .quick-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-                <!-- Password Field Box on Screen -->
-                <rect x="135" y="152" width="180" height="28" rx="6" fill="#F1F5F9" />
-                <circle cx="165" cy="166" r="4" fill="#0F172A" />
-                <circle cx="185" cy="166" r="4" fill="#0F172A" />
-                <circle cx="205" cy="166" r="4" fill="#0F172A" />
-                <circle cx="225" cy="166" r="4" fill="#0F172A" />
-                <circle cx="245" cy="166" r="4" fill="#0F172A" />
+        .tool-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
 
-                <!-- Laptop Base / Keyboard deck -->
-                <path d="M40 240H410C420 240 425 248 420 255L410 265H40L30 255C25 248 30 240 40 240Z" fill="#1E293B" />
-                <rect x="180" y="243" width="90" height="4" rx="2" fill="#64748B" />
+        .tool-card:hover {
+            background: #ffffff;
+            border-color: var(--blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
 
-                <!-- Yellow Security Shield with Checkmark overlay -->
-                <g filter="url(#shadow)">
-                    <path
-                        d="M380 90C380 90 415 80 435 70C435 140 410 180 380 205C350 180 325 140 325 70C345 80 380 90 380 90Z"
-                        fill="#F59E0B" />
-                    <path
-                        d="M380 96C380 96 411 87 428 78C428 138 406 173 380 195C354 173 332 138 332 78C349 87 380 96 380 96Z"
-                        fill="#FBBF24" />
-                    <!-- White Checkmark -->
-                    <path d="M358 130L373 145L402 114" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </g>
+        .tool-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
 
-                <defs>
-                    <filter id="shadow" x="310" y="60" width="140" height="160" filterUnits="userSpaceOnUse">
-                        <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.15" />
-                    </filter>
-                </defs>
-            </svg>
-        </div>
-    </div>
+        .tool-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
 
-    <!-- Navigation Tabs for Interactive View -->
-    <div class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('steps')">
-            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            9 Security Steps
-        </button>
-        <button class="tab-btn" onclick="switchTab('evaluator')">
-            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                </path>
-            </svg>
-            Passphrase Evaluator
-        </button>
-        <button class="tab-btn" onclick="switchTab('checklist')">
-            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
-                </path>
-            </svg>
-            Security Readiness Checklist
-        </button>
-        <button class="tab-btn" onclick="switchTab('checkup')">
-            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
-                </path>
-            </svg>
-            Quick Security Checkup
-        </button>
-    </div>
+        .tool-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
 
-    <!-- Tab 1: 9 Security Steps Grid -->
-    <div id="tab-steps" class="tab-content active">
-        <div class="section-header">
-            <h2>The 9 Essential Steps for Account Security</h2>
-            <p>Implement these practices to keep company and personal credentials safe.</p>
-        </div>
-
-        <div class="steps-grid">
-            <!-- Step 1 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">01</div>
-                        <div class="step-title">Use Strong, Unique Passphrases</div>
-                    </div>
-                    <p class="step-body">
-                        Combine 4 or more random words (e.g., <code>coffee-ocean-rocket-guitar</code>) to create long,
-                        memorable passphrases. Never reuse passwords across work and personal accounts.
-                    </p>
-                </div>
-                <div class="tip-badge">💡 Tip: Aim for 16+ characters minimum</div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">02</div>
-                        <div class="step-title">Enable Multi-Factor Authentication (MFA)</div>
-                    </div>
-                    <p class="step-body">
-                        MFA adds a critical second layer of protection. Always approve push notifications from trusted
-                        authenticator apps (e.g. Microsoft Authenticator) and reject unexpected prompts.
-                    </p>
-                </div>
-                <div class="tip-badge">🛡️ MFA blocks over 99% of automated attacks</div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">03</div>
-                        <div class="step-title">Never Share Credentials or MFA Codes</div>
-                    </div>
-                    <p class="step-body">
-                        IT Support will <strong>never</strong> ask for your password or one-time verification code.
-                        Never send credentials via email, Teams chat, or phone.
-                    </p>
-                </div>
-                <div class="tip-badge">⛔ Keep passcodes 100% confidential</div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">04</div>
-                        <div class="step-title">Use an Approved Password Manager</div>
-                    </div>
-                    <p class="step-body">
-                        Store complex passwords in an encrypted vault. Avoid writing passwords on sticky notes,
-                        notebooks, or unencrypted text documents on your desk.
-                    </p>
-                </div>
-                <div class="tip-badge">🔑 Vaults auto-fill & detect phishing domains</div>
-            </div>
-
-            <!-- Step 5 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">05</div>
-                        <div class="step-title">Watch Out for Phishing & Suspicious Links</div>
-                    </div>
-                    <p class="step-body">
-                        Be suspicious of unexpected urgent password reset requests, strange login screens, or unusual
-                        emails asking you to click links. Always check the sender's full address.
-                    </p>
-                </div>
-                <div class="tip-badge">🔍 Hover over links before clicking</div>
-            </div>
-
-            <!-- Step 6 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">06</div>
-                        <div class="step-title">Lock Screens & Protect Devices</div>
-                    </div>
-                    <p class="step-body">
-                        Always lock your workstation (press <code>Windows + L</code> or <code>Cmd + Control + Q</code>)
-                        whenever you leave your desk, whether at the office, home, or cafe.
-                    </p>
-                </div>
-                <div class="tip-badge">💻 Win + L is your quick lock habit</div>
-            </div>
-
-            <!-- Step 7 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">07</div>
-                        <div class="step-title">Report Incidents & Suspicious Activity Promptly</div>
-                    </div>
-                    <p class="step-body">
-                        If you accidentally click a suspicious link, enter credentials on a phishing page, or approve an
-                        unexpected prompt, inform Information Security immediately.
-                    </p>
-                </div>
-                <div class="tip-badge">⚡ Quick reporting limits potential damage</div>
-            </div>
-
-            <!-- Step 8 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">08</div>
-                        <div class="step-title">Keep Software & Operating Systems Updated</div>
-                    </div>
-                    <p class="step-body">
-                        Regularly install OS, browser, and app security updates. Software patches close security 
-                        vulnerabilities before hackers can exploit them.
-                    </p>
-                </div>
-                <div class="tip-badge">🔄 Enable automatic background updates</div>
-            </div>
-
-            <!-- Step 9 -->
-            <div class="step-card">
-                <div>
-                    <div class="step-header">
-                        <div class="step-number">09</div>
-                        <div class="step-title">Audit Active Sessions & Connected Apps</div>
-                    </div>
-                    <p class="step-body">
-                        Periodically review active login sessions, third-party app permissions, and recovery options. 
-                        Revoke access for unused devices or unknown applications.
-                    </p>
-                </div>
-                <div class="tip-badge">⚙️ Perform quarterly account checkups</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tab 2: Passphrase Evaluator Tool -->
-    <div id="tab-evaluator" class="tab-content">
-        <div class="evaluator-card">
-            <div class="section-header">
-                <h2>Passphrase Strength Evaluator</h2>
-                <p>Test the length and complexity of passphrases locally in your browser. No input is ever stored or
-                    transmitted.</p>
-            </div>
-
-            <div class="evaluator-grid">
-                <div>
-                    <div class="input-group">
-                        <label for="passInput">Test a sample passphrase:</label>
-                        <div class="input-wrapper">
-                            <input type="password" id="passInput" placeholder="e.g. Solar-Falcon-92-Breeze!"
-                                oninput="evaluatePassword()">
-                            <button class="toggle-btn" onclick="togglePassVisibility()" id="toggleBtn"
-                                type="button">👁️</button>
-                        </div>
-                    </div>
-
-                    <div class="strength-meter">
-                        <div class="meter-bar" id="meterBar"></div>
-                    </div>
-                    <div class="strength-label">
-                        <span>Strength:</span>
-                        <span id="strengthText" style="color: var(--text-light);">Type to test...</span>
-                    </div>
-                </div>
-
-                <div class="eval-results">
-                    <div class="result-item">
-                        <span>Character Length:</span>
-                        <span id="charCount">0 characters</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Contains Uppercase & Lowercase:</span>
-                        <span id="hasCases">❌ No</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Contains Numbers / Symbols:</span>
-                        <span id="hasSymbols">❌ No</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Estimated Brute-force Time:</span>
-                        <span id="crackTime" style="color: var(--blue);">Instant</span>
-                    </div>
-                    <div class="result-item" style="border-top: 1px dashed #cbd5e1; padding-top: 8px;">
-                        <span>Data Breach Check (HIBP):</span>
-                        <span id="breachStatus" style="color: var(--text-light); font-weight: 600;">⚪ Type to check</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="breach-privacy-note" style="margin-top: 24px; padding: 12px 16px; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px;">
-                <span>🔒 <strong>100% Private Breach Check:</strong> Uses <em>k-Anonymity</em> (SHA-1 prefix matching via Have I Been Pwned). Your actual passphrase or full hash is <strong>never</strong> transmitted over the network.</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tab 3: Security Readiness Checklist -->
-    <div id="tab-checklist" class="tab-content">
-        <div class="checklist-card">
-            <div class="section-header">
-                <h2>Personal Account Readiness Audit</h2>
-                <p>Check off the items that apply to your current work setup to see your security score.</p>
-            </div>
-
-            <div class="checklist-items">
-                <label class="check-item">
-                    <input type="checkbox" class="audit-check" onchange="updateChecklistScore()">
-                    <span class="check-text">My primary work accounts use passphrases that are at least 16 characters
-                        long.</span>
-                </label>
-                <label class="check-item">
-                    <input type="checkbox" class="audit-check" onchange="updateChecklistScore()">
-                    <span class="check-text">I have Multi-Factor Authentication (MFA) enabled on all work and email
-                        accounts.</span>
-                </label>
-                <label class="check-item">
-                    <input type="checkbox" class="audit-check" onchange="updateChecklistScore()">
-                    <span class="check-text">I never reuse work passwords for personal social media, banking, or
-                        shopping accounts.</span>
-                </label>
-                <label class="check-item">
-                    <input type="checkbox" class="audit-check" onchange="updateChecklistScore()">
-                    <span class="check-text">I use an enterprise password manager to store logins safely.</span>
-                </label>
-                <label class="check-item">
-                    <input type="checkbox" class="audit-check" onchange="updateChecklistScore()">
-                    <span class="check-text">I lock my laptop screen every time I step away from my work station.</span>
-                </label>
-                <label class="check-item">
-                    <input type="checkbox" class="audit-check" onchange="updateChecklistScore()">
-                    <span class="check-text">I verify sender email addresses and link destinations before clicking
-                        unexpected attachments.</span>
-                </label>
-                <label class="check-item">
-                    <input type="checkbox" class="audit-check" onchange="updateChecklistScore()">
-                    <span class="check-text">I know how to report suspicious emails or potential security incidents to
-                        IT Security.</span>
-                </label>
-            </div>
-
-            <div class="score-box">
-                <div>
-                    <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">Security Readiness Score
-                    </div>
-                    <div style="font-size: 0.85rem; color: var(--text-light);" id="scoreStatus">Complete all 7 items to
-                        achieve 100% compliance.</div>
-                </div>
-                <div class="score-val" id="scoreValue">0%</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tab 4: Quick & Easy Security Checkup -->
-    <div id="tab-checkup" class="tab-content">
-        <div class="checkup-card">
-            <div class="section-header">
-                <h2>Quick & Easy Security Checkup</h2>
-                <p>Instantly audit and update your security settings on official platform security dashboards.</p>
-            </div>
-
-            <div class="checkup-grid">
-                <!-- Google Account Check Up -->
-                <a href="https://myaccount.google.com/security-checkup" target="_blank" rel="noopener noreferrer"
-                    class="checkup-link-card google">
-                    <div>
-                        <div class="checkup-brand">
-                            <div class="brand-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#4285F4"
-                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                                    <path fill="#34A853"
-                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                                    <path fill="#FBBC05"
-                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                                    <path fill="#EA4335"
-                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-                                </svg>
-                            </div>
-                            <span
-                                style="font-size: 0.85rem; font-weight: 700; color: #5f6368; text-transform: uppercase; letter-spacing: 0.5px;">Google
-                                Security</span>
-                        </div>
-                        <div class="checkup-title">
-                            Google Account Check Up <span>→</span>
-                        </div>
-                        <p class="checkup-desc">
-                            Perform an instant security audit of your Google account. Review signed-in devices, recent
-                            security events, 2-Step Verification status, and third-party app permissions.
-                        </p>
-                    </div>
-                    <div class="checkup-btn">
-                        Google Account Check Up <span>→</span>
-                    </div>
-                </a>
-
-                <!-- Microsoft Security Info -->
-                <a href="https://mysignins.microsoft.com/security-info" target="_blank" rel="noopener noreferrer"
-                    class="checkup-link-card microsoft">
-                    <div>
-                        <div class="checkup-brand">
-                            <div class="brand-icon">
-                                <svg width="24" height="24" viewBox="0 0 23 23">
-                                    <path fill="#F25022" d="M1 1h10v10H1z" />
-                                    <path fill="#7FBA00" d="M12 1h10v10H12z" />
-                                    <path fill="#00A4EF" d="M1 12h10v10H1z" />
-                                    <path fill="#FFB900" d="M12 12h10v10H12z" />
-                                </svg>
-                            </div>
-                            <span
-                                style="font-size: 0.85rem; font-weight: 700; color: #5f6368; text-transform: uppercase; letter-spacing: 0.5px;">Microsoft
-                                Security</span>
-                        </div>
-                        <div class="checkup-title">
-                            Microsoft Security Info <span>→</span>
-                        </div>
-                        <p class="checkup-desc">
-                            Manage your Microsoft work and personal security settings. Update MFA authentication
-                            methods, password resets, active sign-in sessions, and trusted devices.
-                        </p>
-                    </div>
-                    <div class="checkup-btn">
-                        Microsoft Security Info <span>→</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Corporate Site Footer matching provided footer image -->
-    <style>
+        /* Footer Container */
         .midas-footer-container {
             width: 100%;
             background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
             border-radius: 16px;
             border: 1px solid #1e293b;
             padding: 28px 36px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             color: #ffffff;
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin-top: 40px;
+            box-sizing: border-box;
         }
 
         .footer-main-flex {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 32px;
+            gap: 24px;
             flex-wrap: wrap;
         }
 
-        /* Left Brand Section */
         .footer-left-brand {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            min-width: 300px;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
         }
 
         .brand-top-row {
@@ -1481,8 +612,8 @@
         }
 
         .footer-logo-svg {
-            width: 72px;
-            height: 72px;
+            width: 64px;
+            height: 64px;
             flex-shrink: 0;
         }
 
@@ -1493,14 +624,14 @@
         }
 
         .brand-title-main {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 800;
             letter-spacing: 0.5px;
             color: #ffffff;
         }
 
         .brand-title-sub {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 800;
             letter-spacing: 0.5px;
             color: #f59e0b;
@@ -1511,7 +642,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: #cbd5e1;
             margin-top: 6px;
@@ -1519,7 +650,7 @@
 
         .tagline-line {
             height: 2px;
-            width: 24px;
+            width: 20px;
             background-color: #f59e0b;
         }
 
@@ -1530,7 +661,7 @@
             background-color: #e11d48;
             color: #ffffff;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             padding: 8px 24px;
             border-radius: 6px;
             text-decoration: none;
@@ -1544,20 +675,19 @@
             transform: translateY(-1px);
         }
 
-        /* Center SOC Help Card */
         .soc-card {
             background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
             border: 1px solid #1e3a5f;
             border-radius: 14px;
-            padding: 20px 28px;
+            padding: 18px 24px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
             position: relative;
             overflow: hidden;
-            flex: 1.2;
-            min-width: 320px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 20px rgba(0,0,0,0.3);
+            flex: 1.3;
+            min-width: 280px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .soc-card::before {
@@ -1572,8 +702,8 @@
         }
 
         .soc-icon-circle {
-            width: 60px;
-            height: 60px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background: #040c1a;
             border: 1px solid #1e3a5f;
@@ -1590,13 +720,13 @@
         }
 
         .soc-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #ffffff;
         }
 
         .soc-subtext {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: #94a3b8;
         }
 
@@ -1612,35 +742,32 @@
             text-decoration: underline;
         }
 
-        /* Right Action Items */
         .footer-actions-grid {
             display: flex;
             align-items: center;
-            gap: 16px;
-        }
-
-        .action-item-wrap {
-            display: flex;
-            align-items: center;
-            gap: 16px;
+            justify-content: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 280px;
         }
 
         .action-item-divider {
             width: 1px;
-            height: 48px;
+            height: 40px;
             background-color: #1e293b;
+            flex-shrink: 0;
         }
 
         .action-btn-circle {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             text-decoration: none;
             color: #cbd5e1;
             cursor: pointer;
             transition: transform 0.2s ease, color 0.2s ease;
-            width: 76px;
+            width: 72px;
             text-align: center;
         }
 
@@ -1650,8 +777,8 @@
         }
 
         .circle-icon {
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             border: 1px solid #334155;
             background: #040c1a;
@@ -1667,25 +794,421 @@
         }
 
         .action-label {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             line-height: 1.2;
         }
-    </style>
 
+        @media (max-width: 960px) {
+            .midas-footer-container {
+                padding: 24px 20px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .footer-left-brand {
+                align-items: center;
+                min-width: 100%;
+            }
+
+            .brand-top-row {
+                justify-content: center;
+            }
+
+            .soc-card {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .soc-content {
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-actions-grid {
+                width: 100%;
+                justify-content: center;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .action-item-divider {
+                display: none;
+            }
+
+            .hero-banner {
+                padding: 32px 24px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-stats-row {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Site Header -->
+    <div class="midas-header-container">
+        <div class="header-top-banner">
+            <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none">
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4"/>
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3"/>
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8"/>
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8"/>
+                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7"/>
+            </svg>
+
+            <div class="header-brand">
+                <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+                    <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
+                    <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF"/>
+                    <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                    <circle cx="49" cy="90" r="5.5" fill="#FFFFFF"/>
+                    <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF"/>
+                    <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF"/>
+                    <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B"/>
+                </svg>
+                <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="header-navbar">
+            <div class="header-nav-links">
+                <div class="header-nav-item">
+                    <a href="index.html" class="header-nav-link active">Home Directory</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <button class="header-nav-link" type="button">
+                        Topics 
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="header-dropdown-link">📱 Device Security</a>
+                        <a href="#topics" class="header-dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
+                        <a href="#topics" class="header-dropdown-link">🎣 Phishing & Email Protection</a>
+                        <a href="#topics" class="header-dropdown-link">🌐 Safe Web Browsing & Wi-Fi</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html#tab-checklist" class="header-nav-link">Policies</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="account-password-security.html#tab-checkup" class="header-nav-link">News & Alerts</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link" style="color: #38bdf8;">Report Incident</a>
+                </div>
+            </div>
+
+            <div class="header-actions-right">
+                <button class="header-action-btn" onclick="alert('Site Access: Active Employee Portal.')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Employee Access
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Portal Directory Banner -->
+    <div class="hero-banner">
+        <div class="hero-text">
+            <div class="hero-badge">
+                <span>🛡️ Central Security Knowledge Hub</span>
+            </div>
+            <h1 class="hero-title">Cyber Awareness & Training Directory</h1>
+            <p class="hero-description">
+                Explore interactive cybersecurity training modules, essential workplace defense guides, and real-time security tools designed to keep Midas Safety personnel and corporate assets safe.
+            </p>
+            <div class="hero-stats-row">
+                <div class="hero-stat-item">
+                    <span class="stat-num">11</span>
+                    <span class="stat-label">Security<br>Topics</span>
+                </div>
+                <div class="hero-stat-item">
+                    <span class="stat-num">2</span>
+                    <span class="stat-label">Active Live<br>Modules</span>
+                </div>
+                <div class="hero-stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Employee<br>Protection</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Header & Filter -->
+    <div id="topics" class="section-header-wrap">
+        <div>
+            <h2 class="section-header-title">
+                <span>📚</span> Security Awareness Modules
+            </h2>
+            <p class="section-header-subtitle">Select a topic below to open its dedicated interactive guide and tools.</p>
+        </div>
+
+        <div class="filter-input-wrap">
+            <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="topicSearch" class="filter-input" placeholder="Search security topics..." onkeyup="filterTopics()">
+        </div>
+    </div>
+
+    <!-- Topics Grid (11 Modules) -->
+    <div class="topics-grid" id="topicsContainer">
+
+        <!-- Topic 1: Account & Password Security -->
+        <div class="topic-card active-module" data-title="Account & Password Security passphrase pwned breach mfa">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box gold">🔑</div>
+                    <span class="status-tag active">● Live Module</span>
+                </div>
+                <h3 class="card-title">Account & Password Security</h3>
+                <p class="card-desc">
+                    Interactive 9-step account safety guide, real-time passphrase strength evaluator, HIBP data breach check, and readiness checklist.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <a href="account-password-security.html" class="action-btn-primary">
+                    Open Guide ➔
+                </a>
+            </div>
+        </div>
+
+        <!-- Topic 2: Device Security Guide -->
+        <div class="topic-card active-module" data-title="Device Security Windows Android iOS PC Mobile Laptop">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box blue">📱</div>
+                    <span class="status-tag active">● Live Module</span>
+                </div>
+                <h3 class="card-title">Device Security Guide</h3>
+                <p class="card-desc">
+                    Comprehensive hardening guides for Windows laptops, Android smartphones, and iOS Apple devices with golden security rules.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <a href="device-security.html" class="action-btn-primary">
+                    Open Guide ➔
+                </a>
+            </div>
+        </div>
+
+        <!-- Topic 3: Multi-Factor Authentication -->
+        <div class="topic-card coming-soon" data-title="Multi-Factor Authentication MFA Authenticator OTP">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box purple">🛡️</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Multi-Factor Authentication (MFA)</h3>
+                <p class="card-desc">
+                    Microsoft Authenticator setup, anti-MFA fatigue prompts, hardware security keys, and emergency backup codes.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+        <!-- Topic 4: Phishing & Email Protection -->
+        <div class="topic-card coming-soon" data-title="Phishing Email Protection Spear Phishing Scam Link">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box blue">🎣</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Phishing & Email Protection</h3>
+                <p class="card-desc">
+                    Spotting deceptive email headers, fake domain links, CEO fraud impersonation, and reporting suspicious emails.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+        <!-- Topic 5: Safe Web Browsing & Wi-Fi -->
+        <div class="topic-card coming-soon" data-title="Web Browsing Wi-Fi VPN HTTPS Browser Extensions">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box green">🌐</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Safe Web Browsing & Wi-Fi</h3>
+                <p class="card-desc">
+                    HTTPS verification, public Wi-Fi risks, corporate VPN usage, malicious browser extension safety, and popup protection.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+        <!-- Topic 6: Data Protection & Privacy -->
+        <div class="topic-card coming-soon" data-title="Data Protection Privacy Confidential Classification Clean Desk">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box gold">💾</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Data Protection & Privacy</h3>
+                <p class="card-desc">
+                    Handling confidential files, corporate data classification rules, clean desk guidelines, and secure document shredding.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+        <!-- Topic 7: Social Engineering Awareness -->
+        <div class="topic-card coming-soon" data-title="Social Engineering Pretexting Impersonation Tailgating Vishing">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box purple">👥</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Social Engineering Awareness</h3>
+                <p class="card-desc">
+                    Defending against pretexting, phone vishing scams, tailgating into facilities, and urgent psychological manipulation.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+        <!-- Topic 8: Incident Reporting & Response -->
+        <div class="topic-card coming-soon" data-title="Incident Reporting Response SOC Emergency Escalation Breach">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box blue">🚀</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Incident Reporting & Response</h3>
+                <p class="card-desc">
+                    Fast-action steps when a breach occurs, SOC emergency hotline contacts, and containment procedures.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+        <!-- Topic 9: Cloud & SaaS Security -->
+        <div class="topic-card coming-soon" data-title="Cloud SaaS Security SharePoint Teams OneDrive Sync">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box green">☁️</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Cloud & SaaS Security</h3>
+                <p class="card-desc">
+                    SharePoint external sharing permissions, Microsoft Teams link safety, OneDrive file sync, and cloud access control.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+        <!-- Topic 10: Removable Media & Hardware -->
+        <div class="topic-card coming-soon" data-title="Removable Media USB Flash Drive Hardware Peripheral AutoRun">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box gold">🔌</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Removable Media & Hardware</h3>
+                <p class="card-desc">
+                    USB drive malware risks, unauthorized external hardware peripherals, auto-run infection prevention, and media wiping.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+        <!-- Topic 11: Physical & Workplace Security -->
+        <div class="topic-card coming-soon" data-title="Physical Workplace Security Badge Visitor Screen Filter Desk">
+            <div>
+                <div class="card-top-row">
+                    <div class="topic-icon-box purple">🏢</div>
+                    <span class="status-tag planned">In Development</span>
+                </div>
+                <h3 class="card-title">Physical & Workplace Security</h3>
+                <p class="card-desc">
+                    ID badge enforcement, visitor escort requirements, privacy screen filters, and locking physical file cabinets.
+                </p>
+            </div>
+            <div class="card-footer-action">
+                <span class="action-btn-disabled">Coming Soon</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Quick Tools & Resources Bar -->
+    <div class="quick-tools-section">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">⚡ Quick Security Tools & Contacts</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Access live security utilities and contact the Midas SOC team directly.</p>
+
+        <div class="quick-tools-grid">
+            <a href="account-password-security.html#tab-evaluator" class="tool-card">
+                <div class="tool-icon">⚡</div>
+                <div class="tool-info">
+                    <h4>Passphrase Evaluator</h4>
+                    <p>Test passphrase strength and check HIBP breach exposure locally.</p>
+                </div>
+            </a>
+
+            <a href="device-security.html" class="tool-card">
+                <div class="tool-icon">📱</div>
+                <div class="tool-info">
+                    <h4>Device Security Checklist</h4>
+                    <p>Review step-by-step lock rules for Win, Android, and iOS.</p>
+                </div>
+            </a>
+
+            <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="tool-card">
+                <div class="tool-icon">🚨</div>
+                <div class="tool-info">
+                    <h4>Report Security Incident</h4>
+                    <p>Send an immediate alert to the Security Operations Center.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="midas-footer-container">
         <div class="footer-main-flex">
-            <!-- Left Section: Logo, Title & Contact Button -->
             <div class="footer-left-brand">
                 <div class="brand-top-row">
-                    <!-- SVG Official Logo -->
                     <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
                         <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF"/>
                         <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF"/>
                         <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
                         <circle cx="50" cy="88" r="5" fill="#FFFFFF"/>
-                        <!-- M-Shield -->
                         <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF"/>
                         <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF"/>
                         <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B"/>
@@ -1705,7 +1228,6 @@
                 <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
             </div>
 
-            <!-- Center Section: SOC Help Card -->
             <div class="soc-card">
                 <div class="soc-icon-circle">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1716,13 +1238,12 @@
                 <div class="soc-content">
                     <div class="soc-title">Need help or want to report something?</div>
                     <div class="soc-subtext">
-                        Contact our Security Operations Center (SOC) at 
+                        Contact our Security Operations Center (SOC) at
                         <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Section: 4 Action Item Buttons -->
             <div class="footer-actions-grid">
                 <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
                     <div class="circle-icon">
@@ -1736,7 +1257,7 @@
 
                 <div class="action-item-divider"></div>
 
-                <a href="#tab-steps" onclick="switchTab('steps')" class="action-btn-circle">
+                <a href="account-password-security.html#tab-steps" class="action-btn-circle">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
@@ -1748,7 +1269,7 @@
 
                 <div class="action-item-divider"></div>
 
-                <a href="#tab-checkup" onclick="switchTab('checkup')" class="action-btn-circle">
+                <a href="account-password-security.html#tab-checkup" class="action-btn-circle">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
@@ -1760,7 +1281,7 @@
 
                 <div class="action-item-divider"></div>
 
-                <a href="#tab-checklist" onclick="switchTab('checklist')" class="action-btn-circle">
+                <a href="account-password-security.html#tab-checklist" class="action-btn-circle">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -1775,206 +1296,22 @@
         </div>
     </footer>
 
+    <!-- Topic Search Filter Script -->
     <script>
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        function filterTopics() {
+            const query = document.getElementById('topicSearch').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.topic-card');
 
-            event.currentTarget.classList.add('active');
-            document.getElementById('tab-' + tabId).classList.add('active');
-        }
-
-        function togglePassVisibility() {
-            const input = document.getElementById('passInput');
-            const btn = document.getElementById('toggleBtn');
-            if (input.type === 'password') {
-                input.type = 'text';
-                btn.textContent = '🔒';
-            } else {
-                input.type = 'password';
-                btn.textContent = '👁️';
-            }
-        }
-
-        let breachTimeout = null;
-
-        async function sha1Hex(str) {
-            const buffer = new TextEncoder().encode(str);
-            const hashBuffer = await crypto.subtle.digest('SHA-1', buffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
-        }
-
-        async function checkBreachExposure(val) {
-            const breachEl = document.getElementById('breachStatus');
-            if (!val || val.length === 0) {
-                if (breachEl) {
-                    breachEl.innerHTML = '⚪ Type to check';
-                    breachEl.style.color = 'var(--text-light)';
-                }
-                return;
-            }
-
-            if (breachEl) {
-                breachEl.innerHTML = '⏳ Checking breach database...';
-                breachEl.style.color = 'var(--blue)';
-            }
-
-            try {
-                const hash = await sha1Hex(val);
-                const prefix = hash.slice(0, 5);
-                const suffix = hash.slice(5);
-
-                const response = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`);
-                if (!response.ok) {
-                    throw new Error('API response status ' + response.status);
-                }
-                const text = await response.text();
-
-                // Ensure input hasn't changed while awaiting fetch
-                if (document.getElementById('passInput').value !== val) {
-                    return;
-                }
-
-                const lines = text.split('\n');
-                let count = 0;
-                let found = false;
-
-                for (const line of lines) {
-                    const parts = line.trim().split(':');
-                    if (parts[0] === suffix) {
-                        found = true;
-                        count = parseInt(parts[1], 10);
-                        break;
-                    }
-                }
-
-                if (!breachEl) return;
-
-                if (found) {
-                    breachEl.innerHTML = `🚨 <strong>EXPOSED</strong> (${count.toLocaleString()} breaches)`;
-                    breachEl.style.color = '#ef4444';
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'flex';
                 } else {
-                    breachEl.innerHTML = '🛡️ <strong>Safe</strong> (Not in known breaches)';
-                    breachEl.style.color = '#10b981';
+                    card.style.display = 'none';
                 }
-            } catch (err) {
-                console.warn('Breach check error:', err);
-                if (breachEl && document.getElementById('passInput').value === val) {
-                    breachEl.innerHTML = '⚠️ <em>Unable to check (Offline/Network)</em>';
-                    breachEl.style.color = 'var(--text-muted)';
-                }
-            }
-        }
-
-        function evaluatePassword() {
-            const val = document.getElementById('passInput').value;
-            const len = val.length;
-            const hasUpper = /[A-Z]/.test(val);
-            const hasLower = /[a-z]/.test(val);
-            const hasNum = /[0-9]/.test(val);
-            const hasSym = /[^A-Za-z0-9]/.test(val);
-
-            document.getElementById('charCount').textContent = len + ' characters';
-            document.getElementById('hasCases').innerHTML = (hasUpper && hasLower) ? '✅ Yes' : '❌ Needs both upper & lower';
-            document.getElementById('hasSymbols').innerHTML = (hasNum || hasSym) ? '✅ Yes' : '❌ Add numbers or symbols';
-
-            const bar = document.getElementById('meterBar');
-            const txt = document.getElementById('strengthText');
-            const crack = document.getElementById('crackTime');
-            const breachEl = document.getElementById('breachStatus');
-
-            if (breachTimeout) clearTimeout(breachTimeout);
-
-            if (len === 0) {
-                bar.style.width = '0%';
-                txt.textContent = 'Type to test...';
-                txt.style.color = 'var(--text-light)';
-                crack.textContent = 'Instant';
-                if (breachEl) {
-                    breachEl.innerHTML = '⚪ Type to check';
-                    breachEl.style.color = 'var(--text-light)';
-                }
-                return;
-            }
-
-            let score = 0;
-            if (len >= 8) score += 20;
-            if (len >= 12) score += 25;
-            if (len >= 16) score += 25;
-            if (hasUpper && hasLower) score += 15;
-            if (hasNum || hasSym) score += 15;
-
-            if (score <= 30) {
-                bar.style.width = '25%';
-                bar.style.backgroundColor = '#ef4444';
-                txt.textContent = 'Weak';
-                txt.style.color = '#ef4444';
-                crack.textContent = len < 8 ? 'Instant' : 'Few minutes';
-            } else if (score <= 70) {
-                bar.style.width = '60%';
-                bar.style.backgroundColor = '#f59e0b';
-                txt.textContent = 'Moderate';
-                txt.style.color = '#f59e0b';
-                crack.textContent = 'Several months';
-            } else {
-                bar.style.width = '100%';
-                bar.style.backgroundColor = '#10b981';
-                txt.textContent = 'Strong & Secure!';
-                txt.style.color = '#10b981';
-                crack.textContent = 'Centuries / Uncrackable';
-            }
-
-            if (breachEl) {
-                breachEl.innerHTML = '⏳ Waiting for input...';
-                breachEl.style.color = 'var(--text-muted)';
-            }
-            breachTimeout = setTimeout(() => {
-                checkBreachExposure(val);
-            }, 450);
-        }
-
-        function updateChecklistScore() {
-            const checks = document.querySelectorAll('.audit-check');
-            let checkedCount = 0;
-            checks.forEach(c => { if (c.checked) checkedCount++; });
-
-            const percentage = Math.round((checkedCount / checks.length) * 100);
-            document.getElementById('scoreValue').textContent = percentage + '%';
-
-            const status = document.getElementById('scoreStatus');
-            if (percentage === 100) {
-                status.textContent = '🎉 Excellent! You adhere to all key security best practices.';
-                status.style.color = '#10b981';
-            } else if (percentage >= 50) {
-                status.textContent = 'Good progress! Check remaining items for full security readiness.';
-                status.style.color = 'var(--blue)';
-            } else {
-                status.textContent = 'Complete all 7 items to achieve 100% compliance.';
-                status.style.color = 'var(--text-light)';
-            }
-        }
-
-        function copyGuidelines() {
-            const text = `Account & Password Security 9-Step Checklist:\n` +
-                `1. Use strong 16+ character passphrases.\n` +
-                `2. Enable Multi-Factor Authentication (MFA).\n` +
-                `3. Never share login credentials or codes.\n` +
-                `4. Store passphrases in an approved password manager.\n` +
-                `5. Inspect links & watch out for phishing emails.\n` +
-                `6. Lock your screen (Win + L) when away from desk.\n` +
-                `7. Report security incidents immediately to IT Support.\n` +
-                `8. Keep OS, software & browsers updated with patches.\n` +
-                `9. Periodically audit active sessions & app permissions.`;
-
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Account & Password Security 9-Step summary copied to clipboard!');
-            }).catch(() => {
-                alert('Summary:\n' + text);
             });
         }
     </script>
-    <script src="js/components.js"></script>
 </body>
 
 </html>
