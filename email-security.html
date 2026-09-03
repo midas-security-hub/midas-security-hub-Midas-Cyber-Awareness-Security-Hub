@@ -1097,6 +1097,7 @@
             margin-top: 36px;
             margin-bottom: 36px;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .verifier-full-card {
@@ -1109,6 +1110,9 @@
             grid-template-columns: 1.1fr 1fr;
             gap: 36px;
             align-items: start;
+            box-sizing: border-box;
+            width: 100%;
+            overflow: hidden;
         }
 
         .verifier-brand-row {
@@ -1159,15 +1163,22 @@
 
         .verifier-input-wrapper {
             margin-bottom: 16px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .verifier-input-group {
             display: flex;
             gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            align-items: center;
         }
 
         .verifier-email-input {
-            flex: 1;
+            flex: 1 1 auto;
+            min-width: 0;
+            width: 100%;
             padding: 14px 16px;
             border: 2px solid var(--border);
             border-radius: 8px;
@@ -1175,6 +1186,7 @@
             outline: none;
             transition: border-color 0.2s ease;
             font-family: inherit;
+            box-sizing: border-box;
         }
 
         .verifier-email-input:focus {
@@ -1182,6 +1194,7 @@
         }
 
         .verifier-check-btn {
+            flex: 0 0 auto;
             background: var(--blue);
             color: #ffffff;
             font-weight: 700;
@@ -1192,6 +1205,7 @@
             cursor: pointer;
             transition: background 0.2s ease;
             white-space: nowrap;
+            box-sizing: border-box;
         }
 
         .verifier-check-btn:hover {
@@ -1208,8 +1222,26 @@
             border: 1px solid #e2e8f0;
         }
 
+        /* Sidebar/Standalone Card Verifier Layout Fix */
+        .email-verifier-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-sizing: border-box;
+            width: 100%;
+            overflow: hidden;
+        }
+
         .verifier-right-panel {
             height: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .verifier-placeholder-state {
@@ -1224,6 +1256,7 @@
             justify-content: center;
             gap: 10px;
             min-height: 240px;
+            box-sizing: border-box;
         }
 
         .placeholder-icon {
@@ -1249,6 +1282,8 @@
             padding: 24px;
             font-size: 0.9rem;
             line-height: 1.6;
+            box-sizing: border-box;
+            width: 100%;
         }
 
         .verifier-result-box.loading {
@@ -1309,6 +1344,23 @@
         .hibp-direct-btn:hover {
             background: #1e293b;
             color: #7dd3fc;
+        }
+
+        @media (max-width: 992px) {
+            .verifier-full-card {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .verifier-input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .verifier-check-btn {
+                width: 100%;
+            }
         }
 
         @media (max-width: 992px) {
@@ -1790,7 +1842,7 @@
                 </div>
 
                 <div class="verifier-trust-footer">
-                    🔒 <strong>100% Secure & Private:</strong> Your email query is encrypted over TLS to check breach databases. We never store or log your queries.
+                    🔒 <strong>Powered by Have I Been Pwned (HIBP) API data:</strong> Your query is encrypted over TLS to check global breach databases. We never store or log your queries.
                 </div>
             </div>
 
