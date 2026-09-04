@@ -1219,7 +1219,7 @@
                 </div>
 
                 <div class="header-nav-item">
-                    <a href="#router" class="header-nav-link">Home Router Checklist</a>
+                    <a href="#vpn-visualizer" class="header-nav-link">VPN Visualizer</a>
                 </div>
 
                 <div class="header-nav-item">
@@ -1240,7 +1240,7 @@
             <div class="banner-badge">🌐 Network & Telework Defense</div>
             <h1 class="banner-title">Remote & Wi-Fi Security Guide</h1>
             <p class="banner-subtitle">
-                Safeguard corporate communications, secure home routers, and encrypt public wireless connections when working remotely across airports, hotels, and cafes worldwide.
+                Safeguard corporate communications, secure wireless connections, and encrypt public networks when working remotely across airports, hotels, and cafes worldwide.
             </p>
         </div>
         <div class="banner-illustration">
@@ -1261,9 +1261,7 @@
         <div class="jump-buttons">
             <a href="#simulator" class="jump-btn">📶 Interactive Wi-Fi Simulator</a>
             <a href="#vpn-visualizer" class="jump-btn">🔒 Corporate VPN vs Public Wi-Fi</a>
-            <a href="#router" class="jump-btn">🏠 Home Router Audit</a>
             <a href="#rules" class="jump-btn">🛡️ 6 Golden Security Rules</a>
-            <a href="#quiz" class="jump-btn">🏆 Remote Scenario Quiz</a>
         </div>
     </div>
 
@@ -1413,93 +1411,7 @@
         </div>
     </div>
 
-    <!-- Section 3: Home Router Hardening Checklist -->
-    <div id="router" class="section-wrapper">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">
-                    <span>🏠</span> Home Router Security Hardening Audit
-                </h2>
-                <p class="section-desc">Check off each security step to audit your home Wi-Fi network against unauthorized intruders.</p>
-            </div>
-        </div>
 
-        <div class="checklist-card">
-            <div class="progress-bar-container">
-                <div class="progress-header">
-                    <span>Home Router Audit Progress</span>
-                    <span id="progressText">0 of 7 Completed (0%)</span>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-            </div>
-
-            <div class="checklist-items">
-                <label class="check-item" onclick="updateChecklist()">
-                    <input type="checkbox" class="check-input">
-                    <div class="check-content">
-                        <h4>1. Change Default Admin Credentials</h4>
-                        <p>Replace factory default passwords like "admin / admin" or "admin / password" with a strong 14+ character passphrase.</p>
-                    </div>
-                </label>
-
-                <label class="check-item" onclick="updateChecklist()">
-                    <input type="checkbox" class="check-input">
-                    <div class="check-content">
-                        <h4>2. Enable WPA3 or WPA2-AES Encryption</h4>
-                        <p>Configure wireless security to WPA3-Personal or WPA2-AES. Never use legacy WEP or WPA-TKIP mode.</p>
-                    </div>
-                </label>
-
-                <label class="check-item" onclick="updateChecklist()">
-                    <input type="checkbox" class="check-input">
-                    <div class="check-content">
-                        <h4>3. Update Router Firmware</h4>
-                        <p>Check for available router firmware updates to patch known security vulnerabilities and exploits.</p>
-                    </div>
-                </label>
-
-                <label class="check-item" onclick="updateChecklist()">
-                    <input type="checkbox" class="check-input">
-                    <div class="check-content">
-                        <h4>4. Disable WPS (Wi-Fi Protected Setup)</h4>
-                        <p>Turn off WPS PIN authentication, as WPS can be brute-forced by attackers within hours.</p>
-                    </div>
-                </label>
-
-                <label class="check-item" onclick="updateChecklist()">
-                    <input type="checkbox" class="check-input">
-                    <div class="check-content">
-                        <h4>5. Create an Isolated Guest Wi-Fi Network</h4>
-                        <p>Set up a separate Guest SSID for smart home appliances (IoT cameras, TVs) so corporate devices remain isolated.</p>
-                    </div>
-                </label>
-
-                <label class="check-item" onclick="updateChecklist()">
-                    <input type="checkbox" class="check-input">
-                    <div class="check-content">
-                        <h4>6. Change Default Network Name (SSID)</h4>
-                        <p>Rename your Wi-Fi network to a generic name that does not reveal the router brand or your family identity.</p>
-                    </div>
-                </label>
-
-                <label class="check-item" onclick="updateChecklist()">
-                    <input type="checkbox" class="check-input">
-                    <div class="check-content">
-                        <h4>7. Disable Remote Management & UPnP</h4>
-                        <p>Prevent WAN access to your router management console and disable Universal Plug and Play (UPnP).</p>
-                    </div>
-                </label>
-            </div>
-
-            <div class="badge-unlock-box" id="badgeBox">
-                <div style="font-size: 2.5rem; margin-bottom: 8px;">🏆</div>
-                <h3 style="color: #065f46; font-size: 1.3rem; font-weight: 800;">Home Network Hardening Complete!</h3>
-                <p style="color: #047857; font-size: 0.95rem; margin-top: 4px;">Your home Wi-Fi network is fully fortified against unauthorized intruders and external cyber threats.</p>
-            </div>
-        </div>
-    </div>
 
     <!-- Section 4: 6 Golden Rules of Remote Work -->
     <div id="rules" class="section-wrapper">
@@ -1563,49 +1475,7 @@
         </div>
     </div>
 
-    <!-- Section 5: Remote Work Scenario Quiz -->
-    <div id="quiz" class="section-wrapper">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">
-                    <span>🏆</span> Remote Work Security Challenge
-                </h2>
-                <p class="section-desc">Test your understanding of remote network security scenarios to earn your digital badge.</p>
-            </div>
-        </div>
 
-        <div class="quiz-card" id="quizBox">
-            <div class="quiz-question-box">
-                <div class="q-number" id="qNumber">Question 1 of 4</div>
-                <h3 class="q-text" id="qText">You are at an airport cafe and need to upload an urgent Midas document. The cafe offers free unencrypted Wi-Fi. What is your best course of action?</h3>
-            </div>
-
-            <div class="quiz-options" id="quizOptions">
-                <button class="opt-btn" onclick="checkAnswer(0)">A. Connect to cafe Wi-Fi directly and upload the file quickly.</button>
-                <button class="opt-btn" onclick="checkAnswer(1)">B. Turn on your Midas Corporate VPN first, or use your personal mobile hotspot.</button>
-                <button class="opt-btn" onclick="checkAnswer(2)">C. Disable your firewall to increase upload speed on public Wi-Fi.</button>
-            </div>
-
-            <div class="quiz-feedback" id="quizFeedback"></div>
-
-            <div class="quiz-nav-row">
-                <span style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;" id="quizScoreTracker">Score: 0 / 4</span>
-                <button class="next-q-btn" id="btnNextQ" onclick="nextQuestion()" style="display: none;">Next Question ➔</button>
-            </div>
-        </div>
-
-        <!-- Certificate Card -->
-        <div class="cert-result-card" id="certCard">
-            <div style="font-size: 3rem; margin-bottom: 12px;">🛡️</div>
-            <h2 style="font-size: 1.8rem; font-weight: 800; color: #ffffff;">Remote Security Specialist Certified!</h2>
-            <p style="color: #94a3b8; font-size: 1rem; margin-top: 8px; max-width: 540px; margin-left: auto; margin-right: auto;">
-                Congratulations! You successfully passed the Remote & Wi-Fi Security Awareness challenge with flying colors.
-            </p>
-            <div style="margin-top: 24px;">
-                <button class="next-q-btn" onclick="resetQuiz()">Retake Quiz 🔄</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Rule Modal -->
     <div class="modal-overlay" id="ruleModal">
@@ -1812,34 +1682,7 @@
             }
         }
 
-        // 3. Home Router Checklist Progress
-        function updateChecklist() {
-            const boxes = document.querySelectorAll('.check-input');
-            let completed = 0;
-
-            boxes.forEach(box => {
-                const parent = box.closest('.check-item');
-                if (box.checked) {
-                    completed++;
-                    parent.classList.add('completed');
-                } else {
-                    parent.classList.remove('completed');
-                }
-            });
-
-            const pct = Math.round((completed / boxes.length) * 100);
-            document.getElementById('progressFill').style.width = pct + '%';
-            document.getElementById('progressText').innerText = completed + ' of ' + boxes.length + ' Completed (' + pct + '%)';
-
-            const badgeBox = document.getElementById('badgeBox');
-            if (completed === boxes.length) {
-                badgeBox.style.display = 'block';
-            } else {
-                badgeBox.style.display = 'none';
-            }
-        }
-
-        // 4. Modal Logic
+        // Modal Logic
         const ruleData = {
             1: {
                 title: 'Corporate VPN Priority',
@@ -1877,129 +1720,6 @@
         function closeRuleModal() {
             document.getElementById('ruleModal').style.display = 'none';
         }
-
-        // 5. Quiz Logic
-        const questions = [
-            {
-                q: "You are at an airport cafe and need to upload an urgent Midas document. The cafe offers free unencrypted Wi-Fi. What is your best course of action?",
-                options: [
-                    "Connect to cafe Wi-Fi directly and upload the file quickly.",
-                    "Turn on your Midas Corporate VPN first, or use your personal mobile hotspot.",
-                    "Disable your firewall to increase upload speed on public Wi-Fi."
-                ],
-                correct: 1,
-                explanation: "Correct! Turning on Midas Corporate VPN or using a personal mobile hotspot ensures your data transfer is encrypted."
-            },
-            {
-                q: "When connecting to public Wi-Fi, a popup prompts you to install a 'Required Browser Certificate Upgrade'. What should you do?",
-                options: [
-                    "Click Install to upgrade browser certificates.",
-                    "Cancel immediately, disconnect from the network, and report suspicious activity.",
-                    "Enter your Windows admin password to approve the certificate."
-                ],
-                correct: 1,
-                explanation: "Correct! Fake certificate prompts are a classic Man-in-the-Middle attack vector used to decrypt HTTPS traffic."
-            },
-            {
-                q: "What is the primary benefit of disabling 'Auto-Connect to Open Wi-Fi' on corporate devices?",
-                options: [
-                    "It saves laptop battery life.",
-                    "It prevents your laptop from automatically connecting to malicious Evil-Twin access points.",
-                    "It increases download speeds automatically."
-                ],
-                correct: 1,
-                explanation: "Correct! Disabling auto-connect prevents your device from connecting to malicious fake Wi-Fi hotspots set up by hackers."
-            },
-            {
-                q: "You need to step away from your laptop in a crowded airport lounge for 2 minutes to grab a coffee. What is mandatory?",
-                options: [
-                    "Leave the laptop open so you don't lose your work session.",
-                    "Ask a stranger sitting nearby to watch your laptop.",
-                    "Lock your screen (Win + L) and take your laptop with you or lock it securely."
-                ],
-                correct: 2,
-                explanation: "Correct! Never leave corporate assets unattended in public environments."
-            }
-        ];
-
-        let currentQ = 0;
-        let score = 0;
-
-        function loadQuestion() {
-            const q = questions[currentQ];
-            document.getElementById('qNumber').innerText = `Question ${currentQ + 1} of ${questions.length}`;
-            document.getElementById('qText').innerText = q.q;
-
-            const optContainer = document.getElementById('quizOptions');
-            optContainer.innerHTML = '';
-
-            q.options.forEach((optText, idx) => {
-                const btn = document.createElement('button');
-                btn.className = 'opt-btn';
-                btn.innerText = optText;
-                btn.onclick = () => checkAnswer(idx);
-                optContainer.appendChild(btn);
-            });
-
-            document.getElementById('quizFeedback').style.display = 'none';
-            document.getElementById('btnNextQ').style.display = 'none';
-        }
-
-        function checkAnswer(selectedIdx) {
-            const q = questions[currentQ];
-            const btns = document.querySelectorAll('.opt-btn');
-            
-            btns.forEach((btn, idx) => {
-                btn.disabled = true;
-                if (idx === q.correct) {
-                    btn.classList.add('correct');
-                } else if (idx === selectedIdx) {
-                    btn.classList.add('wrong');
-                }
-            });
-
-            const feedback = document.getElementById('quizFeedback');
-            feedback.style.display = 'block';
-
-            if (selectedIdx === q.correct) {
-                score++;
-                feedback.className = 'quiz-feedback correct';
-                feedback.innerText = '✅ ' + q.explanation;
-            } else {
-                feedback.className = 'quiz-feedback wrong';
-                feedback.innerText = '❌ Incorrect. ' + q.explanation;
-            }
-
-            document.getElementById('quizScoreTracker').innerText = `Score: ${score} / ${questions.length}`;
-            document.getElementById('btnNextQ').style.display = 'inline-block';
-        }
-
-        function nextQuestion() {
-            currentQ++;
-            if (currentQ < questions.length) {
-                loadQuestion();
-            } else {
-                showCertificate();
-            }
-        }
-
-        function showCertificate() {
-            document.getElementById('quizBox').style.display = 'none';
-            const cert = document.getElementById('certCard');
-            cert.style.display = 'block';
-        }
-
-        function resetQuiz() {
-            currentQ = 0;
-            score = 0;
-            document.getElementById('quizScoreTracker').innerText = `Score: 0 / ${questions.length}`;
-            document.getElementById('certCard').style.display = 'none';
-            document.getElementById('quizBox').style.display = 'block';
-            loadQuestion();
-        }
-
-        // Init
-        loadQuestion();
     </script>
 </body>
 
