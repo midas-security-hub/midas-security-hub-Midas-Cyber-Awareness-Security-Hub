@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote & Wi-Fi Security Guide - Midas Cyber Security Hub</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-dark: #020617;
+            --blue: #2563eb;
+            --blue-hover: #1d4ed8;
+            --blue-light: #eff6ff;
+            --cyan: #06b6d4;
+            --emerald: #10b981;
+            --amber: #f59e0b;
+            --rose: #f43f5e;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 24px 40px;
+            width: 100%;
+            max-width: 1680px;
+            margin: 0 auto;
+        }
+
+        /* Banner Header Card */
+        .banner-card {
+            background: linear-gradient(135deg, #0b192e 0%, #030d22 100%);
+            border-radius: var(--radius-lg);
+            padding: 36px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #1e293b;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        .banner-content {
+            max-width: 680px;
+            z-index: 2;
+        }
+
+        .banner-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .banner-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .banner-subtitle {
+            font-size: 1rem;
+            color: #94a3b8;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .banner-illustration {
+            width: 320px;
+            height: 150px;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        /* Quick Section Jump Navigation Bar */
+        .jump-nav-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 14px 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .jump-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .jump-btn {
+            background: #f1f5f9;
+            color: var(--text-dark);
+            border: 1px solid var(--border);
+            padding: 9px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .jump-btn:hover {
+            background: var(--blue-light);
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        /* Section Layouts */
+        .section-wrapper {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Interactive Simulator Module */
+        .simulator-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            padding: 32px;
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .sim-btn {
+            background: #f8fafc;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .sim-btn:hover {
+            border-color: var(--blue);
+            background: #f0f7ff;
+        }
+
+        .sim-btn.active {
+            border-color: var(--blue);
+            background: #eff6ff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .sim-btn-icon {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .sim-btn-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .sim-btn-sub {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* Visual Simulator Stage */
+        .sim-stage {
+            background: #090d16;
+            border-radius: var(--radius-md);
+            border: 1px solid #1e293b;
+            padding: 30px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .sim-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-visual-box {
+            background: #030712;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            position: relative;
+        }
+
+        .network-topology {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .topo-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .topo-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #1e293b;
+            border: 2px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .topo-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #94a3b8;
+        }
+
+        /* Connection Line */
+        .topo-line {
+            flex-grow: 1;
+            height: 4px;
+            background: #1e293b;
+            margin: 0 10px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .topo-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+            animation: pulse-stream 1.8s infinite linear;
+        }
+
+        .topo-line.danger .topo-pulse {
+            background: linear-gradient(90deg, transparent, #ef4444, transparent);
+        }
+
+        .topo-line.secure .topo-pulse {
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
+        }
+
+        @keyframes pulse-stream {
+            0% { left: -40%; }
+            100% { left: 100%; }
+        }
+
+        /* Threat Badge Status */
+        .status-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .grade-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .grade-badge.grade-a { background: #064e3b; color: #34d399; border: 1px solid #059669; }
+        .grade-badge.grade-b { background: #1e3a8a; color: #60a5fa; border: 1px solid #2563eb; }
+        .grade-badge.grade-f { background: #881337; color: #fda4af; border: 1px solid #e11d48; }
+
+        .sim-info-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .sim-info-desc {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .sim-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .metric-box {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .metric-lbl {
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .metric-val {
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .metric-val.green { color: #34d399; }
+        .metric-val.red { color: #f87171; }
+        .metric-val.amber { color: #fbbf24; }
+
+        .sim-recommendation {
+            background: rgba(30, 41, 59, 0.6);
+            border-left: 4px solid #38bdf8;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.86rem;
+            color: #94a3b8;
+        }
+
+        /* VPN vs Public Wi-Fi Visualizer */
+        .vpn-toggle-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .vpn-mode-switch {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .toggle-btn {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-muted);
+            font-family: inherit;
+        }
+
+        .toggle-btn.active.unprotected {
+            background: #fff1f2;
+            color: #e11d48;
+            border-color: #fda4af;
+        }
+
+        .toggle-btn.active.protected {
+            background: #ecfdf5;
+            color: #059669;
+            border-color: #6ee7b7;
+        }
+
+        .packet-stream-box {
+            background: #020617;
+            border-radius: 12px;
+            padding: 24px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #e2e8f0;
+            border: 1px solid #1e293b;
+            min-height: 220px;
+        }
+
+        .packet-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.88rem;
+        }
+
+        .packet-line:last-child {
+            border-bottom: none;
+        }
+
+        .pkt-type { color: #38bdf8; font-weight: bold; }
+        .pkt-data-danger { color: #f87171; font-weight: bold; }
+        .pkt-data-safe { color: #34d399; font-weight: bold; }
+
+        /* Home Router Hardening Checklist */
+        .checklist-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .progress-bar-container {
+            margin-bottom: 28px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .progress-track {
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            transition: width 0.4s ease;
+        }
+
+        .checklist-items {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .check-item {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .check-item:hover {
+            border-color: var(--blue);
+            background: #ffffff;
+        }
+
+        .check-item.completed {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .check-input {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--emerald);
+            cursor: pointer;
+            margin-top: 2px;
+        }
+
+        .check-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .check-content p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .badge-unlock-box {
+            display: none;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #34d399;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            margin-top: 24px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* 6 Golden Rules Grid */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .rule-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--blue);
+        }
+
+        .rule-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .rule-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .rule-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .rule-detail-btn {
+            background: transparent;
+            color: var(--blue);
+            border: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        /* Scenario Quiz Module */
+        .quiz-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 36px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .quiz-question-box {
+            margin-bottom: 24px;
+        }
+
+        .q-number {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .q-text {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .opt-btn {
+            background: #f8fafc;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .opt-btn:hover {
+            border-color: var(--blue);
+            background: #ffffff;
+        }
+
+        .opt-btn.correct {
+            background: #f0fdf4;
+            border-color: #22c55e;
+            color: #15803d;
+        }
+
+        .opt-btn.wrong {
+            background: #fef2f2;
+            border-color: #ef4444;
+            color: #b91c1c;
+        }
+
+        .quiz-feedback {
+            display: none;
+            padding: 18px 22px;
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .quiz-feedback.correct {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
+        .quiz-feedback.wrong {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+        }
+
+        .quiz-nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .next-q-btn {
+            background: var(--blue);
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-family: inherit;
+        }
+
+        .next-q-btn:hover {
+            background: var(--blue-hover);
+        }
+
+        /* Certificate Card */
+        .cert-result-card {
+            display: none;
+            background: linear-gradient(135deg, #0b192e 0%, #0f294a 100%);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            color: #ffffff;
+            text-align: center;
+            border: 2px solid #38bdf8;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Modal Drawer */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            width: 100%;
+            padding: 32px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Common Responsive Header & Footer Styles */
+        .midas-header-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 28px;
+            border: 1px solid #1e293b;
+        }
+
+        .header-top-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 110px;
+            overflow: hidden;
+        }
+
+        .header-bg-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-logo-svg {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+        }
+
+        .header-title-text {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .header-nav-item {
+            position: relative;
+        }
+
+        .header-nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .header-nav-link:hover,
+        .header-nav-link.active {
+            color: #ffffff;
+        }
+
+        .header-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .header-nav-item:hover .header-dropdown,
+        .header-nav-item:focus-within .header-dropdown,
+        .header-nav-item.open .header-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .header-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 100;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link:hover {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        /* Footer Container */
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-top: 40px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+
+        .brand-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title-main {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .brand-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tagline-line {
+            height: 1px;
+            width: 20px;
+            background: #334155;
+        }
+
+        .contact-red-btn {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: #ffffff;
+            padding: 8px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            display: inline-block;
+            width: fit-content;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .contact-red-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+        }
+
+        .soc-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1.2;
+            min-width: 320px;
+        }
+
+        .soc-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .soc-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .soc-subtext {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+
+        .soc-email-link {
+            color: #f59e0b;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+        }
+
+        .circle-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 32px;
+            background: #1e293b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Site Header -->
+    <div class="midas-header-container">
+        <div class="header-top-banner">
+            <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none">
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4" />
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3" />
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8" />
+            </svg>
+
+            <div class="header-brand">
+                <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 50 C16 26 31 12 50 12 C69 12 84 26 84 50 V62" stroke="#FFFFFF" stroke-width="7"
+                        stroke-linecap="round" />
+                    <rect x="10" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <rect x="78" y="44" width="12" height="28" rx="6" fill="#FFFFFF" />
+                    <path d="M84 62 C84 78 72 90 58 90 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+                    <circle cx="49" cy="90" r="5.5" fill="#FFFFFF" />
+                    <path d="M30 30 L50 44 L70 30 V50 L50 64 L30 50 Z" fill="#FFFFFF" />
+                    <path d="M30 54 L50 66 L70 54 V62 L50 74 L30 62 Z" fill="#FFFFFF" />
+                    <path d="M39 50 L57 38 L63 42 L45 54 Z" fill="#F59E0B" />
+                </svg>
+                <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="header-navbar">
+            <div class="header-nav-links">
+                <div class="header-nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="header-nav-link">Home</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <button class="header-nav-link active" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="index.html" class="header-dropdown-link">🏠 Portal Directory (All Topics)</a>
+                        <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="header-dropdown-link">📱 Device Security</a>
+                        <a href="email-security.html" class="header-dropdown-link">📧 Email Security & Phishing Spotter</a>
+                        <a href="physical-security.html" class="header-dropdown-link">🏢 Physical & Social Security Guide</a>
+                        <a href="remote-wifi-security.html" class="header-dropdown-link" style="color: #38bdf8; font-weight: bold;">🌐 Remote & Wi-Fi Security</a>
+                        <a href="security-tips.html" class="header-dropdown-link">💡 Practical Security Tips Library</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="#simulator" class="header-nav-link">Wi-Fi Simulator</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="#router" class="header-nav-link">Home Router Checklist</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="#rules" class="header-nav-link">Golden Rules</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link"
+                        style="color: #38bdf8;">Report Incident</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Banner Header -->
+    <div class="banner-card">
+        <div class="banner-content">
+            <div class="banner-badge">🌐 Network & Telework Defense</div>
+            <h1 class="banner-title">Remote & Wi-Fi Security Guide</h1>
+            <p class="banner-subtitle">
+                Safeguard corporate communications, secure home routers, and encrypt public wireless connections when working remotely across airports, hotels, and cafes worldwide.
+            </p>
+        </div>
+        <div class="banner-illustration">
+            <svg viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="75" r="60" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4" />
+                <circle cx="150" cy="75" r="40" stroke="#38bdf8" stroke-width="2" opacity="0.6" />
+                <path d="M130 95 C130 95 150 110 170 95" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+                <!-- Shield Icon -->
+                <path d="M150 35 L175 48 V75 C175 92 150 105 150 105 C150 105 125 92 125 75 V48 L150 35 Z" fill="#0f172a" stroke="#00D2FF" stroke-width="3" />
+                <path d="M142 70 L148 76 L158 64" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Quick Jump Nav -->
+    <div class="jump-nav-card">
+        <span style="font-weight: 700; font-size: 0.92rem; color: var(--text-dark);">⚡ Quick Jump:</span>
+        <div class="jump-buttons">
+            <a href="#simulator" class="jump-btn">📶 Interactive Wi-Fi Simulator</a>
+            <a href="#vpn-visualizer" class="jump-btn">🔒 Corporate VPN vs Public Wi-Fi</a>
+            <a href="#router" class="jump-btn">🏠 Home Router Audit</a>
+            <a href="#rules" class="jump-btn">🛡️ 6 Golden Security Rules</a>
+            <a href="#quiz" class="jump-btn">🏆 Remote Scenario Quiz</a>
+        </div>
+    </div>
+
+    <!-- Section 1: Interactive Wi-Fi Connection Simulator -->
+    <div id="simulator" class="section-wrapper">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">
+                    <span>📶</span> Interactive Wi-Fi Connection Inspector
+                </h2>
+                <p class="section-desc">Select a connection environment below to inspect live packet encryption, threat exposure, and security grade.</p>
+            </div>
+        </div>
+
+        <div class="simulator-card">
+            <div class="sim-controls">
+                <button class="sim-btn active" onclick="selectSimMode('open')">
+                    <div class="sim-btn-icon">🚨</div>
+                    <div class="sim-btn-title">Open Public Wi-Fi</div>
+                    <div class="sim-btn-sub">Airport / Coffee Shop</div>
+                </button>
+
+                <button class="sim-btn" onclick="selectSimMode('vpn')">
+                    <div class="sim-btn-icon">🛡️</div>
+                    <div class="sim-btn-title">Public Wi-Fi + Corporate VPN</div>
+                    <div class="sim-btn-sub">Midas Encrypted Tunnel</div>
+                </button>
+
+                <button class="sim-btn" onclick="selectSimMode('hotspot')">
+                    <div class="sim-btn-icon">📱</div>
+                    <div class="sim-btn-title">Personal Mobile Hotspot</div>
+                    <div class="sim-btn-sub">4G/5G Cellular Tethering</div>
+                </button>
+
+                <button class="sim-btn" onclick="selectSimMode('unsecured-home')">
+                    <div class="sim-btn-icon">⚠️</div>
+                    <div class="sim-btn-title">Unsecured Home Wi-Fi</div>
+                    <div class="sim-btn-sub">Default Router Password</div>
+                </button>
+            </div>
+
+            <!-- Visual Stage -->
+            <div class="sim-stage">
+                <div class="sim-grid">
+                    <!-- Network Visual -->
+                    <div class="sim-visual-box">
+                        <div class="network-topology">
+                            <div class="topo-node">
+                                <div class="topo-icon" id="nodeLaptop">💻</div>
+                                <span class="topo-label">Work Laptop</span>
+                            </div>
+
+                            <div class="topo-line" id="topoLine">
+                                <div class="topo-pulse"></div>
+                            </div>
+
+                            <div class="topo-node">
+                                <div class="topo-icon" id="nodeRouter">📡</div>
+                                <span class="topo-label" id="lblRouter">Wi-Fi Router</span>
+                            </div>
+
+                            <div class="topo-line" id="topoLine2">
+                                <div class="topo-pulse"></div>
+                            </div>
+
+                            <div class="topo-node">
+                                <div class="topo-icon" id="nodeCloud">☁️</div>
+                                <span class="topo-label">Corporate Server</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metrics & Info -->
+                    <div>
+                        <div class="status-header-row">
+                            <h3 class="sim-info-title" id="simTitle">Open Public Wi-Fi</h3>
+                            <span class="grade-badge grade-f" id="simGrade">GRADE F: DANGEROUS</span>
+                        </div>
+
+                        <p class="sim-info-desc" id="simDesc">
+                            Unencrypted open network. Anyone in the café with a simple sniffing tool can capture unencrypted traffic, session cookies, and login details.
+                        </p>
+
+                        <div class="sim-metrics-grid">
+                            <div class="metric-box">
+                                <div class="metric-lbl">Encryption Protocol</div>
+                                <div class="metric-val red" id="mEncryption">None (Open Network)</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-lbl">Packet Eavesdropping</div>
+                                <div class="metric-val red" id="mEavesdrop">HIGH RISK</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-lbl">Man-In-The-Middle</div>
+                                <div class="metric-val red" id="mMitm">VULNERABLE</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-lbl">Recommended Action</div>
+                                <div class="metric-val amber" id="mAction">Connect Corporate VPN</div>
+                            </div>
+                        </div>
+
+                        <div class="sim-recommendation" id="simTip">
+                            <strong>Security Advice:</strong> Never log into internal Midas applications or handle corporate documents on open public Wi-Fi without turning on Midas Corporate VPN first.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Corporate VPN vs. Public Wi-Fi Visualizer -->
+    <div id="vpn-visualizer" class="section-wrapper">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">
+                    <span>🔒</span> Corporate VPN Data Tunnel Inspector
+                </h2>
+                <p class="section-desc">Toggle the view below to see how Midas Corporate VPN transforms readable plain-text data into unbreakable AES-256 ciphertext.</p>
+            </div>
+        </div>
+
+        <div class="vpn-toggle-card">
+            <div class="vpn-mode-switch">
+                <button class="toggle-btn active unprotected" id="btnModeUnprotected" onclick="switchVpnMode('unprotected')">
+                    🚨 Plain Public Wi-Fi (Hacker View)
+                </button>
+                <button class="toggle-btn" id="btnModeProtected" onclick="switchVpnMode('protected')">
+                    🛡️ Midas VPN Encrypted Tunnel (Secured View)
+                </button>
+            </div>
+
+            <div class="packet-stream-box" id="packetStreamDisplay">
+                <div class="packet-line">
+                    <span class="pkt-type">[PACKET #102 - HTTP LOGIN]</span>
+                    <span class="pkt-data-danger">User: employee@midas.com | Pass: Summer2026! | Cookie: SESSID_99A82</span>
+                </div>
+                <div class="packet-line">
+                    <span class="pkt-type">[PACKET #103 - FILE TRANSFER]</span>
+                    <span class="pkt-data-danger">Document: Financial_Report_Q3_Internal.xlsx | Status: Exposed</span>
+                </div>
+                <div class="packet-line">
+                    <span class="pkt-type">[PACKET #104 - DNS QUERY]</span>
+                    <span class="pkt-data-danger">Requested Host: sharepoint.midassafety.com (Origin IP: 192.168.1.45)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Home Router Hardening Checklist -->
+    <div id="router" class="section-wrapper">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">
+                    <span>🏠</span> Home Router Security Hardening Audit
+                </h2>
+                <p class="section-desc">Check off each security step to audit your home Wi-Fi network against unauthorized intruders.</p>
+            </div>
+        </div>
+
+        <div class="checklist-card">
+            <div class="progress-bar-container">
+                <div class="progress-header">
+                    <span>Home Router Audit Progress</span>
+                    <span id="progressText">0 of 7 Completed (0%)</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="checklist-items">
+                <label class="check-item" onclick="updateChecklist()">
+                    <input type="checkbox" class="check-input">
+                    <div class="check-content">
+                        <h4>1. Change Default Admin Credentials</h4>
+                        <p>Replace factory default passwords like "admin / admin" or "admin / password" with a strong 14+ character passphrase.</p>
+                    </div>
+                </label>
+
+                <label class="check-item" onclick="updateChecklist()">
+                    <input type="checkbox" class="check-input">
+                    <div class="check-content">
+                        <h4>2. Enable WPA3 or WPA2-AES Encryption</h4>
+                        <p>Configure wireless security to WPA3-Personal or WPA2-AES. Never use legacy WEP or WPA-TKIP mode.</p>
+                    </div>
+                </label>
+
+                <label class="check-item" onclick="updateChecklist()">
+                    <input type="checkbox" class="check-input">
+                    <div class="check-content">
+                        <h4>3. Update Router Firmware</h4>
+                        <p>Check for available router firmware updates to patch known security vulnerabilities and exploits.</p>
+                    </div>
+                </label>
+
+                <label class="check-item" onclick="updateChecklist()">
+                    <input type="checkbox" class="check-input">
+                    <div class="check-content">
+                        <h4>4. Disable WPS (Wi-Fi Protected Setup)</h4>
+                        <p>Turn off WPS PIN authentication, as WPS can be brute-forced by attackers within hours.</p>
+                    </div>
+                </label>
+
+                <label class="check-item" onclick="updateChecklist()">
+                    <input type="checkbox" class="check-input">
+                    <div class="check-content">
+                        <h4>5. Create an Isolated Guest Wi-Fi Network</h4>
+                        <p>Set up a separate Guest SSID for smart home appliances (IoT cameras, TVs) so corporate devices remain isolated.</p>
+                    </div>
+                </label>
+
+                <label class="check-item" onclick="updateChecklist()">
+                    <input type="checkbox" class="check-input">
+                    <div class="check-content">
+                        <h4>6. Change Default Network Name (SSID)</h4>
+                        <p>Rename your Wi-Fi network to a generic name that does not reveal the router brand or your family identity.</p>
+                    </div>
+                </label>
+
+                <label class="check-item" onclick="updateChecklist()">
+                    <input type="checkbox" class="check-input">
+                    <div class="check-content">
+                        <h4>7. Disable Remote Management & UPnP</h4>
+                        <p>Prevent WAN access to your router management console and disable Universal Plug and Play (UPnP).</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="badge-unlock-box" id="badgeBox">
+                <div style="font-size: 2.5rem; margin-bottom: 8px;">🏆</div>
+                <h3 style="color: #065f46; font-size: 1.3rem; font-weight: 800;">Home Network Hardening Complete!</h3>
+                <p style="color: #047857; font-size: 0.95rem; margin-top: 4px;">Your home Wi-Fi network is fully fortified against unauthorized intruders and external cyber threats.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: 6 Golden Rules of Remote Work -->
+    <div id="rules" class="section-wrapper">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">
+                    <span>🛡️</span> 6 Golden Rules of Remote & Wi-Fi Security
+                </h2>
+                <p class="section-desc">Essential remote working protocols to prevent data leaks while on the move.</p>
+            </div>
+        </div>
+
+        <div class="rules-grid">
+            <!-- Rule 1 -->
+            <div class="rule-card">
+                <div class="rule-number">01</div>
+                <h3 class="rule-title">Always Use Midas Corporate VPN</h3>
+                <p class="rule-text">Turn on corporate VPN whenever accessing internal emails, SharePoint, ERP, or client data outside office locations.</p>
+                <button class="rule-detail-btn" onclick="showRuleModal(1)">Read Best Practice ➔</button>
+            </div>
+
+            <!-- Rule 2 -->
+            <div class="rule-card">
+                <div class="rule-number">02</div>
+                <h3 class="rule-title">Disable Auto-Connect to Wi-Fi</h3>
+                <p class="rule-text">Disable "Auto-Connect to Open Wi-Fi" on work laptops and mobile devices to prevent automatically joining rogue networks.</p>
+                <button class="rule-detail-btn" onclick="showRuleModal(2)">Read Best Practice ➔</button>
+            </div>
+
+            <!-- Rule 3 -->
+            <div class="rule-card">
+                <div class="rule-number">03</div>
+                <h3 class="rule-title">Beware of Evil-Twin Hotspots</h3>
+                <p class="rule-text">Attackers deploy fake access points named "Starbucks_Guest" or "Airport_Free_WiFi". Always verify exact network names with staff.</p>
+                <button class="rule-detail-btn" onclick="showRuleModal(3)">Read Best Practice ➔</button>
+            </div>
+
+            <!-- Rule 4 -->
+            <div class="rule-card">
+                <div class="rule-number">04</div>
+                <h3 class="rule-title">Prevent Shoulder Surfing</h3>
+                <p class="rule-text">Use privacy screen filters in airports, cafes, and trains to block unauthorized viewing of confidential corporate screens.</p>
+                <button class="rule-detail-btn" onclick="showRuleModal(4)">Read Best Practice ➔</button>
+            </div>
+
+            <!-- Rule 5 -->
+            <div class="rule-card">
+                <div class="rule-number">05</div>
+                <h3 class="rule-title">Never Leave Assets Unattended</h3>
+                <p class="rule-text">Lock laptop screens (Win + L) instantly and never leave devices unattended in hotel lobbies, vehicles, or coffee shops.</p>
+                <button class="rule-detail-btn" onclick="showRuleModal(5)">Read Best Practice ➔</button>
+            </div>
+
+            <!-- Rule 6 -->
+            <div class="rule-card">
+                <div class="rule-number">06</div>
+                <h3 class="rule-title">Use Personal Mobile Tethering</h3>
+                <p class="rule-text">When trusted Wi-Fi is unavailable, tether your laptop to your smartphone's WPA3 mobile hotspot instead of untrusted open networks.</p>
+                <button class="rule-detail-btn" onclick="showRuleModal(6)">Read Best Practice ➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 5: Remote Work Scenario Quiz -->
+    <div id="quiz" class="section-wrapper">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">
+                    <span>🏆</span> Remote Work Security Challenge
+                </h2>
+                <p class="section-desc">Test your understanding of remote network security scenarios to earn your digital badge.</p>
+            </div>
+        </div>
+
+        <div class="quiz-card" id="quizBox">
+            <div class="quiz-question-box">
+                <div class="q-number" id="qNumber">Question 1 of 4</div>
+                <h3 class="q-text" id="qText">You are at an airport cafe and need to upload an urgent Midas document. The cafe offers free unencrypted Wi-Fi. What is your best course of action?</h3>
+            </div>
+
+            <div class="quiz-options" id="quizOptions">
+                <button class="opt-btn" onclick="checkAnswer(0)">A. Connect to cafe Wi-Fi directly and upload the file quickly.</button>
+                <button class="opt-btn" onclick="checkAnswer(1)">B. Turn on your Midas Corporate VPN first, or use your personal mobile hotspot.</button>
+                <button class="opt-btn" onclick="checkAnswer(2)">C. Disable your firewall to increase upload speed on public Wi-Fi.</button>
+            </div>
+
+            <div class="quiz-feedback" id="quizFeedback"></div>
+
+            <div class="quiz-nav-row">
+                <span style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;" id="quizScoreTracker">Score: 0 / 4</span>
+                <button class="next-q-btn" id="btnNextQ" onclick="nextQuestion()" style="display: none;">Next Question ➔</button>
+            </div>
+        </div>
+
+        <!-- Certificate Card -->
+        <div class="cert-result-card" id="certCard">
+            <div style="font-size: 3rem; margin-bottom: 12px;">🛡️</div>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: #ffffff;">Remote Security Specialist Certified!</h2>
+            <p style="color: #94a3b8; font-size: 1rem; margin-top: 8px; max-width: 540px; margin-left: auto; margin-right: auto;">
+                Congratulations! You successfully passed the Remote & Wi-Fi Security Awareness challenge with flying colors.
+            </p>
+            <div style="margin-top: 24px;">
+                <button class="next-q-btn" onclick="resetQuiz()">Retake Quiz 🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rule Modal -->
+    <div class="modal-overlay" id="ruleModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeRuleModal()">✕</button>
+            <h3 id="modalTitle" style="font-size: 1.3rem; font-weight: 800; color: var(--primary); margin-bottom: 12px;">Rule Title</h3>
+            <p id="modalBody" style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <svg class="footer-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 50 C16 28 31 14 50 14 C69 14 84 28 84 50 V62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" />
+                        <rect x="10" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <rect x="78" y="45" width="12" height="26" rx="6" fill="#FFFFFF" />
+                        <path d="M84 62 C84 78 72 88 58 88 H54" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />
+                        <circle cx="50" cy="88" r="5" fill="#FFFFFF" />
+                        <path d="M30 32 L50 46 L70 32 V52 L50 66 L30 52 Z" fill="#FFFFFF" />
+                        <path d="M30 56 L50 68 L70 56 V64 L50 76 L30 64 Z" fill="#FFFFFF" />
+                        <path d="M40 52 L58 40 L64 44 L46 56 Z" fill="#F59E0B" />
+                    </svg>
+
+                    <div class="brand-title-group">
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                        <div class="brand-tagline">
+                            <div class="tagline-line"></div>
+                            <span>Never Trust. Always Verify</span>
+                            <div class="tagline-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact SOC</a>
+            </div>
+
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                    </svg>
+                </div>
+                <div class="soc-content">
+                    <div class="soc-title">Need remote access support or reporting an incident?</div>
+                    <div class="soc-subtext">
+                        Contact Security Operations Center at <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-actions-grid">
+                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Report Incident</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="security-tips.html" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Security Tips</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Scripts -->
+    <script>
+        // 1. Wi-Fi Simulator Data
+        const simData = {
+            'open': {
+                title: 'Open Public Wi-Fi (Unencrypted)',
+                grade: 'GRADE F: CRITICAL RISK',
+                gradeClass: 'grade-f',
+                desc: 'Unencrypted public access point. Anyone nearby running network analysis software can capture plain-text communications, session cookies, and login credentials.',
+                encryption: 'None (Unencrypted)',
+                eavesdrop: 'HIGH RISK (Packet Sniffing)',
+                mitm: 'VULNERABLE (Rogue APs)',
+                action: 'Connect Midas VPN Immediately',
+                tip: 'Never log into corporate portals or open internal attachments over unencrypted public Wi-Fi without an active VPN tunnel.',
+                lineState: 'danger'
+            },
+            'vpn': {
+                title: 'Public Wi-Fi + Corporate VPN',
+                grade: 'GRADE A+: MAXIMUM SECURITY',
+                gradeClass: 'grade-a',
+                desc: 'Traffic is encapsulated inside an AES-256 encrypted tunnel back to Midas Security Gateways. Public network snoopers see only unreadable cipher data.',
+                encryption: 'AES-256 Bit Tunnel',
+                eavesdrop: 'ZERO RISK (Encrypted)',
+                mitm: 'PROTECTED (IPSec/SSL)',
+                action: 'Safe for Corporate Access',
+                tip: 'Midas VPN protects your device even when forced to use untrusted public networks at airports or hotels.',
+                lineState: 'secure'
+            },
+            'hotspot': {
+                title: 'Personal Mobile Hotspot (WPA3)',
+                grade: 'GRADE A: HIGHLY SECURE',
+                gradeClass: 'grade-a',
+                desc: 'Direct encrypted tethering via your cellular carrier. Bypasses local untrusted Wi-Fi environments entirely.',
+                encryption: 'WPA3 / Cellular LTE/5G',
+                eavesdrop: 'VERY LOW RISK',
+                mitm: 'PROTECTED',
+                action: 'Recommended when traveling',
+                tip: 'Mobile hotspot tethering is the safest alternative when public Wi-Fi networks are slow or suspicious.',
+                lineState: 'secure'
+            },
+            'unsecured-home': {
+                title: 'Unsecured Home Wi-Fi Network',
+                grade: 'GRADE C: MODERATE RISK',
+                gradeClass: 'grade-b',
+                desc: 'Home Wi-Fi using default router passwords or outdated WEP/WPA-TKIP encryption allows neighbors or attackers to intercept traffic.',
+                encryption: 'Weak / Default Password',
+                eavesdrop: 'MODERATE RISK',
+                mitm: 'POSSIBLE',
+                action: 'Harden Home Router Settings',
+                tip: 'Harden your router by updating credentials and enabling WPA3/WPA2-AES encryption.',
+                lineState: 'danger'
+            }
+        };
+
+        function selectSimMode(modeKey) {
+            const btns = document.querySelectorAll('.sim-btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+
+            const data = simData[modeKey];
+            document.getElementById('simTitle').innerText = data.title;
+            
+            const gradeEl = document.getElementById('simGrade');
+            gradeEl.innerText = data.grade;
+            gradeEl.className = 'grade-badge ' + data.gradeClass;
+
+            document.getElementById('simDesc').innerText = data.desc;
+            document.getElementById('mEncryption').innerText = data.encryption;
+            document.getElementById('mEavesdrop').innerText = data.eavesdrop;
+            document.getElementById('mMitm').innerText = data.mitm;
+            document.getElementById('mAction').innerText = data.action;
+            document.getElementById('simTip').innerHTML = '<strong>Security Advice:</strong> ' + data.tip;
+
+            const line1 = document.getElementById('topoLine');
+            const line2 = document.getElementById('topoLine2');
+            line1.className = 'topo-line ' + data.lineState;
+            line2.className = 'topo-line ' + data.lineState;
+        }
+
+        // 2. VPN Visualizer Toggle
+        function switchVpnMode(mode) {
+            const bUnprotected = document.getElementById('btnModeUnprotected');
+            const bProtected = document.getElementById('btnModeProtected');
+            const display = document.getElementById('packetStreamDisplay');
+
+            if (mode === 'unprotected') {
+                bUnprotected.className = 'toggle-btn active unprotected';
+                bProtected.className = 'toggle-btn';
+
+                display.innerHTML = `
+                    <div class="packet-line">
+                        <span class="pkt-type">[PACKET #102 - HTTP LOGIN]</span>
+                        <span class="pkt-data-danger">User: employee@midas.com | Pass: Summer2026! | Cookie: SESSID_99A82</span>
+                    </div>
+                    <div class="packet-line">
+                        <span class="pkt-type">[PACKET #103 - FILE TRANSFER]</span>
+                        <span class="pkt-data-danger">Document: Financial_Report_Q3_Internal.xlsx | Status: Exposed</span>
+                    </div>
+                    <div class="packet-line">
+                        <span class="pkt-type">[PACKET #104 - DNS QUERY]</span>
+                        <span class="pkt-data-danger">Requested Host: sharepoint.midassafety.com (Origin IP: 192.168.1.45)</span>
+                    </div>
+                `;
+            } else {
+                bProtected.className = 'toggle-btn active protected';
+                bUnprotected.className = 'toggle-btn';
+
+                display.innerHTML = `
+                    <div class="packet-line">
+                        <span class="pkt-type">[ENCRYPTED PACKET #102 - AES-256]</span>
+                        <span class="pkt-data-safe">0x4F8A91B2C89A7E11D004F8A91B2C89A7 [CIPHERTEXT - UNREADABLE]</span>
+                    </div>
+                    <div class="packet-line">
+                        <span class="pkt-type">[ENCRYPTED PACKET #103 - AES-256]</span>
+                        <span class="pkt-data-safe">0x99B87A6C11D904E4A28B10C94F8A77E2 [CIPHERTEXT - UNREADABLE]</span>
+                    </div>
+                    <div class="packet-line">
+                        <span class="pkt-type">[ENCRYPTED PACKET #104 - IPSec TUNNEL]</span>
+                        <span class="pkt-data-safe">Encapsulated Payload -> Midas VPN Gateway (Origin IP Masked)</span>
+                    </div>
+                `;
+            }
+        }
+
+        // 3. Home Router Checklist Progress
+        function updateChecklist() {
+            const boxes = document.querySelectorAll('.check-input');
+            let completed = 0;
+
+            boxes.forEach(box => {
+                const parent = box.closest('.check-item');
+                if (box.checked) {
+                    completed++;
+                    parent.classList.add('completed');
+                } else {
+                    parent.classList.remove('completed');
+                }
+            });
+
+            const pct = Math.round((completed / boxes.length) * 100);
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('progressText').innerText = completed + ' of ' + boxes.length + ' Completed (' + pct + '%)';
+
+            const badgeBox = document.getElementById('badgeBox');
+            if (completed === boxes.length) {
+                badgeBox.style.display = 'block';
+            } else {
+                badgeBox.style.display = 'none';
+            }
+        }
+
+        // 4. Modal Logic
+        const ruleData = {
+            1: {
+                title: 'Corporate VPN Priority',
+                body: 'Midas Corporate VPN creates an encrypted AES-256 tunnel between your remote device and corporate networks. It prevents third parties from eavesdropping on your internet traffic, protects login tokens, and enables secure access to internal file shares.'
+            },
+            2: {
+                title: 'Disable Auto-Connect to Wi-Fi',
+                body: 'Mobile OS and laptop settings often feature "Auto-Connect to Open Wi-Fi". Attackers take advantage of this by broadcasting fake network SSIDs that match common public Wi-Fi names. Turning off auto-connect ensures your laptop never connects without your explicit consent.'
+            },
+            3: {
+                title: 'Beware of Evil-Twin Hotspots',
+                body: 'Evil-Twin access points are fake Wi-Fi networks set up by hackers near legitimate venues. They broadcast identical network names (e.g. "Airport_Free_WiFi") to trick users. Always ask staff for the exact network SSID and password before connecting.'
+            },
+            4: {
+                title: 'Prevent Shoulder Surfing',
+                body: 'Shoulder surfing occurs when unauthorized individuals observe your screen in public areas like airports, trains, or coffee shops. Attach a physical privacy screen filter to your laptop display to restrict viewing angles.'
+            },
+            5: {
+                title: 'Never Leave Assets Unattended',
+                body: 'Physical theft of laptops or mobile devices compromised data faster than network attacks. Always lock your screen (Win + L on Windows, Cmd + Ctrl + Q on Mac) when stepping away, even for a few seconds.'
+            },
+            6: {
+                title: 'Use Personal Mobile Tethering',
+                body: 'If public Wi-Fi networks appear untrusted, slow, or ask for suspicious certificate installations, turn on your smartphone cellular hotspot with WPA2/WPA3 password protection.'
+            }
+        };
+
+        function showRuleModal(num) {
+            const modal = document.getElementById('ruleModal');
+            document.getElementById('modalTitle').innerText = ruleData[num].title;
+            document.getElementById('modalBody').innerText = ruleData[num].body;
+            modal.style.display = 'flex';
+        }
+
+        function closeRuleModal() {
+            document.getElementById('ruleModal').style.display = 'none';
+        }
+
+        // 5. Quiz Logic
+        const questions = [
+            {
+                q: "You are at an airport cafe and need to upload an urgent Midas document. The cafe offers free unencrypted Wi-Fi. What is your best course of action?",
+                options: [
+                    "Connect to cafe Wi-Fi directly and upload the file quickly.",
+                    "Turn on your Midas Corporate VPN first, or use your personal mobile hotspot.",
+                    "Disable your firewall to increase upload speed on public Wi-Fi."
+                ],
+                correct: 1,
+                explanation: "Correct! Turning on Midas Corporate VPN or using a personal mobile hotspot ensures your data transfer is encrypted."
+            },
+            {
+                q: "When connecting to public Wi-Fi, a popup prompts you to install a 'Required Browser Certificate Upgrade'. What should you do?",
+                options: [
+                    "Click Install to upgrade browser certificates.",
+                    "Cancel immediately, disconnect from the network, and report suspicious activity.",
+                    "Enter your Windows admin password to approve the certificate."
+                ],
+                correct: 1,
+                explanation: "Correct! Fake certificate prompts are a classic Man-in-the-Middle attack vector used to decrypt HTTPS traffic."
+            },
+            {
+                q: "What is the primary benefit of disabling 'Auto-Connect to Open Wi-Fi' on corporate devices?",
+                options: [
+                    "It saves laptop battery life.",
+                    "It prevents your laptop from automatically connecting to malicious Evil-Twin access points.",
+                    "It increases download speeds automatically."
+                ],
+                correct: 1,
+                explanation: "Correct! Disabling auto-connect prevents your device from connecting to malicious fake Wi-Fi hotspots set up by hackers."
+            },
+            {
+                q: "You need to step away from your laptop in a crowded airport lounge for 2 minutes to grab a coffee. What is mandatory?",
+                options: [
+                    "Leave the laptop open so you don't lose your work session.",
+                    "Ask a stranger sitting nearby to watch your laptop.",
+                    "Lock your screen (Win + L) and take your laptop with you or lock it securely."
+                ],
+                correct: 2,
+                explanation: "Correct! Never leave corporate assets unattended in public environments."
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = questions[currentQ];
+            document.getElementById('qNumber').innerText = `Question ${currentQ + 1} of ${questions.length}`;
+            document.getElementById('qText').innerText = q.q;
+
+            const optContainer = document.getElementById('quizOptions');
+            optContainer.innerHTML = '';
+
+            q.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = optText;
+                btn.onclick = () => checkAnswer(idx);
+                optContainer.appendChild(btn);
+            });
+
+            document.getElementById('quizFeedback').style.display = 'none';
+            document.getElementById('btnNextQ').style.display = 'none';
+        }
+
+        function checkAnswer(selectedIdx) {
+            const q = questions[currentQ];
+            const btns = document.querySelectorAll('.opt-btn');
+            
+            btns.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === q.correct) {
+                    btn.classList.add('correct');
+                } else if (idx === selectedIdx) {
+                    btn.classList.add('wrong');
+                }
+            });
+
+            const feedback = document.getElementById('quizFeedback');
+            feedback.style.display = 'block';
+
+            if (selectedIdx === q.correct) {
+                score++;
+                feedback.className = 'quiz-feedback correct';
+                feedback.innerText = '✅ ' + q.explanation;
+            } else {
+                feedback.className = 'quiz-feedback wrong';
+                feedback.innerText = '❌ Incorrect. ' + q.explanation;
+            }
+
+            document.getElementById('quizScoreTracker').innerText = `Score: ${score} / ${questions.length}`;
+            document.getElementById('btnNextQ').style.display = 'inline-block';
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ < questions.length) {
+                loadQuestion();
+            } else {
+                showCertificate();
+            }
+        }
+
+        function showCertificate() {
+            document.getElementById('quizBox').style.display = 'none';
+            const cert = document.getElementById('certCard');
+            cert.style.display = 'block';
+        }
+
+        function resetQuiz() {
+            currentQ = 0;
+            score = 0;
+            document.getElementById('quizScoreTracker').innerText = `Score: 0 / ${questions.length}`;
+            document.getElementById('certCard').style.display = 'none';
+            document.getElementById('quizBox').style.display = 'block';
+            loadQuestion();
+        }
+
+        // Init
+        loadQuestion();
+    </script>
+</body>
+
+</html>
