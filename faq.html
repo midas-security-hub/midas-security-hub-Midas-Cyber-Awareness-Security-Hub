@@ -1218,6 +1218,29 @@
             window.location.href = `mailto:cic@midassafety.com?subject=${subject}&body=${body}`;
         }
 
+        const securityKb = [
+            {
+                keywords: ["passphrase", "password", "length", "strong", "create", "word"],
+                answer: "🔒 <strong>Passphrase Best Practices:</strong><br>• Use a 4-word random passphrase of at least <strong>16 characters</strong> (e.g. <code>Coffee#Laptop!Sunset9</code>).<br>• Long passphrases are exponentially harder for brute-force attacks to crack.<br>• Never reuse corporate passwords on personal websites."
+            },
+            {
+                keywords: ["phishing", "email", "spot", "fake", "scam", "suspicious", "attachment", "sign"],
+                answer: "📧 <strong>Phishing Detection Rules:</strong><br>• Verify sender email address domain (not just display name).<br>• Hover over links to inspect the destination URL before clicking.<br>• Look for artificial urgency, unexpected file attachments, or financial requests.<br>• Click 'Report Phishing' in Outlook or forward to <a href='mailto:cic@midassafety.com' style='color: #38bdf8;'>cic@midassafety.com</a>."
+            },
+            {
+                keywords: ["vpn", "wifi", "wi-fi", "public", "hotel", "airport", "remote", "telework"],
+                answer: "🌐 <strong>Remote & Wi-Fi Security:</strong><br>• Corporate VPN is mandatory whenever connecting to public Wi-Fi networks (airports, hotels, cafes).<br>• VPN creates an encrypted tunnel preventing eavesdropping and Man-in-the-Middle (MitM) attacks."
+            },
+            {
+                keywords: ["stolen", "lost", "laptop", "phone", "device", "mobile", "lock"],
+                answer: "📱 <strong>Lost/Stolen Device Escalation:</strong><br>• Lock laptop screen immediately using <code>Win + L</code> when stepping away.<br>• If a corporate laptop or mobile phone is lost/stolen, immediately report to <a href='mailto:cic@midassafety.com' style='color: #38bdf8;'>cic@midassafety.com</a> for remote session revocation & data wipe."
+            },
+            {
+                keywords: ["police", "cert", "harassment", "facebook", "group", "takedown", "cid", "ccid", "sri lanka", "0112381058"],
+                answer: "⚖️ <strong>Sri Lanka Police & CERT Escalation:</strong><br>• SL CERT Emergency Hotline: <strong>101</strong><br>• Police CID (Criminal Content): <code>dir.cid@police.gov.lk</code><br>• Police CCID (Harassment Takedowns): <code>ccid.report@police.gov.lk</code><br>• Police CCID Hotline: <strong>011 2381058</strong>"
+            }
+        ];
+
         function useAiPrompt(promptText) {
             document.getElementById('aiInput').value = promptText;
             askAiAssistant(promptText);
@@ -1241,31 +1264,48 @@
 
             // Append Typing Indicator
             const typingId = 'typing-' + Date.now();
-            const typingHtml = `<div id="${typingId}" style="margin-bottom: 12px;"><span style="background: #090d16; border: 1px solid #1e293b; color: #38bdf8; padding: 10px 16px; border-radius: 12px; display: inline-block; max-width: 85%;">🤖 <em>Thinking (Querying Open-Source Llama-3 AI)...</em></span></div>`;
+            const typingHtml = `<div id="${typingId}" style="margin-bottom: 12px;"><span style="background: #090d16; border: 1px solid #1e293b; color: #38bdf8; padding: 10px 16px; border-radius: 12px; display: inline-block; max-width: 85%;">🤖 <em>Querying Cyber Security AI Intelligence...</em></span></div>`;
             chatBox.innerHTML += typingHtml;
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            const systemInstruction = "System Role: You are the official Midas Cyber Security Hub AI Assistant. Provide helpful, accurate, concise cyber security advice (passwords, phishing, VPN, device hardening, incident reporting) in plain English. Keep answers under 150 words.";
+            let aiReply = "";
 
+            // Try Live API Endpoint first with timeout
             try {
-                const url = `https://text.pollinations.ai/${encodeURIComponent(systemInstruction + "\n\nUser Question: " + prompt)}`;
-                const response = await fetch(url);
-                const aiReply = await response.text();
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-                const typingEl = document.getElementById(typingId);
-                if (typingEl) typingEl.remove();
+                const systemInstruction = "You are Midas Cyber Security Hub AI Assistant. Answer concisely under 120 words.";
+                const url = `https://text.pollinations.ai/${encodeURIComponent(systemInstruction + "\n\nQuestion: " + prompt)}`;
+                
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(timeoutId);
+                const rawText = await response.text();
 
-                const replyHtml = `<div style="margin-bottom: 16px;"><span style="background: #090d16; border: 1px solid #1e293b; color: #e2e8f0; padding: 12px 18px; border-radius: 12px; display: inline-block; max-width: 90%; line-height: 1.6;"><strong style="color: #38bdf8;">🤖 AI Assistant:</strong><br>${formatAiText(aiReply)}</span></div>`;
-                chatBox.innerHTML += replyHtml;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            } catch (err) {
-                const typingEl = document.getElementById(typingId);
-                if (typingEl) typingEl.remove();
-
-                const errHtml = `<div style="margin-bottom: 16px;"><span style="background: #450a0a; border: 1px solid #7f1d1d; color: #fca5a5; padding: 12px 18px; border-radius: 12px; display: inline-block;">⚠️ Could not reach AI model right now. Please email your question directly to Midas SOC at <a href="mailto:cic@midassafety.com" style="color: #ffffff; font-weight: bold;">cic@midassafety.com</a>.</span></div>`;
-                chatBox.innerHTML += errHtml;
-                chatBox.scrollTop = chatBox.scrollHeight;
+                if (response.ok && !rawText.includes('"error"') && !rawText.includes('deprecation_notice') && !rawText.includes('Queue full')) {
+                    aiReply = formatAiText(rawText);
+                }
+            } catch (e) {
+                // Ignore API error & use KB Engine fallback below
             }
+
+            // Knowledgebase Fallback Matcher if API returned empty/error
+            if (!aiReply) {
+                const lower = prompt.toLowerCase();
+                const match = securityKb.find(item => item.keywords.some(k => lower.includes(k)));
+                if (match) {
+                    aiReply = match.answer;
+                } else {
+                    aiReply = `🤖 <strong>Midas Cyber Security Guidance:</strong><br>For specific policy inquiries regarding <em>"${escapeHtml(prompt)}"</em>, please consult our dedicated guides above or contact Midas SOC at <a href="mailto:cic@midassafety.com" style="color: #38bdf8; font-weight: bold;">cic@midassafety.com</a>.`;
+                }
+            }
+
+            const typingEl = document.getElementById(typingId);
+            if (typingEl) typingEl.remove();
+
+            const replyHtml = `<div style="margin-bottom: 16px;"><span style="background: #090d16; border: 1px solid #1e293b; color: #e2e8f0; padding: 12px 18px; border-radius: 12px; display: inline-block; max-width: 90%; line-height: 1.6;"><strong style="color: #38bdf8;">🤖 AI Assistant:</strong><br>${aiReply}</span></div>`;
+            chatBox.innerHTML += replyHtml;
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
 
         function escapeHtml(str) {
