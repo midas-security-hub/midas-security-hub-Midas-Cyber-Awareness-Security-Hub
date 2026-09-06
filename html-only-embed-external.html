@@ -4,16 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Report an Incident Outside of MIDAS - SharePoint Embed</title>
+  <title>How to Report an Incident Outside of MIDAS - Pure HTML Embed</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       RESET & BASE STYLES
-       Self-contained, Extra Wide & Responsive for SharePoint Full Section
+       RESET & BASE STYLES (100% Pure HTML & CSS - Zero JavaScript)
        ========================================================================== */
     * {
       box-sizing: border-box;
@@ -24,7 +22,6 @@
     }
 
     :root {
-      /* Color Tokens */
       --bg-gradient: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
       --card-bg: #ffffff;
       --border-color: #e2e8f0;
@@ -39,20 +36,17 @@
       --font-family: 'Plus Jakarta Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     }
 
-    html,
-    body {
+    html, body {
       font-family: var(--font-family);
       background-color: transparent;
       margin: 0;
       padding: 0;
-      /* Zero outside space */
       color: var(--text-heading);
       width: 100%;
-      overflow: hidden;
     }
 
     /* ==========================================================================
-       FLUSH FULL-WIDTH CONTAINER CARD (No Outside Wasted Space)
+       FLUSH FULL-WIDTH CONTAINER CARD
        ========================================================================== */
     .report-sec-container {
       width: 100%;
@@ -82,7 +76,6 @@
       max-width: 720px;
     }
 
-    /* Red Accent Bar */
     .red-accent-bar {
       width: 48px;
       height: 4px;
@@ -112,7 +105,7 @@
       margin-bottom: 24px;
     }
 
-    /* Red Action Button */
+    /* Red Action Button (Pure HTML Link) */
     .action-btn {
       display: inline-flex;
       align-items: center;
@@ -209,21 +202,35 @@
 
   <!-- MAIN CONTAINER CARD -->
   <div class="report-sec-container" role="region" aria-label="How to Report an Incident Outside of MIDAS">
-
+    
     <div class="report-sec-row">
-
+      
       <!-- LEFT CONTENT: RED ACCENT LINE + TITLE + SUBTITLE + RED BUTTON -->
       <div class="left-content">
-        <!-- Top Red Accent Line -->
         <div class="red-accent-bar" aria-hidden="true"></div>
 
         <h1 class="hero-title">
           How to <span class="title-highlight">Report an Incident</span> Outside of MIDAS
         </h1>
 
-        <p class="hero-desc" style="margin-bottom: 0;">
+        <p class="hero-desc">
           Help us keep everyone safe. Submit external security incidents quickly and easily.
         </p>
+
+        <!-- Red Action Button (Native Pure HTML Anchor) -->
+        <a href="https://midas-security-hub.github.io/midas-security-hub-Midas-Cyber-Awareness-Security-Hub/external-incident-reporting.html#wizard"
+          target="_blank"
+          rel="noopener noreferrer" 
+          class="action-btn" 
+          title="Report an External Security Incident">
+          <!-- Warning Alert Triangle Icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4L2 20H22L12 4Z" fill="#FFFFFF" />
+            <path d="M12 9V13" stroke="#DC2626" stroke-width="2.2" stroke-linecap="round" />
+            <circle cx="12" cy="16.5" r="1.2" fill="#DC2626" />
+          </svg>
+          Report an External Incident &rarr;
+        </a>
       </div>
 
       <!-- RIGHT CONTENT: LAPTOP + EXCLAMATION SHIELD VECTOR ILLUSTRATION -->
@@ -254,37 +261,28 @@
             stroke-dasharray="4 4" opacity="0.65" />
 
           <!-- 1. LAPTOP COMPUTER (Background Right) -->
-          <!-- Laptop Base Deck -->
           <path d="M125 158H335L325 168H135L125 158Z" fill="url(#laptop-base)" />
           <rect x="120" y="168" width="220" height="5" rx="2.5" fill="#0f172a" />
 
-          <!-- Laptop Display Screen -->
           <rect x="140" y="32" width="180" height="126" rx="8" fill="url(#laptop-bezel)" />
-          <!-- Inner White Screen Canvas -->
           <rect x="148" y="40" width="164" height="110" rx="4" fill="#ffffff" />
 
-          <!-- Form Content on Screen -->
           <text x="230" y="58" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700"
             font-size="10" fill="#0b1a3e">Incident Report</text>
 
-          <!-- Input Field Skeletons -->
           <rect x="160" y="66" width="140" height="12" rx="3" fill="#f1f5f9" />
           <rect x="160" y="84" width="140" height="12" rx="3" fill="#f1f5f9" />
           <rect x="160" y="102" width="140" height="12" rx="3" fill="#f1f5f9" />
 
-          <!-- Red Submit Button on Screen -->
           <rect x="200" y="122" width="60" height="14" rx="4" fill="#dc2626" />
           <text x="230" y="132" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800"
             font-size="6.5" fill="#ffffff" letter-spacing="0.4">SUBMIT REPORT</text>
 
           <!-- 2. RED SHIELD WITH EXCLAMATION MARK (Foreground Left) -->
           <g transform="translate(68, 55)" filter="drop-shadow(0 8px 16px rgba(220, 38, 38, 0.3))">
-            <!-- Silver Shield Outer Border -->
             <path d="M36 2L68 14V42C68 64 53 82 36 88C19 82 4 64 4 42V14L36 2Z" fill="#ffffff" stroke="#e2e8f0"
               stroke-width="2" />
-            <!-- Red Shield Inner Fill -->
             <path d="M36 6L64 16V42C64 61.5 51 77.5 36 83C21 77.5 8 61.5 8 42V16L36 6Z" fill="url(#red-shield-grad)" />
-            <!-- Bold White Exclamation Mark -->
             <rect x="33" y="24" width="6" height="26" rx="3" fill="#ffffff" />
             <circle cx="36" cy="59" r="3.8" fill="#ffffff" />
           </g>
@@ -292,7 +290,6 @@
           <!-- 3. TOP RIGHT FLOATING GLOBE BADGE -->
           <g transform="translate(330, 48)" filter="drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08))">
             <circle cx="16" cy="16" r="16" fill="#ffffff" stroke="#fee2e2" stroke-width="1.5" />
-            <!-- Red Globe SVG -->
             <circle cx="16" cy="16" r="10" stroke="#dc2626" stroke-width="1.8" />
             <path
               d="M6 16H26 M16 6C18.5 9 20 12.5 20 16C20 19.5 18.5 23 16 26C13.5 23 12 19.5 12 16C12 12.5 13.5 9 16 6Z"
@@ -302,7 +299,6 @@
           <!-- 4. BOTTOM RIGHT FLOATING BELL BADGE -->
           <g transform="translate(325, 128)" filter="drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08))">
             <circle cx="16" cy="16" r="16" fill="#ffffff" stroke="#fee2e2" stroke-width="1.5" />
-            <!-- Red Bell SVG -->
             <path d="M16 8C13.8 8 12 9.8 12 12V16L10 18H22L20 16V12C20 9.8 18.2 8 16 8Z" stroke="#dc2626"
               stroke-width="1.8" stroke-linejoin="round" />
             <path d="M14 20C14 21.1 14.9 22 16 22C17.1 22 18 21.1 18 20" stroke="#dc2626" stroke-width="1.8" />
@@ -315,28 +311,6 @@
 
   </div>
 
-  <!-- AUTO-RESIZE OBSERVER FOR SHAREPOINT EMBED -->
-  <script>
-    (function () {
-      function sendHeight() {
-        const container = document.querySelector('.report-sec-container');
-        if (!container) return;
-        const totalHeight = container.offsetHeight + 24;
-        if (window.parent && window.parent !== window) {
-          window.parent.postMessage({
-            type: 'sharepoint-resize',
-            height: totalHeight
-          }, '*');
-        }
-      }
-
-      window.addEventListener('load', sendHeight);
-      window.addEventListener('resize', sendHeight);
-      if ('ResizeObserver' in window) {
-        new ResizeObserver(sendHeight).observe(document.body);
-      }
-    })();
-  </script>
 </body>
 
 </html>

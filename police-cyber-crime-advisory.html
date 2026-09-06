@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Advisory: Reporting Cyber Crime & Social Media Harassment - Midas Cyber Security Hub</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-dark: #020617;
+            --blue: #2563eb;
+            --blue-hover: #1d4ed8;
+            --blue-light: #eff6ff;
+            --amber: #f59e0b;
+            --rose: #e11d48;
+            --emerald: #10b981;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Sinhala', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 24px 40px;
+            width: 100%;
+            max-width: 1680px;
+            margin: 0 auto;
+        }
+
+        /* Banner Header Card */
+        .hero-advisory-card {
+            background: linear-gradient(135deg, #090d16 0%, #1e1b4b 50%, #0f172a 100%);
+            border-radius: var(--radius-lg);
+            padding: 44px;
+            color: #ffffff;
+            border: 1px solid #312e81;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(225, 29, 72, 0.2);
+            border: 1px solid rgba(225, 29, 72, 0.4);
+            color: #fb7185;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title {
+            font-size: 2.35rem;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .hero-title-sinhala {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            font-size: 1.25rem;
+            color: #f59e0b;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            max-width: 900px;
+            line-height: 1.6;
+        }
+
+        /* Section Layout */
+        .section-wrapper {
+            margin-bottom: 40px;
+        }
+
+        .section-title-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .section-h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Reporting Channels Grid (Matching Infographic) */
+        .reporting-channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .channel-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+
+        .channel-card.card-cid {
+            border-top: 5px solid var(--blue);
+        }
+
+        .channel-card.card-ccid {
+            border-top: 5px solid var(--rose);
+        }
+
+        .channel-card.card-phone {
+            border-top: 5px solid var(--emerald);
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            width: fit-content;
+        }
+
+        .card-tag.blue { background: #eff6ff; color: #2563eb; }
+        .card-tag.red { background: #ffe4e6; color: #e11d48; }
+        .card-tag.green { background: #ecfdf5; color: #059669; }
+
+        .card-title-sinhala {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .card-title-english {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .email-pill-box {
+            background: #020617;
+            border: 1px solid #1e293b;
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .email-address-text {
+            color: #38bdf8;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            word-break: break-all;
+        }
+
+        .action-mail-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .action-mail-btn.blue-btn {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .action-mail-btn.red-btn {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+        }
+
+        .action-mail-btn.green-btn {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+
+        .action-mail-btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.95;
+        }
+
+        /* Key Public Notice Box */
+        .advisory-notice-box {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 1.5px solid #fde68a;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .notice-icon-badge {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #f59e0b;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.3);
+        }
+
+        .notice-body h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #78350f;
+            margin-bottom: 8px;
+        }
+
+        .notice-body-sinhala {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            font-size: 1rem;
+            color: #92400e;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .notice-body-english {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        /* Common Responsive Header & Footer Styles */
+        .midas-header-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 28px;
+            border: 1px solid #1e293b;
+        }
+
+        .header-top-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 110px;
+            overflow: hidden;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-logo-svg {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-title-text {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .header-nav-item {
+            position: relative;
+        }
+
+        .header-nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .header-nav-link:hover,
+        .header-nav-link.active {
+            color: #ffffff;
+        }
+
+        .header-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 100;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .header-nav-item:hover .header-dropdown,
+        .header-nav-item.open .header-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .header-dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link:hover {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        /* Footer Container */
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-top: 40px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-title-main {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .contact-red-btn {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: #ffffff;
+            padding: 8px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            display: inline-block;
+            width: fit-content;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        .soc-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1.2;
+            min-width: 320px;
+        }
+
+        .soc-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Master Header -->
+    <div class="midas-header-container">
+        <div class="header-top-banner">
+            <div class="header-brand">
+                <img src="images/SOC logo.png" alt="Midas SOC Logo" class="header-logo-svg">
+                <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="header-navbar">
+            <div class="header-nav-links">
+                <div class="header-nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="header-nav-link">Home</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <button class="header-nav-link active" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="index.html" class="header-dropdown-link">🏠 Portal Directory (All Topics)</a>
+                        <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="header-dropdown-link">📱 Device Security</a>
+                        <a href="email-security.html" class="header-dropdown-link">📧 Email Security & Phishing Spotter</a>
+                        <a href="physical-security.html" class="header-dropdown-link">🏢 Physical & Social Security Guide</a>
+                        <a href="remote-wifi-security.html" class="header-dropdown-link">🌐 Remote & Wi-Fi Security Guide</a>
+                        <a href="external-incident-reporting.html" class="header-dropdown-link">🚨 External Incident Reporting (LK)</a>
+                        <a href="police-cyber-crime-advisory.html" class="header-dropdown-link" style="color: #e11d48; font-weight: bold;">⚖️ Police Cyber Crime Advisory</a>
+                        <a href="security-tips.html" class="header-dropdown-link">💡 Practical Security Tips Library</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="external-incident-reporting.html" class="header-nav-link">External Reporting</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link" style="color: #38bdf8;">Report Incident</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Advisory Card -->
+    <div class="hero-advisory-card">
+        <div class="hero-badge-tag">⚖️ Official Sri Lanka Police Public Advisory</div>
+        <h1 class="hero-title">Sri Lanka Police Cyber Crime Advisory: Reporting Harassment & Illegal Social Media Groups</h1>
+        <div class="hero-title-sinhala">පොලිස් පරිගණක අපරාධ විමර්ශන කොට්ඨාසයේ විශේෂ දැනුම්දීම</div>
+        <p class="hero-desc">
+            Official public notice regarding illegal Facebook groups promoting harassment, abuse, or unauthorized image distribution. Follow the direct Sri Lanka Police CID and CCID channels below to submit complaints or request immediate content takedown.
+        </p>
+    </div>
+
+    <!-- Section 1: Reporting Channel Cards (Matching Police Advisory Infographic) -->
+    <div class="section-wrapper">
+        <div class="section-title-wrap">
+            <h2 class="section-h2"><span>📩</span> Official Police Reporting Channels (LK)</h2>
+        </div>
+
+        <div class="reporting-channels-grid">
+
+            <!-- Channel 1: Criminal Offenses & Illegal Content -->
+            <div class="channel-card card-cid">
+                <div>
+                    <span class="card-tag blue">Criminal Investigation Dept (CID)</span>
+                    <div class="card-title-sinhala">අපරාධමය වරදක් නිරීක්ෂණය වන පළකිරීම් පිළිබඳව පැමිණිලි</div>
+                    <div class="card-title-english">Complaints regarding posts observing criminal offenses, illegal groups & cyber crimes.</div>
+
+                    <div class="email-pill-box">
+                        <span style="color: #cbd5e1; font-weight: 700; font-size: 0.88rem;">Email:</span>
+                        <span class="email-address-text">dir.cid@police.gov.lk</span>
+                    </div>
+                </div>
+
+                <a href="mailto:dir.cid@police.gov.lk?subject=Complaint%20Regarding%20Criminal%20Content%20or%20Group" class="action-mail-btn blue-btn">
+                    ✉️ Email CID (dir.cid@police.gov.lk)
+                </a>
+            </div>
+
+            <!-- Channel 2: Take Down Content & Harassment Removal -->
+            <div class="channel-card card-ccid">
+                <div>
+                    <span class="card-tag red">Computer Crime Investigation (CCID)</span>
+                    <div class="card-title-sinhala">ඔබව අපහසුතාවයට පත් වූ යම් පළකිරීමක් ඉවත්කරගැනීම සඳහා පැමිණිලි</div>
+                    <div class="card-title-english">Complaints to request immediate removal/takedown of posts causing harassment or distress.</div>
+
+                    <div class="email-pill-box">
+                        <span style="color: #cbd5e1; font-weight: 700; font-size: 0.88rem;">Email:</span>
+                        <span class="email-address-text">ccid.report@police.gov.lk</span>
+                    </div>
+                </div>
+
+                <a href="mailto:ccid.report@police.gov.lk?subject=Request%20to%20Take%20Down%20Harassing%20Post" class="action-mail-btn red-btn">
+                    ✉️ Email CCID Takedown (ccid.report@police.gov.lk)
+                </a>
+            </div>
+
+            <!-- Channel 3: Direct Phone Hotline -->
+            <div class="channel-card card-phone">
+                <div>
+                    <span class="card-tag green">Police CCID Hotline</span>
+                    <div class="card-title-sinhala">පරිගණක අපරාධ විමර්ශන කොට්ඨාසය ඍජු ඇමතුම්</div>
+                    <div class="card-title-english">Direct telephone hotline to contact the Computer Crime Investigation Division.</div>
+
+                    <div class="email-pill-box">
+                        <span style="color: #cbd5e1; font-weight: 700; font-size: 0.88rem;">Hotline:</span>
+                        <span class="email-address-text" style="color: #10b981;">011 2381058</span>
+                    </div>
+                </div>
+
+                <a href="tel:0112381058" class="action-mail-btn green-btn">
+                    📞 Call CCID (011 2381058)
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Section 2: Key Advisory Public Notice -->
+    <div class="advisory-notice-box">
+        <div class="notice-icon-badge">📢</div>
+        <div class="notice-body">
+            <h3>Sri Lanka Police Official Statement / පොලිස් ප්‍රකාශය</h3>
+            <div class="notice-body-sinhala">
+                අසැබි වදන්, ළමා හා කාන්තා ඡායාරූප පළකරමින් ලිංගික අතවර/ අපචාර ප්‍රවර්ධනය වන ආකාරයෙන් පවත්වාගෙන යන Facebook Groups මෑත කාලය තුළ නිරීක්ෂණය විය. පොලිස් පරිගණක අපරාධ විමර්ශන කොට්ඨාසය එවැනි Facebook ගිණුම්/ සමූහ හඳුනාගෙන අක්‍රිය කිරීමට අවශ්‍ය පියවර ගෙන සැකකරුවන් අත්අඩංගුවට ගැනීම සඳහාද ක්‍රියා කරයි. අපරාධ ප්‍රවර්ධනයට අනුබල දීමක් සිදුකෙරෙන සමාජ මාධ්‍ය ගිණුම් පිළිබඳව තොරතුරු එම කොට්ඨාසයේ ඉහත විද්‍යුත් තැපැල් ( Email ) ලිපින වෙත යොමුකරන්න.
+            </div>
+            <div class="notice-body-english">
+                Facebook groups promoting harassment or abuse by posting obscene language or unauthorized photos of children and women have been monitored recently. The Police Computer Crime Investigation Division (CCID) takes active measures to identify, deactivate, and arrest suspects operating such accounts/groups. Please forward evidence or URLs of offending social media accounts to the official emails above.
+            </div>
+        </div>
+    </div>
+
+    <!-- Master Footer -->
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo" class="footer-logo-svg">
+
+                    <div>
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                    </div>
+                </div>
+
+                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact SOC</a>
+            </div>
+
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.95rem;">Midas Security Operations Center</div>
+                    <div style="font-size: 0.82rem; color: #94a3b8; margin-top: 2px;">
+                        For internal Midas system threats, contact <a href="mailto:cic@midassafety.com" style="color: #f59e0b; font-weight: bold;">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
