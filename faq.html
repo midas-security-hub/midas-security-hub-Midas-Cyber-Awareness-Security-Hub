@@ -1057,6 +1057,42 @@
         </div>
     </div>
 
+    <!-- AI Security Assistant Section (Powered by Open-Source Llama 3 / Mistral AI) -->
+    <div class="ask-box-card" style="background: linear-gradient(135deg, #020617 0%, #0b192e 50%, #0f172a 100%); border: 1.5px solid #1e293b; box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4); margin-top: 40px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+            <div>
+                <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; padding: 4px 12px; border-radius: 16px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
+                    🤖 Live AI Assistant (Keyless Open-Source Llama 3 / Mistral Model)
+                </div>
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: #ffffff;">Ask Midas Cyber Security AI</h2>
+                <p style="font-size: 0.92rem; color: #94a3b8; margin-top: 4px;">Get instant open-source AI answers on password policies, phishing detection, device hardening, and remote security.</p>
+            </div>
+        </div>
+
+        <!-- Quick Question Recommendation Pills -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
+            <button class="feedback-btn" style="background: #1e293b; color: #cbd5e1; border-color: #334155;" onclick="useAiPrompt('How do I create a strong 4-word passphrase?')">💬 How do I create a safe 4-word passphrase?</button>
+            <button class="feedback-btn" style="background: #1e293b; color: #cbd5e1; border-color: #334155;" onclick="useAiPrompt('What are 5 common signs of a phishing email?')">💬 What are 5 common phishing red flags?</button>
+            <button class="feedback-btn" style="background: #1e293b; color: #cbd5e1; border-color: #334155;" onclick="useAiPrompt('Why is corporate VPN required on public Wi-Fi?')">💬 Why use VPN on public Wi-Fi?</button>
+            <button class="feedback-btn" style="background: #1e293b; color: #cbd5e1; border-color: #334155;" onclick="useAiPrompt('How to report harassment to Sri Lanka Police CCID?')">💬 How to report cyber harassment to police?</button>
+        </div>
+
+        <!-- AI Chat Window -->
+        <div id="aiChatBox" style="background: #020617; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; min-height: 140px; max-height: 350px; overflow-y: auto; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
+            <div style="color: #94a3b8; font-style: italic;">
+                🤖 AI Assistant Ready! Type your security question below or click one of the suggested prompts above.
+            </div>
+        </div>
+
+        <!-- AI Question Input Bar -->
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <input type="text" id="aiInput" class="ask-input" style="flex: 1; margin-top: 0;" placeholder="Type your security question here..." onkeypress="if(event.key === 'Enter') askAiAssistant()">
+            <button class="ask-submit-btn" style="margin-top: 0; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);" onclick="askAiAssistant()">
+                ⚡ Ask AI Assistant
+            </button>
+        </div>
+    </div>
+
     <!-- Ask a Security Question Section -->
     <div class="ask-box-card">
         <h2 style="font-size: 1.5rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">Can't find your answer? Ask SOC</h2>
@@ -1180,6 +1216,64 @@
             const subject = encodeURIComponent(`[FAQ Inquiry] ${category}`);
             const body = encodeURIComponent(`Reporter Email: ${email}\nCategory: ${category}\n\nQuestion:\n${text}`);
             window.location.href = `mailto:cic@midassafety.com?subject=${subject}&body=${body}`;
+        }
+
+        function useAiPrompt(promptText) {
+            document.getElementById('aiInput').value = promptText;
+            askAiAssistant(promptText);
+        }
+
+        async function askAiAssistant(overridePrompt) {
+            const inputEl = document.getElementById('aiInput');
+            const chatBox = document.getElementById('aiChatBox');
+            const prompt = overridePrompt || inputEl.value.trim();
+
+            if (!prompt) {
+                alert('Please enter a question for the AI Assistant.');
+                return;
+            }
+
+            // Append User Question
+            const userHtml = `<div style="margin-bottom: 12px; text-align: right;"><span style="background: #1e293b; color: #ffffff; padding: 8px 14px; border-radius: 12px; display: inline-block; max-width: 85%;"><strong>You:</strong> ${escapeHtml(prompt)}</span></div>`;
+            chatBox.innerHTML += userHtml;
+            inputEl.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Append Typing Indicator
+            const typingId = 'typing-' + Date.now();
+            const typingHtml = `<div id="${typingId}" style="margin-bottom: 12px;"><span style="background: #090d16; border: 1px solid #1e293b; color: #38bdf8; padding: 10px 16px; border-radius: 12px; display: inline-block; max-width: 85%;">🤖 <em>Thinking (Querying Open-Source Llama-3 AI)...</em></span></div>`;
+            chatBox.innerHTML += typingHtml;
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const systemInstruction = "System Role: You are the official Midas Cyber Security Hub AI Assistant. Provide helpful, accurate, concise cyber security advice (passwords, phishing, VPN, device hardening, incident reporting) in plain English. Keep answers under 150 words.";
+
+            try {
+                const url = `https://text.pollinations.ai/${encodeURIComponent(systemInstruction + "\n\nUser Question: " + prompt)}`;
+                const response = await fetch(url);
+                const aiReply = await response.text();
+
+                const typingEl = document.getElementById(typingId);
+                if (typingEl) typingEl.remove();
+
+                const replyHtml = `<div style="margin-bottom: 16px;"><span style="background: #090d16; border: 1px solid #1e293b; color: #e2e8f0; padding: 12px 18px; border-radius: 12px; display: inline-block; max-width: 90%; line-height: 1.6;"><strong style="color: #38bdf8;">🤖 AI Assistant:</strong><br>${formatAiText(aiReply)}</span></div>`;
+                chatBox.innerHTML += replyHtml;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            } catch (err) {
+                const typingEl = document.getElementById(typingId);
+                if (typingEl) typingEl.remove();
+
+                const errHtml = `<div style="margin-bottom: 16px;"><span style="background: #450a0a; border: 1px solid #7f1d1d; color: #fca5a5; padding: 12px 18px; border-radius: 12px; display: inline-block;">⚠️ Could not reach AI model right now. Please email your question directly to Midas SOC at <a href="mailto:cic@midassafety.com" style="color: #ffffff; font-weight: bold;">cic@midassafety.com</a>.</span></div>`;
+                chatBox.innerHTML += errHtml;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function formatAiText(text) {
+            return escapeHtml(text).replace(/\n/g, '<br>');
         }
     </script>
 </body>
