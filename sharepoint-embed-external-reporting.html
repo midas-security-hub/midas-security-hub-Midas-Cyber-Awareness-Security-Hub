@@ -222,7 +222,8 @@
 
         <!-- Red Action Button -->
         <a href="https://midas-security-hub.github.io/midas-security-hub-Midas-Cyber-Awareness-Security-Hub/external-incident-reporting.html#wizard" 
-           target="_top" 
+           target="_blank" 
+           onclick="console.log('[Midas Security Hub Embed] Button clicked. Navigating to:', this.href); try { var win = window.open(this.href, '_blank'); if (win) { win.focus(); } else { console.warn('[Midas Security Hub Embed] Popup blocked by browser/SharePoint sandbox. Navigating top window...'); window.top.location.href = this.href; } } catch(e) { console.error('[Midas Security Hub Embed] Error opening new tab:', e); window.location.href = this.href; } return false;"
            rel="noopener noreferrer" 
            class="action-btn" 
            title="Report an External Security Incident">
