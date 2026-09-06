@@ -806,10 +806,6 @@
                 </div>
 
                 <div class="header-nav-item">
-                    <a href="#generator" class="header-nav-link">Email Template Generator</a>
-                </div>
-
-                <div class="header-nav-item">
                     <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link"
                         style="color: #38bdf8;">Report Internal Incident</a>
                 </div>
@@ -972,79 +968,6 @@
         </div>
     </div>
 
-    <!-- Section 3: Guided Incident Report Email Generator -->
-    <div id="generator" class="section-wrapper">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title"><span>📝</span> Guided Incident Email Generator</h2>
-                <p class="section-desc">Fill in the fields below to quickly compose a formatted incident report email for SL CERT.</p>
-            </div>
-        </div>
-
-        <div class="generator-card">
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>Incident Type</label>
-                    <select id="genType" class="form-control" onchange="generateEmailText()">
-                        <option value="General Cyber Incident">General Cyber Security Incident</option>
-                        <option value="Social Media Hacked">Social Media Account Compromise</option>
-                        <option value="Financial Fraud / Cyber Crime">Financial Scam / Online Crime</option>
-                        <option value="Phishing Campaign">Phishing / Scam Email Campaign</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Your Name / Contact Phone</label>
-                    <input type="text" id="genName" class="form-control" placeholder="e.g. John Perera (+94 77 123 4567)" onkeyup="generateEmailText()">
-                </div>
-
-                <div class="form-group">
-                    <label>Affected Platform / Account</label>
-                    <input type="text" id="genPlatform" class="form-control" placeholder="e.g. Facebook / Email / Bank Account" onkeyup="generateEmailText()">
-                </div>
-
-                <div class="form-group">
-                    <label>Date & Time of Incident</label>
-                    <input type="text" id="genDate" class="form-control" placeholder="e.g. Today at 10:30 AM" onkeyup="generateEmailText()">
-                </div>
-            </div>
-
-            <div class="form-group" style="margin-bottom: 20px;">
-                <label>Brief Description & Evidence Details</label>
-                <textarea id="genDesc" class="form-control" rows="3" placeholder="Describe what happened and any screenshots or links available..." onkeyup="generateEmailText()"></textarea>
-            </div>
-
-            <div class="output-template-box" id="templateOutput">
-Subject: [Incident Report] General Cyber Security Incident
-
-Dear Sri Lanka CERT Team,
-
-I am writing to report a cyber security incident.
-
-- Incident Type: General Cyber Security Incident
-- Reporter Name / Contact: [Not Specified]
-- Affected Platform / Account: [Not Specified]
-- Date & Time: [Not Specified]
-
-Description of Incident:
-[No details provided yet.]
-
-Please advise on next steps.
-
-Thank you.
-            </div>
-
-            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <button class="action-link-btn" onclick="copyTemplate()" style="background: var(--blue); border-color: var(--blue);">
-                    📋 Copy Email Text
-                </button>
-                <button class="action-link-btn" onclick="sendGeneratedMail()" style="background: #ea580c; border-color: #ea580c;">
-                    ✉️ Open Email App & Send
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Master Footer -->
     <footer class="midas-footer-container">
         <div class="footer-main-flex">
@@ -1155,51 +1078,6 @@ Thank you.
                 targetItem.classList.add('active-highlight');
                 targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-        }
-
-        function generateEmailText() {
-            const type = document.getElementById('genType').value;
-            const name = document.getElementById('genName').value || '[Not Specified]';
-            const platform = document.getElementById('genPlatform').value || '[Not Specified]';
-            const date = document.getElementById('genDate').value || '[Not Specified]';
-            const desc = document.getElementById('genDesc').value || '[No details provided yet.]';
-
-            const output = `Subject: [Incident Report] ${type}
-
-Dear Sri Lanka CERT Team,
-
-I am writing to report a cyber security incident.
-
-- Incident Type: ${type}
-- Reporter Name / Contact: ${name}
-- Affected Platform / Account: ${platform}
-- Date & Time: ${date}
-
-Description of Incident & Evidence Details:
-${desc}
-
-Please advise on next steps and assistance.
-
-Thank you.`;
-
-            document.getElementById('templateOutput').innerText = output;
-        }
-
-        function copyTemplate() {
-            const text = document.getElementById('templateOutput').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Email template copied to clipboard!');
-            });
-        }
-
-        function sendGeneratedMail() {
-            const type = document.getElementById('genType').value;
-            const targetMail = (type === 'Social Media Hacked') ? 'socialmedia@cert.gov.lk' : 'report@cert.gov.lk';
-            const text = document.getElementById('templateOutput').innerText;
-            const subject = encodeURIComponent(`[Incident Report] ${type}`);
-            const body = encodeURIComponent(text.replace(/^Subject:.*$/m, '').trim());
-
-            window.location.href = `mailto:${targetMail}?subject=${subject}&body=${body}`;
         }
     </script>
 </body>
