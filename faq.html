@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions (FAQ) - Midas Cyber Security Hub</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-dark: #020617;
+            --blue: #2563eb;
+            --blue-hover: #1d4ed8;
+            --blue-light: #eff6ff;
+            --amber: #f59e0b;
+            --rose: #e11d48;
+            --emerald: #10b981;
+            --purple: #8b5cf6;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 24px 40px;
+            width: 100%;
+            max-width: 1680px;
+            margin: 0 auto;
+        }
+
+        /* Hero Header Banner */
+        .faq-hero-card {
+            background: linear-gradient(135deg, #090d16 0%, #0f172a 40%, #1e293b 100%);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            color: #ffffff;
+            border: 1px solid #1e293b;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .faq-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .faq-hero-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .faq-hero-subtitle {
+            font-size: 1.08rem;
+            color: #cbd5e1;
+            max-width: 780px;
+            margin-bottom: 32px;
+        }
+
+        /* Hero Search Bar */
+        .faq-search-wrapper {
+            width: 100%;
+            max-width: 680px;
+            position: relative;
+        }
+
+        .faq-search-input {
+            width: 100%;
+            padding: 16px 20px 16px 54px;
+            font-size: 1rem;
+            font-family: inherit;
+            border-radius: 12px;
+            border: 2px solid #334155;
+            background: rgba(15, 23, 42, 0.8);
+            color: #ffffff;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .faq-search-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .faq-search-input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+            background: #090d16;
+        }
+
+        .faq-search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #38bdf8;
+            pointer-events: none;
+        }
+
+        /* Main Container Layout */
+        .faq-layout-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        /* Left Sidebar Category Filter Navigation */
+        .sidebar-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 24px;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-category-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 6px;
+            font-family: inherit;
+            text-align: left;
+        }
+
+        .nav-category-btn:hover {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+
+        .nav-category-btn.active {
+            background: #eff6ff;
+            color: var(--blue);
+            border-color: #bfdbfe;
+            font-weight: 700;
+        }
+
+        .nav-category-btn .cat-count {
+            background: #e2e8f0;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .nav-category-btn.active .cat-count {
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        /* FAQ Items Accordion Section */
+        .faq-accordion-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .category-header-wrap {
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .category-header-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            border: 1.5px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+
+        .faq-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-card.open {
+            border-color: var(--blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question-btn {
+            width: 100%;
+            padding: 20px 24px;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+        }
+
+        .faq-q-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .faq-q-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .faq-q-badge.pass { background: #fffbeb; color: #d97706; }
+        .faq-q-badge.email { background: #eff6ff; color: #2563eb; }
+        .faq-q-badge.device { background: #f0fdf4; color: #16a34a; }
+        .faq-q-badge.remote { background: #faf5ff; color: #9333ea; }
+        .faq-q-badge.escala { background: #fff1f2; color: #e11d48; }
+
+        .faq-icon-arrow {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, background 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .faq-card.open .faq-icon-arrow {
+            transform: rotate(180deg);
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .faq-answer-body {
+            padding: 0 24px 24px 24px;
+            display: none;
+            font-size: 0.96rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            border-top: 1px solid #f1f5f9;
+            margin-top: -4px;
+            padding-top: 16px;
+        }
+
+        .faq-card.open .faq-answer-body {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .faq-answer-highlight {
+            background: #f8fafc;
+            border-left: 4px solid var(--blue);
+            padding: 14px 18px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 14px 0;
+            font-weight: 500;
+        }
+
+        .faq-actions-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border);
+            font-size: 0.85rem;
+        }
+
+        .faq-feedback-btns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feedback-btn {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .feedback-btn:hover {
+            background: #e2e8f0;
+            color: var(--primary);
+        }
+
+        /* Ask Question Form Box */
+        .ask-box-card {
+            background: linear-gradient(135deg, #090d16 0%, #0f172a 100%);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            color: #ffffff;
+            border: 1px solid #1e293b;
+            box-shadow: var(--shadow-lg);
+            margin-top: 48px;
+        }
+
+        .ask-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .ask-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid #334155;
+            background: #020617;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.92rem;
+            margin-top: 6px;
+        }
+
+        .ask-input:focus {
+            outline: none;
+            border-color: #38bdf8;
+        }
+
+        .ask-submit-btn {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 16px;
+            width: fit-content;
+        }
+
+        .ask-submit-btn:hover {
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* Common Responsive Header & Footer Styles */
+        .midas-header-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 28px;
+            border: 1px solid #1e293b;
+        }
+
+        .header-top-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 110px;
+            overflow: hidden;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-logo-svg {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-title-text {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .header-nav-item {
+            position: relative;
+        }
+
+        .header-nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .header-nav-link:hover,
+        .header-nav-link.active {
+            color: #ffffff;
+        }
+
+        .header-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 100;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .header-nav-item:hover .header-dropdown,
+        .header-nav-item.open .header-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .header-dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .header-dropdown-link:hover {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        /* Footer Container */
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-top: 40px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-title-main {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .contact-red-btn {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: #ffffff;
+            padding: 8px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            display: inline-block;
+            width: fit-content;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        .soc-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1.2;
+            min-width: 320px;
+        }
+
+        .soc-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .faq-layout-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-card {
+                position: static;
+            }
+            .ask-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Site Header -->
+    <div class="midas-header-container">
+        <div class="header-top-banner">
+            <div class="header-brand">
+                <img src="images/SOC logo.png" alt="Midas SOC Logo" class="header-logo-svg">
+                <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="header-navbar">
+            <div class="header-nav-links">
+                <div class="header-nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="header-nav-link">Home</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <button class="header-nav-link active" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="header-dropdown">
+                        <a href="index.html" class="header-dropdown-link">🏠 Portal Directory (All Topics)</a>
+                        <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="header-dropdown-link">📱 Device Hardening & Mobile</a>
+                        <a href="email-security.html" class="header-dropdown-link">📧 Email Security & Phishing Spotter</a>
+                        <a href="physical-security.html" class="header-dropdown-link">🏢 Physical & Social Security Guide</a>
+                        <a href="remote-wifi-security.html" class="header-dropdown-link">🌐 Remote & Wi-Fi Security Guide</a>
+                        <a href="external-incident-reporting.html" class="header-dropdown-link">🚨 External Incident Reporting (LK)</a>
+                        <a href="News/police-cyber-crime-advisory.html" class="header-dropdown-link">⚖️ Police Cyber Crime Advisory</a>
+                        <a href="faq.html" class="header-dropdown-link" style="color: #38bdf8; font-weight: bold;">❓ Frequently Asked Questions (FAQ)</a>
+                        <a href="security-tips.html" class="header-dropdown-link">💡 Practical Security Tips Library</a>
+                    </div>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="faq.html" class="header-nav-link active">FAQ & Knowledgebase</a>
+                </div>
+
+                <div class="header-nav-item">
+                    <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link" style="color: #38bdf8;">Report Incident</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- FAQ Hero Banner -->
+    <div class="faq-hero-card">
+        <div class="faq-hero-badge">💡 Midas Security Help Center</div>
+        <h1 class="faq-hero-title">Frequently Asked Questions (FAQ)</h1>
+        <p class="faq-hero-subtitle">
+            Search expert answers on account safety, email phishing, device lock policies, corporate VPN remote security, and emergency incident escalation.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="faq-search-wrapper">
+            <svg class="faq-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" id="faqSearch" class="faq-search-input" placeholder="Type a keyword (e.g. password, phishing, VPN, stolen phone)..." onkeyup="filterFaqs()">
+        </div>
+    </div>
+
+    <!-- FAQ Main Layout Grid -->
+    <div class="faq-layout-grid">
+
+        <!-- Sidebar Category Filter Navigation -->
+        <div class="sidebar-card">
+            <h3 class="sidebar-title">
+                <span>📁</span> FAQ Categories
+            </h3>
+
+            <button class="nav-category-btn active" onclick="filterCategory('all', this)">
+                <span>🌟 All Questions</span>
+                <span class="cat-count" id="count-all">12</span>
+            </button>
+
+            <button class="nav-category-btn" onclick="filterCategory('pass', this)">
+                <span>🔑 Passwords & Accounts</span>
+                <span class="cat-count">3</span>
+            </button>
+
+            <button class="nav-category-btn" onclick="filterCategory('email', this)">
+                <span>📧 Phishing & Email</span>
+                <span class="cat-count">3</span>
+            </button>
+
+            <button class="nav-category-btn" onclick="filterCategory('device', this)">
+                <span>📱 Device Hardening</span>
+                <span class="cat-count">2</span>
+            </button>
+
+            <button class="nav-category-btn" onclick="filterCategory('remote', this)">
+                <span>🌐 Remote & Wi-Fi Security</span>
+                <span class="cat-count">2</span>
+            </button>
+
+            <button class="nav-category-btn" onclick="filterCategory('escala', this)">
+                <span>🚨 Incident Reporting</span>
+                <span class="cat-count">2</span>
+            </button>
+        </div>
+
+        <!-- FAQ Items Accordion Area -->
+        <div class="faq-accordion-group" id="faqContainer">
+
+            <!-- Category 1: Passwords & Accounts -->
+            <div class="faq-card" data-cat="pass" data-keywords="password passphrase change length mfa account expiry strength pwned">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge pass">Account Safety</span>
+                        What is the recommended passphrase length and structure for Midas accounts?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    Use a 4-word random passphrase of at least <strong>16 characters</strong> (e.g. <code>Coffee#Laptop!Sunset9</code>). Long passphrases are exponentially harder for brute-force attacks to crack compared to short complex passwords.
+                    <div class="faq-answer-highlight">
+                        💡 <strong>Best Practice:</strong> Never reuse your corporate Midas password on personal sites like Facebook, Netflix, or personal banking. Test your passphrase using our <a href="account-password-security.html#tab-evaluator" style="color: var(--blue); font-weight: bold;">Passphrase Strength Evaluator</a>.
+                    </div>
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card" data-cat="pass" data-keywords="mfa authentication push prompt fatigue auth microsoft code">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge pass">MFA Prompt</span>
+                        What should I do if I receive an unexpected Microsoft Authenticator push notification?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    <strong>Deny the request immediately!</strong> An unexpected push prompt means someone has entered your password correctly and is attempting to access your account.
+                    <div class="faq-answer-highlight">
+                        ⚠️ <strong>Action Required:</strong> Click <em>"No, it's not me"</em> in Authenticator and immediately notify Midas SOC at <a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a> to reset your credentials.
+                    </div>
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card" data-cat="pass" data-keywords="hibp breach exposed check email email address leak password pwned">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge pass">Data Leak</span>
+                        How can I check if my email address has been exposed in a public data breach?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    You can use the built-in breach exposure checker on our <a href="account-password-security.html#tab-checkup" style="color: var(--blue); font-weight: bold;">Account Security Checkup Page</a>. It checks against HaveIBeenPwned breach databases to see if your address appeared in known third-party leaks.
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Phishing & Email -->
+            <div class="faq-card" data-cat="email" data-keywords="phishing outlook report email suspicious attachment button spotter spoof">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge email">Phishing</span>
+                        How do I report a suspicious phishing email in Microsoft Outlook?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    In Microsoft Outlook, select the suspicious email and click the <strong>"Report Phishing"</strong> button in the top ribbon toolbar. If the button is not visible, forward the email as an attachment to <a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>.
+                    <div class="faq-answer-highlight">
+                        📧 Learn all 7 red flag hotspots in our <a href="email-security.html" style="color: var(--blue); font-weight: bold;">Interactive Email Phishing Spotter</a>.
+                    </div>
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card" data-cat="email" data-keywords="clicked link phishing entered password fake page scam download">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge email">Urgent Threat</span>
+                        What if I accidentally clicked a phishing link or entered my password on a fake login page?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    <strong>Take immediate emergency action:</strong>
+                    <ol style="margin-left: 20px; margin-top: 8px;">
+                        <li>Disconnect your computer from Wi-Fi / LAN cable immediately.</li>
+                        <li>Change your account password right away from a safe device.</li>
+                        <li>Email Midas SOC at <a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a> so automated session revocation can be performed.</li>
+                    </ol>
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card" data-cat="email" data-keywords="gift card CEO CFO scam urgent executive email request wire transfer money">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge email">Executive Fraud</span>
+                        Why am I receiving urgent emails from a senior manager asking for gift cards or wire transfers?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    This is a classic <strong>Business Email Compromise (BEC) / CEO Impersonation Scam</strong>. Midas executives and managers will <em>never</em> ask employees to buy gift cards or bypass financial verification controls over email. Always verify by phone via corporate Teams directory.
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Device Hardening -->
+            <div class="faq-card" data-cat="device" data-keywords="device lock screen laptop win+l windows mobile pin biometrics">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge device">Device Hardening</span>
+                        What is the shortcut to quickly lock my Windows laptop screen when stepping away?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    Press <code>Win + L</code> on your keyboard to instantly lock your Windows laptop screen.
+                    <div class="faq-answer-highlight">
+                        📱 Review full mobile and PC lock rules in our <a href="device-security.html" style="color: var(--blue); font-weight: bold;">Device Security Guide</a>.
+                    </div>
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card" data-cat="device" data-keywords="stolen lost laptop phone mobile wiping remote lock IT support">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge device">Lost Device</span>
+                        What happens if my corporate mobile phone or laptop is lost or stolen?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    Report it to IT and Midas SOC immediately at <a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>. We can trigger a remote wipe and block corporate access tokens to prevent data compromise.
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 4: Remote Work & Wi-Fi -->
+            <div class="faq-card" data-cat="remote" data-keywords="vpn remote work public wi-fi hotel airport coffee shop encryption telework">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge remote">Remote Work</span>
+                        Why is corporate VPN mandatory when connecting to public hotel or airport Wi-Fi?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    Public Wi-Fi networks are unencrypted and vulnerable to eavesdropping, Man-in-the-Middle (MitM) attacks, and fake rogue hotspots. Corporate VPN creates an encrypted tunnel protecting all data in transit.
+                    <div class="faq-answer-highlight">
+                        🌐 Test connection modes in our <a href="remote-wifi-security.html" style="color: var(--blue); font-weight: bold;">Interactive Wi-Fi & VPN Visualizer</a>.
+                    </div>
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card" data-cat="remote" data-keywords="router home wi-fi admin password wpa3 firmware guest network">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge remote">Home Router</span>
+                        How do I secure my home Wi-Fi router for teleworking?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    1. Change default router admin password.<br>
+                    2. Use WPA2-Personal (AES) or WPA3 encryption.<br>
+                    3. Turn off remote administration.<br>
+                    4. Keep router firmware updated.
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 5: Incident Escalation -->
+            <div class="faq-card" data-cat="escala" data-keywords="external incident reporting cert police hotline 101 tell igp ccid cid Sri Lanka">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge escala">External Escalation</span>
+                        What is the difference between reporting to Midas SOC vs External Authorities (SL CERT / Police)?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    - <strong>Internal Midas SOC (<a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>):</strong> For corporate laptops, emails, Midas systems, or business data.<br>
+                    - <strong>External Channels (SL CERT / Police):</strong> For personal social media hacking, national cyber crimes, online harassment, or personal financial scams.
+                    <div class="faq-answer-highlight">
+                        🚨 Access all Sri Lanka national hotlines in our <a href="external-incident-reporting.html" style="color: var(--blue); font-weight: bold;">External Incident Reporting Guide (LK)</a>.
+                    </div>
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-card" data-cat="escala" data-keywords="police cyber crime group Facebook harassment cid ccid 0112381058 dir.cid ccid.report">
+                <button class="faq-question-btn" onclick="toggleFaq(this)">
+                    <div class="faq-q-text">
+                        <span class="faq-q-badge escala">Police Advisory</span>
+                        How do I report illegal Facebook groups or online harassment to Sri Lanka Police?
+                    </div>
+                    <div class="faq-icon-arrow">▼</div>
+                </button>
+                <div class="faq-answer-body">
+                    Send evidence and group links directly to Sri Lanka Police CID at <code>dir.cid@police.gov.lk</code> or CCID Takedowns at <code>ccid.report@police.gov.lk</code>.
+                    <div class="faq-answer-highlight">
+                        ⚖️ Read full notice in our <a href="News/police-cyber-crime-advisory.html" style="color: var(--blue); font-weight: bold;">Police Cyber Crime Advisory Page</a>.
+                    </div>
+                    <div class="faq-actions-bar">
+                        <span>Was this answer helpful?</span>
+                        <div class="faq-feedback-btns">
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👍 Yes</button>
+                            <button class="feedback-btn" onclick="giveFeedback(this)">👎 No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Ask a Security Question Section -->
+    <div class="ask-box-card">
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: #ffffff; margin-bottom: 6px;">Can't find your answer? Ask SOC</h2>
+        <p style="font-size: 0.95rem; color: #94a3b8; margin-bottom: 24px;">Submit a quick question directly to the Midas Security Operations Center team.</p>
+
+        <div class="ask-grid">
+            <div>
+                <label style="font-size: 0.88rem; font-weight: 700; color: #cbd5e1;">Your Topic</label>
+                <select id="askCategory" class="ask-input">
+                    <option value="General Question">General Security Inquiry</option>
+                    <option value="Password & MFA">Password / MFA Issue</option>
+                    <option value="Phishing & Email">Phishing Email Suspicion</option>
+                    <option value="Device Lock">Device Security Policy</option>
+                </select>
+            </div>
+
+            <div>
+                <label style="font-size: 0.88rem; font-weight: 700; color: #cbd5e1;">Your Email</label>
+                <input type="email" id="askEmail" class="ask-input" placeholder="e.g. employee@midassafety.com">
+            </div>
+        </div>
+
+        <div style="margin-top: 16px;">
+            <label style="font-size: 0.88rem; font-weight: 700; color: #cbd5e1;">Question / Details</label>
+            <textarea id="askText" class="ask-input" rows="3" placeholder="Describe your question or security topic..."></textarea>
+        </div>
+
+        <button class="ask-submit-btn" onclick="submitQuestion()">✉️ Send Question to SOC</button>
+    </div>
+
+    <!-- Master Footer -->
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo" class="footer-logo-svg">
+
+                    <div>
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                    </div>
+                </div>
+
+                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact SOC</a>
+            </div>
+
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.95rem;">Midas Security Operations Center</div>
+                    <div style="font-size: 0.82rem; color: #94a3b8; margin-top: 2px;">
+                        For internal Midas system threats, contact <a href="mailto:cic@midassafety.com" style="color: #f59e0b; font-weight: bold;">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        function toggleFaq(btn) {
+            const card = btn.parentElement;
+            const isOpen = card.classList.contains('open');
+            
+            // Close all
+            document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
+
+            if (!isOpen) {
+                card.classList.add('open');
+            }
+        }
+
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.nav-category-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.faq-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterFaqs() {
+            const query = document.getElementById('faqSearch').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.faq-card');
+
+            cards.forEach(card => {
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                const text = card.innerText.toLowerCase();
+
+                if (keywords.includes(query) || text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function giveFeedback(btn) {
+            btn.parentElement.innerHTML = '<span style="color: var(--emerald); font-weight: bold;">✓ Thank you for your feedback!</span>';
+        }
+
+        function submitQuestion() {
+            const category = document.getElementById('askCategory').value;
+            const email = document.getElementById('askEmail').value || 'Not provided';
+            const text = document.getElementById('askText').value;
+
+            if (!text.trim()) {
+                alert('Please enter your question before submitting.');
+                return;
+            }
+
+            const subject = encodeURIComponent(`[FAQ Inquiry] ${category}`);
+            const body = encodeURIComponent(`Reporter Email: ${email}\nCategory: ${category}\n\nQuestion:\n${text}`);
+            window.location.href = `mailto:cic@midassafety.com?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+
+</html>
