@@ -1,0 +1,14 @@
+# Never commit secrets
+.env
+.env.*
+*.pem
+
+# Wrangler / Cloudflare local state
+.wrangler/
+node_modules/
+dist/
+.dev.vars
+
+# Editor files
+.DS_Store
+Thumbs.db
