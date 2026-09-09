@@ -373,10 +373,20 @@
             position: relative;
         }
 
-        .email-field-row.active-highlight {
+        .email-field-row.active-highlight,
+        .email-body-text-row.active-highlight {
             background: #fff1f2;
             border: 1px solid #fecdd3;
             box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.2);
+        }
+
+        .email-body-text-row {
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+            margin-bottom: 20px;
         }
 
         .email-label {
@@ -433,7 +443,7 @@
 
         @keyframes pulse-ring {
             0% {
-                box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.5);
+                box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.6);
             }
             70% {
                 box-shadow: 0 0 0 8px rgba(225, 29, 72, 0);
@@ -441,6 +451,58 @@
             100% {
                 box-shadow: 0 0 0 0 rgba(225, 29, 72, 0);
             }
+        }
+
+        /* Green Hotspot Badge (#8 Good Action) */
+        .green-hotspot-badge {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #10b981;
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            animation: pulse-ring-green 2s infinite;
+        }
+
+        .green-hotspot-badge:hover,
+        .green-hotspot-badge.active {
+            transform: scale(1.25);
+            background: #059669;
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.4);
+        }
+
+        @keyframes pulse-ring-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .green-sq-badge {
+            background: #10b981 !important;
+            color: #ffffff !important;
+        }
+
+        .green-icon-circle {
+            background: #ecfdf5 !important;
+        }
+
+        .green-tip-card {
+            background: #f0fdf4 !important;
+            border-color: #bbf7d0 !important;
         }
 
         /* Email Body Container */
@@ -1510,11 +1572,11 @@
                         Archive
                     </button>
                     
-                    <!-- Red Flag 7: Report Button -->
-                    <button class="outlook-tool-btn highlight-report" type="button" onmouseenter="showSpotterTooltip(7, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(7)">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        Report ▾
-                        <span class="red-hotspot-badge" id="badge-7">7</span>
+                    <!-- Good Action 8: Report Button -->
+                    <button class="outlook-tool-btn highlight-report" type="button" id="field-8" onmouseenter="showSpotterTooltip(8, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(8)" style="border-color: #10b981; background: #ecfdf5;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span style="color: #059669; font-weight: 700;">Report ▾</span>
+                        <span class="green-hotspot-badge" id="badge-8">8</span>
                     </button>
 
                     <button class="outlook-tool-btn" type="button">
@@ -1571,18 +1633,21 @@
 
                         <h2 class="fake-email-title">Action Required: Verify Your Account</h2>
                         
-                        <p class="fake-email-text">
-                            We noticed unusual sign-in activity on your account.<br>
-                            To keep your account secure, please verify your details immediately.
-                        </p>
+                        <!-- Red Flag 5: Content / Suspicious Request -->
+                        <div class="email-body-text-row" id="field-5" onmouseenter="showSpotterTooltip(5, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(5)">
+                            <p class="fake-email-text" style="margin-bottom: 0;">
+                                We noticed unusual sign-in activity on your account.<br>
+                                To keep your account secure, please verify your details immediately. <span class="red-hotspot-badge" id="badge-5">5</span>
+                            </p>
+                        </div>
 
-                        <!-- Red Flag 5: Link / CTA Button -->
-                        <div class="action-button-area" id="field-5" onmouseenter="showSpotterTooltip(5, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(5)">
+                        <!-- Red Flag 6: Link / CTA Button -->
+                        <div class="action-button-area" id="field-6" onmouseenter="showSpotterTooltip(6, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(6)">
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <a href="javascript:void(0)" onclick="alert('SECURITY ALERT: This is a simulated phishing link! Never click suspicious links.')" class="fake-cta-btn">
                                     Verify My Account Now
                                 </a>
-                                <span class="red-hotspot-badge" id="badge-5">5</span>
+                                <span class="red-hotspot-badge" id="badge-6">6</span>
                             </div>
 
                             <div class="fake-url-preview">
@@ -1595,9 +1660,9 @@
                             Microsoft Account Team
                         </p>
 
-                        <!-- Red Flag 6: Dangerous Attachment -->
-                        <div class="fake-attachment-box" id="field-6" onmouseenter="showSpotterTooltip(6, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(6)">
-                            <span class="red-hotspot-badge" id="badge-6">6</span>
+                        <!-- Red Flag 7: Dangerous Attachment -->
+                        <div class="fake-attachment-box" id="field-7" onmouseenter="showSpotterTooltip(7, this, event)" onmouseleave="hideSpotterTooltip()" onclick="selectFlag(7)">
+                            <span class="red-hotspot-badge" id="badge-7">7</span>
                             <span class="attachment-icon">📎</span>
                             <div>
                                 <div class="attachment-name">Account_Verification_Form.html</div>
@@ -1612,7 +1677,7 @@
             <div class="red-flags-section">
                 <div class="section-title-row">
                     <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary);">
-                        🚩 7 Red Flags in This Email
+                        🚩 7 Red Flags & ✅ 1 Recommended Action
                     </h3>
                 </div>
 
@@ -1625,12 +1690,12 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                         </div>
                         <div class="flag-main-info">
-                            <div class="flag-title-text">Suspicious sender address</div>
-                            <div class="flag-desc-text">The email is not from an official Microsoft domain. Check for misspellings or unfamiliar domains.</div>
+                            <div class="flag-title-text">FROM: UNKNOWN OR UNEXPECTED</div>
+                            <div class="flag-desc-text">The sender's email address is unfamiliar.<br><br>The email is from outside the organization and unrelated to your role.</div>
                         </div>
                         <div class="flag-tip-card">
                             <div class="tip-card-header">💡 TIP</div>
-                            <div class="tip-card-body">Real Microsoft emails come from <code>@microsoft.com</code>, not look-alike domains.</div>
+                            <div class="tip-card-body">Verify the sender before responding.</div>
                         </div>
                     </div>
 
@@ -1641,12 +1706,12 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
                         </div>
                         <div class="flag-main-info">
-                            <div class="flag-title-text">Unexpected recipient</div>
-                            <div class="flag-desc-text">You weren't expecting this email or it was sent to a generic address / mass recipient list.</div>
+                            <div class="flag-title-text">TO: UNEXPECTED RECIPIENTS</div>
+                            <div class="flag-desc-text">You weren't expecting this email.<br><br>You're included in emails meant for other people.</div>
                         </div>
                         <div class="flag-tip-card">
                             <div class="tip-card-header">💡 TIP</div>
-                            <div class="tip-card-body">Attackers often send phishing emails to many people at once.</div>
+                            <div class="tip-card-body">Be cautious with unfamiliar or bulk emails.</div>
                         </div>
                     </div>
 
@@ -1657,12 +1722,12 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div class="flag-main-info">
-                            <div class="flag-title-text">Urgent timing</div>
-                            <div class="flag-desc-text">Early morning or outside normal business hours. Creates pressure to act fast.</div>
+                            <div class="flag-title-text">DATE: ODD OR UNUSUAL TIME</div>
+                            <div class="flag-desc-text">The email arrives at an odd hour (very early morning, late night, or outside normal business hours).<br><br>Could indicate automated or malicious activity.</div>
                         </div>
                         <div class="flag-tip-card">
                             <div class="tip-card-header">💡 TIP</div>
-                            <div class="tip-card-body">Urgency is a common trick to make you rush and ignore the warning signs.</div>
+                            <div class="tip-card-body">Pause and think. Timing can be a clue.</div>
                         </div>
                     </div>
 
@@ -1686,15 +1751,15 @@
                     <div class="flag-card" id="flag-card-5">
                         <div class="flag-sq-badge">5</div>
                         <div class="flag-icon-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                         </div>
                         <div class="flag-main-info">
-                            <div class="flag-title-text">Deceptive call-to-action link</div>
-                            <div class="flag-desc-text">Button points to a fake domain (<code>microsoft-security.com</code>) to steal credentials.</div>
+                            <div class="flag-title-text">CONTENT: PRESSURE OR SUSPICIOUS REQUESTS</div>
+                            <div class="flag-desc-text">Urgent language or threats to create panic.<br><br>Asking for sensitive information or asking you to click a link.<br><br>Offers that sound too good to be true.</div>
                         </div>
                         <div class="flag-tip-card">
                             <div class="tip-card-header">💡 TIP</div>
-                            <div class="tip-card-body">Always hover over links before clicking to inspect the true URL destination.</div>
+                            <div class="tip-card-body">Legitimate companies won't ask for passwords or sensitive info.</div>
                         </div>
                     </div>
 
@@ -1702,15 +1767,15 @@
                     <div class="flag-card" id="flag-card-6">
                         <div class="flag-sq-badge">6</div>
                         <div class="flag-icon-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                         </div>
                         <div class="flag-main-info">
-                            <div class="flag-title-text">Dangerous attachment (.html / .exe)</div>
-                            <div class="flag-desc-text">Contains <code>Account_Verification_Form.html</code> which executes malicious scripts.</div>
+                            <div class="flag-title-text">HYPERLINKS: CHECK BEFORE YOU CLICK</div>
+                            <div class="flag-desc-text">Hover over links to see the actual URL.<br><br>The link text may look legitimate, but the real destination could be malicious.<br><br>Watch for misspellings or unusual domains.</div>
                         </div>
                         <div class="flag-tip-card">
                             <div class="tip-card-header">💡 TIP</div>
-                            <div class="tip-card-body">HTML attachments can open fake login forms offline or execute scripts.</div>
+                            <div class="tip-card-body">When in doubt, don't click.</div>
                         </div>
                     </div>
 
@@ -1718,14 +1783,30 @@
                     <div class="flag-card" id="flag-card-7">
                         <div class="flag-sq-badge">7</div>
                         <div class="flag-icon-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
                         </div>
                         <div class="flag-main-info">
-                            <div class="flag-title-text">Report Phishing button in Outlook</div>
-                            <div class="flag-desc-text">The built-in Outlook Report button allows 1-click incident escalation to SOC.</div>
+                            <div class="flag-title-text">ATTACHMENTS: PROCEED WITH CAUTION</div>
+                            <div class="flag-desc-text">Unexpected attachments can contain malware.<br><br>Watch for risky file types (<code>.exe</code>, <code>.js</code>, <code>.zip</code>, <code>.scr</code>, <code>.vbs</code>, <code>.bat</code>, <code>.docm</code>, <code>.xlsm</code>, <code>.pptm</code>).<br><br>Even safe-looking files can be dangerous.</div>
                         </div>
                         <div class="flag-tip-card">
                             <div class="tip-card-header">💡 TIP</div>
+                            <div class="tip-card-body">Don't open attachments unless you're sure.</div>
+                        </div>
+                    </div>
+
+                    <!-- Flag 8 Card (Good Action) -->
+                    <div class="flag-card green-flag-card" id="flag-card-8">
+                        <div class="flag-sq-badge green-sq-badge">8</div>
+                        <div class="flag-icon-circle green-icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="flag-main-info">
+                            <div class="flag-title-text" style="color: #059669;">Report Phishing button in Outlook</div>
+                            <div class="flag-desc-text">The built-in Outlook Report button allows 1-click incident escalation to SOC.</div>
+                        </div>
+                        <div class="flag-tip-card green-tip-card">
+                            <div class="tip-card-header" style="color: #059669;">✅ GOOD ACTION</div>
                             <div class="tip-card-body">Reporting phishing alerts SOC immediately and protects all company colleagues.</div>
                         </div>
                     </div>
@@ -1734,7 +1815,7 @@
 
                 <div class="show-more-row">
                     <button class="toggle-flags-btn" id="toggleFlagsBtn" onclick="toggleFlags()">
-                        <span id="toggleBtnText">∨ Show 4–7</span>
+                        <span id="toggleBtnText">∨ Show 4–8</span>
                     </button>
                 </div>
             </div>
@@ -1926,31 +2007,35 @@
     <script>
         const flagDetails = {
             1: {
-                title: "🚩 Red Flag #1: Suspicious Sender Address",
-                desc: "The email address support@microsoft-security.com is fake! Official Microsoft emails come from @microsoft.com, not look-alike domains."
+                title: "🚩 Red Flag #1: FROM: UNKNOWN OR UNEXPECTED",
+                desc: "The sender's email address is unfamiliar. The email is from outside the organization and unrelated to your role."
             },
             2: {
-                title: "🚩 Red Flag #2: Unexpected Recipient",
-                desc: "You weren't expecting account verification or this email was broadcast to many employees at once."
+                title: "🚩 Red Flag #2: TO: UNEXPECTED RECIPIENTS",
+                desc: "You weren't expecting this email. You're included in emails meant for other people."
             },
             3: {
-                title: "🚩 Red Flag #3: Urgent Timing",
-                desc: "Sent early in the morning (08:47 AM) or off-hours to create pressure before you check carefully."
+                title: "🚩 Red Flag #3: DATE: ODD OR UNUSUAL TIME",
+                desc: "The email arrives at an odd hour (very early morning, late night, or outside normal business hours). Could indicate automated or malicious activity."
             },
             4: {
                 title: "🚩 Red Flag #4: High-Pressure Subject Line",
                 desc: "Uses panic words like 'URGENT: Action Required' to make you act fast without thinking."
             },
             5: {
-                title: "🚩 Red Flag #5: Deceptive Call-to-Action Link",
-                desc: "The button links to microsoft-security.com instead of microsoft.com. Always hover over links before clicking!"
+                title: "🚩 Red Flag #5: CONTENT: PRESSURE OR SUSPICIOUS REQUESTS",
+                desc: "Urgent language or threats to create panic. Asking for sensitive information or asking you to click a link. Offers that sound too good to be true."
             },
             6: {
-                title: "🚩 Red Flag #6: Dangerous Attachment (.html)",
-                desc: "Contains an Account_Verification_Form.html attachment. HTML files can launch fake login pages or malware scripts."
+                title: "🚩 Red Flag #6: HYPERLINKS: CHECK BEFORE YOU CLICK",
+                desc: "Hover over links to see the actual URL. The link text may look legitimate, but the real destination could be malicious. Watch for misspellings or unusual domains."
             },
             7: {
-                title: "🚩 Red Flag #7: Outlook Report Phishing Button",
+                title: "🚩 Red Flag #7: ATTACHMENTS: PROCEED WITH CAUTION",
+                desc: "Unexpected attachments can contain malware. Watch for risky file types (.exe, .js, .zip, .scr, .vbs, .bat, .docm, .xlsm, .pptm). Even safe-looking files can be dangerous."
+            },
+            8: {
+                title: "✅ Good Action #8: Report Phishing Button in Outlook",
                 desc: "Clicking Report -> Report Phishing in Outlook immediately alerts the SOC team and protects the company."
             }
         };
@@ -1969,7 +2054,7 @@
             popover.style.top = (rect.bottom + window.scrollY + 8) + 'px';
 
             // Highlight field
-            if (id <= 6) {
+            if (id <= 8) {
                 const target = document.getElementById('field-' + id);
                 if (target) target.classList.add('active-highlight');
             }
@@ -1981,10 +2066,10 @@
             const popover = document.getElementById('spotterPopover');
             popover.style.display = 'none';
 
-            document.querySelectorAll('.email-field-row, .action-button-area, .fake-attachment-box').forEach(row => {
+            document.querySelectorAll('.email-field-row, .email-body-text-row, .action-button-area, .fake-attachment-box').forEach(row => {
                 row.classList.remove('active-highlight');
             });
-            document.querySelectorAll('.red-hotspot-badge').forEach(b => {
+            document.querySelectorAll('.red-hotspot-badge, .green-hotspot-badge').forEach(b => {
                 b.classList.remove('active');
             });
         }
@@ -1992,9 +2077,9 @@
         function selectFlag(id) {
             hideSpotterTooltip();
 
-            // Unhide cards if targeting 4-7
+            // Unhide cards if targeting 4-8
             if (id >= 4) {
-                for (let i = 4; i <= 7; i++) {
+                for (let i = 4; i <= 8; i++) {
                     const card = document.getElementById('flag-card-' + i);
                     if (card) card.classList.remove('card-hidden');
                 }
@@ -2020,7 +2105,7 @@
             const card4 = document.getElementById('flag-card-4');
             const isHidden = card4 ? card4.classList.contains('card-hidden') : false;
 
-            for (let i = 4; i <= 7; i++) {
+            for (let i = 4; i <= 8; i++) {
                 const card = document.getElementById('flag-card-' + i);
                 if (card) {
                     if (isHidden) {
@@ -2032,13 +2117,13 @@
             }
 
             if (btnText) {
-                btnText.innerText = isHidden ? '∧ Show Less' : '∨ Show 4–7';
+                btnText.innerText = isHidden ? '∧ Show Less' : '∨ Show 4–8';
             }
         }
 
-        // Initially hide cards 4-7 on page load
+        // Initially hide cards 4-8 on page load
         document.addEventListener("DOMContentLoaded", function() {
-            for (let i = 4; i <= 7; i++) {
+            for (let i = 4; i <= 8; i++) {
                 const card = document.getElementById('flag-card-' + i);
                 if (card) card.classList.add('card-hidden');
             }

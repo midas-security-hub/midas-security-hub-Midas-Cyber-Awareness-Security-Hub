@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Security Incident - Header Component</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background: transparent;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Incident Header Banner Container (100% Embed Width) */
+        .incident-header-banner {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(#e2e8f0 1.2px, transparent 1.2px), 
+                linear-gradient(90deg, #ffffff 0%, #f8fafc 50%, #f0f4f8 100%);
+            background-size: 20px 20px, 100% 100%;
+            background-position: 90% 50%, 0 0;
+        }
+
+        /* Left Side: Logo & Divider */
+        .header-left-group {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-soc-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: drop-shadow(0 4px 8px rgba(11, 30, 61, 0.12));
+            transition: transform 0.25s ease;
+        }
+
+        .incident-header-banner:hover .header-soc-logo {
+            transform: scale(1.04);
+        }
+
+        .header-vertical-divider {
+            width: 1px;
+            height: 84px;
+            background: #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        /* Middle Content Group */
+        .header-text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 760px;
+        }
+
+        .incident-title {
+            font-size: 2.35rem;
+            font-weight: 800;
+            color: #0b1e3d;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+
+        .incident-tagline {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #d92d20;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .incident-subtitle {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #526484;
+            line-height: 1.4;
+        }
+
+        /* Right Side: Graphic Illustration (Shield & Orbit) */
+        .header-right-graphic {
+            position: relative;
+            width: 220px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Background Tech Grid Dots */
+        .tech-dots-bg {
+            position: absolute;
+            right: -10px;
+            top: 10px;
+            width: 100px;
+            height: 100px;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        /* Faint Back Shield */
+        .faint-shield-backdrop {
+            position: absolute;
+            width: 140px;
+            height: 155px;
+            opacity: 0.85;
+            z-index: 1;
+        }
+
+        /* Front Red Shield Icon */
+        .red-alert-shield {
+            position: relative;
+            z-index: 3;
+            width: 52px;
+            height: 60px;
+            filter: drop-shadow(0 6px 12px rgba(217, 45, 32, 0.25));
+            transition: transform 0.3s ease;
+        }
+
+        .incident-header-banner:hover .red-alert-shield {
+            transform: scale(1.06);
+        }
+
+        /* Orbit Ring SVG */
+        .orbit-ring-svg {
+            position: absolute;
+            width: 240px;
+            height: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .incident-header-banner {
+                padding: 24px 28px;
+            }
+            .incident-title {
+                font-size: 1.95rem;
+            }
+            .header-soc-logo {
+                width: 75px;
+                height: 75px;
+            }
+            .header-left-group {
+                gap: 20px;
+            }
+            .header-right-graphic {
+                width: 160px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .incident-header-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .header-vertical-divider {
+                display: none;
+            }
+            .header-right-graphic {
+                align-self: flex-end;
+                margin-top: -30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Incident Header Section Component -->
+    <div class="incident-header-banner">
+
+        <!-- Left Brand & Content -->
+        <div class="header-left-group">
+            <!-- Official Midas SOC Headset & Emblem Vector SVG Logo -->
+            <svg class="header-soc-logo" viewBox="0 0 300 278" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Navy Blue Headset Arch, Earcups & Microphone Boom (#0b1e3d) -->
+                <path fill="#0b1e3d" fill-rule="evenodd" d="
+                    M 109.4,12.4 L 75.3,31.3 L 48.4,60.8 L 35.9,86.9 L 31.3,109.2 L 19.6,114.7
+                    L 11.8,125.8 L 11.5,171.0 L 16.1,179.3 L 27.9,187.3 L 43.1,188.5 L 51.2,182.9
+                    L 52.1,118.2 L 43.8,109.0 L 45.4,98.2 L 59.2,65.7 L 84.8,38.5 L 111.3,24.0
+                    L 141.2,17.3 L 172.6,19.4 L 199.5,29.3 L 227.4,52.3 L 246.1,85.7 L 251.6,109.2
+                    L 245.2,117.1 L 245.2,179.7 L 248.6,185.9 L 255.8,188.5 L 246.1,218.2
+                    L 228.8,240.3 L 210.8,249.5 L 196.1,242.6 L 185.5,249.8 L 183.4,257.8
+                    L 186.4,266.1 L 194.0,271.2 L 203.5,270.5 L 212.2,260.1 L 232.0,251.2
+                    L 245.2,239.4 L 260.1,214.3 L 266.8,187.8 L 284.6,173.7 L 287.3,163.4
+                    L 285.3,123.3 L 276.7,112.7 L 263.1,108.1 L 257.1,82.7 L 246.8,60.1
+                    L 231.8,40.1 L 210.6,22.6 L 188.2,11.8 L 161.3,5.8 L 135.3,6.2 Z
+                "/>
+                <!-- Inner Vibrant Red Midas Ribbon Emblem (#e30613) -->
+                <path fill="#e30613" fill-rule="evenodd" d="
+                    M 71.7,83.9 L 68.7,93.5 L 68.7,206.9 L 71.7,212.7 L 104.1,231.1 L 109.2,231.8
+                    L 209.7,175.3 L 209.2,200.5 L 127.9,244.7 L 148.6,255.1 L 227.2,211.1
+                    L 228.8,93.3 L 227.6,86.4 L 224.0,81.8 L 218.2,79.3 L 210.4,80.4
+                    L 148.8,114.5 L 86.9,80.2 L 78.6,79.5 Z
+
+                    M 209.9,102.1 L 209.4,154.1 L 108.1,211.8 L 87.8,200.5 L 166.6,155.1
+                    L 148.8,144.2 L 87.8,179.7 L 87.8,102.1 L 148.6,135.5 Z
+                "/>
+            </svg>
+
+            <!-- Vertical Separator Divider -->
+            <div class="header-vertical-divider"></div>
+
+            <!-- Text Content Block -->
+            <div class="header-text-group">
+                <h1 class="incident-title">Report a Security Incident</h1>
+                <div class="incident-tagline">NO JUDGMENT — REPORTING FAST HELPS EVERYONE.</div>
+                <p class="incident-subtitle">If something doesn’t look right, let us know. Our team will take it from here.</p>
+            </div>
+        </div>
+
+        <!-- Right Side Vector Security Graphic -->
+        <div class="header-right-graphic">
+            <!-- Tech Dots Grid Background -->
+            <svg class="tech-dots-bg" viewBox="0 0 100 100" fill="none">
+                <pattern id="dotPattern" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1.8" fill="#cbd5e1" />
+                </pattern>
+                <rect width="100" height="100" fill="url(#dotPattern)" />
+            </svg>
+
+            <!-- Faint Light Blue Backdrop Shield -->
+            <svg class="faint-shield-backdrop" viewBox="0 0 100 120" fill="none">
+                <path d="M50 0L5 20V55C5 88 50 115 50 115C50 115 95 88 95 55V20L50 0Z" fill="#e8f0fe" stroke="#d0e1fd" stroke-width="2" />
+                <path d="M50 8L12 25V55C50 106 50 106 50 106C50 106 88 82 88 55V25L50 8Z" fill="#f4f8ff" />
+            </svg>
+
+            <!-- Ellipse Orbit Ring -->
+            <svg class="orbit-ring-svg" viewBox="0 0 240 120" fill="none">
+                <ellipse cx="120" cy="60" rx="100" ry="32" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4" transform="rotate(-12 120 60)" opacity="0.6" />
+                <ellipse cx="120" cy="60" rx="104" ry="34" stroke="#0b1e3d" stroke-width="1.5" transform="rotate(-12 120 60)" />
+                <!-- Orbit Accent Dots -->
+                <circle cx="218" cy="42" r="3.5" fill="#0b1e3d" />
+                <circle cx="22" cy="78" r="2.5" fill="#d92d20" />
+            </svg>
+
+            <!-- Red Front Alert Shield -->
+            <svg class="red-alert-shield" viewBox="0 0 60 70" fill="none">
+                <path d="M30 0L3 12V32C3 51 30 67 30 67C30 67 57 51 57 32V12L30 0Z" fill="#d92d20" />
+                <!-- White Exclamation Mark -->
+                <rect x="27" y="18" width="6" height="20" rx="3" fill="#ffffff" />
+                <circle cx="30" cy="45" r="3.5" fill="#ffffff" />
+            </svg>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
