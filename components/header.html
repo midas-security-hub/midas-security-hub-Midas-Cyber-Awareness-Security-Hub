@@ -1,26 +1,32 @@
-<!-- Modular Top Site Header for Midas Cyber Awareness & Security -->
+<!-- Modular Top Site Header for Midas Cyber Awareness & Security Hub -->
 <style>
+    .site-header-container,
     .midas-header-container {
         width: 100%;
         border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         margin-bottom: 28px;
         border: 1px solid #1e293b;
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        position: relative;
+        z-index: 100;
     }
 
+    .site-header-banner,
     .header-top-banner {
         background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
-        padding: 24px 36px;
+        padding: 26px 36px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         position: relative;
         min-height: 110px;
         overflow: hidden;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
     }
 
+    .site-header-bg-svg,
     .header-bg-svg {
         position: absolute;
         top: 0;
@@ -30,6 +36,7 @@
         pointer-events: none;
     }
 
+    .site-brand,
     .header-brand {
         display: flex;
         align-items: center;
@@ -38,21 +45,25 @@
         z-index: 2;
     }
 
-    .header-logo-svg {
+    .brand-logo-badge {
         width: 54px;
         height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
-        object-fit: contain;
     }
 
+    .site-title-text,
     .header-title-text {
         color: #ffffff;
-        font-size: 1.6rem;
+        font-size: 1.55rem;
         font-weight: 700;
         letter-spacing: -0.01em;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
+    .site-navbar,
     .header-navbar {
         background-color: #030712;
         padding: 0 24px;
@@ -62,18 +73,23 @@
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         position: relative;
         z-index: 10;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
     }
 
+    .nav-links-left,
     .header-nav-links {
         display: flex;
         align-items: center;
         gap: 2px;
     }
 
+    .nav-item,
     .header-nav-item {
         position: relative;
     }
 
+    .nav-link,
     .header-nav-link {
         color: #94a3b8;
         text-decoration: none;
@@ -83,22 +99,26 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
+        position: relative;
         transition: color 0.2s ease;
         white-space: nowrap;
+        cursor: pointer;
         border: none;
         background: transparent;
         font-family: inherit;
-        cursor: pointer;
     }
 
+    .nav-link:hover,
     .header-nav-link:hover {
         color: #ffffff;
     }
 
+    .nav-link.active,
     .header-nav-link.active {
         color: #ffffff;
     }
 
+    .nav-link.active::after,
     .header-nav-link.active::after {
         content: '';
         position: absolute;
@@ -110,14 +130,19 @@
         border-radius: 3px 3px 0 0;
     }
 
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown,
+    .nav-item.open .nav-dropdown,
     .header-nav-item:hover .header-dropdown,
     .header-nav-item:focus-within .header-dropdown,
     .header-nav-item.open .header-dropdown {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        display: block !important;
     }
 
+    .nav-dropdown,
     .header-dropdown {
         position: absolute;
         top: 100%;
@@ -126,8 +151,8 @@
         border: 1px solid #1e293b;
         border-radius: 8px;
         box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
-        min-width: 220px;
-        z-index: 100;
+        min-width: 260px;
+        z-index: 1000;
         padding: 8px 0;
         opacity: 0;
         visibility: hidden;
@@ -135,6 +160,7 @@
         transition: all 0.2s ease;
     }
 
+    .dropdown-link,
     .header-dropdown-link {
         display: block;
         padding: 10px 18px;
@@ -145,18 +171,21 @@
         transition: all 0.2s ease;
     }
 
+    .dropdown-link:hover,
     .header-dropdown-link:hover {
         background: #1e293b;
         color: #38bdf8;
         padding-left: 22px;
     }
 
+    .nav-actions-right,
     .header-actions-right {
         display: flex;
         align-items: center;
         gap: 16px;
     }
 
+    .nav-action-btn,
     .header-action-btn {
         color: #94a3b8;
         font-size: 0.88rem;
@@ -173,15 +202,15 @@
         white-space: nowrap;
     }
 
+    .nav-action-btn:hover,
     .header-action-btn:hover {
         color: #ffffff;
     }
 </style>
 
-<div class="midas-header-container">
-    <div class="header-top-banner">
-        <!-- Background Cyber Tech SVG -->
-        <svg class="header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none"
+<div class="site-header-container">
+    <div class="site-header-banner">
+        <svg class="site-header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4" />
             <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3" />
@@ -189,26 +218,24 @@
             <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8" />
             <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7" />
 
-            <!-- Email Hexagon Motif -->
             <g transform="translate(680, 20)">
-                <polygon points="30,0 60,17 60,52 30,69 0,52 0,17" stroke="#0088FF" stroke-width="2.2" fill="#061A3A"
-                    opacity="0.85" />
-                <path d="M18 26 L30 36 L42 26 M18 26 H42 V44 H18 Z" stroke="#00BFFF" stroke-width="2.2" fill="none" />
+                <polygon points="30,0 60,17 60,52 30,69 0,52 0,17" stroke="#0088FF" stroke-width="2.2"
+                    fill="#061A3A" opacity="0.85" />
+                <path d="M18 26 L30 36 L42 26 M18 26 H42 V44 H18 Z" stroke="#00BFFF" stroke-width="2.2"
+                    fill="none" />
             </g>
 
             <path d="M740 55 H820" stroke="#0099FF" stroke-width="2" opacity="0.5" />
 
-            <!-- Digital Lock Shield Glow Motif -->
             <g transform="translate(850, -10)">
                 <circle cx="60" cy="70" r="55" fill="#0066FF" opacity="0.18" />
                 <path d="M60 15 C60 15 95 25 105 35 C105 80 85 110 60 125 C35 110 15 80 15 35 C25 25 60 15 60 15 Z"
                     stroke="#00BFFF" stroke-width="3" fill="#082046" opacity="0.9" />
                 <rect x="47" y="65" width="26" height="22" rx="4" fill="#00D2FF" />
-                <path d="M52 65 V55 C52 50.5 55.5 47 60 47 C64.5 47 68 50.5 68 55 V65" stroke="#00D2FF" stroke-width="3"
-                    fill="none" />
+                <path d="M52 65 V55 C52 50.5 55.5 47 60 47 C64.5 47 68 50.5 68 55 V65" stroke="#00D2FF"
+                    stroke-width="3" fill="none" />
             </g>
 
-            <!-- Dot Grid World Map Motif -->
             <g opacity="0.25" fill="#00BFFF">
                 <circle cx="1020" cy="30" r="1.5" />
                 <circle cx="1035" cy="30" r="1.5" />
@@ -227,94 +254,91 @@
                 <circle cx="1080" cy="60" r="1.5" />
                 <circle cx="1095" cy="60" r="1.5" />
                 <circle cx="1110" cy="60" r="1.5" />
+                <circle cx="1027" cy="75" r="1.5" />
+                <circle cx="1042" cy="75" r="1.5" />
+                <circle cx="1057" cy="75" r="1.5" />
+                <circle cx="1072" cy="75" r="1.5" />
+                <circle cx="1087" cy="75" r="1.5" />
+                <circle cx="1035" cy="90" r="1.5" />
+                <circle cx="1050" cy="90" r="1.5" />
+                <circle cx="1065" cy="90" r="1.5" />
             </g>
         </svg>
 
-        <!-- Brand Logo & Title -->
-        <div class="header-brand">
-            <img src="images/SOC logo.png" alt="Midas SOC Logo" class="header-logo-svg">
-            <h1 class="header-title-text">Midas Cyber Awareness & Security Hub</h1>
+        <div class="site-brand">
+            <div class="brand-logo-badge">
+                <img src="images/SOC logo.png" alt="Midas SOC Logo" style="width: 56px; height: 56px; object-fit: contain;">
+            </div>
+            <h1 class="site-title-text">Midas Cyber Awareness & Security Hub</h1>
         </div>
     </div>
 
-    <!-- Navigation Bar -->
-    <nav class="header-navbar">
-        <div class="header-nav-links">
-            <div class="header-nav-item">
-                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub"
-                    class="header-nav-link active">Home</a>
+    <nav class="site-navbar">
+        <div class="nav-links-left">
+            <div class="nav-item">
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="nav-link">Home</a>
             </div>
 
-            <!-- Topics Dropdown -->
-            <div class="header-nav-item">
-                <button class="header-nav-link" type="button" onclick="this.parentElement.classList.toggle('open')">
+            <div class="nav-item">
+                <button class="nav-link" type="button" onclick="this.parentElement.classList.toggle('open')">
                     Topics
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.5">
                         <path d="M6 9l6 6 6-6" />
                     </svg>
                 </button>
-                <div class="header-dropdown">
-                    <a href="index.html" class="header-dropdown-link">🏠 Portal Directory (All Topics)</a>
-                    <a href="account-password-security.html" class="header-dropdown-link">🔑 Account & Password Security</a>
-                    <a href="device-security.html" class="header-dropdown-link">📱 Device Security</a>
-                    <a href="email-security.html" class="header-dropdown-link">📧 Email Security & Phishing Spotter</a>
-                    <a href="physical-security.html" class="header-dropdown-link">🏢 Physical & Social Security Guide</a>
-                    <a href="remote-wifi-security.html" class="header-dropdown-link">🌐 Remote & Wi-Fi Security Guide</a>
-                    <a href="external-incident-reporting.html" class="header-dropdown-link" style="color: #f59e0b; font-weight: bold;">🚨 External Incident Reporting (LK)</a>
-                    <a href="security-tips.html" class="header-dropdown-link">💡 Practical Security Tips Library</a>
-                    <a href="index.html#topics" class="header-dropdown-link">🛡️ Multi-Factor Authentication (MFA)</a>
-                    <a href="index.html#topics" class="header-dropdown-link">🌐 Safe Web Browsing & Wi-Fi</a>
+                <div class="nav-dropdown">
+                    <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password Security</a>
+                    <a href="device-security.html" class="dropdown-link">📱 Device Security</a>
+                    <a href="email-security.html" class="dropdown-link">📧 Email & Phishing</a>
+                    <a href="physical-security.html" class="dropdown-link">🏢 Physical Security</a>
+                    <a href="remote-wifi-security.html" class="dropdown-link">🌐 Remote / Wi-Fi Security</a>
+                    <a href="index.html#policies" class="dropdown-link">📜 Security Policies</a>
+                    <a href="faq.html" class="dropdown-link">❓ FAQ</a>
+                    <a href="security-tips.html" class="dropdown-link">📋 SOPS</a>
                 </div>
             </div>
 
-            <div class="header-nav-item">
-                <a href="#tab-checklist" onclick="switchTab('checklist')" class="header-nav-link">Policies</a>
+            <div class="nav-item">
+                <a href="index.html#policies" class="nav-link">Policies</a>
             </div>
 
-            <div class="header-nav-item">
-                <a href="#tab-steps" onclick="switchTab('steps')" class="header-nav-link">News</a>
+            <div class="nav-item">
+                <a href="index.html#news" class="nav-link">News</a>
             </div>
 
-            <div class="header-nav-item">
-                <a href="#tab-checklist" onclick="switchTab('checklist')" class="header-nav-link">FAQ</a>
+            <div class="nav-item">
+                <a href="faq.html" class="nav-link">FAQ</a>
             </div>
 
-            <!-- Resources Dropdown -->
-            <div class="header-nav-item">
-                <button class="header-nav-link" type="button">
+            <div class="nav-item">
+                <button class="nav-link" type="button">
                     Resources
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.5">
                         <path d="M6 9l6 6 6-6" />
                     </svg>
                 </button>
-                <div class="header-dropdown">
-                    <a href="#tab-evaluator" onclick="switchTab('evaluator')" class="header-dropdown-link">⚡ Passphrase
-                        Strength Evaluator</a>
-                    <a href="#tab-checklist" onclick="switchTab('checklist')" class="header-dropdown-link">📋 Security
-                        Readiness Checklist</a>
-                    <a href="#tab-checkup" onclick="switchTab('checkup')" class="header-dropdown-link">🚀 Quick Security
-                        Checkup</a>
+                <div class="nav-dropdown">
+                    <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase Strength Evaluator</a>
+                    <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
+                    <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident Report</a>
                 </div>
             </div>
 
-            <div class="header-nav-item">
-                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="header-nav-link"
-                    style="color: #38bdf8;">Security Incident Report</a>
+            <div class="nav-item">
+                <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security Incident Report</a>
             </div>
         </div>
 
-        <div class="header-actions-right">
-            <button class="header-action-btn" onclick="toggleFavorite(this)">
+        <div class="nav-actions-right">
+            <button class="nav-action-btn" onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
                 <span id="favText">Add to favorites</span>
             </button>
-            <button class="header-action-btn"
-                onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
+            <button class="nav-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />

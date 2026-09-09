@@ -1,8 +1,0 @@
-name = "midas-ai-proxy"
-main = "src/index.js"
-compatibility_date = "2025-01-01"
-
-# The pages route where your worker will be reachable.
-# Replace "your-subdomain" with your actual subdomain after first deploy:
-#   https://your-subdomain.workers.dev
-workers_dev = true
