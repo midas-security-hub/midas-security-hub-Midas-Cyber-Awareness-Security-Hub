@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>External Incident Reporting (LK) - Midas Cyber Security Hub</title>
+    <title>External Incident Reporting Directory (LK, BD, PK) - Midas Cyber Security Hub</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
@@ -343,6 +343,170 @@
             font-size: 0.95rem;
             color: var(--text-muted);
             margin-top: 4px;
+        }
+
+        /* Country Filter Tabs Bar */
+        .country-tabs-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            background: #ffffff;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .country-tab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border);
+            background: #f8fafc;
+            color: var(--text-dark);
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .country-tab-btn:hover {
+            border-color: #38bdf8;
+            background: #f0f9ff;
+            color: #0284c7;
+        }
+
+        .country-tab-btn.active {
+            background: #0f172a;
+            border-color: #0f172a;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+        }
+
+        /* 3D Waving Flag Animation Styles */
+        .country-section-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .flag-mast-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            position: relative;
+            perspective: 500px;
+            flex-shrink: 0;
+        }
+
+        .flag-pole {
+            width: 5px;
+            height: 52px;
+            background: linear-gradient(180deg, #cbd5e1 0%, #64748b 60%, #334155 100%);
+            border-radius: 3px;
+            box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 5;
+        }
+
+        .flag-pole::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -3.5px;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #fbbf24 0%, #d97706 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
+        }
+
+        .flag-canvas {
+            width: 68px;
+            height: 44px;
+            border-radius: 0 4px 4px 0;
+            overflow: hidden;
+            position: relative;
+            transform-origin: left center;
+            box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.35);
+            animation: flagWave3D 3.2s ease-in-out infinite alternate;
+            perspective: 600px;
+            background: #020617;
+        }
+
+        .flag-canvas svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .flag-ripple-overlay {
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 350%;
+            height: 100%;
+            background: linear-gradient(
+                105deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.35) 20%,
+                rgba(0, 0, 0, 0.35) 45%,
+                rgba(255, 255, 255, 0.4) 70%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: waveShimmer 2.4s linear infinite;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .country-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .country-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        @keyframes flagWave3D {
+            0% {
+                transform: rotateY(0deg) rotateX(0deg) skewY(0deg) translateY(0px) scaleX(1);
+            }
+            25% {
+                transform: rotateY(16deg) rotateX(4deg) skewY(2deg) translateY(-2px) scaleX(0.97);
+            }
+            50% {
+                transform: rotateY(0deg) rotateX(0deg) skewY(0deg) translateY(0px) scaleX(1);
+            }
+            75% {
+                transform: rotateY(-14deg) rotateX(-3deg) skewY(-2deg) translateY(2px) scaleX(0.98);
+            }
+            100% {
+                transform: rotateY(16deg) rotateX(4deg) skewY(2deg) translateY(-2px) scaleX(0.97);
+            }
+        }
+
+        @keyframes waveShimmer {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(45%);
+            }
         }
 
         /* Interactive Timeline / Contact List (Design Template Inspired) */
@@ -1111,12 +1275,27 @@
     <!-- Hero Banner -->
     <div class="banner-card">
         <div class="banner-content">
-            <div class="banner-badge">🚨 Official External Reporting Channels (Sri Lanka)</div>
-            <h1 class="banner-title">Report an Incident – Outside the Organization (LK)</h1>
+            <div class="banner-badge">🚨 Official External Reporting Channels (South Asia)</div>
+            <h1 class="banner-title">Report an Incident – Outside the Organization</h1>
             <p class="banner-subtitle">
-                Comprehensive directory for escalation outside Midas Safety. Contact Sri Lanka CERT, Cyber Crime Division, and Police Complaint Portals for national cyber crimes, harassment, or external fraud.
+                Comprehensive directory for escalation outside Midas Safety across <strong>Sri Lanka (LK)</strong>, <strong>Bangladesh (BD)</strong>, and <strong>Pakistan (PK)</strong>. Contact national CERTs, Cyber Helplines, and Police Complaint Portals.
             </p>
         </div>
+    </div>
+
+    <!-- Country Filter Tabs Bar -->
+    <div class="country-tabs-bar">
+        <span style="font-weight: 800; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 8px;">Filter Country:</span>
+        <button class="country-tab-btn active" onclick="filterCountry('all', this)">🌐 View All Countries</button>
+        <button class="country-tab-btn" onclick="filterCountry('lk', this)">
+            <span style="font-size: 1.1rem;">🇱🇰</span> Sri Lanka (LK)
+        </button>
+        <button class="country-tab-btn" onclick="filterCountry('bd', this)">
+            <span style="font-size: 1.1rem;">🇧🇩</span> Bangladesh (BD)
+        </button>
+        <button class="country-tab-btn" onclick="filterCountry('pk', this)">
+            <span style="font-size: 1.1rem;">🇵🇰</span> Pakistan (PK)
+        </button>
     </div>
 
     <!-- Notice Box: Internal vs External -->
@@ -1135,7 +1314,7 @@
         <div class="section-header">
             <div>
                 <h2 class="section-title"><span>⚡</span> Incident Decision Wizard</h2>
-                <p class="section-desc">Click your incident scenario below to immediately identify the correct authority and contact procedure.</p>
+                <p class="section-desc">Click your incident scenario below to immediately identify the correct authority and contact procedure across regional locations.</p>
             </div>
         </div>
 
@@ -1143,138 +1322,302 @@
             <div class="wizard-buttons">
                 <button class="wiz-btn active" onclick="selectScenario(1)">
                     <div class="wiz-title">📞 Urgent Assistance & Cyber Attack</div>
-                    <div class="wiz-sub">Active ransomware, critical threat, or emergency assistance</div>
+                    <div class="wiz-sub">Active ransomware, critical threat, or emergency helpline</div>
                 </button>
 
                 <button class="wiz-btn" onclick="selectScenario(2)">
-                    <div class="wiz-title">⚖️ Financial Fraud & Cyber Crime</div>
-                    <div class="wiz-sub">Online scams, extortion, blackmail, or identity theft</div>
+                    <div class="wiz-title">⚖️ Cyber Crime & Financial Fraud</div>
+                    <div class="wiz-sub">Online scams, extortion, blackmail, or police investigation</div>
                 </button>
 
                 <button class="wiz-btn" onclick="selectScenario(3)">
-                    <div class="wiz-title">✉️ General Cyber Security Incident</div>
-                    <div class="wiz-sub">Malware, phishing, or technical security breach</div>
+                    <div class="wiz-title">✉️ General Cyber Incident & Technical Escalation</div>
+                    <div class="wiz-sub">Malware, phishing, or technical security breach reporting</div>
                 </button>
 
                 <button class="wiz-btn" onclick="selectScenario(4)">
-                    <div class="wiz-title">👤 Social Media & Online Harassment</div>
-                    <div class="wiz-sub">Hacked social account, impersonation, or cyberbullying</div>
+                    <div class="wiz-title">👤 Social Media & Online Unlawful Content</div>
+                    <div class="wiz-sub">Hacked account, impersonation, or PTA unlawful content complaint</div>
                 </button>
 
                 <button class="wiz-btn" onclick="selectScenario(5)">
-                    <div class="wiz-title">🌐 Formal Online Police Complaint</div>
-                    <div class="wiz-sub">Official police complaint submission via Tell IGP</div>
+                    <div class="wiz-title">🌐 Formal Online Complaint Portals</div>
+                    <div class="wiz-sub">Official police & CIRT online portals (Tell IGP / CIRT BD / NCCIA PK)</div>
                 </button>
             </div>
 
             <div class="wizard-result-box" id="wizResultBox">
-                <div class="wiz-res-title" id="wizResTitle">🚨 Recommended Contact: SL CERT Urgent Hotline - 101</div>
+                <div class="wiz-res-title" id="wizResTitle">🚨 Recommended Emergency Hotlines by Region:</div>
                 <div class="wiz-res-body" id="wizResBody">
-                    For active cyber attacks requiring immediate national technical response, call Sri Lanka CERT hotline directly at <strong>101</strong>.
+                    <strong>Sri Lanka:</strong> SL CERT Hotline <strong>101</strong> | <strong>Bangladesh:</strong> CID Helpline <strong>01733 694162</strong> | <strong>Pakistan:</strong> NCCIA Hotline <strong>1799</strong>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Section 2: Interactive Timeline / Contact List (Design Template Inspired) -->
-    <div id="channels" class="section-wrapper">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title"><span>📞</span> Official External Reporting Channels (LK)</h2>
-                <p class="section-desc">Interactive visual timeline of official national authorities, hotlines, emails, and police portals.</p>
+    <!-- Section 2: Country Incident Channels -->
+    <div id="channels">
+
+        <!-- 🇱🇰 SRI LANKA SECTION -->
+        <div id="country-lk" class="section-wrapper country-section">
+            <div class="country-section-header">
+                <div class="flag-mast-container">
+                    <div class="flag-pole"></div>
+                    <div class="flag-canvas">
+                        <img src="https://flagcdn.com/lk.svg" alt="Official Flag of Sri Lanka" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <div class="flag-ripple-overlay"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="country-title">Report an Incident – Outside the Organization (LK)</h2>
+                    <p class="country-subtitle">Official Sri Lankan Cyber Crime, CERT & Police Incident Escalation Channels</p>
+                </div>
+            </div>
+
+            <div class="timeline-card">
+                <div class="timeline-container">
+                    <!-- Channel LK 1 -->
+                    <div class="timeline-item" id="item-lk-1">
+                        <div class="timeline-icon-box">📞</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Call SL CERT Hotline – 101</h3>
+                                <p>For urgent assistance & 24/7 emergency response</p>
+                            </div>
+                            <a href="tel:101" class="action-link-btn">
+                                📞 Call Hotline 101
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Channel LK 2 -->
+                    <div class="timeline-item" id="item-lk-2">
+                        <div class="timeline-icon-box">📞</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Call Cyber Crime Division – Police</h3>
+                                <p>011 230 4518 / 011 230 4519 (Criminal investigations & fraud)</p>
+                            </div>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <a href="tel:0112304518" class="action-link-btn">Call 011 230 4518</a>
+                                <a href="tel:0112304519" class="action-link-btn">Call 011 230 4519</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Channel LK 3 -->
+                    <div class="timeline-item" id="item-lk-3">
+                        <div class="timeline-icon-box">✉️</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Email to report@cert.gov.lk</h3>
+                                <p>For general incidents, malware, phishing, and system breach reports</p>
+                            </div>
+                            <a href="mailto:report@cert.gov.lk?subject=Cyber%20Incident%20Report" class="action-link-btn">
+                                ✉️ Send Email
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Channel LK 4 -->
+                    <div class="timeline-item" id="item-lk-4">
+                        <div class="timeline-icon-box">✉️</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Email to socialmedia@cert.gov.lk</h3>
+                                <p>For account compromises, social media hacking, or online harassment</p>
+                            </div>
+                            <a href="mailto:socialmedia@cert.gov.lk?subject=Social%20Media%20Account%20Compromise" class="action-link-btn">
+                                ✉️ Send Email
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Channel LK 5 -->
+                    <div class="timeline-item" id="item-lk-5">
+                        <div class="timeline-icon-box">🌐</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Submit Complaint via Tell IGP Portal</h3>
+                                <p>Official police complaint submission under Cyber Crimes section (https://telligp.police.lk/)</p>
+                            </div>
+                            <a href="https://telligp.police.lk/" target="_blank" class="action-link-btn" style="background: #ea580c; border-color: #ea580c;">
+                                🌐 Open Police Portal ➔
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Channel LK 6: Police Cyber Crime Advisory -->
+                    <div class="timeline-item" id="item-lk-6">
+                        <div class="timeline-icon-box">⚖️</div>
+                        <div class="timeline-content-card" style="border-left: 4px solid #e11d48;">
+                            <div class="timeline-info">
+                                <h3>Police Advisory: Harassment & Cyber Crime Takedowns</h3>
+                                <p>Direct CID (dir.cid@police.gov.lk) and CCID (ccid.report@police.gov.lk) complaint channels for illegal social media groups & harassment</p>
+                            </div>
+                            <a href="police-cyber-crime-advisory.html" class="action-link-btn" style="background: linear-gradient(135deg, #e11d48 0%, #be123c 100%); border-color: #e11d48;">
+                                ⚖️ Open Police Advisory ➔
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="timeline-card">
-            <div class="timeline-container">
-
-                <!-- Channel 1 -->
-                <div class="timeline-item" id="item-1">
-                    <div class="timeline-icon-box">📞</div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-info">
-                            <h3>Call SL CERT Hotline – 101</h3>
-                            <p>For urgent assistance & 24/7 emergency response</p>
-                        </div>
-                        <a href="tel:101" class="action-link-btn">
-                            📞 Call Hotline 101
-                        </a>
+        <!-- 🇧🇩 BANGLADESH SECTION -->
+        <div id="country-bd" class="section-wrapper country-section">
+            <div class="country-section-header">
+                <div class="flag-mast-container">
+                    <div class="flag-pole"></div>
+                    <div class="flag-canvas">
+                        <img src="https://flagcdn.com/bd.svg" alt="Official Flag of Bangladesh" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <div class="flag-ripple-overlay"></div>
                     </div>
                 </div>
+                <div>
+                    <h2 class="country-title">Report an Incident – Outside the Organization (BD)</h2>
+                    <p class="country-subtitle">Official Bangladesh Cyber Helpline, BGD e-GOV CIRT & Incident Reporting Channels</p>
+                </div>
+            </div>
 
-                <!-- Channel 2 -->
-                <div class="timeline-item" id="item-2">
-                    <div class="timeline-icon-box">📞</div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-info">
-                            <h3>Call Cyber Crime Division – Police</h3>
-                            <p>011 230 4518 / 011 230 4519 (Criminal investigations & fraud)</p>
+            <div class="timeline-card">
+                <div class="timeline-container">
+                    <!-- BD Channel 1 -->
+                    <div class="timeline-item" id="item-bd-1">
+                        <div class="timeline-icon-box">📞</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Call CID Cyber Helpline – 01733 694162</h3>
+                                <p>For urgent assistance and emergency cyber crime helpline in Bangladesh</p>
+                            </div>
+                            <a href="tel:01733694162" class="action-link-btn" style="background: linear-gradient(135deg, #006a4e 0%, #064e3b 100%); border-color: #059669;">
+                                📞 Call CID Helpline 01733 694162
+                            </a>
                         </div>
-                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                            <a href="tel:0112304518" class="action-link-btn">Call 011 230 4518</a>
-                            <a href="tel:0112304519" class="action-link-btn">Call 011 230 4519</a>
+                    </div>
+
+                    <!-- BD Channel 2 -->
+                    <div class="timeline-item" id="item-bd-2">
+                        <div class="timeline-icon-box">📞</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Call BGD e-GOV CIRT Hotline – +88 02 8181392</h3>
+                                <p>Official hotline for national Bangladesh Computer Incident Response Team</p>
+                            </div>
+                            <a href="tel:+88028181392" class="action-link-btn">
+                                📞 Call CIRT Hotline +88 02 8181392
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- BD Channel 3 -->
+                    <div class="timeline-item" id="item-bd-3">
+                        <div class="timeline-icon-box">✉️</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Email to incidents@cirt.gov.bd</h3>
+                                <p>Direct incident report submission email to BGD e-GOV CIRT technical response unit</p>
+                            </div>
+                            <a href="mailto:incidents@cirt.gov.bd?subject=Cyber%20Incident%20Report%20(BD)" class="action-link-btn">
+                                ✉️ Send Email to CIRT
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- BD Channel 4 -->
+                    <div class="timeline-item" id="item-bd-4">
+                        <div class="timeline-icon-box">🌐</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Submit Complaint via CIRT Portal</h3>
+                                <p>Submit a complaint via https://www.cirt.gov.bd/report-incident under individual section</p>
+                            </div>
+                            <a href="https://www.cirt.gov.bd/report-incident" target="_blank" class="action-link-btn" style="background: #006a4e; border-color: #10b981;">
+                                🌐 Open CIRT Report Portal ➔
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Channel 3 -->
-                <div class="timeline-item" id="item-3">
-                    <div class="timeline-icon-box">✉️</div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-info">
-                            <h3>Email to report@cert.gov.lk</h3>
-                            <p>For general incidents, malware, phishing, and system breach reports</p>
-                        </div>
-                        <a href="mailto:report@cert.gov.lk?subject=Cyber%20Incident%20Report" class="action-link-btn">
-                            ✉️ Send Email
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Channel 4 -->
-                <div class="timeline-item" id="item-4">
-                    <div class="timeline-icon-box">✉️</div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-info">
-                            <h3>Email to socialmedia@cert.gov.lk</h3>
-                            <p>For account compromises, social media hacking, or online harassment</p>
-                        </div>
-                        <a href="mailto:socialmedia@cert.gov.lk?subject=Social%20Media%20Account%20Compromise" class="action-link-btn">
-                            ✉️ Send Email
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Channel 5 -->
-                <div class="timeline-item" id="item-5">
-                    <div class="timeline-icon-box">🌐</div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-info">
-                            <h3>Submit Complaint via Tell IGP Portal</h3>
-                            <p>Official police complaint submission under Cyber Crimes section (https://telligp.police.lk/)</p>
-                        </div>
-                        <a href="https://telligp.police.lk/" target="_blank" class="action-link-btn" style="background: #ea580c; border-color: #ea580c;">
-                            🌐 Open Police Portal ➔
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Channel 6: Police Cyber Crime Advisory -->
-                <div class="timeline-item" id="item-6">
-                    <div class="timeline-icon-box">⚖️</div>
-                    <div class="timeline-content-card" style="border-left: 4px solid #e11d48;">
-                        <div class="timeline-info">
-                            <h3>Police Advisory: Harassment & Cyber Crime Takedowns</h3>
-                            <p>Direct CID (dir.cid@police.gov.lk) and CCID (ccid.report@police.gov.lk) complaint channels for illegal social media groups & harassment</p>
-                        </div>
-                        <a href="News/police-cyber-crime-advisory.html" class="action-link-btn" style="background: linear-gradient(135deg, #e11d48 0%, #be123c 100%); border-color: #e11d48;">
-                            ⚖️ Open Police Advisory ➔
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </div>
+
+        <!-- 🇵🇰 PAKISTAN SECTION -->
+        <div id="country-pk" class="section-wrapper country-section">
+            <div class="country-section-header">
+                <div class="flag-mast-container">
+                    <div class="flag-pole"></div>
+                    <div class="flag-canvas">
+                        <img src="https://flagcdn.com/pk.svg" alt="Official Flag of Pakistan" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <div class="flag-ripple-overlay"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="country-title">Report an Incident – Outside the Organization (PK)</h2>
+                    <p class="country-subtitle">Official Pakistan NCCIA Hotline, Helpdesk & PTA Content Complaint Channels</p>
+                </div>
+            </div>
+
+            <div class="timeline-card">
+                <div class="timeline-container">
+                    <!-- PK Channel 1 -->
+                    <div class="timeline-item" id="item-pk-1">
+                        <div class="timeline-icon-box">📞</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Call NCCIA Hotline – 1799</h3>
+                                <p>For urgent assistance & 24/7 emergency response in Pakistan (National Cyber Crime Investigation Agency)</p>
+                            </div>
+                            <a href="tel:1799" class="action-link-btn" style="background: linear-gradient(135deg, #00401a 0%, #064e3b 100%); border-color: #059669;">
+                                📞 Call NCCIA Hotline 1799
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PK Channel 2 -->
+                    <div class="timeline-item" id="item-pk-2">
+                        <div class="timeline-icon-box">🌐</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Submit Complaint via NCCIA Portal</h3>
+                                <p>Submit a complaint via https://complaint.nccia.gov.pk/ (NCCIA Portal)</p>
+                            </div>
+                            <a href="https://complaint.nccia.gov.pk/" target="_blank" class="action-link-btn" style="background: #00401a; border-color: #10b981;">
+                                🌐 Open NCCIA Portal ➔
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PK Channel 3 -->
+                    <div class="timeline-item" id="item-pk-3">
+                        <div class="timeline-icon-box">✉️</div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-info">
+                                <h3>Email to helpdesk@nccia.gov.pk</h3>
+                                <p>Email NCCIA Helpdesk (helpdesk@nccia.gov.pk) for inquiries and incident reporting</p>
+                            </div>
+                            <a href="mailto:helpdesk@nccia.gov.pk?subject=NCCIA%20Cyber%20Incident%20Report" class="action-link-btn">
+                                ✉️ Send Email to NCCIA Helpdesk
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PK Channel 4 -->
+                    <div class="timeline-item" id="item-pk-4">
+                        <div class="timeline-icon-box">✉️</div>
+                        <div class="timeline-content-card" style="border-left: 4px solid #e11d48;">
+                            <div class="timeline-info">
+                                <h3>Email to content-complaint@pta.gov.pk</h3>
+                                <p>Email PTA (content-complaint@pta.gov.pk) for issues involving unlawful content</p>
+                            </div>
+                            <a href="mailto:content-complaint@pta.gov.pk?subject=PTA%20Unlawful%20Content%20Complaint" class="action-link-btn" style="background: linear-gradient(135deg, #e11d48 0%, #be123c 100%); border-color: #e11d48;">
+                                ✉️ Email PTA Content Complaint
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Master Footer -->
@@ -1375,31 +1718,51 @@
     <script>
         const scenarioData = {
             1: {
-                title: "🚨 Recommended Contact: SL CERT Urgent Hotline – 101",
-                body: "For active, urgent cyber attacks, ransomware infections, or immediate threats requiring national technical response, call Sri Lanka CERT hotline directly at <strong>101</strong>.",
-                highlightId: "item-1"
+                title: "🚨 Recommended Urgent Emergency Contacts by Region:",
+                body: "<strong>Sri Lanka (LK):</strong> Call SL CERT Hotline <strong>101</strong> or Cyber Crime Police at <strong>011 230 4518 / 4519</strong>.<br><strong>Bangladesh (BD):</strong> Call CID Cyber Helpline <strong>01733 694162</strong> or BGD e-GOV CIRT Hotline <strong>+88 02 8181392</strong>.<br><strong>Pakistan (PK):</strong> Call NCCIA Hotline <strong>1799</strong> for urgent assistance.",
+                highlightIds: ["item-lk-1", "item-bd-1", "item-pk-1"]
             },
             2: {
-                title: "⚖️ Recommended Contact: Cyber Crime Division (Police) – 011 230 4518 / 4519",
-                body: "For criminal investigations involving online financial fraud, blackmail, extortion, impersonation, or cyber crime, call the Police Cyber Crime Division directly at <strong>011 230 4518</strong> or <strong>011 230 4519</strong>.",
-                highlightId: "item-2"
+                title: "⚖️ Recommended Cyber Crime & Financial Fraud Escalation:",
+                body: "<strong>Sri Lanka (LK):</strong> Call Police Cyber Crime Division <strong>011 230 4518 / 4519</strong>.<br><strong>Bangladesh (BD):</strong> Contact CID Cyber Helpline <strong>01733 694162</strong> or submit online at <strong>cirt.gov.bd</strong>.<br><strong>Pakistan (PK):</strong> Submit complaint via official NCCIA portal at <strong>https://complaint.nccia.gov.pk/</strong>.",
+                highlightIds: ["item-lk-2", "item-bd-4", "item-pk-2"]
             },
             3: {
-                title: "✉️ Recommended Contact: SL CERT Email – report@cert.gov.lk",
-                body: "For general cyber security incidents, phishing email reports, malware analysis, or server compromise reports, send an email to <strong>report@cert.gov.lk</strong>.",
-                highlightId: "item-3"
+                title: "✉️ Recommended General Technical Incident Email Escalation:",
+                body: "<strong>Sri Lanka (LK):</strong> Email <strong>report@cert.gov.lk</strong>.<br><strong>Bangladesh (BD):</strong> Email <strong>incidents@cirt.gov.bd</strong>.<br><strong>Pakistan (PK):</strong> Email <strong>helpdesk@nccia.gov.pk</strong>.",
+                highlightIds: ["item-lk-3", "item-bd-3", "item-pk-3"]
             },
             4: {
-                title: "👤 Recommended Contact: Social Media Email – socialmedia@cert.gov.lk",
-                body: "For Facebook, Instagram, WhatsApp, or Telegram account compromises, impersonation profiles, or online harassment, email <strong>socialmedia@cert.gov.lk</strong>.",
-                highlightId: "item-4"
+                title: "👤 Recommended Social Media & Unlawful Content Contacts:",
+                body: "<strong>Sri Lanka (LK):</strong> Email SL CERT Social Media division at <strong>socialmedia@cert.gov.lk</strong>.<br><strong>Bangladesh (BD):</strong> Report via CID Helpline <strong>01733 694162</strong> or CIRT report portal.<br><strong>Pakistan (PK):</strong> Email PTA Content Complaint unit at <strong>content-complaint@pta.gov.pk</strong> for issues involving unlawful content.",
+                highlightIds: ["item-lk-4", "item-pk-4"]
             },
             5: {
-                title: "🌐 Recommended Contact: Tell IGP Police Complaints Portal",
-                body: "To file an official formal police complaint online, visit the official Tell IGP portal at <strong>https://telligp.police.lk/</strong> and submit your report under the Cyber Crimes section.",
-                highlightId: "item-5"
+                title: "🌐 Recommended Official Online Complaint Portals:",
+                body: "<strong>Sri Lanka (LK):</strong> Tell IGP Police Complaints Portal (<strong>telligp.police.lk</strong>).<br><strong>Bangladesh (BD):</strong> CIRT Complaint Portal (<strong>www.cirt.gov.bd/report-incident</strong>).<br><strong>Pakistan (PK):</strong> NCCIA Complaint Portal (<strong>complaint.nccia.gov.pk</strong>).",
+                highlightIds: ["item-lk-5", "item-bd-4", "item-pk-2"]
             }
         };
+
+        function filterCountry(country, btn) {
+            const tabs = document.querySelectorAll('.country-tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            const sections = document.querySelectorAll('.country-section');
+            sections.forEach(sec => {
+                if (country === 'all') {
+                    sec.style.display = 'block';
+                } else {
+                    if (sec.id === 'country-' + country) {
+                        sec.style.display = 'block';
+                        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        sec.style.display = 'none';
+                    }
+                }
+            });
+        }
 
         function selectScenario(id) {
             const btns = document.querySelectorAll('.wiz-btn');
@@ -1413,10 +1776,13 @@
             const items = document.querySelectorAll('.timeline-item');
             items.forEach(i => i.classList.remove('active-highlight'));
 
-            const targetItem = document.getElementById(data.highlightId);
-            if (targetItem) {
-                targetItem.classList.add('active-highlight');
-                targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (data.highlightIds) {
+                data.highlightIds.forEach(hId => {
+                    const targetItem = document.getElementById(hId);
+                    if (targetItem) {
+                        targetItem.classList.add('active-highlight');
+                    }
+                });
             }
         }
     </script>
