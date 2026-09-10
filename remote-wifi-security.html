@@ -551,8 +551,13 @@
         }
 
         @keyframes pulse-stream {
-            0% { left: -40%; }
-            100% { left: 100%; }
+            0% {
+                left: -40%;
+            }
+
+            100% {
+                left: 100%;
+            }
         }
 
         /* Threat Badge Status */
@@ -572,9 +577,23 @@
             letter-spacing: 0.05em;
         }
 
-        .grade-badge.grade-a { background: #064e3b; color: #34d399; border: 1px solid #059669; }
-        .grade-badge.grade-b { background: #1e3a8a; color: #60a5fa; border: 1px solid #2563eb; }
-        .grade-badge.grade-f { background: #881337; color: #fda4af; border: 1px solid #e11d48; }
+        .grade-badge.grade-a {
+            background: #064e3b;
+            color: #34d399;
+            border: 1px solid #059669;
+        }
+
+        .grade-badge.grade-b {
+            background: #1e3a8a;
+            color: #60a5fa;
+            border: 1px solid #2563eb;
+        }
+
+        .grade-badge.grade-f {
+            background: #881337;
+            color: #fda4af;
+            border: 1px solid #e11d48;
+        }
 
         .sim-info-title {
             font-size: 1.3rem;
@@ -617,9 +636,17 @@
             margin-top: 2px;
         }
 
-        .metric-val.green { color: #34d399; }
-        .metric-val.red { color: #f87171; }
-        .metric-val.amber { color: #fbbf24; }
+        .metric-val.green {
+            color: #34d399;
+        }
+
+        .metric-val.red {
+            color: #f87171;
+        }
+
+        .metric-val.amber {
+            color: #fbbf24;
+        }
 
         .sim-recommendation {
             background: rgba(30, 41, 59, 0.6);
@@ -695,9 +722,20 @@
             border-bottom: none;
         }
 
-        .pkt-type { color: #38bdf8; font-weight: bold; }
-        .pkt-data-danger { color: #f87171; font-weight: bold; }
-        .pkt-data-safe { color: #34d399; font-weight: bold; }
+        .pkt-type {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .pkt-data-danger {
+            color: #f87171;
+            font-weight: bold;
+        }
+
+        .pkt-data-safe {
+            color: #34d399;
+            font-weight: bold;
+        }
 
         /* Home Router Hardening Checklist */
         .checklist-card {
@@ -1028,13 +1066,27 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes modalSlide {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Common Responsive Header & Footer Styles */
@@ -1434,7 +1486,8 @@
 
             <div class="site-brand">
                 <div class="brand-logo-badge">
-                    <img src="images/SOC logo.png" alt="Midas SOC Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo"
+                        style="width: 56px; height: 56px; object-fit: contain;">
                 </div>
                 <h1 class="site-title-text">Midas Cyber Awareness & Security Hub</h1>
             </div>
@@ -1455,11 +1508,13 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown">
-                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password Security</a>
+                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password
+                            Security</a>
                         <a href="device-security.html" class="dropdown-link">📱 Device Security</a>
                         <a href="email-security.html" class="dropdown-link">📧 Email & Phishing</a>
                         <a href="physical-security.html" class="dropdown-link">🏢 Physical Security</a>
-                        <a href="remote-wifi-security.html" class="dropdown-link active" style="color: #38bdf8; font-weight: bold;">🌐 Remote / Wi-Fi Security</a>
+                        <a href="remote-wifi-security.html" class="dropdown-link active"
+                            style="color: #38bdf8; font-weight: bold;">🌐 Remote / Wi-Fi Security</a>
                         <a href="index.html#policies" class="dropdown-link">📜 Security Policies</a>
                         <a href="faq.html" class="dropdown-link">❓ FAQ</a>
                         <a href="security-tips.html" class="dropdown-link">📋 SOPS</a>
@@ -1487,25 +1542,31 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown">
-                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase Strength Evaluator</a>
+                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase
+                            Strength Evaluator</a>
                         <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
-                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident Report</a>
+                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident
+                            Report</a>
                     </div>
                 </div>
 
                 <div class="nav-item">
-                    <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security Incident Report</a>
+                    <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security
+                        Incident Report</a>
                 </div>
             </div>
 
             <div class="nav-actions-right">
-                <button class="nav-action-btn" onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
+                <button class="nav-action-btn"
+                    onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     <span id="favText">Add to favorites</span>
                 </button>
-                <button class="nav-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
+                <button class="nav-action-btn"
+                    onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                         <circle cx="9" cy="7" r="4" />
@@ -1524,17 +1585,21 @@
             <div class="banner-badge">🌐 Network & Telework Defense</div>
             <h1 class="banner-title">Remote & Wi-Fi Security Guide</h1>
             <p class="banner-subtitle">
-                Safeguard corporate communications, secure wireless connections, and encrypt public networks when working remotely across airports, hotels, and cafes worldwide.
+                Safeguard corporate communications, secure wireless connections, and encrypt public networks when
+                working remotely across airports, hotels, and cafes worldwide.
             </p>
         </div>
         <div class="banner-illustration">
             <svg viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="75" r="60" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4" />
+                <circle cx="150" cy="75" r="60" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4"
+                    opacity="0.4" />
                 <circle cx="150" cy="75" r="40" stroke="#38bdf8" stroke-width="2" opacity="0.6" />
                 <path d="M130 95 C130 95 150 110 170 95" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
                 <!-- Shield Icon -->
-                <path d="M150 35 L175 48 V75 C175 92 150 105 150 105 C150 105 125 92 125 75 V48 L150 35 Z" fill="#0f172a" stroke="#00D2FF" stroke-width="3" />
-                <path d="M142 70 L148 76 L158 64" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M150 35 L175 48 V75 C175 92 150 105 150 105 C150 105 125 92 125 75 V48 L150 35 Z"
+                    fill="#0f172a" stroke="#00D2FF" stroke-width="3" />
+                <path d="M142 70 L148 76 L158 64" stroke="#10b981" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" />
             </svg>
         </div>
     </div>
@@ -1556,7 +1621,8 @@
                 <h2 class="section-title">
                     <span>📶</span> Interactive Wi-Fi Connection Inspector
                 </h2>
-                <p class="section-desc">Select a connection environment below to inspect live packet encryption, threat exposure, and security grade.</p>
+                <p class="section-desc">Select a connection environment below to inspect live packet encryption, threat
+                    exposure, and security grade.</p>
             </div>
         </div>
 
@@ -1626,7 +1692,8 @@
                         </div>
 
                         <p class="sim-info-desc" id="simDesc">
-                            Unencrypted open network. Anyone in the café with a simple sniffing tool can capture unencrypted traffic, session cookies, and login details.
+                            Unencrypted open network. Anyone in the café with a simple sniffing tool can capture
+                            unencrypted traffic, session cookies, and login details.
                         </p>
 
                         <div class="sim-metrics-grid">
@@ -1649,7 +1716,8 @@
                         </div>
 
                         <div class="sim-recommendation" id="simTip">
-                            <strong>Security Advice:</strong> Never log into internal Midas applications or handle corporate documents on open public Wi-Fi without turning on Midas Corporate VPN first.
+                            <strong>Security Advice:</strong> Never log into internal Midas applications or handle
+                            corporate documents on open public Wi-Fi without turning on Midas Corporate VPN first.
                         </div>
                     </div>
                 </div>
@@ -1664,13 +1732,15 @@
                 <h2 class="section-title">
                     <span>🔒</span> Corporate VPN Data Tunnel Inspector
                 </h2>
-                <p class="section-desc">Toggle the view below to see how Midas Corporate VPN transforms readable plain-text data into unbreakable AES-256 ciphertext.</p>
+                <p class="section-desc">Toggle the view below to see how Midas Corporate VPN transforms readable
+                    plain-text data into unbreakable AES-256 ciphertext.</p>
             </div>
         </div>
 
         <div class="vpn-toggle-card">
             <div class="vpn-mode-switch">
-                <button class="toggle-btn active unprotected" id="btnModeUnprotected" onclick="switchVpnMode('unprotected')">
+                <button class="toggle-btn active unprotected" id="btnModeUnprotected"
+                    onclick="switchVpnMode('unprotected')">
                     🚨 Plain Public Wi-Fi (Hacker View)
                 </button>
                 <button class="toggle-btn" id="btnModeProtected" onclick="switchVpnMode('protected')">
@@ -1681,7 +1751,8 @@
             <div class="packet-stream-box" id="packetStreamDisplay">
                 <div class="packet-line">
                     <span class="pkt-type">[PACKET #102 - HTTP LOGIN]</span>
-                    <span class="pkt-data-danger">User: employee@midas.com | Pass: Summer2026! | Cookie: SESSID_99A82</span>
+                    <span class="pkt-data-danger">User: employee@midas.com | Pass: Summer2026! | Cookie:
+                        SESSID_99A82</span>
                 </div>
                 <div class="packet-line">
                     <span class="pkt-type">[PACKET #103 - FILE TRANSFER]</span>
@@ -1689,7 +1760,8 @@
                 </div>
                 <div class="packet-line">
                     <span class="pkt-type">[PACKET #104 - DNS QUERY]</span>
-                    <span class="pkt-data-danger">Requested Host: sharepoint.midassafety.com (Origin IP: 192.168.1.45)</span>
+                    <span class="pkt-data-danger">Requested Host: sharepoint.midassafety.com (Origin IP:
+                        192.168.1.45)</span>
                 </div>
             </div>
         </div>
@@ -1713,7 +1785,8 @@
             <div class="rule-card">
                 <div class="rule-number">01</div>
                 <h3 class="rule-title">Always Use Midas Corporate VPN</h3>
-                <p class="rule-text">Turn on corporate VPN whenever accessing internal emails, SharePoint, ERP, or client data outside office locations.</p>
+                <p class="rule-text">Turn on corporate VPN whenever accessing internal emails, SharePoint, ERP, or
+                    client data outside office locations.</p>
                 <button class="rule-detail-btn" onclick="showRuleModal(1)">Read Best Practice ➔</button>
             </div>
 
@@ -1721,7 +1794,8 @@
             <div class="rule-card">
                 <div class="rule-number">02</div>
                 <h3 class="rule-title">Disable Auto-Connect to Wi-Fi</h3>
-                <p class="rule-text">Disable "Auto-Connect to Open Wi-Fi" on work laptops and mobile devices to prevent automatically joining rogue networks.</p>
+                <p class="rule-text">Disable "Auto-Connect to Open Wi-Fi" on work laptops and mobile devices to prevent
+                    automatically joining rogue networks.</p>
                 <button class="rule-detail-btn" onclick="showRuleModal(2)">Read Best Practice ➔</button>
             </div>
 
@@ -1729,7 +1803,8 @@
             <div class="rule-card">
                 <div class="rule-number">03</div>
                 <h3 class="rule-title">Beware of Evil-Twin Hotspots</h3>
-                <p class="rule-text">Attackers deploy fake access points named "Starbucks_Guest" or "Airport_Free_WiFi". Always verify exact network names with staff.</p>
+                <p class="rule-text">Attackers deploy fake access points named "Starbucks_Guest" or "Airport_Free_WiFi".
+                    Always verify exact network names with staff.</p>
                 <button class="rule-detail-btn" onclick="showRuleModal(3)">Read Best Practice ➔</button>
             </div>
 
@@ -1737,7 +1812,8 @@
             <div class="rule-card">
                 <div class="rule-number">04</div>
                 <h3 class="rule-title">Prevent Shoulder Surfing</h3>
-                <p class="rule-text">Use privacy screen filters in airports, cafes, and trains to block unauthorized viewing of confidential corporate screens.</p>
+                <p class="rule-text">Use privacy screen filters in airports, cafes, and trains to block unauthorized
+                    viewing of confidential corporate screens.</p>
                 <button class="rule-detail-btn" onclick="showRuleModal(4)">Read Best Practice ➔</button>
             </div>
 
@@ -1745,7 +1821,8 @@
             <div class="rule-card">
                 <div class="rule-number">05</div>
                 <h3 class="rule-title">Never Leave Assets Unattended</h3>
-                <p class="rule-text">Lock laptop screens (Win + L) instantly and never leave devices unattended in hotel lobbies, vehicles, or coffee shops.</p>
+                <p class="rule-text">Lock laptop screens (Win + L) instantly and never leave devices unattended in hotel
+                    lobbies, vehicles, or coffee shops.</p>
                 <button class="rule-detail-btn" onclick="showRuleModal(5)">Read Best Practice ➔</button>
             </div>
 
@@ -1753,7 +1830,8 @@
             <div class="rule-card">
                 <div class="rule-number">06</div>
                 <h3 class="rule-title">Use Personal Mobile Tethering</h3>
-                <p class="rule-text">When trusted Wi-Fi is unavailable, tether your laptop to your smartphone's WPA3 mobile hotspot instead of untrusted open networks.</p>
+                <p class="rule-text">When trusted Wi-Fi is unavailable, tether your laptop to your smartphone's WPA3
+                    mobile hotspot instead of untrusted open networks.</p>
                 <button class="rule-detail-btn" onclick="showRuleModal(6)">Read Best Practice ➔</button>
             </div>
         </div>
@@ -1765,7 +1843,8 @@
     <div class="modal-overlay" id="ruleModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeRuleModal()">✕</button>
-            <h3 id="modalTitle" style="font-size: 1.3rem; font-weight: 800; color: var(--primary); margin-bottom: 12px;">Rule Title</h3>
+            <h3 id="modalTitle"
+                style="font-size: 1.3rem; font-weight: 800; color: var(--primary); margin-bottom: 12px;">Rule Title</h3>
             <p id="modalBody" style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;"></p>
         </div>
     </div>
@@ -1793,15 +1872,18 @@
 
             <div class="soc-card">
                 <div class="soc-icon-circle">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                        <path
+                            d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
                     </svg>
                 </div>
                 <div class="soc-content">
                     <div class="soc-title">Need remote access support or reporting an incident?</div>
                     <div class="soc-subtext">
-                        Contact Security Operations Center at <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                        Contact Security Operations Center at <a href="mailto:cic@midassafety.com"
+                            class="soc-email-link">cic@midassafety.com</a>
                     </div>
                 </div>
             </div>
@@ -1920,7 +2002,7 @@
 
             const data = simData[modeKey];
             document.getElementById('simTitle').innerText = data.title;
-            
+
             const gradeEl = document.getElementById('simGrade');
             gradeEl.innerText = data.grade;
             gradeEl.className = 'grade-badge ' + data.gradeClass;

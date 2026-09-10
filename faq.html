@@ -7,7 +7,8 @@
     <title>Frequently Asked Questions (FAQ) - Midas Cyber Security Hub</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -261,7 +262,7 @@
         /* Hero Header Banner */
         .faq-hero-card {
             background: linear-gradient(135deg, rgba(2, 6, 23, 0.72) 0%, rgba(15, 23, 42, 0.65) 40%, rgba(30, 41, 59, 0.78) 100%),
-                        url('images/BG%20FAQ.png');
+                url('images/BG%20FAQ.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -512,11 +513,30 @@
             letter-spacing: 0.05em;
         }
 
-        .faq-q-badge.pass { background: #fffbeb; color: #d97706; }
-        .faq-q-badge.email { background: #eff6ff; color: #2563eb; }
-        .faq-q-badge.device { background: #f0fdf4; color: #16a34a; }
-        .faq-q-badge.remote { background: #faf5ff; color: #9333ea; }
-        .faq-q-badge.escala { background: #fff1f2; color: #e11d48; }
+        .faq-q-badge.pass {
+            background: #fffbeb;
+            color: #d97706;
+        }
+
+        .faq-q-badge.email {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .faq-q-badge.device {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+
+        .faq-q-badge.remote {
+            background: #faf5ff;
+            color: #9333ea;
+        }
+
+        .faq-q-badge.escala {
+            background: #fff1f2;
+            color: #e11d48;
+        }
 
         .faq-icon-arrow {
             width: 24px;
@@ -554,8 +574,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-6px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .faq-answer-highlight {
@@ -1012,9 +1039,11 @@
             .faq-layout-grid {
                 grid-template-columns: 1fr;
             }
+
             .sidebar-card {
                 position: static;
             }
+
             .ask-grid {
                 grid-template-columns: 1fr;
             }
@@ -1084,7 +1113,8 @@
 
             <div class="site-brand">
                 <div class="brand-logo-badge">
-                    <img src="images/SOC logo.png" alt="Midas SOC Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo"
+                        style="width: 56px; height: 56px; object-fit: contain;">
                 </div>
                 <h1 class="site-title-text">Midas Cyber Awareness & Security Hub</h1>
             </div>
@@ -1105,13 +1135,15 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown">
-                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password Security</a>
+                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password
+                            Security</a>
                         <a href="device-security.html" class="dropdown-link">📱 Device Security</a>
                         <a href="email-security.html" class="dropdown-link">📧 Email & Phishing</a>
                         <a href="physical-security.html" class="dropdown-link">🏢 Physical Security</a>
                         <a href="remote-wifi-security.html" class="dropdown-link">🌐 Remote / Wi-Fi Security</a>
                         <a href="index.html#policies" class="dropdown-link">📜 Security Policies</a>
-                        <a href="faq.html" class="dropdown-link active" style="color: #38bdf8; font-weight: bold;">❓ FAQ</a>
+                        <a href="faq.html" class="dropdown-link active" style="color: #38bdf8; font-weight: bold;">❓
+                            FAQ</a>
                         <a href="security-tips.html" class="dropdown-link">📋 SOPS</a>
                     </div>
                 </div>
@@ -1137,25 +1169,31 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown">
-                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase Strength Evaluator</a>
+                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase
+                            Strength Evaluator</a>
                         <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
-                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident Report</a>
+                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident
+                            Report</a>
                     </div>
                 </div>
 
                 <div class="nav-item">
-                    <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security Incident Report</a>
+                    <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security
+                        Incident Report</a>
                 </div>
             </div>
 
             <div class="nav-actions-right">
-                <button class="nav-action-btn" onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
+                <button class="nav-action-btn"
+                    onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     <span id="favText">Add to favorites</span>
                 </button>
-                <button class="nav-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
+                <button class="nav-action-btn"
+                    onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                         <circle cx="9" cy="7" r="4" />
@@ -1173,16 +1211,19 @@
         <div class="faq-hero-badge">💡 Midas Security Help Center</div>
         <h1 class="faq-hero-title">Frequently Asked Questions (FAQ)</h1>
         <p class="faq-hero-subtitle">
-            Search expert answers on account safety, email phishing, device lock policies, corporate VPN remote security, and emergency incident escalation.
+            Search expert answers on account safety, email phishing, device lock policies, corporate VPN remote
+            security, and emergency incident escalation.
         </p>
 
         <!-- Search Bar -->
         <div class="faq-search-wrapper">
-            <svg class="faq-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg class="faq-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
-            <input type="text" id="faqSearch" class="faq-search-input" placeholder="Type a keyword (e.g. password, phishing, VPN, stolen phone)..." onkeyup="filterFaqs()">
+            <input type="text" id="faqSearch" class="faq-search-input"
+                placeholder="Type a keyword (e.g. password, phishing, VPN, stolen phone)..." onkeyup="filterFaqs()">
         </div>
     </div>
 
@@ -1230,7 +1271,8 @@
         <div class="faq-accordion-group" id="faqContainer">
 
             <!-- Category 1: Passwords & Accounts -->
-            <div class="faq-card" data-cat="pass" data-keywords="password passphrase change length mfa account expiry strength pwned">
+            <div class="faq-card" data-cat="pass"
+                data-keywords="password passphrase change length mfa account expiry strength pwned">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge pass">Account Safety</span>
@@ -1239,9 +1281,14 @@
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    Use a 4-word random passphrase of at least <strong>16 characters</strong> (e.g. <code>Coffee#Laptop!Sunset9</code>). Long passphrases are exponentially harder for brute-force attacks to crack compared to short complex passwords.
+                    Use a 4-word random passphrase of at least <strong>16 characters</strong> (e.g.
+                    <code>Coffee#Laptop!Sunset9</code>). Long passphrases are exponentially harder for brute-force
+                    attacks to crack compared to short complex passwords.
                     <div class="faq-answer-highlight">
-                        💡 <strong>Best Practice:</strong> Never reuse your corporate Midas password on personal sites like Facebook, Netflix, or personal banking. Test your passphrase using our <a href="account-password-security.html#tab-evaluator" style="color: var(--blue); font-weight: bold;">Passphrase Strength Evaluator</a>.
+                        💡 <strong>Best Practice:</strong> Never reuse your corporate Midas password on personal sites
+                        like Facebook, Netflix, or personal banking. Test your passphrase using our <a
+                            href="account-password-security.html#tab-evaluator"
+                            style="color: var(--blue); font-weight: bold;">Passphrase Strength Evaluator</a>.
                     </div>
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
@@ -1253,7 +1300,8 @@
                 </div>
             </div>
 
-            <div class="faq-card" data-cat="pass" data-keywords="mfa authentication push prompt fatigue auth microsoft code">
+            <div class="faq-card" data-cat="pass"
+                data-keywords="mfa authentication push prompt fatigue auth microsoft code">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge pass">MFA Prompt</span>
@@ -1262,9 +1310,13 @@
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    <strong>Deny the request immediately!</strong> An unexpected push prompt means someone has entered your password correctly and is attempting to access your account.
+                    <strong>Deny the request immediately!</strong> An unexpected push prompt means someone has entered
+                    your password correctly and is attempting to access your account.
                     <div class="faq-answer-highlight">
-                        ⚠️ <strong>Action Required:</strong> Click <em>"No, it's not me"</em> in Authenticator and immediately notify Midas SOC at <a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a> to reset your credentials.
+                        ⚠️ <strong>Action Required:</strong> Click <em>"No, it's not me"</em> in Authenticator and
+                        immediately notify Midas SOC at <a href="mailto:cic@midassafety.com"
+                            style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a> to reset your
+                        credentials.
                     </div>
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
@@ -1276,7 +1328,8 @@
                 </div>
             </div>
 
-            <div class="faq-card" data-cat="pass" data-keywords="hibp breach exposed check email email address leak password pwned">
+            <div class="faq-card" data-cat="pass"
+                data-keywords="hibp breach exposed check email email address leak password pwned">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge pass">Data Leak</span>
@@ -1285,7 +1338,10 @@
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    You can use the built-in breach exposure checker on our <a href="account-password-security.html#tab-checkup" style="color: var(--blue); font-weight: bold;">Account Security Checkup Page</a>. It checks against HaveIBeenPwned breach databases to see if your address appeared in known third-party leaks.
+                    You can use the built-in breach exposure checker on our <a
+                        href="account-password-security.html#tab-checkup"
+                        style="color: var(--blue); font-weight: bold;">Account Security Checkup Page</a>. It checks
+                    against HaveIBeenPwned breach databases to see if your address appeared in known third-party leaks.
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
                         <div class="faq-feedback-btns">
@@ -1297,7 +1353,8 @@
             </div>
 
             <!-- Category 2: Phishing & Email -->
-            <div class="faq-card" data-cat="email" data-keywords="phishing outlook report email suspicious attachment button spotter spoof">
+            <div class="faq-card" data-cat="email"
+                data-keywords="phishing outlook report email suspicious attachment button spotter spoof">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge email">Phishing</span>
@@ -1306,9 +1363,13 @@
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    In Microsoft Outlook, select the suspicious email and click the <strong>"Report Phishing"</strong> button in the top ribbon toolbar. If the button is not visible, forward the email as an attachment to <a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>.
+                    In Microsoft Outlook, select the suspicious email and click the <strong>"Report Phishing"</strong>
+                    button in the top ribbon toolbar. If the button is not visible, forward the email as an attachment
+                    to <a href="mailto:cic@midassafety.com"
+                        style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>.
                     <div class="faq-answer-highlight">
-                        📧 Learn all 7 red flag hotspots in our <a href="email-security.html" style="color: var(--blue); font-weight: bold;">Interactive Email Phishing Spotter</a>.
+                        📧 Learn all 7 red flag hotspots in our <a href="email-security.html"
+                            style="color: var(--blue); font-weight: bold;">Interactive Email Phishing Spotter</a>.
                     </div>
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
@@ -1320,7 +1381,8 @@
                 </div>
             </div>
 
-            <div class="faq-card" data-cat="email" data-keywords="clicked link phishing entered password fake page scam download">
+            <div class="faq-card" data-cat="email"
+                data-keywords="clicked link phishing entered password fake page scam download">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge email">Urgent Threat</span>
@@ -1333,7 +1395,9 @@
                     <ol style="margin-left: 20px; margin-top: 8px;">
                         <li>Disconnect your computer from Wi-Fi / LAN cable immediately.</li>
                         <li>Change your account password right away from a safe device.</li>
-                        <li>Email Midas SOC at <a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a> so automated session revocation can be performed.</li>
+                        <li>Email Midas SOC at <a href="mailto:cic@midassafety.com"
+                                style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a> so automated
+                            session revocation can be performed.</li>
                     </ol>
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
@@ -1345,7 +1409,8 @@
                 </div>
             </div>
 
-            <div class="faq-card" data-cat="email" data-keywords="gift card CEO CFO scam urgent executive email request wire transfer money">
+            <div class="faq-card" data-cat="email"
+                data-keywords="gift card CEO CFO scam urgent executive email request wire transfer money">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge email">Executive Fraud</span>
@@ -1354,7 +1419,9 @@
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    This is a classic <strong>Business Email Compromise (BEC) / CEO Impersonation Scam</strong>. Midas executives and managers will <em>never</em> ask employees to buy gift cards or bypass financial verification controls over email. Always verify by phone via corporate Teams directory.
+                    This is a classic <strong>Business Email Compromise (BEC) / CEO Impersonation Scam</strong>. Midas
+                    executives and managers will <em>never</em> ask employees to buy gift cards or bypass financial
+                    verification controls over email. Always verify by phone via corporate Teams directory.
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
                         <div class="faq-feedback-btns">
@@ -1366,7 +1433,8 @@
             </div>
 
             <!-- Category 3: Device Hardening -->
-            <div class="faq-card" data-cat="device" data-keywords="device lock screen laptop win+l windows mobile pin biometrics">
+            <div class="faq-card" data-cat="device"
+                data-keywords="device lock screen laptop win+l windows mobile pin biometrics">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge device">Device Hardening</span>
@@ -1377,7 +1445,8 @@
                 <div class="faq-answer-body">
                     Press <code>Win + L</code> on your keyboard to instantly lock your Windows laptop screen.
                     <div class="faq-answer-highlight">
-                        📱 Review full mobile and PC lock rules in our <a href="device-security.html" style="color: var(--blue); font-weight: bold;">Device Security Guide</a>.
+                        📱 Review full mobile and PC lock rules in our <a href="device-security.html"
+                            style="color: var(--blue); font-weight: bold;">Device Security Guide</a>.
                     </div>
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
@@ -1389,7 +1458,8 @@
                 </div>
             </div>
 
-            <div class="faq-card" data-cat="device" data-keywords="stolen lost laptop phone mobile wiping remote lock IT support">
+            <div class="faq-card" data-cat="device"
+                data-keywords="stolen lost laptop phone mobile wiping remote lock IT support">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge device">Lost Device</span>
@@ -1398,7 +1468,9 @@
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    Report it to IT and Midas SOC immediately at <a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>. We can trigger a remote wipe and block corporate access tokens to prevent data compromise.
+                    Report it to IT and Midas SOC immediately at <a href="mailto:cic@midassafety.com"
+                        style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>. We can trigger a remote
+                    wipe and block corporate access tokens to prevent data compromise.
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
                         <div class="faq-feedback-btns">
@@ -1410,7 +1482,8 @@
             </div>
 
             <!-- Category 4: Remote Work & Wi-Fi -->
-            <div class="faq-card" data-cat="remote" data-keywords="vpn remote work public wi-fi hotel airport coffee shop encryption telework">
+            <div class="faq-card" data-cat="remote"
+                data-keywords="vpn remote work public wi-fi hotel airport coffee shop encryption telework">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge remote">Remote Work</span>
@@ -1419,9 +1492,12 @@
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    Public Wi-Fi networks are unencrypted and vulnerable to eavesdropping, Man-in-the-Middle (MitM) attacks, and fake rogue hotspots. Corporate VPN creates an encrypted tunnel protecting all data in transit.
+                    Public Wi-Fi networks are unencrypted and vulnerable to eavesdropping, Man-in-the-Middle (MitM)
+                    attacks, and fake rogue hotspots. Corporate VPN creates an encrypted tunnel protecting all data in
+                    transit.
                     <div class="faq-answer-highlight">
-                        🌐 Test connection modes in our <a href="remote-wifi-security.html" style="color: var(--blue); font-weight: bold;">Interactive Wi-Fi & VPN Visualizer</a>.
+                        🌐 Test connection modes in our <a href="remote-wifi-security.html"
+                            style="color: var(--blue); font-weight: bold;">Interactive Wi-Fi & VPN Visualizer</a>.
                     </div>
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
@@ -1433,7 +1509,8 @@
                 </div>
             </div>
 
-            <div class="faq-card" data-cat="remote" data-keywords="router home wi-fi admin password wpa3 firmware guest network">
+            <div class="faq-card" data-cat="remote"
+                data-keywords="router home wi-fi admin password wpa3 firmware guest network">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge remote">Home Router</span>
@@ -1457,19 +1534,25 @@
             </div>
 
             <!-- Category 5: Incident Escalation -->
-            <div class="faq-card" data-cat="escala" data-keywords="external incident reporting cert police hotline 101 tell igp ccid cid Sri Lanka">
+            <div class="faq-card" data-cat="escala"
+                data-keywords="external incident reporting cert police hotline 101 tell igp ccid cid Sri Lanka">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge escala">External Escalation</span>
-                        What is the difference between reporting to Midas SOC vs External Authorities (SL CERT / Police)?
+                        What is the difference between reporting to Midas SOC vs External Authorities (SL CERT /
+                        Police)?
                     </div>
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    - <strong>Internal Midas SOC (<a href="mailto:cic@midassafety.com" style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>):</strong> For corporate laptops, emails, Midas systems, or business data.<br>
-                    - <strong>External Channels (SL CERT / Police):</strong> For personal social media hacking, national cyber crimes, online harassment, or personal financial scams.
+                    - <strong>Internal Midas SOC (<a href="mailto:cic@midassafety.com"
+                            style="color: var(--blue); font-weight: bold;">cic@midassafety.com</a>):</strong> For
+                    corporate laptops, emails, Midas systems, or business data.<br>
+                    - <strong>External Channels (SL CERT / Police):</strong> For personal social media hacking, national
+                    cyber crimes, online harassment, or personal financial scams.
                     <div class="faq-answer-highlight">
-                        🚨 Access all Sri Lanka national hotlines in our <a href="external-incident-reporting.html" style="color: var(--blue); font-weight: bold;">External Incident Reporting Guide (LK)</a>.
+                        🚨 Access all Sri Lanka national hotlines in our <a href="external-incident-reporting.html"
+                            style="color: var(--blue); font-weight: bold;">External Incident Reporting Guide (LK)</a>.
                     </div>
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
@@ -1481,7 +1564,8 @@
                 </div>
             </div>
 
-            <div class="faq-card" data-cat="escala" data-keywords="police cyber crime group Facebook harassment cid ccid 0112381058 dir.cid ccid.report">
+            <div class="faq-card" data-cat="escala"
+                data-keywords="police cyber crime group Facebook harassment cid ccid 0112381058 dir.cid ccid.report">
                 <button class="faq-question-btn" onclick="toggleFaq(this)">
                     <div class="faq-q-text">
                         <span class="faq-q-badge escala">Police Advisory</span>
@@ -1490,9 +1574,11 @@
                     <div class="faq-icon-arrow">▼</div>
                 </button>
                 <div class="faq-answer-body">
-                    Send evidence and group links directly to Sri Lanka Police CID at <code>dir.cid@police.gov.lk</code> or CCID Takedowns at <code>ccid.report@police.gov.lk</code>.
+                    Send evidence and group links directly to Sri Lanka Police CID at <code>dir.cid@police.gov.lk</code>
+                    or CCID Takedowns at <code>ccid.report@police.gov.lk</code>.
                     <div class="faq-answer-highlight">
-                        ⚖️ Read full notice in our <a href="News/police-cyber-crime-advisory.html" style="color: var(--blue); font-weight: bold;">Police Cyber Crime Advisory Page</a>.
+                        ⚖️ Read full notice in our <a href="News/police-cyber-crime-advisory.html"
+                            style="color: var(--blue); font-weight: bold;">Police Cyber Crime Advisory Page</a>.
                     </div>
                     <div class="faq-actions-bar">
                         <span>Was this answer helpful?</span>
@@ -1608,7 +1694,7 @@
         function toggleFaq(btn) {
             const card = btn.parentElement;
             const isOpen = card.classList.contains('open');
-            
+
             // Close all
             document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
 

@@ -544,10 +544,21 @@
             position: relative;
         }
 
-        .tip-icon-circle.yellow { background: #fffbeb; }
-        .tip-icon-circle.blue { background: #eff6ff; }
-        .tip-icon-circle.green { background: #ecfdf5; }
-        .tip-icon-circle.purple { background: #f3e8ff; }
+        .tip-icon-circle.yellow {
+            background: #fffbeb;
+        }
+
+        .tip-icon-circle.blue {
+            background: #eff6ff;
+        }
+
+        .tip-icon-circle.green {
+            background: #ecfdf5;
+        }
+
+        .tip-icon-circle.purple {
+            background: #f3e8ff;
+        }
 
         .tag-category-pill {
             font-size: 0.75rem;
@@ -558,13 +569,33 @@
             align-self: flex-start;
         }
 
-        .tag-category-pill.email { color: #d97706; }
-        .tag-category-pill.passwords { color: #2563eb; }
-        .tag-category-pill.devices { color: #059669; }
-        .tag-category-pill.remote { color: #7e22ce; }
-        .tag-category-pill.wifi { color: #b45309; }
-        .tag-category-pill.physical { color: #1d4ed8; }
-        .tag-category-pill.general { color: #6b21a8; }
+        .tag-category-pill.email {
+            color: #d97706;
+        }
+
+        .tag-category-pill.passwords {
+            color: #2563eb;
+        }
+
+        .tag-category-pill.devices {
+            color: #059669;
+        }
+
+        .tag-category-pill.remote {
+            color: #7e22ce;
+        }
+
+        .tag-category-pill.wifi {
+            color: #b45309;
+        }
+
+        .tag-category-pill.physical {
+            color: #1d4ed8;
+        }
+
+        .tag-category-pill.general {
+            color: #6b21a8;
+        }
 
         .tip-card-title {
             font-size: 1.15rem;
@@ -1059,7 +1090,8 @@
 
             <div class="site-brand">
                 <div class="brand-logo-badge">
-                    <img src="images/SOC logo.png" alt="Midas SOC Logo" style="width: 56px; height: 56px; object-fit: contain;">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo"
+                        style="width: 56px; height: 56px; object-fit: contain;">
                 </div>
                 <h1 class="site-title-text">Midas Cyber Awareness & Security Hub</h1>
             </div>
@@ -1080,14 +1112,16 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown">
-                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password Security</a>
+                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password
+                            Security</a>
                         <a href="device-security.html" class="dropdown-link">📱 Device Security</a>
                         <a href="email-security.html" class="dropdown-link">📧 Email & Phishing</a>
                         <a href="physical-security.html" class="dropdown-link">🏢 Physical Security</a>
                         <a href="remote-wifi-security.html" class="dropdown-link">🌐 Remote / Wi-Fi Security</a>
                         <a href="index.html#policies" class="dropdown-link">📜 Security Policies</a>
                         <a href="faq.html" class="dropdown-link">❓ FAQ</a>
-                        <a href="security-tips.html" class="dropdown-link active" style="color: #38bdf8; font-weight: bold;">📋 SOPS</a>
+                        <a href="security-tips.html" class="dropdown-link active"
+                            style="color: #38bdf8; font-weight: bold;">📋 SOPS</a>
                     </div>
                 </div>
 
@@ -1112,25 +1146,31 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown">
-                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase Strength Evaluator</a>
+                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase
+                            Strength Evaluator</a>
                         <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
-                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident Report</a>
+                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident
+                            Report</a>
                     </div>
                 </div>
 
                 <div class="nav-item">
-                    <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security Incident Report</a>
+                    <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security
+                        Incident Report</a>
                 </div>
             </div>
 
             <div class="nav-actions-right">
-                <button class="nav-action-btn" onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
+                <button class="nav-action-btn"
+                    onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     <span id="favText">Add to favorites</span>
                 </button>
-                <button class="nav-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
+                <button class="nav-action-btn"
+                    onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                         <circle cx="9" cy="7" r="4" />
@@ -1149,26 +1189,28 @@
             <h1 class="tips-hero-title">Security Tips</h1>
             <div class="tips-title-underline"></div>
             <p class="tips-hero-subtitle">
-                Simple actions make a big difference. Use these practical tips to protect our information, our systems, and each other.
+                Simple actions make a big difference. Use these practical tips to protect our information, our systems,
+                and each other.
             </p>
         </div>
 
         <div class="tips-hero-illustration">
             <svg width="240" height="140" viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Laptop -->
-                <rect x="30" y="20" width="140" height="90" rx="8" fill="#1e293b"/>
-                <rect x="38" y="28" width="124" height="74" rx="4" fill="#0f172a"/>
-                <path d="M90 45 C90 45 100 40 100 52 C100 68 88 78 88 78 C88 78 76 68 76 52 C76 40 86 45 86 45 Z" fill="#2563eb" opacity="0.3"/>
-                <path d="M100 48 L88 42 L76 48 V60 C76 68 88 74 88 74 C88 74 100 68 100 60 V48 Z" fill="#2563eb"/>
-                <path d="M83 58 L87 62 L94 54" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-                <rect x="10" y="110" width="180" height="10" rx="3" fill="#cbd5e1"/>
-                
+                <rect x="30" y="20" width="140" height="90" rx="8" fill="#1e293b" />
+                <rect x="38" y="28" width="124" height="74" rx="4" fill="#0f172a" />
+                <path d="M90 45 C90 45 100 40 100 52 C100 68 88 78 88 78 C88 78 76 68 76 52 C76 40 86 45 86 45 Z"
+                    fill="#2563eb" opacity="0.3" />
+                <path d="M100 48 L88 42 L76 48 V60 C76 68 88 74 88 74 C88 74 100 68 100 60 V48 Z" fill="#2563eb" />
+                <path d="M83 58 L87 62 L94 54" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" />
+                <rect x="10" y="110" width="180" height="10" rx="3" fill="#cbd5e1" />
+
                 <!-- Mug -->
-                <rect x="195" y="60" width="30" height="40" rx="6" fill="#f59e0b"/>
-                <path d="M225 70 C232 70 232 85 225 85" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+                <rect x="195" y="60" width="30" height="40" rx="6" fill="#f59e0b" />
+                <path d="M225 70 C232 70 232 85 225 85" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" />
                 <!-- Plant -->
-                <circle cx="15" cy="95" r="12" fill="#059669"/>
-                <path d="M15 95 V80" stroke="#047857" stroke-width="3"/>
+                <circle cx="15" cy="95" r="12" fill="#059669" />
+                <path d="M15 95 V80" stroke="#047857" stroke-width="3" />
             </svg>
         </div>
     </div>
@@ -1185,8 +1227,13 @@
 
             <!-- Keyword Search -->
             <div class="filter-search-box">
-                <svg class="search-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="text" id="searchInput" class="filter-search-input" placeholder="Search by keyword..." oninput="filterTips()">
+                <svg class="search-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="searchInput" class="filter-search-input" placeholder="Search by keyword..."
+                    oninput="filterTips()">
             </div>
 
             <!-- Category Filter Checkboxes -->
@@ -1283,29 +1330,34 @@
             <div class="tips-cards-grid" id="tipsGrid">
 
                 <!-- Tip 1 -->
-                <div class="tip-card-item" data-id="1" data-cat="Email & Phishing" data-top5="true" data-title="Think before you click" data-audience="Everyone Office Field">
+                <div class="tip-card-item" data-id="1" data-cat="Email & Phishing" data-top5="true"
+                    data-title="Think before you click" data-audience="Everyone Office Field">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle yellow">✉️</div>
                         <span class="tag-category-pill email">EMAIL & PHISHING</span>
                         <h3 class="tip-card-title">Think before you click</h3>
-                        <p class="tip-card-summary">If an email asks for urgent action or sensitive info, pause and verify.</p>
+                        <p class="tip-card-summary">If an email asks for urgent action or sensitive info, pause and
+                            verify.</p>
                     </div>
                     <span class="read-more-link" onclick="openArticle(1)">Read more ➔</span>
                 </div>
 
                 <!-- Tip 2 -->
-                <div class="tip-card-item" data-id="2" data-cat="Passwords & Accounts" data-top5="true" data-title="Use strong, unique passwords" data-audience="Everyone Office Factory">
+                <div class="tip-card-item" data-id="2" data-cat="Passwords & Accounts" data-top5="true"
+                    data-title="Use strong, unique passwords" data-audience="Everyone Office Factory">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle blue">🔑</div>
                         <span class="tag-category-pill passwords">PASSWORDS & ACCOUNTS</span>
                         <h3 class="tip-card-title">Use strong, unique passwords</h3>
-                        <p class="tip-card-summary">A strong password is your first line of defense. Don't reuse passwords.</p>
+                        <p class="tip-card-summary">A strong password is your first line of defense. Don't reuse
+                            passwords.</p>
                     </div>
                     <span class="read-more-link" onclick="openArticle(2)">Read more ➔</span>
                 </div>
 
                 <!-- Tip 3 -->
-                <div class="tip-card-item" data-id="3" data-cat="Devices & Data" data-top5="true" data-title="Lock your device" data-audience="Everyone Office Factory">
+                <div class="tip-card-item" data-id="3" data-cat="Devices & Data" data-top5="true"
+                    data-title="Lock your device" data-audience="Everyone Office Factory">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle green">💻</div>
                         <span class="tag-category-pill devices">DEVICES & DATA</span>
@@ -1316,7 +1368,8 @@
                 </div>
 
                 <!-- Tip 4 -->
-                <div class="tip-card-item" data-id="4" data-cat="Working Remotely" data-top5="false" data-title="Secure your home workspace" data-audience="Office Field">
+                <div class="tip-card-item" data-id="4" data-cat="Working Remotely" data-top5="false"
+                    data-title="Secure your home workspace" data-audience="Office Field">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle purple">🏠</div>
                         <span class="tag-category-pill remote">WORKING REMOTELY</span>
@@ -1327,7 +1380,8 @@
                 </div>
 
                 <!-- Tip 5 -->
-                <div class="tip-card-item" data-id="5" data-cat="Wi-Fi & Internet" data-top5="false" data-title="Avoid risky public Wi-Fi" data-audience="Field Office">
+                <div class="tip-card-item" data-id="5" data-cat="Wi-Fi & Internet" data-top5="false"
+                    data-title="Avoid risky public Wi-Fi" data-audience="Field Office">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle yellow">📶</div>
                         <span class="tag-category-pill wifi">WI-FI & INTERNET</span>
@@ -1338,7 +1392,8 @@
                 </div>
 
                 <!-- Tip 6 -->
-                <div class="tip-card-item" data-id="6" data-cat="Physical Security" data-top5="false" data-title="Protect IDs and access cards" data-audience="Everyone Office Factory">
+                <div class="tip-card-item" data-id="6" data-cat="Physical Security" data-top5="false"
+                    data-title="Protect IDs and access cards" data-audience="Everyone Office Factory">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle blue">🪪</div>
                         <span class="tag-category-pill physical">PHYSICAL SECURITY</span>
@@ -1349,7 +1404,8 @@
                 </div>
 
                 <!-- Tip 7 -->
-                <div class="tip-card-item" data-id="7" data-cat="Devices & Data" data-top5="false" data-title="Back up important files" data-audience="Everyone Office Field">
+                <div class="tip-card-item" data-id="7" data-cat="Devices & Data" data-top5="false"
+                    data-title="Back up important files" data-audience="Everyone Office Field">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle green">☁️</div>
                         <span class="tag-category-pill devices">DEVICES & DATA</span>
@@ -1360,56 +1416,66 @@
                 </div>
 
                 <!-- Tip 8 -->
-                <div class="tip-card-item" data-id="8" data-cat="General Awareness" data-top5="true" data-title="Speak up, stay safe" data-audience="Everyone Office Factory Field">
+                <div class="tip-card-item" data-id="8" data-cat="General Awareness" data-top5="true"
+                    data-title="Speak up, stay safe" data-audience="Everyone Office Factory Field">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle purple">💬</div>
                         <span class="tag-category-pill general">GENERAL AWARENESS</span>
                         <h3 class="tip-card-title">Speak up, stay safe</h3>
-                        <p class="tip-card-summary">If something doesn't look right, report it. You could stop an attack.</p>
+                        <p class="tip-card-summary">If something doesn't look right, report it. You could stop an
+                            attack.</p>
                     </div>
                     <span class="read-more-link" onclick="openArticle(8)">Read more ➔</span>
                 </div>
 
                 <!-- Tip 9 -->
-                <div class="tip-card-item" data-id="9" data-cat="Passwords & Accounts" data-top5="true" data-title="Enable MFA" data-audience="Everyone Office Field">
+                <div class="tip-card-item" data-id="9" data-cat="Passwords & Accounts" data-top5="true"
+                    data-title="Enable MFA" data-audience="Everyone Office Field">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle yellow">📱</div>
                         <span class="tag-category-pill passwords">PASSWORDS & ACCOUNTS</span>
                         <h3 class="tip-card-title">Enable MFA</h3>
-                        <p class="tip-card-summary">Multi-Factor Authentication adds extra protection to your accounts.</p>
+                        <p class="tip-card-summary">Multi-Factor Authentication adds extra protection to your accounts.
+                        </p>
                     </div>
                     <span class="read-more-link" onclick="openArticle(9)">Read more ➔</span>
                 </div>
 
                 <!-- Tip 10 -->
-                <div class="tip-card-item" data-id="10" data-cat="Email & Phishing" data-top5="false" data-title="Verify unexpected payment requests" data-audience="Office Field">
+                <div class="tip-card-item" data-id="10" data-cat="Email & Phishing" data-top5="false"
+                    data-title="Verify unexpected payment requests" data-audience="Office Field">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle blue">⚠️</div>
                         <span class="tag-category-pill email">EMAIL & PHISHING</span>
                         <h3 class="tip-card-title">Verify unexpected payment requests</h3>
-                        <p class="tip-card-summary">Always verify financial or wire changes via a separate trusted channel.</p>
+                        <p class="tip-card-summary">Always verify financial or wire changes via a separate trusted
+                            channel.</p>
                     </div>
                     <span class="read-more-link" onclick="openArticle(10)">Read more ➔</span>
                 </div>
 
                 <!-- Tip 11 -->
-                <div class="tip-card-item" data-id="11" data-cat="Devices & Data" data-top5="false" data-title="Beware of unauthorized USB drives" data-audience="Everyone Factory Office">
+                <div class="tip-card-item" data-id="11" data-cat="Devices & Data" data-top5="false"
+                    data-title="Beware of unauthorized USB drives" data-audience="Everyone Factory Office">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle green">🔌</div>
                         <span class="tag-category-pill devices">DEVICES & DATA</span>
                         <h3 class="tip-card-title">Beware of unauthorized USB drives</h3>
-                        <p class="tip-card-summary">Never plug unknown USB drives or peripherals into company computers.</p>
+                        <p class="tip-card-summary">Never plug unknown USB drives or peripherals into company computers.
+                        </p>
                     </div>
                     <span class="read-more-link" onclick="openArticle(11)">Read more ➔</span>
                 </div>
 
                 <!-- Tip 12 -->
-                <div class="tip-card-item" data-id="12" data-cat="Working Remotely" data-top5="false" data-title="Keep mobile devices & apps updated" data-audience="Field Office Everyone">
+                <div class="tip-card-item" data-id="12" data-cat="Working Remotely" data-top5="false"
+                    data-title="Keep mobile devices & apps updated" data-audience="Field Office Everyone">
                     <div class="tip-card-top">
                         <div class="tip-icon-circle purple">📲</div>
                         <span class="tag-category-pill remote">WORKING REMOTELY</span>
                         <h3 class="tip-card-title">Keep mobile devices & apps updated</h3>
-                        <p class="tip-card-summary">Install security patches promptly on iOS and Android work devices.</p>
+                        <p class="tip-card-summary">Install security patches promptly on iOS and Android work devices.
+                        </p>
                     </div>
                     <span class="read-more-link" onclick="openArticle(12)">Read more ➔</span>
                 </div>
@@ -1706,7 +1772,7 @@
             const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
             const sortVal = document.getElementById('sortSelect').value;
             const selectedAudience = document.querySelector('input[name="audience"]:checked').value;
-            
+
             const catAllChecked = document.getElementById('cat-all').checked;
             const selectedCats = Array.from(document.querySelectorAll('.cat-check:checked')).map(cb => cb.value);
 
@@ -1755,7 +1821,7 @@
         }
 
         document.querySelectorAll('.cat-check').forEach(cb => {
-            cb.addEventListener('change', function() {
+            cb.addEventListener('change', function () {
                 if (this.checked) {
                     document.getElementById('cat-all').checked = false;
                 } else {

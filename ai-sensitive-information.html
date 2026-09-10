@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Policy - Smart People. Responsible AI. | Midas Cyber Security Hub</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-dark: #020617;
+            --blue: #2563eb;
+            --blue-hover: #1d4ed8;
+            --blue-light: #eff6ff;
+            --amber: #f59e0b;
+            --amber-bright: #fbbf24;
+            --rose: #e11d48;
+            --emerald: #10b981;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 24px 40px;
+            width: 100%;
+            max-width: 1680px;
+            margin: 0 auto;
+        }
+
+        /* Top Site Header */
+        .site-header-container {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 24px;
+            border: 1px solid #1e293b;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            position: relative;
+            z-index: 100;
+        }
+
+        .site-header-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 100px;
+            overflow: hidden;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .site-header-bg-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .site-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-logo-badge {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .site-title-text {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .site-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .nav-links-left {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ffffff;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .nav-item:hover .nav-dropdown,
+        .nav-item:focus-within .nav-dropdown,
+        .nav-item.open .nav-dropdown {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            display: block !important;
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 1000;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-link:hover {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        /* ========================================================= */
+        /* LAYER 1: HERO BANNER DESIGN (Matching Provided Mockup)   */
+        /* ========================================================= */
+        .ai-hero-banner {
+            width: 100%;
+            min-height: 440px;
+            border-radius: 16px;
+            background-color: #060d1d;
+            background-image: linear-gradient(90deg, rgba(6, 13, 29, 0.82) 0%, rgba(6, 13, 29, 0.45) 45%, rgba(6, 13, 29, 0.1) 100%), url('images/ai-hero-bg-2.png');
+            background-repeat: no-repeat;
+            background-position: center right;
+            background-size: cover;
+            border: 1px solid #1e293b;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+            padding: 48px 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            position: relative;
+            overflow: visible;
+            margin-bottom: 40px;
+        }
+
+        /* Left Hero Content Group */
+        .hero-left-content {
+            max-width: 580px;
+            z-index: 2;
+            color: #ffffff;
+        }
+
+        .hero-category-label {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--amber);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .hero-main-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .hero-main-title .title-white {
+            color: #ffffff;
+            display: block;
+        }
+
+        .hero-main-title .title-amber {
+            color: var(--amber-bright);
+            display: block;
+        }
+
+        .hero-description {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: rgba(241, 245, 249, 0.92);
+            font-weight: 500;
+            margin-bottom: 32px;
+            max-width: 540px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        /* 3 Hero Value Props Badges */
+        .hero-values-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .value-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .value-icon-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid var(--amber);
+            background: rgba(245, 158, 11, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--amber-bright);
+        }
+
+        .value-text-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .value-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .value-sub {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .value-divider {
+            width: 1px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Right Column: "Can I use AI for this?" Widget */
+        .hero-widget-wrapper {
+            position: relative;
+            z-index: 5;
+            flex-shrink: 0;
+        }
+
+        .ai-widget-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            width: 440px;
+            max-width: 100%;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .widget-header-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .widget-brain-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #f59e0b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        }
+
+        .widget-title-group h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .widget-title-group p {
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.45;
+            font-weight: 500;
+        }
+
+        /* Select Input Box */
+        .widget-select-box {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .custom-select-trigger {
+            width: 100%;
+            padding: 14px 16px;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .custom-select-trigger:hover {
+            border-color: var(--blue);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+        }
+
+        .select-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .select-icon {
+            color: #64748b;
+        }
+
+        .select-arrow {
+            color: #64748b;
+            transition: transform 0.2s ease;
+        }
+
+        .custom-select-trigger.open .select-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Options List */
+        .custom-select-options {
+            position: absolute;
+            top: 105%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            overflow: hidden;
+            display: none;
+        }
+
+        .custom-select-options.show {
+            display: block;
+        }
+
+        .select-option {
+            padding: 12px 16px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .select-option:hover {
+            background: #f1f5f9;
+            color: #0284c7;
+        }
+
+        /* Action Button */
+        .widget-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #a3b8cc;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .widget-submit-btn.active {
+            background: #2563eb;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        .widget-submit-btn.active:hover {
+            background: #1d4ed8;
+        }
+
+        /* Annotative Script Text next to widget */
+        .widget-annotation {
+            position: absolute;
+            bottom: -32px;
+            right: -24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            pointer-events: none;
+        }
+
+        .annotation-svg {
+            width: 44px;
+            height: 44px;
+            transform: rotate(-15deg);
+        }
+
+        .annotation-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        /* Result Display Card (Appears as a floating popover overlay without stretching banner) */
+        .hero-result-card {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            right: 0;
+            z-index: 500;
+            padding: 20px;
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+            animation: fadeInResult 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-result-card.show {
+            display: block;
+        }
+
+        .result-close-btn {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: rgba(0, 0, 0, 0.08);
+            border: none;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: currentColor;
+            transition: all 0.15s ease;
+        }
+
+        .result-close-btn:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeInResult {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========================================================= */
+        /* LAYER 2: SIX PRINCIPLES FOR RESPONSIBLE AI SECTION       */
+        /* ========================================================= */
+        .principles-section-wrapper {
+            margin-bottom: 48px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 36px 40px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+        }
+
+        .principles-header-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .principles-title-group .category-pill-gold {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #d97706;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .principles-title-group .category-line-gold {
+            width: 24px;
+            height: 3px;
+            background: #f59e0b;
+            border-radius: 2px;
+        }
+
+        .principles-title-group h2 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .principles-title-group p {
+            font-size: 0.95rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .learn-more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .learn-more-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* 6 Principles Grid Layout */
+        .six-principles-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 1200px) {
+            .six-principles-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .six-principles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Principle Card Styling */
+        .principle-card-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px 20px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .principle-card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        /* Circular Icon Colors */
+        .principle-circle-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            color: #ffffff;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+        }
+
+        .circle-navy { background: #0f172a; }
+        .circle-orange { background: #ea580c; }
+        .circle-blue { background: #2563eb; }
+        .circle-green { background: #059669; }
+        .circle-purple { background: #7c3aed; }
+        .circle-gold { background: #f59e0b; }
+
+        .principle-card-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .principle-card-desc {
+            font-size: 0.88rem;
+            color: #475569;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* ========================================================= */
+        /* LAYER 3: 3-CARD HORIZONTAL SIDE-BY-SIDE GRID LAYOUT       */
+        /* ========================================================= */
+        .layer3-cards-row {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 56px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 1280px) {
+            .layer3-cards-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .layer3-cards-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Card 1: Information Classification */
+        .classification-section-wrapper {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 28px 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .classification-header-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .classification-title-group .category-pill-gold {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .classification-title-group h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .classification-title-group p {
+            font-size: 0.92rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .classification-table-container {
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .info-class-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .info-class-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 12px 18px;
+            border-bottom: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .info-class-table th:last-child {
+            border-right: none;
+        }
+
+        .info-class-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            vertical-align: middle;
+            color: #334155;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .info-class-table td:last-child {
+            border-right: none;
+        }
+
+        .info-class-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Badge Pills with SVG / Icon */
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: #ffffff;
+            text-align: center;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        .pill-public { background: #059669; }
+        .pill-internal { background: #2563eb; }
+        .pill-restricted { background: #f59e0b; }
+        .pill-prohibited { background: #e11d48; }
+
+        /* Rule Cell Layout */
+        .rule-cell-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rule-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .icon-check-green { background: #059669; }
+        .icon-alert-amber { background: #f59e0b; }
+        .icon-cross-red { background: #e11d48; }
+
+        .rule-status {
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-right: 4px;
+        }
+
+        .status-allowed { color: #059669; }
+        .status-requires { color: #d97706; }
+        .status-prohibited { color: #e11d48; }
+
+        .rule-subtext {
+            color: #475569;
+            font-weight: 500;
+            font-size: 0.82rem;
+        }
+
+        /* Notice Bar at Bottom */
+        .classification-notice-bar {
+            background: #eff6ff;
+            border-radius: 10px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .notice-left-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1e3a8a;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .notice-info-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            font-family: Georgia, serif;
+            flex-shrink: 0;
+        }
+
+        /* Card 2: Red Zone Card */
+        .redzone-card-item {
+            background: #ffffff;
+            border: 1px solid #fecdd3;
+            border-radius: 16px;
+            padding: 24px 22px;
+            box-shadow: 0 4px 16px rgba(225, 29, 72, 0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .col-header-group {
+            margin-bottom: 16px;
+        }
+
+        .redzone-tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #e11d48;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .red-line-tag {
+            width: 16px;
+            height: 3px;
+            background: #e11d48;
+            border-radius: 2px;
+        }
+
+        .redzone-title {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .redzone-subtitle {
+            font-size: 0.85rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .redzone-num-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #e11d48;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .redzone-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.82rem;
+            color: #334155;
+            line-height: 1.4;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #f8fafc;
+        }
+
+        .redzone-list-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .red-warning-box-clean {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            border-radius: 12px;
+            padding: 14px;
+            margin-top: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .warning-shield-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: #e11d48;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Card 3: The right use of AI Card */
+        .hero-right-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+        }
+
+        .hero-card-banner {
+            background-color: #060d1d;
+            background-image: url('images/card-image-2.png');
+            background-size: cover;
+            background-position: center;
+            flex: 1;
+            min-height: 240px;
+            width: 100%;
+        }
+
+        .three-pillars-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 20px 10px;
+            border-bottom: 1px solid #f1f5f9;
+            text-align: center;
+        }
+
+        .pillar-col-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 6px;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .pillar-col-item:last-child {
+            border-right: none;
+        }
+
+        .pillar-col-label {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #0f172a;
+        }
+
+        .dark-navy-pill-btn {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 13px 20px;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 20px 12px 20px;
+            transition: all 0.2s ease;
+        }
+
+        .dark-navy-pill-btn:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .hero-card-meta {
+            font-size: 0.72rem;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .explore-policy-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        .explore-policy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        .card-meta-footer {
+            margin-top: 14px;
+            font-size: 0.75rem;
+            color: #64748b;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Site Header: Midas Cyber Awareness & Security Hub -->
+    <div class="site-header-container">
+        <div class="site-header-banner">
+            <svg class="site-header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4" />
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3" />
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7" />
+
+                <g transform="translate(680, 20)">
+                    <polygon points="30,0 60,17 60,52 30,69 0,52 0,17" stroke="#0088FF" stroke-width="2.2"
+                        fill="#061A3A" opacity="0.85" />
+                    <path d="M18 26 L30 36 L42 26 M18 26 H42 V44 H18 Z" stroke="#00BFFF" stroke-width="2.2"
+                        fill="none" />
+                </g>
+            </svg>
+
+            <div class="site-brand">
+                <div class="brand-logo-badge">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo" style="width: 52px; height: 52px; object-fit: contain;">
+                </div>
+                <h1 class="site-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="site-navbar">
+            <div class="nav-links-left">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </div>
+
+                <div class="nav-item">
+                    <button class="nav-link active" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="ai-sensitive-information.html" class="dropdown-link active" style="color: #38bdf8; font-weight: bold;">🤖 AI & Sensitive Information</a>
+                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="dropdown-link">📱 Device Security</a>
+                        <a href="email-security.html" class="dropdown-link">📧 Email & Phishing</a>
+                        <a href="physical-security.html" class="dropdown-link">🏢 Physical Security</a>
+                        <a href="remote-wifi-security.html" class="dropdown-link">🌐 Remote / Wi-Fi Security</a>
+                        <a href="index.html#policies" class="dropdown-link">📜 Security Policies</a>
+                        <a href="faq.html" class="dropdown-link">❓ FAQ</a>
+                        <a href="security-tips.html" class="dropdown-link">📋 SOPS</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a href="index.html#policies" class="nav-link">Policies</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="index.html#news" class="nav-link">News</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="external-incident-reporting.html" class="nav-link" style="color: #ea580c; font-weight: 700;">🚨 Report Incident</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- LAYER 1: HERO BANNER DESIGN                              -->
+    <!-- ========================================================= -->
+    <div class="ai-hero-banner">
+        <div class="hero-left-content">
+            <div class="hero-category-label">AI POLICY</div>
+            <h1 class="hero-main-title">
+                <span class="title-white">Smart People.</span>
+                <span class="title-amber">Responsible AI.</span>
+            </h1>
+            <p class="hero-description">
+                AI is a strategic enabler at Midas Safety — helping us work smarter, innovate faster and deliver greater value. This policy ensures we use AI safely, responsibly and in line with our values.
+            </p>
+            <div class="hero-values-row">
+                <div class="value-badge-item">
+                    <div class="value-icon-circle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="6" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg>
+                    </div>
+                    <div class="value-text-group">
+                        <span class="value-title">Protect</span>
+                        <span class="value-sub">our data & IP</span>
+                    </div>
+                </div>
+                <div class="value-divider"></div>
+                <div class="value-badge-item">
+                    <div class="value-icon-circle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <div class="value-text-group">
+                        <span class="value-title">Respect</span>
+                        <span class="value-sub">our people</span>
+                    </div>
+                </div>
+                <div class="value-divider"></div>
+                <div class="value-badge-item">
+                    <div class="value-icon-circle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <div class="value-text-group">
+                        <span class="value-title">Build</span>
+                        <span class="value-sub">customer trust</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-widget-wrapper">
+            <div class="ai-widget-card">
+                <div class="widget-header-row">
+                    <div class="widget-brain-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2">
+                            <path d="M12 2a4 4 0 0 0-4 4v14a4 4 0 0 0 4-4V2z" />
+                            <path d="M6 6a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3" />
+                            <path d="M18 6a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3" />
+                        </svg>
+                    </div>
+                    <div class="widget-title-group">
+                        <h3>Can I use AI for this?</h3>
+                        <p>Select your data type and get an instant answer based on our Information Classification policy.</p>
+                    </div>
+                </div>
+
+                <div class="widget-select-box">
+                    <div class="custom-select-trigger" id="selectTrigger" onclick="toggleDropdown()">
+                        <div class="select-left">
+                            <span class="select-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </span>
+                            <span id="selectedOptionText">Choose a data type...</span>
+                        </div>
+                        <span class="select-arrow">▼</span>
+                    </div>
+
+                    <div class="custom-select-options" id="selectOptions">
+                        <div class="select-option" onclick="selectOption('public_marketing', '🟢 Marketing materials, press releases & public policies')">
+                            🟢 Marketing materials, press releases & public policies
+                        </div>
+                        <div class="select-option" onclick="selectOption('internal_memos', '🟡 Internal memos, process docs & non-sensitive notes')">
+                            🟡 Internal memos, process docs & non-sensitive notes
+                        </div>
+                        <div class="select-option" onclick="selectOption('restricted_customer', '🟠 Customer data, supplier records & contracts')">
+                            🟠 Customer data, supplier records & contracts
+                        </div>
+                        <div class="select-option" onclick="selectOption('restricted_financial', '🟠 Unpublished financial reports & budgets')">
+                            🟠 Unpublished financial reports & budgets
+                        </div>
+                        <div class="select-option" onclick="selectOption('restricted_formulas', '🟠 Employee PII, performance reviews & formulas')">
+                            🟠 Employee PII, performance reviews & formulas
+                        </div>
+                        <div class="select-option" onclick="selectOption('prohibited_health', '🔴 Regulated health data & National IDs')">
+                            🔴 Regulated health data & National IDs
+                        </div>
+                        <div class="select-option" onclick="selectOption('prohibited_code', '🔴 Source code, credentials & API/Encryption keys')">
+                            🔴 Source code, credentials & API/Encryption keys
+                        </div>
+                        <div class="select-option" onclick="selectOption('prohibited_secrets', '🔴 Top Secret trade secrets & proprietary tech')">
+                            🔴 Top Secret trade secrets & proprietary tech
+                        </div>
+                        <div class="select-option" onclick="selectOption('prohibited_legal', '🔴 Litigation & privileged legal material')">
+                            🔴 Litigation & privileged legal material
+                        </div>
+                    </div>
+                </div>
+
+                <button class="widget-submit-btn" id="submitBtn" onclick="submitClassifier()">
+                    <span>Get Answer</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div class="hero-result-card" id="heroResultCard"></div>
+            </div>
+
+            <div class="widget-annotation">
+                <svg class="annotation-svg" viewBox="0 0 50 50" fill="none">
+                    <path d="M 10,10 Q 30,5 40,35" stroke="#f59e0b" stroke-width="2.5" fill="none" stroke-dasharray="3 3"/>
+                    <polyline points="35,30 40,35 45,28" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+                </svg>
+                <div class="annotation-text">
+                    Quick answers.<br>Real guidance.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- LAYER 2: SIX PRINCIPLES FOR RESPONSIBLE AI                -->
+    <!-- ========================================================= -->
+    <div id="principles" class="principles-section-wrapper">
+        <div class="principles-header-row">
+            <div class="principles-title-group">
+                <div class="category-pill-gold">
+                    <div class="category-line-gold"></div>
+                    <span>OUR AI PRINCIPLES</span>
+                </div>
+                <h2>Six Principles for Responsible AI</h2>
+                <p>These principles guide how we use AI at Midas Safety.</p>
+            </div>
+            <a href="https://midassafety.sharepoint.com/sites/Intranet/PolicyDocuments/Midas%20Safety%20AI%20Policy_v1.pdf" target="_blank" rel="noopener noreferrer" class="learn-more-link">
+                <span>Learn more about the principles</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="six-principles-grid">
+            <div class="principle-card-item">
+                <div class="principle-circle-icon circle-navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg></div>
+                <h3 class="principle-card-title">Human Accountability</h3>
+                <p class="principle-card-desc">People remain in control and are accountable for AI use and outcomes.</p>
+            </div>
+            <div class="principle-card-item">
+                <div class="principle-circle-icon circle-orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 7l9-4 9 4M6 12l-3 6h6l-3-6zM18 12l-3 6h6l-3-6z" /></svg></div>
+                <h3 class="principle-card-title">Responsible & Ethical Use</h3>
+                <p class="principle-card-desc">We use AI in a way that is fair, legal and aligned with our values.</p>
+            </div>
+            <div class="principle-card-item">
+                <div class="principle-circle-icon circle-blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></div>
+                <h3 class="principle-card-title">Transparency</h3>
+                <p class="principle-card-desc">We are open about how AI is used and its limitations.</p>
+            </div>
+            <div class="principle-card-item">
+                <div class="principle-circle-icon circle-green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" /></svg></div>
+                <h3 class="principle-card-title">Data Security</h3>
+                <p class="principle-card-desc">We protect our data, customers and intellectual property.</p>
+            </div>
+            <div class="principle-card-item">
+                <div class="principle-circle-icon circle-purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg></div>
+                <h3 class="principle-card-title">Fairness & Non-Discrimination</h3>
+                <p class="principle-card-desc">We avoid bias and ensure AI benefits everyone fairly.</p>
+            </div>
+            <div class="principle-card-item">
+                <div class="principle-circle-icon circle-gold"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg></div>
+                <h3 class="principle-card-title">Continuous Learning</h3>
+                <p class="principle-card-desc">We stay informed, build skills and improve our practices.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- LAYER 3: 3-CARD HORIZONTAL SIDE-BY-SIDE GRID SECTION      -->
+    <!-- ========================================================= -->
+    <div id="classification-matrix" class="layer3-cards-row">
+
+        <!-- CARD 1: INFORMATION CLASSIFICATION -->
+        <div id="classification" class="classification-section-wrapper">
+            <div>
+                <div class="classification-header-row">
+                    <div class="classification-title-group">
+                        <div class="category-pill-gold">
+                            <div class="category-line-gold"></div>
+                            <span>INFORMATION CLASSIFICATION</span>
+                        </div>
+                        <h2>What can I share with AI?</h2>
+                        <p>Check the classification of your data and see what's allowed.</p>
+                    </div>
+
+                    <a href="https://midassafety.sharepoint.com/sites/Intranet/PolicyDocuments/Midas%20Safety%20AI%20Policy_v1.pdf" target="_blank" rel="noopener noreferrer" class="learn-more-link">
+                        <span>View full details</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Table Container -->
+                <div class="classification-table-container">
+                    <table class="info-class-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 28%;">Classification</th>
+                                <th style="width: 36%;">Examples</th>
+                                <th style="width: 36%;">Platform Rule</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1: Public -->
+                            <tr>
+                                <td>
+                                    <div class="badge-pill pill-public">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+                                        </svg>
+                                        <span>Public</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    Marketing materials,<br>press releases, job ads
+                                </td>
+                                <td>
+                                    <div class="rule-cell-item">
+                                        <span class="rule-icon icon-check-green">✓</span>
+                                        <div>
+                                            <span class="rule-status status-allowed">Allowed</span>
+                                            <span class="rule-subtext">(with no restrictions)</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2: Internal -->
+                            <tr>
+                                <td>
+                                    <div class="badge-pill pill-internal">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                                            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                                            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                                        </svg>
+                                        <span>Internal</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    General business info,<br>non-sensitive documents
+                                </td>
+                                <td>
+                                    <div class="rule-cell-item">
+                                        <span class="rule-icon icon-check-green">✓</span>
+                                        <div>
+                                            <span class="rule-status status-allowed">Allowed</span>
+                                            <span class="rule-subtext">(with caution)</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3: Restricted -->
+                            <tr>
+                                <td>
+                                    <div class="badge-pill pill-restricted">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
+                                        <span>Restricted</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    Customer data, financial info,<br>internal strategy
+                                </td>
+                                <td>
+                                    <div class="rule-cell-item">
+                                        <span class="rule-icon icon-alert-amber">!</span>
+                                        <div>
+                                            <span class="rule-status status-requires">Requires approval</span>
+                                            <span class="rule-subtext">(4-step process)</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4: Prohibited for AI Input -->
+                            <tr>
+                                <td>
+                                    <div class="badge-pill pill-prohibited">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                                        </svg>
+                                        <span>Prohibited for AI Input</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    Personal data, trade secrets,<br>legal, security info
+                                </td>
+                                <td>
+                                    <div class="rule-cell-item">
+                                        <span class="rule-icon icon-cross-red">✕</span>
+                                        <div>
+                                            <span class="rule-status status-prohibited">Not allowed</span>
+                                            <span class="rule-subtext">(at any time)</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bottom Notice Bar -->
+            <div class="classification-notice-bar">
+                <div class="notice-left-group">
+                    <span class="notice-info-icon">i</span>
+                    <span>Need to use Restricted data? Follow the 4-step approval process in the policy (Section 6.1).</span>
+                </div>
+                <a href="https://midassafety.sharepoint.com/sites/Intranet/PolicyDocuments/Midas%20Safety%20AI%20Policy_v1.pdf" target="_blank" rel="noopener noreferrer" class="learn-more-link" style="font-size: 0.82rem;">
+                    <span>View details</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD 2: RED ZONE — Prohibited Use -->
+        <div class="redzone-card-item">
+            <div>
+                <div class="col-header-group">
+                    <div class="redzone-tag">
+                        <div class="red-line-tag"></div>
+                        <span>RED ZONE</span>
+                    </div>
+                    <h3 class="redzone-title">Prohibited Use</h3>
+                    <p class="redzone-subtitle">Do not use AI for the following:</p>
+                </div>
+
+                <div class="redzone-list">
+                    <div class="redzone-list-item">
+                        <div class="redzone-num-circle">1</div>
+                        <div>Share confidential, personal or sensitive data.</div>
+                    </div>
+                    <div class="redzone-list-item">
+                        <div class="redzone-num-circle">2</div>
+                        <div>Upload or input Midas IP, trade secrets or proprietary info.</div>
+                    </div>
+                    <div class="redzone-list-item">
+                        <div class="redzone-num-circle">3</div>
+                        <div>Use AI for illegal, unethical or harmful activities.</div>
+                    </div>
+                    <div class="redzone-list-item">
+                        <div class="redzone-num-circle">4</div>
+                        <div>Bypass security controls or attempt to break systems.</div>
+                    </div>
+                    <div class="redzone-list-item">
+                        <div class="redzone-num-circle">5</div>
+                        <div>Use AI to create or share discriminatory or biased content.</div>
+                    </div>
+                    <div class="redzone-list-item">
+                        <div class="redzone-num-circle">6</div>
+                        <div>Represent AI-generated content as your own work.</div>
+                    </div>
+                    <div class="redzone-list-item">
+                        <div class="redzone-num-circle">7</div>
+                        <div>Use unapproved (public) AI tools for company work.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Red Warning Box -->
+            <div class="red-warning-box-clean">
+                <div class="warning-shield-icon">!</div>
+                <div>
+                    <div style="font-weight: 800; font-size: 0.85rem; color: #be123c; margin-bottom: 2px;">When in doubt, don't input it.</div>
+                    <div style="font-size: 0.78rem; color: #475569;">Ask your manager, IT or the AI Steering Committee.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: The right use of AI helps us all do better work. -->
+        <div class="hero-right-card">
+            <div class="hero-card-banner"></div>
+
+            <div class="three-pillars-row">
+                <div class="pillar-col-item">
+                    <svg class="pillar-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                    <div class="pillar-col-label">Be productive</div>
+                </div>
+                <div class="pillar-col-item">
+                    <svg class="pillar-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                    </svg>
+                    <div class="pillar-col-label">Be innovative</div>
+                </div>
+                <div class="pillar-col-item">
+                    <svg class="pillar-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <div class="pillar-col-label">Be responsible</div>
+                </div>
+            </div>
+
+            <div>
+                <a href="https://midassafety.sharepoint.com/sites/Intranet/PolicyDocuments/Midas%20Safety%20AI%20Policy_v1.pdf" target="_blank" rel="noopener noreferrer" class="dark-navy-pill-btn">
+                    <span>Explore the Full Policy</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <div class="hero-card-meta">
+                    AI Policy v1.0 | Effective 24 Aug 2026 | Next Review Aug 2027
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Corporate Site Footer matching Midas Security Hub standard -->
+    <style>
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin-top: 40px;
+            margin-bottom: 24px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-width: 300px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
+            object-fit: contain;
+        }
+
+        .brand-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title-main {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .brand-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-top: 6px;
+        }
+
+        .tagline-line {
+            height: 2px;
+            width: 24px;
+            background-color: #f59e0b;
+        }
+
+        .contact-red-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e11d48;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 8px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+        }
+
+        .contact-red-btn:hover {
+            background-color: #be123c;
+            transform: translateY(-1px);
+        }
+
+        .soc-card {
+            background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
+            border: 1px solid #1e3a5f;
+            border-radius: 14px;
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+            flex: 1.2;
+            min-width: 320px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .soc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30%;
+            right: 30%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .soc-icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #040c1a;
+            border: 1px solid #1e3a5f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .soc-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .soc-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .soc-subtext {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .soc-email-link {
+            color: #38bdf8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .soc-email-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .action-item-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 48px;
+            background-color: #1e293b;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+            width: 76px;
+            text-align: center;
+        }
+
+        .action-btn-circle:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .circle-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            background: #040c1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+    </style>
+
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <!-- Left Section: Logo, Title & Contact Button -->
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo" class="footer-logo-svg">
+
+                    <div class="brand-title-group">
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                        <div class="brand-tagline">
+                            <div class="tagline-line"></div>
+                            <span>Never Trust. Always Verify</span>
+                            <div class="tagline-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+            </div>
+
+            <!-- Center Section: SOC Help Card -->
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                        <path
+                            d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                    </svg>
+                </div>
+                <div class="soc-content">
+                    <div class="soc-title">Need help or want to report something?</div>
+                    <div class="soc-subtext">
+                        Contact our Security Operations Center (SOC) at
+                        <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section: 4 Action Item Buttons -->
+            <div class="footer-actions-grid">
+                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Report Incident</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="security-tips.html" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Security Tips</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="index.html#news" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Alerts & Updates</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="index.html" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <span class="action-label">About Portal</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Layer 1 Widget -->
+    <script>
+        let selectedValue = null;
+
+        const classificationData = {
+            public_marketing: {
+                badge: "🟢 CLASSIFICATION: PUBLIC INFORMATION (§6)",
+                rule: "✅ ALLOWED (with no restrictions)",
+                desc: "Sourced directly from Policy §6. Marketing copy, published reports, and public policies may be processed using any approved AI platform. Perform standard editorial review before publishing.",
+                action: "💡 Policy Rule: Allowed on any approved AI tool. Perform standard editorial review before external publication.",
+                bg: "#ecfdf5", border: "#10b981", color: "#047857"
+            },
+            internal_memos: {
+                badge: "🟡 CLASSIFICATION: INTERNAL INFORMATION (§6)",
+                rule: "✅ ALLOWED (with caution)",
+                desc: "Sourced directly from Policy §6. Non-sensitive internal communications, SOPs, and process documentation may be processed ONLY on approved enterprise AI platforms (e.g. Midas Enterprise Copilot). Never use free/consumer tools.",
+                action: "💡 Policy Rule: Allowed on approved Enterprise platforms only. Ensure no customer PII or restricted financial metrics are included.",
+                bg: "#eff6ff", border: "#3b82f6", color: "#1d4ed8"
+            },
+            restricted_customer: {
+                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (§6)",
+                rule: "⚠️ REQUIRES APPROVAL (4-step process §6.1)",
+                desc: "Sourced directly from Policy §6 & §6.1. Customer, supplier, and contract details require prior written approval from the data owner/manager, plus data minimization (anonymizing/redacting identifiers).",
+                action: "⚠️ Policy Rule (§6.1): 1) Confirm enterprise tool approval. 2) Obtain written manager sign-off. 3) Anonymize/redact personal identifiers.",
+                bg: "#fffbebf", border: "#f59e0b", color: "#b45309"
+            },
+            restricted_financial: {
+                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (§6)",
+                rule: "⚠️ REQUIRES APPROVAL (4-step process §6.1)",
+                desc: "Sourced directly from Policy §6 & §6.1. Financial data and corporate strategic plans require prior written Finance manager approval and must be processed on approved enterprise platforms with minimum required data scope.",
+                action: "⚠️ Policy Rule (§6.1): 1) Confirm enterprise platform approval. 2) Obtain Finance manager written sign-off. 3) Minimise data to required scope.",
+                bg: "#fffbebf", border: "#f59e0b", color: "#b45309"
+            },
+            restricted_formulas: {
+                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (§6)",
+                rule: "⚠️ REQUIRES APPROVAL (4-step process §6.1 & §9)",
+                desc: "Sourced directly from Policy §6 & §9. Employee personnel records and product formulas require written HR/R&D sign-off. AI outputs must be reviewed by qualified human decision-makers (Human-in-the-Loop mandatory).",
+                action: "⚠️ Policy Rule (§9): Requires HR/manager sign-off + mandatory Human-in-the-Loop review. AI output cannot be the sole basis for decisions.",
+                bg: "#fffbebf", border: "#f59e0b", color: "#b45309"
+            },
+            prohibited_health: {
+                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (§6)",
+                rule: "❌ NOT ALLOWED (at any time)",
+                desc: "Sourced directly from Policy §6. Regulated personal data (health records, national ID numbers, government identifiers) MUST NOT be entered into any AI system without Legal + Steering Committee sign-off.",
+                action: "⛔ Policy Rule (§6): STRICTLY PROHIBITED from all AI systems. Do not input regulated personal data.",
+                bg: "#fff1f2", border: "#e11d48", color: "#be123c"
+            },
+            prohibited_code: {
+                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (§7.7)",
+                rule: "❌ NOT ALLOWED (at any time)",
+                desc: "Sourced directly from Policy §7(7). Uploading source code, system credentials, encryption keys, or security configurations to unapproved tools is strictly prohibited under Midas security rules.",
+                action: "⛔ Policy Rule (§7.7): STRICTLY PROHIBITED. Never upload credentials, keys, or source code to unapproved tools.",
+                bg: "#fff1f2", border: "#e11d48", color: "#be123c"
+            },
+            prohibited_secrets: {
+                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (§6 & §7.2)",
+                rule: "❌ NOT ALLOWED (at any time)",
+                desc: "Sourced directly from Policy §6 & §7(2). Trade secrets designated as Top Secret and core proprietary technical IP must not be entered into AI platforms without Legal and AI Steering Committee approval.",
+                action: "⛔ Policy Rule (§6): STRICTLY PROHIBITED. Protect Midas IP & Top Secret trade secrets.",
+                bg: "#fff1f2", border: "#e11d48", color: "#be123c"
+            },
+            prohibited_legal: {
+                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (§6)",
+                rule: "❌ NOT ALLOWED (at any time)",
+                desc: "Sourced directly from Policy §6. Litigation-privileged documents and active legal dispute files must not be entered into any AI system without explicit Legal sign-off.",
+                action: "⛔ Policy Rule (§6): STRICTLY PROHIBITED. Consult Legal before processing any privileged legal documents.",
+                bg: "#fff1f2", border: "#e11d48", color: "#be123c"
+            }
+        };
+
+        function toggleDropdown() {
+            const trigger = document.getElementById('selectTrigger');
+            const options = document.getElementById('selectOptions');
+            const isOpening = !options.classList.contains('show');
+            trigger.classList.toggle('open');
+            options.classList.toggle('show');
+
+            if (isOpening) {
+                closeResultCard();
+            }
+        }
+
+        function closeResultCard() {
+            const card = document.getElementById('heroResultCard');
+            if (card) {
+                card.classList.remove('show');
+            }
+        }
+
+        function selectOption(val, text) {
+            selectedValue = val;
+            document.getElementById('selectedOptionText').innerText = text;
+            document.getElementById('selectTrigger').classList.remove('open');
+            document.getElementById('selectOptions').classList.remove('show');
+
+            const btn = document.getElementById('submitBtn');
+            btn.classList.add('active');
+            btn.style.background = '#2563eb';
+        }
+
+        function submitClassifier() {
+            if (!selectedValue) {
+                alert("Please select a data type from the dropdown first.");
+                return;
+            }
+            const data = classificationData[selectedValue];
+            const card = document.getElementById('heroResultCard');
+            card.style.background = data.bg;
+            card.style.borderColor = data.border;
+            card.style.color = data.color;
+            card.innerHTML = `
+                <button class="result-close-btn" onclick="closeResultCard()" title="Close guidance">✕</button>
+                <div style="font-weight: 800; font-size: 0.85rem; margin-bottom: 4px; padding-right: 24px;">${data.badge}</div>
+                <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 6px;">${data.rule}</div>
+                <div style="font-size: 0.82rem; line-height: 1.4; margin-bottom: 8px;">${data.desc}</div>
+                <div style="font-size: 0.8rem; font-weight: 700; background: rgba(255,255,255,0.7); padding: 8px 10px; border-radius: 6px;">${data.action}</div>
+            `;
+            card.classList.add('show');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const selectBox = document.querySelector('.widget-select-box');
+            if (selectBox && !selectBox.contains(e.target)) {
+                document.getElementById('selectTrigger').classList.remove('open');
+                document.getElementById('selectOptions').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>
