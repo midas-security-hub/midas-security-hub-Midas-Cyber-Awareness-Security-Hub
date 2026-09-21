@@ -649,6 +649,7 @@
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 16px;
+            align-items: stretch;
         }
 
         @media (max-width: 1200px) {
@@ -676,6 +677,8 @@
             position: relative;
             cursor: pointer;
             user-select: none;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         .principle-card-item:hover {
@@ -692,7 +695,8 @@
         }
 
         .principle-click-hint {
-            margin-top: 14px;
+            margin-top: auto;
+            padding-top: 14px;
             font-size: 0.78rem;
             font-weight: 700;
             color: #2563eb;
@@ -871,6 +875,145 @@
             color: #475569;
             line-height: 1.5;
             font-weight: 500;
+            flex-grow: 1;
+        }
+
+        /* ========================================================= */
+        /* ELEGANT FEATURED VIDEO SPOTLIGHT SECTION STYLING          */
+        /* ========================================================= */
+        .video-section-wrapper {
+            margin-bottom: 48px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 36px 40px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            color: #0f172a;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .video-header-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .video-header-row h2 {
+            color: #0f172a !important;
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .video-header-row p {
+            color: #475569 !important;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .video-player-container {
+            position: relative;
+            width: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #090d16;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            aspect-ratio: 16 / 9;
+            max-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ai-video-element {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-controls-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.5) 65%, rgba(15, 23, 42, 0) 100%);
+            padding: 22px 28px 18px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            z-index: 10;
+        }
+
+        .controls-left,
+        .controls-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .video-ctrl-btn {
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(12px);
+            font-family: inherit;
+        }
+
+        .video-ctrl-btn:hover {
+            background: rgba(37, 99, 235, 0.95);
+            border-color: #38bdf8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        }
+
+        .video-ctrl-btn.audio-btn {
+            background: rgba(245, 158, 11, 0.25);
+            border-color: rgba(245, 158, 11, 0.5);
+            color: #fbbf24;
+        }
+
+        .video-ctrl-btn.audio-btn:hover {
+            background: rgba(245, 158, 11, 0.45);
+        }
+
+        .video-ctrl-btn.audio-btn.unmuted {
+            background: rgba(16, 185, 129, 0.25);
+            border-color: rgba(16, 185, 129, 0.5);
+            color: #34d399;
+        }
+
+        .video-ctrl-btn.icon-only {
+            padding: 8px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            justify-content: center;
+        }
+
+        .video-time-text {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            font-variant-numeric: tabular-nums;
         }
 
         /* ========================================================= */
@@ -1374,10 +1517,6 @@
                 <div class="nav-item">
                     <a href="faq.html" class="nav-link">FAQ</a>
                 </div>
-
-                <div class="nav-item">
-                    <a href="external-incident-reporting.html" class="nav-link" style="color: #ea580c; font-weight: 700;">🚨 Report Incident</a>
-                </div>
             </div>
         </nav>
     </div>
@@ -1517,6 +1656,57 @@
                 </svg>
                 <div class="annotation-text">
                     Quick answers.<br>Real guidance.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- FEATURED VIDEO SPOTLIGHT SECTION                          -->
+    <!-- ========================================================= -->
+    <div id="ai-video-briefing" class="video-section-wrapper">
+        <div class="video-header-row">
+            <div class="principles-title-group">
+                <div class="category-pill-gold">
+                    <div class="category-line-gold"></div>
+                    <span>AI POLICY VIDEO BRIEFING</span>
+                </div>
+                <h2>Responsible AI Policy Overview</h2>
+            </div>
+        </div>
+
+        <div class="video-player-container">
+            <video id="aiPolicyVideo" class="ai-video-element" autoplay loop muted playsinline poster="images/card-image-2.png">
+                <source src="video/Our%20approach%20to%20responsible%20AI.mp4?v=3" type="video/mp4">
+                <source src="video/Our approach to responsible AI.mp4?v=3" type="video/mp4">
+                <source src="videos/Our approach to responsible AI.mp4?v=3" type="video/mp4">
+                <source src="assets/Our approach to responsible AI.mp4?v=3" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+            </video>
+
+            <!-- Video Overlay Control Bar -->
+            <div class="video-controls-overlay">
+                <div class="controls-left">
+                    <button id="videoPlayPauseBtn" class="video-ctrl-btn" onclick="toggleVideoPlayPause()" title="Play / Pause">
+                        <span id="playPauseIcon">⏸️</span>
+                    </button>
+
+                    <button id="videoAudioBtn" class="video-ctrl-btn audio-btn" onclick="toggleVideoAudio()" title="Mute / Unmute Audio">
+                        <span id="audioIcon">🔇</span>
+                        <span id="audioText">Muted (Click for Sound)</span>
+                    </button>
+                </div>
+
+                <div class="controls-right">
+                    <span id="videoTimeDisplay" class="video-time-text">0:00 / 1:30</span>
+                    <a href="https://midassafety.sharepoint.com/:v:/s/MidasSecurityHub/IQBYI3yEuMmvQ7RBz9f6dUDBAZotKm6aA9D0vlepGNM1vFk?e=wEAumC" target="_blank" rel="noopener noreferrer" class="video-ctrl-btn" style="text-decoration: none;" title="Open video in SharePoint Stream">
+                        <span>SharePoint Stream</span> ↗
+                    </a>
+                    <button class="video-ctrl-btn icon-only" onclick="toggleVideoFullscreen()" title="Fullscreen">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -2168,66 +2358,66 @@
 
         const classificationData = {
             public_marketing: {
-                badge: "🟢 CLASSIFICATION: PUBLIC INFORMATION (§6)",
+                badge: "🟢 CLASSIFICATION: PUBLIC INFORMATION (Section 6)",
                 rule: "✅ ALLOWED (with no restrictions)",
-                desc: "Sourced directly from Policy §6. Marketing copy, published reports, and public policies may be processed using any approved AI platform. Perform standard editorial review before publishing.",
+                desc: "Sourced directly from Policy Section 6. Marketing copy, published reports, and public policies may be processed using any approved AI platform. Perform standard editorial review before publishing.",
                 action: "💡 Policy Rule: Allowed on any approved AI tool. Perform standard editorial review before external publication.",
                 bg: "#ecfdf5", border: "#10b981", color: "#047857"
             },
             internal_memos: {
-                badge: "🟡 CLASSIFICATION: INTERNAL INFORMATION (§6)",
+                badge: "🟡 CLASSIFICATION: INTERNAL INFORMATION (Section 6)",
                 rule: "✅ ALLOWED (with caution)",
-                desc: "Sourced directly from Policy §6. Non-sensitive internal communications, SOPs, and process documentation may be processed ONLY on approved enterprise AI platforms (e.g. Midas Enterprise Copilot). Never use free/consumer tools.",
+                desc: "Sourced directly from Policy Section 6. Non-sensitive internal communications, SOPs, and process documentation may be processed ONLY on approved enterprise AI platforms (e.g. Midas Enterprise Copilot). Never use free/consumer tools.",
                 action: "💡 Policy Rule: Allowed on approved Enterprise platforms only. Ensure no customer PII or restricted financial metrics are included.",
                 bg: "#eff6ff", border: "#3b82f6", color: "#1d4ed8"
             },
             restricted_customer: {
-                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (§6)",
-                rule: "⚠️ REQUIRES APPROVAL (4-step process §6.1)",
-                desc: "Sourced directly from Policy §6 & §6.1. Customer, supplier, and contract details require prior written approval from the data owner/manager, plus data minimization (anonymizing/redacting identifiers).",
-                action: "⚠️ Policy Rule (§6.1): 1) Confirm enterprise tool approval. 2) Obtain written manager sign-off. 3) Anonymize/redact personal identifiers.",
+                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (Section 6)",
+                rule: "⚠️ REQUIRES APPROVAL (4-step process Section 6.1)",
+                desc: "Sourced directly from Policy Section 6 & Section 6.1. Customer, supplier, and contract details require prior written approval from the data owner/manager, plus data minimization (anonymizing/redacting identifiers).",
+                action: "⚠️ Policy Rule (Section 6.1): 1) Confirm enterprise tool approval. 2) Obtain written manager sign-off. 3) Anonymize/redact personal identifiers.",
                 bg: "#fffbebf", border: "#f59e0b", color: "#b45309"
             },
             restricted_financial: {
-                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (§6)",
-                rule: "⚠️ REQUIRES APPROVAL (4-step process §6.1)",
-                desc: "Sourced directly from Policy §6 & §6.1. Financial data and corporate strategic plans require prior written Finance manager approval and must be processed on approved enterprise platforms with minimum required data scope.",
-                action: "⚠️ Policy Rule (§6.1): 1) Confirm enterprise platform approval. 2) Obtain Finance manager written sign-off. 3) Minimise data to required scope.",
+                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (Section 6)",
+                rule: "⚠️ REQUIRES APPROVAL (4-step process Section 6.1)",
+                desc: "Sourced directly from Policy Section 6 & Section 6.1. Financial data and corporate strategic plans require prior written Finance manager approval and must be processed on approved enterprise platforms with minimum required data scope.",
+                action: "⚠️ Policy Rule (Section 6.1): 1) Confirm enterprise platform approval. 2) Obtain Finance manager written sign-off. 3) Minimise data to required scope.",
                 bg: "#fffbebf", border: "#f59e0b", color: "#b45309"
             },
             restricted_formulas: {
-                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (§6)",
-                rule: "⚠️ REQUIRES APPROVAL (4-step process §6.1 & §9)",
-                desc: "Sourced directly from Policy §6 & §9. Employee personnel records and product formulas require written HR/R&D sign-off. AI outputs must be reviewed by qualified human decision-makers (Human-in-the-Loop mandatory).",
-                action: "⚠️ Policy Rule (§9): Requires HR/manager sign-off + mandatory Human-in-the-Loop review. AI output cannot be the sole basis for decisions.",
+                badge: "🟠 CLASSIFICATION: RESTRICTED INFORMATION (Section 6)",
+                rule: "⚠️ REQUIRES APPROVAL (4-step process Section 6.1 & Section 9)",
+                desc: "Sourced directly from Policy Section 6 & Section 9. Employee personnel records and product formulas require written HR/R&D sign-off. AI outputs must be reviewed by qualified human decision-makers (Human-in-the-Loop mandatory).",
+                action: "⚠️ Policy Rule (Section 9): Requires HR/manager sign-off + mandatory Human-in-the-Loop review. AI output cannot be the sole basis for decisions.",
                 bg: "#fffbebf", border: "#f59e0b", color: "#b45309"
             },
             prohibited_health: {
-                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (§6)",
+                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (Section 6)",
                 rule: "❌ NOT ALLOWED (at any time)",
-                desc: "Sourced directly from Policy §6. Regulated personal data (health records, national ID numbers, government identifiers) MUST NOT be entered into any AI system without Legal + Steering Committee sign-off.",
-                action: "⛔ Policy Rule (§6): STRICTLY PROHIBITED from all AI systems. Do not input regulated personal data.",
+                desc: "Sourced directly from Policy Section 6. Regulated personal data (health records, national ID numbers, government identifiers) MUST NOT be entered into any AI system without Legal + Steering Committee sign-off.",
+                action: "⛔ Policy Rule (Section 6): STRICTLY PROHIBITED from all AI systems. Do not input regulated personal data.",
                 bg: "#fff1f2", border: "#e11d48", color: "#be123c"
             },
             prohibited_code: {
-                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (§7.7)",
+                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (Section 7.7)",
                 rule: "❌ NOT ALLOWED (at any time)",
-                desc: "Sourced directly from Policy §7(7). Uploading source code, system credentials, encryption keys, or security configurations to unapproved tools is strictly prohibited under Midas security rules.",
-                action: "⛔ Policy Rule (§7.7): STRICTLY PROHIBITED. Never upload credentials, keys, or source code to unapproved tools.",
+                desc: "Sourced directly from Policy Section 7.7. Uploading source code, system credentials, encryption keys, or security configurations to unapproved tools is strictly prohibited under Midas security rules.",
+                action: "⛔ Policy Rule (Section 7.7): STRICTLY PROHIBITED. Never upload credentials, keys, or source code to unapproved tools.",
                 bg: "#fff1f2", border: "#e11d48", color: "#be123c"
             },
             prohibited_secrets: {
-                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (§6 & §7.2)",
+                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (Section 6 & Section 7.2)",
                 rule: "❌ NOT ALLOWED (at any time)",
-                desc: "Sourced directly from Policy §6 & §7(2). Trade secrets designated as Top Secret and core proprietary technical IP must not be entered into AI platforms without Legal and AI Steering Committee approval.",
-                action: "⛔ Policy Rule (§6): STRICTLY PROHIBITED. Protect Midas IP & Top Secret trade secrets.",
+                desc: "Sourced directly from Policy Section 6 & Section 7.2. Trade secrets designated as Top Secret and core proprietary technical IP must not be entered into AI platforms without Legal and AI Steering Committee approval.",
+                action: "⛔ Policy Rule (Section 6): STRICTLY PROHIBITED. Protect Midas IP & Top Secret trade secrets.",
                 bg: "#fff1f2", border: "#e11d48", color: "#be123c"
             },
             prohibited_legal: {
-                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (§6)",
+                badge: "🔴 CLASSIFICATION: PROHIBITED FOR AI INPUT (Section 6)",
                 rule: "❌ NOT ALLOWED (at any time)",
-                desc: "Sourced directly from Policy §6. Litigation-privileged documents and active legal dispute files must not be entered into any AI system without explicit Legal sign-off.",
-                action: "⛔ Policy Rule (§6): STRICTLY PROHIBITED. Consult Legal before processing any privileged legal documents.",
+                desc: "Sourced directly from Policy Section 6. Litigation-privileged documents and active legal dispute files must not be entered into any AI system without explicit Legal sign-off.",
+                action: "⛔ Policy Rule (Section 6): STRICTLY PROHIBITED. Consult Legal before processing any privileged legal documents.",
                 bg: "#fff1f2", border: "#e11d48", color: "#be123c"
             }
         };
@@ -2286,13 +2476,13 @@
         const principleData = [
             {
                 title: "1. Human Accountability",
-                policyRef: "Policy Clause §4.1",
+                policyRef: "Policy Clause Section 4.1",
                 color: "#0f172a",
                 badgeBg: "#f1f5f9",
                 badgeColor: "#0f172a",
                 iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>`,
                 summary: "People remain in control and are accountable for AI use and outcomes.",
-                fullDetail: "Sourced directly from Policy §4.1. AI supports decision-making, but accountability always remains with people. Employees are responsible for reviewing, validating, and verifying all AI-generated outputs before reliance, action, or external sharing.",
+                fullDetail: "Sourced directly from Policy Section 4.1. AI supports decision-making, but accountability always remains with people. Employees are responsible for reviewing, validating, and verifying all AI-generated outputs before reliance, action, or external sharing.",
                 keyTakeaways: [
                     "Always apply human oversight ('Human-in-the-Loop') before using AI outputs.",
                     "Never rely on automated AI outputs as final decisions without independent review.",
@@ -2301,13 +2491,13 @@
             },
             {
                 title: "2. Responsible & Ethical Use",
-                policyRef: "Policy Clause §4.2",
+                policyRef: "Policy Clause Section 4.2",
                 color: "#ea580c",
                 badgeBg: "#fff7ed",
                 badgeColor: "#c2410c",
                 iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 7l9-4 9 4M6 12l-3 6h6l-3-6zM18 12l-3 6h6l-3-6z" /></svg>`,
                 summary: "We use AI in a way that is fair, legal and aligned with our values.",
-                fullDetail: "Sourced directly from Policy §4.2. AI shall be used in a manner consistent with MIDAS SAFETY's core values, code of conduct, and applicable laws. AI must never be used for unlawful, deceptive, discriminatory, or unethical activities.",
+                fullDetail: "Sourced directly from Policy Section 4.2. AI shall be used in a manner consistent with MIDAS SAFETY's core values, code of conduct, and applicable laws. AI must never be used for unlawful, deceptive, discriminatory, or unethical activities.",
                 keyTakeaways: [
                     "Ensure full compliance with company ethics and local regulatory frameworks.",
                     "Strictly prohibited for generating deceptive content, impersonation, or malicious scripts.",
@@ -2316,13 +2506,13 @@
             },
             {
                 title: "3. Transparency",
-                policyRef: "Policy Clause §4.3",
+                policyRef: "Policy Clause Section 4.3",
                 color: "#2563eb",
                 badgeBg: "#eff6ff",
                 badgeColor: "#1d4ed8",
                 iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>`,
                 summary: "We are open about how AI is used and its limitations.",
-                fullDetail: "Sourced directly from Policy §4.3. Users should disclose AI assistance where required (internally or to clients/regulators) and ensure AI-generated content is reviewed for accuracy before being relied upon or shared externally.",
+                fullDetail: "Sourced directly from Policy Section 4.3. Users should disclose AI assistance where required (internally or to clients/regulators) and ensure AI-generated content is reviewed for accuracy before being relied upon or shared externally.",
                 keyTakeaways: [
                     "Disclose AI involvement in published reports, client deliverables, or patents when required.",
                     "Fact-check all dates, statistics, and citations to eliminate AI hallucinations.",
@@ -2331,13 +2521,13 @@
             },
             {
                 title: "4. Data Security",
-                policyRef: "Policy Clause §4.4",
+                policyRef: "Policy Clause Section 4.4",
                 color: "#059669",
                 badgeBg: "#ecfdf5",
                 badgeColor: "#047857",
                 iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" /></svg>`,
                 summary: "We protect our data, customers and intellectual property.",
-                fullDetail: "Sourced directly from Policy §4.4. Employees must protect confidential company, customer, supplier, and employee information when using AI systems. Confidential information may only be processed using approved company-authorized AI platforms per Section 6.",
+                fullDetail: "Sourced directly from Policy Section 4.4. Employees must protect confidential company, customer, supplier, and employee information when using AI systems. Confidential information may only be processed using approved company-authorized AI platforms per Section 6.",
                 keyTakeaways: [
                     "Never input credentials, encryption keys, source code, or regulated PII into free public tools.",
                     "Use approved enterprise platforms (e.g. Midas Enterprise Copilot) for internal communications.",
@@ -2346,13 +2536,13 @@
             },
             {
                 title: "5. Fairness & Non-Discrimination",
-                policyRef: "Policy Clause §4.5 & §9",
+                policyRef: "Policy Clause Section 4.5 & Section 9",
                 color: "#7c3aed",
                 badgeBg: "#f3e8ff",
                 badgeColor: "#6d28d9",
                 iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>`,
                 summary: "We avoid bias and ensure AI benefits everyone fairly.",
-                fullDetail: "Sourced directly from Policy §4.5 & §9. AI used in decisions affecting people — including hiring, performance evaluation, promotion, or compensation — must be checked for bias and must not be the sole basis for such decisions.",
+                fullDetail: "Sourced directly from Policy Section 4.5 & Section 9. AI used in decisions affecting people — including hiring, performance evaluation, promotion, or compensation — must be checked for bias and must not be the sole basis for such decisions.",
                 keyTakeaways: [
                     "HR & AI Steering Committee approval is mandatory prior to deploying any people-related AI tool.",
                     "AI recommendations must be audited for disparate impact and gender/racial bias.",
@@ -2361,13 +2551,13 @@
             },
             {
                 title: "6. Continuous Learning",
-                policyRef: "Policy Clause §4.6 & §12",
+                policyRef: "Policy Clause Section 4.6 & Section 12",
                 color: "#f59e0b",
                 badgeBg: "#fffbeb",
                 badgeColor: "#b45309",
                 iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>`,
                 summary: "We stay informed, build skills and improve our practices.",
-                fullDetail: "Sourced directly from Policy §4.6 & §12. The Company is committed to evolving its AI practices with technological and regulatory changes, and providing developmental opportunities for employees to upskill through onboarding training and refreshers.",
+                fullDetail: "Sourced directly from Policy Section 4.6 & Section 12. The Company is committed to evolving its AI practices with technological and regulatory changes, and providing developmental opportunities for employees to upskill through onboarding training and refreshers.",
                 keyTakeaways: [
                     "Participate in mandatory onboarding training and annual AI policy refresher courses.",
                     "Proactively identify productivity improvements and share best practices with your team.",
@@ -2435,7 +2625,71 @@
             }
         }
 
-        // Close dropdown when clicking outside
+        /* Video Controls Logic */
+        function toggleVideoAudio() {
+            const video = document.getElementById('aiPolicyVideo');
+            const btn = document.getElementById('videoAudioBtn');
+            const icon = document.getElementById('audioIcon');
+            const text = document.getElementById('audioText');
+            if (!video) return;
+
+            video.muted = !video.muted;
+
+            if (video.muted) {
+                btn.classList.remove('unmuted');
+                icon.innerText = '🔇';
+                text.innerText = 'Muted (Click for Sound)';
+            } else {
+                btn.classList.add('unmuted');
+                icon.innerText = '🔊';
+                text.innerText = 'Sound ON';
+            }
+        }
+
+        function toggleVideoPlayPause() {
+            const video = document.getElementById('aiPolicyVideo');
+            const icon = document.getElementById('playPauseIcon');
+            if (!video) return;
+
+            if (video.paused) {
+                video.play();
+                icon.innerText = '⏸️';
+            } else {
+                video.pause();
+                icon.innerText = '▶️';
+            }
+        }
+
+        function toggleVideoFullscreen() {
+            const container = document.querySelector('.video-player-container');
+            const video = document.getElementById('aiPolicyVideo');
+            const target = container || video;
+
+            if (!document.fullscreenElement) {
+                if (target.requestFullscreen) target.requestFullscreen();
+                else if (target.webkitRequestFullscreen) target.webkitRequestFullscreen();
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+
+        // Close dropdown when clicking outside & video timer updates
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('aiPolicyVideo');
+            const timeDisplay = document.getElementById('videoTimeDisplay');
+
+            if (video && timeDisplay) {
+                video.addEventListener('timeupdate', function() {
+                    const currentMin = Math.floor(video.currentTime / 60);
+                    const currentSec = Math.floor(video.currentTime % 60).toString().padStart(2, '0');
+                    const durationMin = isNaN(video.duration) || !isFinite(video.duration) ? 1 : Math.floor(video.duration / 60);
+                    const durationSec = isNaN(video.duration) || !isFinite(video.duration) ? 30 : Math.floor(video.duration % 60).toString().padStart(2, '0');
+
+                    timeDisplay.innerText = `${currentMin}:${currentSec} / ${durationMin}:${durationSec}`;
+                });
+            }
+        });
+
         document.addEventListener('click', function(e) {
             const selectBox = document.querySelector('.widget-select-box');
             if (selectBox && !selectBox.contains(e.target)) {
