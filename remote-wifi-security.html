@@ -260,108 +260,313 @@
             color: #ffffff;
         }
 
-        /* Banner Header Card */
+        /* Banner Header Card - Animated Hero Section */
         .banner-card {
-            background: linear-gradient(135deg, #0b192e 0%, #030d22 100%);
-            border-radius: var(--radius-lg);
-            padding: 36px 44px;
+            background: linear-gradient(90deg, #f2f7fc 0%, #edf4fa 45%, #e8f1f9 100%);
+            border-radius: 20px;
+            padding: 44px 48px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 24px;
-            margin-bottom: 24px;
-            border: 1px solid #1e293b;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            min-height: 400px;
+            margin-bottom: 28px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
             position: relative;
             overflow: hidden;
-            color: #ffffff;
+            color: #0f172a;
         }
 
         .banner-content {
-            max-width: 680px;
-            z-index: 2;
+            max-width: 540px;
+            z-index: 3;
+            position: relative;
         }
 
-        .banner-badge {
+        .hero-badge-yellow {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(56, 189, 248, 0.15);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #38bdf8;
-            padding: 6px 14px;
+            background: #facc15;
+            color: #0f172a;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            margin-bottom: 14px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 6px rgba(250, 204, 21, 0.35);
         }
 
         .banner-title {
-            font-size: 2.2rem;
+            font-size: 2.7rem;
             font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-            margin-bottom: 10px;
-            line-height: 1.2;
+            color: #0f172a;
+            letter-spacing: -0.025em;
+            margin-bottom: 16px;
+            line-height: 1.15;
         }
 
         .banner-subtitle {
-            font-size: 1rem;
-            color: #94a3b8;
+            font-size: 1.02rem;
+            color: #475569;
             font-weight: 500;
             line-height: 1.6;
+            margin-bottom: 28px;
+            max-width: 520px;
         }
 
-        .banner-illustration {
-            width: 320px;
-            height: 150px;
+        .hero-security-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #0f172a;
+            font-size: 0.95rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.82);
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(203, 213, 225, 0.8);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+            backdrop-filter: blur(8px);
+        }
+
+        .note-shield-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: #0f172a;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 58%;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-video-fade-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, #edf4fa 0%, rgba(237, 244, 250, 0.95) 30%, rgba(237, 244, 250, 0) 100%);
             z-index: 2;
         }
 
-        /* Quick Section Jump Navigation Bar */
-        .jump-nav-card {
+        .hero-loop-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right center;
+            display: block;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%, black 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 35%, black 100%);
+        }
+
+        @media (max-width: 1024px) {
+            .banner-card {
+                flex-direction: column;
+                padding: 36px 32px;
+                min-height: auto;
+            }
+
+            .banner-content {
+                max-width: 100%;
+            }
+
+            .hero-video-container {
+                position: relative;
+                width: 100%;
+                height: 260px;
+                margin-top: 24px;
+                border-radius: 16px;
+            }
+
+            .hero-video-fade-overlay {
+                display: none;
+            }
+
+            .hero-loop-video {
+                -webkit-mask-image: none;
+                mask-image: none;
+                border-radius: 16px;
+            }
+        }
+
+        /* Interactive Tab Navigation Container Below Hero */
+        .tab-nav-container {
             background: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 14px 20px;
+            border-radius: 16px;
+            padding: 8px;
             border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
+            gap: 8px;
             margin-bottom: 32px;
         }
 
-        .jump-buttons {
+        .tab-nav-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+        }
+
+        .tab-nav-btn:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        .tab-nav-btn.active {
+            background: #0f172a;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.22);
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeInTab 0.3s ease forwards;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeInTab {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Key Security Tips Cards Grid (Matching Provided Mockup) */
+        .tips-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .tips-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-nav-container {
+                flex-direction: column;
+            }
+        }
+
+        .tip-card-item {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 26px 30px;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tip-card-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .tip-card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .tip-number-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .tip-icon-circle {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .tip-card-body {
+            flex: 1;
+        }
+
+        .tip-card-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .tip-card-desc {
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.55;
+            font-weight: 500;
+        }
+
+        .tip-callout-box {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-radius: 10px;
+            padding: 10px 14px;
             display: flex;
             align-items: center;
             gap: 10px;
-            flex-wrap: wrap;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: #92400e;
         }
 
-        .jump-btn {
-            background: #f1f5f9;
-            color: var(--text-dark);
-            border: 1px solid var(--border);
-            padding: 9px 16px;
-            border-radius: var(--radius-sm);
-            font-size: 0.88rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .jump-btn:hover {
-            background: var(--blue-light);
-            border-color: var(--blue);
-            color: var(--blue);
+        .tip-callout-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
         /* Section Layouts */
@@ -1582,257 +1787,351 @@
     <!-- Banner Header -->
     <div class="banner-card">
         <div class="banner-content">
-            <div class="banner-badge">🌐 Network & Telework Defense</div>
+            <div class="hero-badge-yellow">SECURITY GUIDE</div>
             <h1 class="banner-title">Remote & Wi-Fi Security Guide</h1>
             <p class="banner-subtitle">
-                Safeguard corporate communications, secure wireless connections, and encrypt public networks when
-                working remotely across airports, hotels, and cafes worldwide.
+                Work from anywhere, stay secure. This guide helps you protect your data, devices and company information when using remote connections and public or home Wi-Fi networks.
             </p>
+            <div class="hero-security-note">
+                <div class="note-shield-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <rect x="9" y="11" width="6" height="5" rx="1" fill="currentColor"/>
+                        <path d="M10 11V9a2 2 0 1 1 4 0v2"/>
+                    </svg>
+                </div>
+                <span>Your security matters — wherever you are.</span>
+            </div>
         </div>
-        <div class="banner-illustration">
-            <svg viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="150" cy="75" r="60" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4"
-                    opacity="0.4" />
-                <circle cx="150" cy="75" r="40" stroke="#38bdf8" stroke-width="2" opacity="0.6" />
-                <path d="M130 95 C130 95 150 110 170 95" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
-                <!-- Shield Icon -->
-                <path d="M150 35 L175 48 V75 C175 92 150 105 150 105 C150 105 125 92 125 75 V48 L150 35 Z"
-                    fill="#0f172a" stroke="#00D2FF" stroke-width="3" />
-                <path d="M142 70 L148 76 L158 64" stroke="#10b981" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
+        <div class="hero-video-container">
+            <div class="hero-video-fade-overlay"></div>
+            <video class="hero-loop-video" autoplay loop muted playsinline poster="images/wifi-hero-poster.png">
+                <source src="video/Hero Vid - tripmed.mp4" type="video/mp4">
+                <source src="video/Hero%20Vid%20-%20tripmed.mp4" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+            </video>
         </div>
     </div>
 
-    <!-- Quick Jump Nav -->
-    <div class="jump-nav-card">
-        <span style="font-weight: 700; font-size: 0.92rem; color: var(--text-dark);">⚡ Quick Jump:</span>
-        <div class="jump-buttons">
-            <a href="#simulator" class="jump-btn">📶 Interactive Wi-Fi Simulator</a>
-            <a href="#vpn-visualizer" class="jump-btn">🔒 Corporate VPN vs Public Wi-Fi</a>
-            <a href="#rules" class="jump-btn">🛡️ 6 Golden Security Rules</a>
-        </div>
+    <!-- Tab Navigation Container -->
+    <div class="tab-nav-container">
+        <button class="tab-nav-btn" id="tabBtn-simulator" onclick="switchSectionTab('simulator')">
+            <span>📶</span> Interactive Wi-Fi Simulator
+        </button>
+        <button class="tab-nav-btn" id="tabBtn-vpn" onclick="switchSectionTab('vpn')">
+            <span>🔒</span> Corporate VPN vs Public Wi-Fi
+        </button>
+        <button class="tab-nav-btn active" id="tabBtn-rules" onclick="switchSectionTab('rules')">
+            <span>💡</span> Key Security Tips
+        </button>
     </div>
 
-    <!-- Section 1: Interactive Wi-Fi Connection Simulator -->
-    <div id="simulator" class="section-wrapper">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">
-                    <span>📶</span> Interactive Wi-Fi Connection Inspector
-                </h2>
-                <p class="section-desc">Select a connection environment below to inspect live packet encryption, threat
-                    exposure, and security grade.</p>
-            </div>
-        </div>
-
-        <div class="simulator-card">
-            <div class="sim-controls">
-                <button class="sim-btn active" onclick="selectSimMode('open')">
-                    <div class="sim-btn-icon">🚨</div>
-                    <div class="sim-btn-title">Open Public Wi-Fi</div>
-                    <div class="sim-btn-sub">Airport / Coffee Shop</div>
-                </button>
-
-                <button class="sim-btn" onclick="selectSimMode('vpn')">
-                    <div class="sim-btn-icon">🛡️</div>
-                    <div class="sim-btn-title">Public Wi-Fi + Corporate VPN</div>
-                    <div class="sim-btn-sub">Midas Encrypted Tunnel</div>
-                </button>
-
-                <button class="sim-btn" onclick="selectSimMode('hotspot')">
-                    <div class="sim-btn-icon">📱</div>
-                    <div class="sim-btn-title">Personal Mobile Hotspot</div>
-                    <div class="sim-btn-sub">4G/5G Cellular Tethering</div>
-                </button>
-
-                <button class="sim-btn" onclick="selectSimMode('unsecured-home')">
-                    <div class="sim-btn-icon">⚠️</div>
-                    <div class="sim-btn-title">Unsecured Home Wi-Fi</div>
-                    <div class="sim-btn-sub">Default Router Password</div>
-                </button>
+    <!-- TAB 1 PANEL: Interactive Wi-Fi Connection Simulator -->
+    <div id="tab-panel-simulator" class="tab-panel">
+        <div id="simulator" class="section-wrapper">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">
+                        <span>📶</span> Interactive Wi-Fi Connection Inspector
+                    </h2>
+                    <p class="section-desc">Select a connection environment below to inspect live packet encryption, threat exposure, and security grade.</p>
+                </div>
             </div>
 
-            <!-- Visual Stage -->
-            <div class="sim-stage">
-                <div class="sim-grid">
-                    <!-- Network Visual -->
-                    <div class="sim-visual-box">
-                        <div class="network-topology">
-                            <div class="topo-node">
-                                <div class="topo-icon" id="nodeLaptop">💻</div>
-                                <span class="topo-label">Work Laptop</span>
+            <div class="simulator-card">
+                <div class="sim-controls">
+                    <button class="sim-btn active" onclick="selectSimMode('open')">
+                        <div class="sim-btn-icon">🚨</div>
+                        <div class="sim-btn-title">Open Public Wi-Fi</div>
+                        <div class="sim-btn-sub">Airport / Coffee Shop</div>
+                    </button>
+
+                    <button class="sim-btn" onclick="selectSimMode('vpn')">
+                        <div class="sim-btn-icon">🛡️</div>
+                        <div class="sim-btn-title">Public Wi-Fi + Corporate VPN</div>
+                        <div class="sim-btn-sub">Midas Encrypted Tunnel</div>
+                    </button>
+
+                    <button class="sim-btn" onclick="selectSimMode('hotspot')">
+                        <div class="sim-btn-icon">📱</div>
+                        <div class="sim-btn-title">Personal Mobile Hotspot</div>
+                        <div class="sim-btn-sub">4G/5G Cellular Tethering</div>
+                    </button>
+
+                    <button class="sim-btn" onclick="selectSimMode('unsecured-home')">
+                        <div class="sim-btn-icon">⚠️</div>
+                        <div class="sim-btn-title">Unsecured Home Wi-Fi</div>
+                        <div class="sim-btn-sub">Default Router Password</div>
+                    </button>
+                </div>
+
+                <!-- Visual Stage -->
+                <div class="sim-stage">
+                    <div class="sim-grid">
+                        <!-- Network Visual -->
+                        <div class="sim-visual-box">
+                            <div class="network-topology">
+                                <div class="topo-node">
+                                    <div class="topo-icon" id="nodeLaptop">💻</div>
+                                    <span class="topo-label">Work Laptop</span>
+                                </div>
+
+                                <div class="topo-line" id="topoLine">
+                                    <div class="topo-pulse"></div>
+                                </div>
+
+                                <div class="topo-node">
+                                    <div class="topo-icon" id="nodeRouter">📡</div>
+                                    <span class="topo-label" id="lblRouter">Wi-Fi Router</span>
+                                </div>
+
+                                <div class="topo-line" id="topoLine2">
+                                    <div class="topo-pulse"></div>
+                                </div>
+
+                                <div class="topo-node">
+                                    <div class="topo-icon" id="nodeCloud">☁️</div>
+                                    <span class="topo-label">Corporate Server</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Metrics & Info -->
+                        <div>
+                            <div class="status-header-row">
+                                <h3 class="sim-info-title" id="simTitle">Open Public Wi-Fi</h3>
+                                <span class="grade-badge grade-f" id="simGrade">GRADE F: DANGEROUS</span>
                             </div>
 
-                            <div class="topo-line" id="topoLine">
-                                <div class="topo-pulse"></div>
+                            <p class="sim-info-desc" id="simDesc">
+                                Unencrypted open network. Anyone in the café with a simple sniffing tool can capture unencrypted traffic, session cookies, and login details.
+                            </p>
+
+                            <div class="sim-metrics-grid">
+                                <div class="metric-box">
+                                    <div class="metric-lbl">Encryption Protocol</div>
+                                    <div class="metric-val red" id="mEncryption">None (Open Network)</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-lbl">Packet Eavesdropping</div>
+                                    <div class="metric-val red" id="mEavesdrop">HIGH RISK</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-lbl">Man-In-The-Middle</div>
+                                    <div class="metric-val red" id="mMitm">VULNERABLE</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-lbl">Recommended Action</div>
+                                    <div class="metric-val amber" id="mAction">Connect Corporate VPN</div>
+                                </div>
                             </div>
 
-                            <div class="topo-node">
-                                <div class="topo-icon" id="nodeRouter">📡</div>
-                                <span class="topo-label" id="lblRouter">Wi-Fi Router</span>
-                            </div>
-
-                            <div class="topo-line" id="topoLine2">
-                                <div class="topo-pulse"></div>
-                            </div>
-
-                            <div class="topo-node">
-                                <div class="topo-icon" id="nodeCloud">☁️</div>
-                                <span class="topo-label">Corporate Server</span>
+                            <div class="sim-recommendation" id="simTip">
+                                <strong>Security Advice:</strong> Never log into internal Midas applications or handle corporate documents on open public Wi-Fi without turning on Midas Corporate VPN first.
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <!-- Metrics & Info -->
+    <!-- TAB 2 PANEL: Corporate VPN vs. Public Wi-Fi Visualizer -->
+    <div id="tab-panel-vpn" class="tab-panel">
+        <div id="vpn-visualizer" class="section-wrapper">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">
+                        <span>🔒</span> Corporate VPN Data Tunnel Inspector
+                    </h2>
+                    <p class="section-desc">Toggle the view below to see how Midas Corporate VPN transforms readable plain-text data into unbreakable AES-256 ciphertext.</p>
+                </div>
+            </div>
+
+            <div class="vpn-toggle-card">
+                <div class="vpn-mode-switch">
+                    <button class="toggle-btn active unprotected" id="btnModeUnprotected" onclick="switchVpnMode('unprotected')">
+                        🚨 Plain Public Wi-Fi (Hacker View)
+                    </button>
+                    <button class="toggle-btn" id="btnModeProtected" onclick="switchVpnMode('protected')">
+                        🛡️ Midas VPN Encrypted Tunnel (Secured View)
+                    </button>
+                </div>
+
+                <div class="packet-stream-box" id="packetStreamDisplay">
+                    <div class="packet-line">
+                        <span class="pkt-type">[PACKET #102 - HTTP LOGIN]</span>
+                        <span class="pkt-data-danger">User: employee@midas.com | Pass: Summer2026! | Cookie: SESSID_99A82</span>
+                    </div>
+                    <div class="packet-line">
+                        <span class="pkt-type">[PACKET #103 - FILE TRANSFER]</span>
+                        <span class="pkt-data-danger">Document: Financial_Report_Q3_Internal.xlsx | Status: Exposed</span>
+                    </div>
+                    <div class="packet-line">
+                        <span class="pkt-type">[PACKET #104 - DNS QUERY]</span>
+                        <span class="pkt-data-danger">Requested Host: sharepoint.midassafety.com (Origin IP: 192.168.1.45)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3 PANEL: Key Security Tips -->
+    <div id="tab-panel-rules" class="tab-panel active">
+        <div id="rules" class="section-wrapper">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Key Security Tips</h2>
+                    <p class="section-desc">Follow these best practices to keep your remote work and Wi-Fi usage safe and secure.</p>
+                </div>
+            </div>
+
+            <div class="tips-cards-grid">
+                <!-- Tip 1 -->
+                <div class="tip-card-item">
                     <div>
-                        <div class="status-header-row">
-                            <h3 class="sim-info-title" id="simTitle">Open Public Wi-Fi</h3>
-                            <span class="grade-badge grade-f" id="simGrade">GRADE F: DANGEROUS</span>
-                        </div>
-
-                        <p class="sim-info-desc" id="simDesc">
-                            Unencrypted open network. Anyone in the café with a simple sniffing tool can capture
-                            unencrypted traffic, session cookies, and login details.
-                        </p>
-
-                        <div class="sim-metrics-grid">
-                            <div class="metric-box">
-                                <div class="metric-lbl">Encryption Protocol</div>
-                                <div class="metric-val red" id="mEncryption">None (Open Network)</div>
+                        <div class="tip-card-top">
+                            <div class="tip-number-badge" style="background: #2563eb;">1</div>
+                            <div class="tip-card-body">
+                                <h3 class="tip-card-title">Use Secure Wi-Fi Networks</h3>
+                                <p class="tip-card-desc">Avoid public Wi-Fi for sensitive work. Use your home or company network, or a trusted VPN when you must use public Wi-Fi.</p>
                             </div>
-                            <div class="metric-box">
-                                <div class="metric-lbl">Packet Eavesdropping</div>
-                                <div class="metric-val red" id="mEavesdrop">HIGH RISK</div>
+                            <div class="tip-icon-circle" style="background: #eff6ff; color: #2563eb;">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"/>
+                                </svg>
                             </div>
-                            <div class="metric-box">
-                                <div class="metric-lbl">Man-In-The-Middle</div>
-                                <div class="metric-val red" id="mMitm">VULNERABLE</div>
-                            </div>
-                            <div class="metric-box">
-                                <div class="metric-lbl">Recommended Action</div>
-                                <div class="metric-val amber" id="mAction">Connect Corporate VPN</div>
-                            </div>
-                        </div>
-
-                        <div class="sim-recommendation" id="simTip">
-                            <strong>Security Advice:</strong> Never log into internal Midas applications or handle
-                            corporate documents on open public Wi-Fi without turning on Midas Corporate VPN first.
                         </div>
                     </div>
+                    <div class="tip-callout-box">
+                        <span class="tip-callout-icon">💡</span>
+                        <span><strong>Tip:</strong> Look for "https" in website addresses and avoid unsecured networks.</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Section 2: Corporate VPN vs. Public Wi-Fi Visualizer -->
-    <div id="vpn-visualizer" class="section-wrapper">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">
-                    <span>🔒</span> Corporate VPN Data Tunnel Inspector
-                </h2>
-                <p class="section-desc">Toggle the view below to see how Midas Corporate VPN transforms readable
-                    plain-text data into unbreakable AES-256 ciphertext.</p>
-            </div>
-        </div>
-
-        <div class="vpn-toggle-card">
-            <div class="vpn-mode-switch">
-                <button class="toggle-btn active unprotected" id="btnModeUnprotected"
-                    onclick="switchVpnMode('unprotected')">
-                    🚨 Plain Public Wi-Fi (Hacker View)
-                </button>
-                <button class="toggle-btn" id="btnModeProtected" onclick="switchVpnMode('protected')">
-                    🛡️ Midas VPN Encrypted Tunnel (Secured View)
-                </button>
-            </div>
-
-            <div class="packet-stream-box" id="packetStreamDisplay">
-                <div class="packet-line">
-                    <span class="pkt-type">[PACKET #102 - HTTP LOGIN]</span>
-                    <span class="pkt-data-danger">User: employee@midas.com | Pass: Summer2026! | Cookie:
-                        SESSID_99A82</span>
+                <!-- Tip 2 -->
+                <div class="tip-card-item">
+                    <div>
+                        <div class="tip-card-top">
+                            <div class="tip-number-badge" style="background: #10b981;">2</div>
+                            <div class="tip-card-body">
+                                <h3 class="tip-card-title">Enable a VPN</h3>
+                                <p class="tip-card-desc">A Virtual Private Network (VPN) encrypts your internet connection, keeping your data private and safe from eavesdroppers.</p>
+                            </div>
+                            <div class="tip-icon-circle" style="background: #ecfdf5; color: #10b981;">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-callout-box">
+                        <span class="tip-callout-icon">💡</span>
+                        <span><strong>Tip:</strong> Always connect to the company VPN when working remotely.</span>
+                    </div>
                 </div>
-                <div class="packet-line">
-                    <span class="pkt-type">[PACKET #103 - FILE TRANSFER]</span>
-                    <span class="pkt-data-danger">Document: Financial_Report_Q3_Internal.xlsx | Status: Exposed</span>
+
+                <!-- Tip 3 -->
+                <div class="tip-card-item">
+                    <div>
+                        <div class="tip-card-top">
+                            <div class="tip-number-badge" style="background: #8b5cf6;">3</div>
+                            <div class="tip-card-body">
+                                <h3 class="tip-card-title">Keep Your Devices Secure</h3>
+                                <p class="tip-card-desc">Use strong passwords, enable multi-factor authentication (MFA) and keep your operating system and apps up to date.</p>
+                            </div>
+                            <div class="tip-icon-circle" style="background: #f3e8ff; color: #8b5cf6;">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-callout-box">
+                        <span class="tip-callout-icon">💡</span>
+                        <span><strong>Tip:</strong> Turn on automatic updates whenever possible.</span>
+                    </div>
                 </div>
-                <div class="packet-line">
-                    <span class="pkt-type">[PACKET #104 - DNS QUERY]</span>
-                    <span class="pkt-data-danger">Requested Host: sharepoint.midassafety.com (Origin IP:
-                        192.168.1.45)</span>
+
+                <!-- Tip 4 -->
+                <div class="tip-card-item">
+                    <div>
+                        <div class="tip-card-top">
+                            <div class="tip-number-badge" style="background: #ea580c;">4</div>
+                            <div class="tip-card-body">
+                                <h3 class="tip-card-title">Secure Your Home Wi-Fi</h3>
+                                <p class="tip-card-desc">Use a strong, unique password for your Wi-Fi router, enable WPA2/WPA3 encryption and keep your router firmware updated.</p>
+                            </div>
+                            <div class="tip-icon-circle" style="background: #fff7ed; color: #ea580c;">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="14" width="20" height="8" rx="2"/>
+                                    <path d="M6 18h.01"/>
+                                    <path d="M10 18h.01"/>
+                                    <path d="M15 10a4 4 0 0 1 4 4"/>
+                                    <path d="M12 7a7 7 0 0 1 7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-callout-box">
+                        <span class="tip-callout-icon">💡</span>
+                        <span><strong>Tip:</strong> Avoid using default router credentials (e.g. admin/admin).</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
+                <!-- Tip 5 -->
+                <div class="tip-card-item">
+                    <div>
+                        <div class="tip-card-top">
+                            <div class="tip-number-badge" style="background: #0d9488;">5</div>
+                            <div class="tip-card-body">
+                                <h3 class="tip-card-title">Be Aware of Phishing</h3>
+                                <p class="tip-card-desc">Cyber attackers may target you through fake emails, messages or websites, especially when you're working remotely.</p>
+                            </div>
+                            <div class="tip-icon-circle" style="background: #f0fdf4; color: #0d9488;">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-callout-box">
+                        <span class="tip-callout-icon">💡</span>
+                        <span><strong>Tip:</strong> Verify links, check sender details and never share your credentials.</span>
+                    </div>
+                </div>
 
-
-    <!-- Section 4: 6 Golden Rules of Remote Work -->
-    <div id="rules" class="section-wrapper">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">
-                    <span>🛡️</span> 6 Golden Rules of Remote & Wi-Fi Security
-                </h2>
-                <p class="section-desc">Essential remote working protocols to prevent data leaks while on the move.</p>
-            </div>
-        </div>
-
-        <div class="rules-grid">
-            <!-- Rule 1 -->
-            <div class="rule-card">
-                <div class="rule-number">01</div>
-                <h3 class="rule-title">Always Use Midas Corporate VPN</h3>
-                <p class="rule-text">Turn on corporate VPN whenever accessing internal emails, SharePoint, ERP, or
-                    client data outside office locations.</p>
-                <button class="rule-detail-btn" onclick="showRuleModal(1)">Read Best Practice ➔</button>
-            </div>
-
-            <!-- Rule 2 -->
-            <div class="rule-card">
-                <div class="rule-number">02</div>
-                <h3 class="rule-title">Disable Auto-Connect to Wi-Fi</h3>
-                <p class="rule-text">Disable "Auto-Connect to Open Wi-Fi" on work laptops and mobile devices to prevent
-                    automatically joining rogue networks.</p>
-                <button class="rule-detail-btn" onclick="showRuleModal(2)">Read Best Practice ➔</button>
-            </div>
-
-            <!-- Rule 3 -->
-            <div class="rule-card">
-                <div class="rule-number">03</div>
-                <h3 class="rule-title">Beware of Evil-Twin Hotspots</h3>
-                <p class="rule-text">Attackers deploy fake access points named "Starbucks_Guest" or "Airport_Free_WiFi".
-                    Always verify exact network names with staff.</p>
-                <button class="rule-detail-btn" onclick="showRuleModal(3)">Read Best Practice ➔</button>
-            </div>
-
-            <!-- Rule 4 -->
-            <div class="rule-card">
-                <div class="rule-number">04</div>
-                <h3 class="rule-title">Prevent Shoulder Surfing</h3>
-                <p class="rule-text">Use privacy screen filters in airports, cafes, and trains to block unauthorized
-                    viewing of confidential corporate screens.</p>
-                <button class="rule-detail-btn" onclick="showRuleModal(4)">Read Best Practice ➔</button>
-            </div>
-
-            <!-- Rule 5 -->
-            <div class="rule-card">
-                <div class="rule-number">05</div>
-                <h3 class="rule-title">Never Leave Assets Unattended</h3>
-                <p class="rule-text">Lock laptop screens (Win + L) instantly and never leave devices unattended in hotel
-                    lobbies, vehicles, or coffee shops.</p>
-                <button class="rule-detail-btn" onclick="showRuleModal(5)">Read Best Practice ➔</button>
-            </div>
-
-            <!-- Rule 6 -->
-            <div class="rule-card">
-                <div class="rule-number">06</div>
-                <h3 class="rule-title">Use Personal Mobile Tethering</h3>
-                <p class="rule-text">When trusted Wi-Fi is unavailable, tether your laptop to your smartphone's WPA3
-                    mobile hotspot instead of untrusted open networks.</p>
-                <button class="rule-detail-btn" onclick="showRuleModal(6)">Read Best Practice ➔</button>
+                <!-- Tip 6 -->
+                <div class="tip-card-item">
+                    <div>
+                        <div class="tip-card-top">
+                            <div class="tip-number-badge" style="background: #e11d48;">6</div>
+                            <div class="tip-card-body">
+                                <h3 class="tip-card-title">Protect Company Data</h3>
+                                <p class="tip-card-desc">Avoid sharing sensitive information over insecure networks. Don't store work files on personal devices or untrusted cloud services.</p>
+                            </div>
+                            <div class="tip-icon-circle" style="background: #fff1f2; color: #e11d48;">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-callout-box">
+                        <span class="tip-callout-icon">💡</span>
+                        <span><strong>Tip:</strong> Use approved tools and follow data handling policies.</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -2103,6 +2402,33 @@
         function closeRuleModal() {
             document.getElementById('ruleModal').style.display = 'none';
         }
+
+        // Section Tab Switcher
+        function switchSectionTab(tabId) {
+            const tabs = ['simulator', 'vpn', 'rules'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tabBtn-' + t);
+                const panel = document.getElementById('tab-panel-' + t);
+                if (btn) btn.classList.remove('active');
+                if (panel) panel.classList.remove('active');
+            });
+
+            const activeBtn = document.getElementById('tabBtn-' + tabId);
+            const activePanel = document.getElementById('tab-panel-' + tabId);
+            if (activeBtn) activeBtn.classList.add('active');
+            if (activePanel) activePanel.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash === 'simulator') {
+                switchSectionTab('simulator');
+            } else if (hash === 'vpn-visualizer' || hash === 'vpn') {
+                switchSectionTab('vpn');
+            } else {
+                switchSectionTab('rules'); // Key Security Tips is default
+            }
+        });
     </script>
 </body>
 
