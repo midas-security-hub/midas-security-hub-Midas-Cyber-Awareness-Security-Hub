@@ -674,12 +674,167 @@
             flex-direction: column;
             align-items: flex-start;
             position: relative;
+            cursor: pointer;
+            user-select: none;
         }
 
         .principle-card-item:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
             border-color: #cbd5e1;
+        }
+
+        .principle-card-item.active-card {
+            border-color: #2563eb !important;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+            background: #f8fafc !important;
+            transform: translateY(-2px);
+        }
+
+        .principle-click-hint {
+            margin-top: 14px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .principle-card-item:hover .principle-click-hint {
+            color: #1d4ed8;
+        }
+
+        /* Expanded Principle Detail Container */
+        .principle-detail-box {
+            margin-top: 24px;
+            background: #ffffff;
+            border-radius: 14px;
+            border: 2px solid #e2e8f0;
+            padding: 28px 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            animation: fadeInDetail 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        @keyframes fadeInDetail {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .principle-detail-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .principle-detail-title-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .principle-detail-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .principle-detail-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .principle-clause-badge {
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .detail-close-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .detail-close-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+            transform: scale(1.08);
+        }
+
+        .principle-detail-body {
+            font-size: 0.95rem;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .takeaways-heading {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .takeaway-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .takeaway-bullet {
+            color: #10b981;
+            font-weight: 800;
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 2px;
         }
 
         /* Circular Icon Colors */
@@ -1389,37 +1544,46 @@
         </div>
 
         <div class="six-principles-grid">
-            <div class="principle-card-item">
+            <div class="principle-card-item" id="principleCard-0" onclick="showPrincipleDetail(0)">
                 <div class="principle-circle-icon circle-navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg></div>
                 <h3 class="principle-card-title">Human Accountability</h3>
                 <p class="principle-card-desc">People remain in control and are accountable for AI use and outcomes.</p>
+                <div class="principle-click-hint"><span>View details</span> ➔</div>
             </div>
-            <div class="principle-card-item">
+            <div class="principle-card-item" id="principleCard-1" onclick="showPrincipleDetail(1)">
                 <div class="principle-circle-icon circle-orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 7l9-4 9 4M6 12l-3 6h6l-3-6zM18 12l-3 6h6l-3-6z" /></svg></div>
                 <h3 class="principle-card-title">Responsible & Ethical Use</h3>
                 <p class="principle-card-desc">We use AI in a way that is fair, legal and aligned with our values.</p>
+                <div class="principle-click-hint"><span>View details</span> ➔</div>
             </div>
-            <div class="principle-card-item">
+            <div class="principle-card-item" id="principleCard-2" onclick="showPrincipleDetail(2)">
                 <div class="principle-circle-icon circle-blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></div>
                 <h3 class="principle-card-title">Transparency</h3>
                 <p class="principle-card-desc">We are open about how AI is used and its limitations.</p>
+                <div class="principle-click-hint"><span>View details</span> ➔</div>
             </div>
-            <div class="principle-card-item">
+            <div class="principle-card-item" id="principleCard-3" onclick="showPrincipleDetail(3)">
                 <div class="principle-circle-icon circle-green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" /></svg></div>
                 <h3 class="principle-card-title">Data Security</h3>
                 <p class="principle-card-desc">We protect our data, customers and intellectual property.</p>
+                <div class="principle-click-hint"><span>View details</span> ➔</div>
             </div>
-            <div class="principle-card-item">
+            <div class="principle-card-item" id="principleCard-4" onclick="showPrincipleDetail(4)">
                 <div class="principle-circle-icon circle-purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg></div>
                 <h3 class="principle-card-title">Fairness & Non-Discrimination</h3>
                 <p class="principle-card-desc">We avoid bias and ensure AI benefits everyone fairly.</p>
+                <div class="principle-click-hint"><span>View details</span> ➔</div>
             </div>
-            <div class="principle-card-item">
+            <div class="principle-card-item" id="principleCard-5" onclick="showPrincipleDetail(5)">
                 <div class="principle-circle-icon circle-gold"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg></div>
                 <h3 class="principle-card-title">Continuous Learning</h3>
                 <p class="principle-card-desc">We stay informed, build skills and improve our practices.</p>
+                <div class="principle-click-hint"><span>View details</span> ➔</div>
             </div>
         </div>
+
+        <!-- Expanded Principle Detail Box -->
+        <div id="principleDetailBox" class="principle-detail-box" style="display: none;"></div>
     </div>
 
     <!-- ========================================================= -->
@@ -2116,6 +2280,159 @@
                 <div style="font-size: 0.8rem; font-weight: 700; background: rgba(255,255,255,0.7); padding: 8px 10px; border-radius: 6px;">${data.action}</div>
             `;
             card.classList.add('show');
+        }
+
+        // Data for Six Principles interactive detail popover
+        const principleData = [
+            {
+                title: "1. Human Accountability",
+                policyRef: "Policy Clause §4.1",
+                color: "#0f172a",
+                badgeBg: "#f1f5f9",
+                badgeColor: "#0f172a",
+                iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>`,
+                summary: "People remain in control and are accountable for AI use and outcomes.",
+                fullDetail: "Sourced directly from Policy §4.1. AI supports decision-making, but accountability always remains with people. Employees are responsible for reviewing, validating, and verifying all AI-generated outputs before reliance, action, or external sharing.",
+                keyTakeaways: [
+                    "Always apply human oversight ('Human-in-the-Loop') before using AI outputs.",
+                    "Never rely on automated AI outputs as final decisions without independent review.",
+                    "Accountability for errors or inaccuracies remains with the employee submitting the work."
+                ]
+            },
+            {
+                title: "2. Responsible & Ethical Use",
+                policyRef: "Policy Clause §4.2",
+                color: "#ea580c",
+                badgeBg: "#fff7ed",
+                badgeColor: "#c2410c",
+                iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 7l9-4 9 4M6 12l-3 6h6l-3-6zM18 12l-3 6h6l-3-6z" /></svg>`,
+                summary: "We use AI in a way that is fair, legal and aligned with our values.",
+                fullDetail: "Sourced directly from Policy §4.2. AI shall be used in a manner consistent with MIDAS SAFETY's core values, code of conduct, and applicable laws. AI must never be used for unlawful, deceptive, discriminatory, or unethical activities.",
+                keyTakeaways: [
+                    "Ensure full compliance with company ethics and local regulatory frameworks.",
+                    "Strictly prohibited for generating deceptive content, impersonation, or malicious scripts.",
+                    "Respect third-party IP rights and avoid uploading unverified or copyright-protected data."
+                ]
+            },
+            {
+                title: "3. Transparency",
+                policyRef: "Policy Clause §4.3",
+                color: "#2563eb",
+                badgeBg: "#eff6ff",
+                badgeColor: "#1d4ed8",
+                iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>`,
+                summary: "We are open about how AI is used and its limitations.",
+                fullDetail: "Sourced directly from Policy §4.3. Users should disclose AI assistance where required (internally or to clients/regulators) and ensure AI-generated content is reviewed for accuracy before being relied upon or shared externally.",
+                keyTakeaways: [
+                    "Disclose AI involvement in published reports, client deliverables, or patents when required.",
+                    "Fact-check all dates, statistics, and citations to eliminate AI hallucinations.",
+                    "Be transparent with team members and managers regarding AI-assisted tools used."
+                ]
+            },
+            {
+                title: "4. Data Security",
+                policyRef: "Policy Clause §4.4",
+                color: "#059669",
+                badgeBg: "#ecfdf5",
+                badgeColor: "#047857",
+                iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" /></svg>`,
+                summary: "We protect our data, customers and intellectual property.",
+                fullDetail: "Sourced directly from Policy §4.4. Employees must protect confidential company, customer, supplier, and employee information when using AI systems. Confidential information may only be processed using approved company-authorized AI platforms per Section 6.",
+                keyTakeaways: [
+                    "Never input credentials, encryption keys, source code, or regulated PII into free public tools.",
+                    "Use approved enterprise platforms (e.g. Midas Enterprise Copilot) for internal communications.",
+                    "Strictly follow the 4-level Information Classification rules before entering data into any AI."
+                ]
+            },
+            {
+                title: "5. Fairness & Non-Discrimination",
+                policyRef: "Policy Clause §4.5 & §9",
+                color: "#7c3aed",
+                badgeBg: "#f3e8ff",
+                badgeColor: "#6d28d9",
+                iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>`,
+                summary: "We avoid bias and ensure AI benefits everyone fairly.",
+                fullDetail: "Sourced directly from Policy §4.5 & §9. AI used in decisions affecting people — including hiring, performance evaluation, promotion, or compensation — must be checked for bias and must not be the sole basis for such decisions.",
+                keyTakeaways: [
+                    "HR & AI Steering Committee approval is mandatory prior to deploying any people-related AI tool.",
+                    "AI recommendations must be audited for disparate impact and gender/racial bias.",
+                    "Human decision-makers must independently review and sign off on all HR decisions."
+                ]
+            },
+            {
+                title: "6. Continuous Learning",
+                policyRef: "Policy Clause §4.6 & §12",
+                color: "#f59e0b",
+                badgeBg: "#fffbeb",
+                badgeColor: "#b45309",
+                iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>`,
+                summary: "We stay informed, build skills and improve our practices.",
+                fullDetail: "Sourced directly from Policy §4.6 & §12. The Company is committed to evolving its AI practices with technological and regulatory changes, and providing developmental opportunities for employees to upskill through onboarding training and refreshers.",
+                keyTakeaways: [
+                    "Participate in mandatory onboarding training and annual AI policy refresher courses.",
+                    "Proactively identify productivity improvements and share best practices with your team.",
+                    "Stay informed on approved tools register updates to leverage state-of-the-art AI safely."
+                ]
+            }
+        ];
+
+        function showPrincipleDetail(index) {
+            const data = principleData[index];
+            const box = document.getElementById('principleDetailBox');
+            if (!box || !data) return;
+
+            // Remove active class from all principle cards
+            for (let i = 0; i < 6; i++) {
+                const card = document.getElementById('principleCard-' + i);
+                if (card) card.classList.remove('active-card');
+            }
+
+            // Highlight selected card
+            const selectedCard = document.getElementById('principleCard-' + index);
+            if (selectedCard) selectedCard.classList.add('active-card');
+
+            const takeawaysHtml = data.keyTakeaways.map(t => `
+                <div class="takeaway-item">
+                    <span class="takeaway-bullet">✓</span>
+                    <span>${t}</span>
+                </div>
+            `).join('');
+
+            box.style.borderColor = data.color;
+            box.style.display = 'block';
+            box.innerHTML = `
+                <div class="principle-detail-header">
+                    <div class="principle-detail-title-group">
+                        <div class="principle-detail-icon" style="background: ${data.color};">
+                            ${data.iconSvg}
+                        </div>
+                        <div>
+                            <div class="principle-detail-title">${data.title}</div>
+                            <span class="principle-clause-badge" style="background: ${data.badgeBg}; color: ${data.badgeColor};">${data.policyRef}</span>
+                        </div>
+                    </div>
+                    <button class="detail-close-btn" onclick="closePrincipleDetail()" title="Close details">✕</button>
+                </div>
+                <div class="principle-detail-body" style="border-left-color: ${data.color};">
+                    <strong>Official Policy Rule:</strong> ${data.fullDetail}
+                </div>
+                <div>
+                    <div class="takeaways-heading">📌 Key Guidelines & Employee Responsibilities</div>
+                    ${takeawaysHtml}
+                </div>
+            `;
+
+            // Smooth scroll into detail view if offscreen
+            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function closePrincipleDetail() {
+            const box = document.getElementById('principleDetailBox');
+            if (box) box.style.display = 'none';
+            for (let i = 0; i < 6; i++) {
+                const card = document.getElementById('principleCard-' + i);
+                if (card) card.classList.remove('active-card');
+            }
         }
 
         // Close dropdown when clicking outside
