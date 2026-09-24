@@ -531,7 +531,7 @@ AI & Sensitive Information → `ai-sensitive-information.html`; Account & Passwo
 **FES-006** (M) **Email Breach Exposure Checker** SHALL:
 - Accept an email `#emailCheckInput`, trim and lowercase on submit (button or Enter key).
 - Validate format (contains `@` and a `.`); invalid → "⚠️ Please enter a valid email address…".
-- If the email matches a built-in test vector (`tharinduhero500@gmail.com`, `test@example.com`, `pwned@example.com`) → show "EXPOSED" result with breach tag chips and remediation list (no network call).
+- If the email matches a built-in test vector (`user@example.com`, `test@example.com`, `pwned@example.com`) → show "EXPOSED" result with breach tag chips and remediation list (no network call).
 - Otherwise query `https://api.xposedornot.com/v1/check-email/{email}`:
   - Breach(s) present → "EXPOSED IN N DATA BREACH(ES)" with up to 16 breach chips (+ "+N more" overflow), remediation list, and a "🌐 View Official HIBP Report" link to `https://haveibeenpwned.com/account/{email}`.
   - None → "🛡️ CLEAN IN PUBLIC APIS" with note that HIBP may hold additional private datasets plus a direct HIBP link.
