@@ -933,10 +933,12 @@
             justify-content: center;
         }
 
-        .ai-video-element {
+        .ai-video-element,
+        .sharepoint-embed-iframe {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border: none;
             display: block;
         }
 
@@ -1676,37 +1678,11 @@
         </div>
 
         <div class="video-player-container">
-            <video id="aiPolicyVideo" class="ai-video-element" autoplay loop muted playsinline poster="images/card-image-2.png">
-                <source src="https://midassafety.sharepoint.com/:v:/s/MidasSecurityHub/IQDqLwuP15YjQYtuo2cGx_dZAQUcPd1v8oZZZOLJP9A4QKo?download=1" type="video/mp4">
-                <source src="https://midassafety.sharepoint.com/:v:/s/MidasSecurityHub/IQDqLwuP15YjQYtuo2cGx_dZAQUcPd1v8oZZZOLJP9A4QKo?e=fD36HO" type="video/mp4">
-                Your browser does not support HTML5 video playback.
-            </video>
-
-            <!-- Video Overlay Control Bar -->
-            <div class="video-controls-overlay">
-                <div class="controls-left">
-                    <button id="videoPlayPauseBtn" class="video-ctrl-btn" onclick="toggleVideoPlayPause()" title="Play / Pause">
-                        <span id="playPauseIcon">⏸️</span>
-                    </button>
-
-                    <button id="videoAudioBtn" class="video-ctrl-btn audio-btn" onclick="toggleVideoAudio()" title="Mute / Unmute Audio">
-                        <span id="audioIcon">🔇</span>
-                        <span id="audioText">Muted (Click for Sound)</span>
-                    </button>
-                </div>
-
-                <div class="controls-right">
-                    <span id="videoTimeDisplay" class="video-time-text">0:00 / 1:30</span>
-                    <a href="https://midassafety.sharepoint.com/:v:/s/MidasSecurityHub/IQDqLwuP15YjQYtuo2cGx_dZAQUcPd1v8oZZZOLJP9A4QKo?e=fD36HO" target="_blank" rel="noopener noreferrer" class="video-ctrl-btn" style="text-decoration: none;" title="Open video in SharePoint Stream">
-                        <span>SharePoint Stream</span> ↗
-                    </a>
-                    <button class="video-ctrl-btn icon-only" onclick="toggleVideoFullscreen()" title="Fullscreen">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+            <iframe class="sharepoint-embed-iframe"
+                    src="https://midassafety.sharepoint.com/sites/MidasSecurityHub/_layouts/15/embed.aspx?UniqueId=IQDqLwuP15YjQYtuo2cGx_dZAQUcPd1v8oZZZOLJP9A4QKo&embed=%7B%22accessVersion%22%3A1%7D"
+                    width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen
+                    title="Midas Safety AI Policy Video - Responsible AI Overview">
+            </iframe>
         </div>
     </div>
 
