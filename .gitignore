@@ -19,3 +19,9 @@ Desktop.ini
 node_modules/
 test-results/
 playwright-report/
+
+# Sensitive Internal Docs & Assessments
+docs/SECURITY-ASSESSMENT.md
+docs/TEST-RESULTS.md
+docs/Midas Safety AI Policy_v1.md
+
