@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Security Toolkit | Midas Cyber Security Hub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-dark: #020617;
+            --blue: #2563eb;
+            --blue-hover: #1d4ed8;
+            --blue-light: #eff6ff;
+            --accent-teal: #00e6a8;
+            --emerald: #10b981;
+            --emerald-bg: #ecfdf5;
+            --amber: #f59e0b;
+            --amber-bg: #fffbeb;
+            --amber-border: #fef08a;
+            --amber-text: #854d0e;
+            --rose: #e11d48;
+            --rose-bg: #fff1f2;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #cbd5e1;
+            --border-light: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 24px 40px;
+            width: 100%;
+            max-width: 1680px;
+            margin: 0 auto;
+        }
+
+        /* Top Site Header */
+        .site-header-container {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 24px;
+            border: 1px solid #1e293b;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            position: relative;
+            z-index: 100;
+        }
+
+        .site-header-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 24px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 100px;
+            overflow: hidden;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .site-header-bg-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .site-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-logo-badge {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .site-title-text {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .site-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .nav-links-left {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ffffff;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .nav-item:hover .nav-dropdown,
+        .nav-item:focus-within .nav-dropdown,
+        .nav-item.open .nav-dropdown {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            display: block !important;
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 1000;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-link:hover,
+        .dropdown-link.active {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        .nav-actions-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-action-btn {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 14px 8px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-action-btn:hover {
+            color: #ffffff;
+        }
+
+        /* Hero Banner Section */
+        .toolkit-hero-card {
+            background: linear-gradient(135deg, #020617 0%, #0b192e 50%, #082f49 100%);
+            border-radius: 20px;
+            padding: 44px 48px;
+            margin-bottom: 24px;
+            border: 1px solid #1e293b;
+            box-shadow: 0 16px 36px rgba(2, 6, 23, 0.4);
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        .toolkit-hero-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 230, 168, 0.15) 0%, rgba(2, 6, 23, 0) 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 820px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        .hero-title span.title-green {
+            color: var(--accent-teal);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 12px;
+        }
+
+        .hero-description {
+            font-size: 0.98rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            max-width: 760px;
+        }
+
+        .handwritten-stamp {
+            position: absolute;
+            top: 36px;
+            right: 48px;
+            font-family: 'Caveat', cursive;
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #38bdf8;
+            transform: rotate(-6deg);
+            line-height: 1.1;
+            text-align: right;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Critical Warning Banner */
+        .toolkit-warning-card {
+            background: var(--amber-bg);
+            border: 1px solid var(--amber-border);
+            border-radius: var(--radius-md);
+            padding: 18px 24px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+        }
+
+        .warning-icon-box {
+            width: 38px;
+            height: 38px;
+            background: #f59e0b;
+            color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .warning-text {
+            font-size: 0.95rem;
+            color: #78350f;
+            line-height: 1.5;
+        }
+
+        .warning-text strong {
+            color: #92400e;
+            font-weight: 800;
+        }
+
+        /* Filter Controls & Search Bar */
+        .toolkit-controls-wrapper {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .search-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .search-input-box {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            color: #64748b;
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 18px 14px 48px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 0.96rem;
+            font-family: inherit;
+            color: var(--text-dark);
+            background: #f8fafc;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            background: #ffffff;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .category-select-dropdown {
+            padding: 14px 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            font-weight: 700;
+            font-family: inherit;
+            color: var(--primary);
+            background: #ffffff;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .category-select-dropdown:hover {
+            border-color: #94a3b8;
+            background: #f8fafc;
+        }
+
+        /* Filter Pills Row */
+        .filter-pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-pill {
+            background: #f1f5f9;
+            color: var(--text-muted);
+            border: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .filter-pill:hover {
+            background: #e2e8f0;
+            color: var(--primary);
+        }
+
+        .filter-pill.active {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+        }
+
+        /* Quick Scenarios Section */
+        .quick-scenarios-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            padding: 24px 28px;
+            margin-bottom: 36px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .scenarios-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .scenarios-header-icon {
+            font-size: 1.5rem;
+        }
+
+        .scenarios-title-box h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .scenarios-title-box p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .scenario-item-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 14px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .scenario-item-card:hover {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .scenario-top-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: #eff6ff;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .scenario-item-card:nth-child(2) .scenario-top-icon { background: #ecfdf5; color: #10b981; }
+        .scenario-item-card:nth-child(3) .scenario-top-icon { background: #fffbeb; color: #d97706; }
+        .scenario-item-card:nth-child(4) .scenario-top-icon { background: #f3e8ff; color: #9333ea; }
+        .scenario-item-card:nth-child(5) .scenario-top-icon { background: #f0fdf4; color: #16a34a; }
+
+        .scenario-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.35;
+        }
+
+        .scenario-tool-link {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .scenario-item-card:hover .scenario-tool-link {
+            color: var(--blue-hover);
+            text-decoration: underline;
+        }
+
+        /* Categorized Tools Layout Grid - 3 Column Responsive Cards Grid */
+        .toolkit-categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (min-width: 1200px) {
+            .toolkit-categories-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .category-block {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+            overflow: hidden;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .category-block:hover {
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+            transform: translateY(-2px);
+            border-color: #94a3b8;
+        }
+
+        .category-header-banner {
+            padding: 16px 22px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.12rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        /* Distinct Category Banner Color Accents */
+        .cat-pwd-mgr .category-header-banner { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); }
+        .cat-breach .category-header-banner { background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%); }
+        .cat-malware .category-header-banner { background: linear-gradient(135deg, #4338ca 0%, #6366f1 100%); }
+        .cat-phishing .category-header-banner { background: linear-gradient(135deg, #be123c 0%, #e11d48 100%); }
+        .cat-header-analysis .category-header-banner { background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%); }
+        .cat-unshortener .category-header-banner { background: linear-gradient(135deg, #0e7490 0%, #06b6d4 100%); }
+        .cat-domain .category-header-banner { background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%); }
+        .cat-2fa .category-header-banner { background: linear-gradient(135deg, #047857 0%, #10b981 100%); }
+        .cat-reverse-img .category-header-banner { background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%); }
+
+        .category-header-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-tools-list {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex: 1;
+            background: #fafbfc;
+        }
+
+        /* Inner Tool Source Card */
+        .tool-item-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+        }
+
+        .tool-item-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 6px 14px rgba(15, 23, 42, 0.07);
+            background: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .tool-left-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .tool-logo-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .tool-details h4 {
+            font-size: 1.02rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.25;
+        }
+
+        .tool-domain-text {
+            font-size: 0.82rem;
+            color: #2563eb;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .tool-domain-text:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .tool-desc-text {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            line-height: 1.45;
+        }
+
+        .tool-right-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            width: 100%;
+            margin-top: 4px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .when-to-use-badge {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .when-to-use-badge .badge-label {
+            background: #10b981;
+            color: #ffffff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .open-tool-btn {
+            background: var(--blue);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.86rem;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .open-tool-btn:hover {
+            background: var(--blue-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Footer Section */
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-top: 48px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            object-fit: contain;
+        }
+
+        .brand-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title-main {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .brand-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-top: 6px;
+        }
+
+        .tagline-line {
+            height: 2px;
+            width: 20px;
+            background-color: #f59e0b;
+        }
+
+        .contact-red-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e11d48;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 8px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+        }
+
+        .contact-red-btn:hover {
+            background-color: #be123c;
+            transform: translateY(-1px);
+        }
+
+        .soc-card {
+            background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
+            border: 1px solid #1e3a5f;
+            border-radius: 14px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            flex: 1.3;
+            min-width: 280px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .soc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30%;
+            right: 30%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .soc-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #040c1a;
+            border: 1px solid #1e3a5f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .soc-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .soc-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .soc-subtext {
+            font-size: 0.88rem;
+            color: #94a3b8;
+        }
+
+        .soc-email-link {
+            color: #38bdf8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .soc-email-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            body { padding: 16px; }
+            .toolkit-hero-card { padding: 32px 24px; }
+            .hero-title { font-size: 2.2rem; }
+            .handwritten-stamp { display: none; }
+            .tool-item-card { flex-direction: column; align-items: flex-start; }
+            .tool-right-action { width: 100%; justify-content: space-between; margin-top: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation Container -->
+    <div class="site-header-container">
+        <div class="site-header-banner">
+            <div class="site-brand">
+                <div class="brand-logo-badge">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo" style="width: 52px; height: 52px; object-fit: contain;">
+                </div>
+                <h1 class="site-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <!-- Sub-Navigation Bar -->
+        <nav class="site-navbar">
+            <div class="nav-links-left">
+                <div class="nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="nav-link">Home</a>
+                </div>
+
+                <!-- Topics Dropdown -->
+                <div class="nav-item">
+                    <button class="nav-link active" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="security-toolkit.html" class="dropdown-link active">🛠️ Employee Security Toolkit</a>
+                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="dropdown-link">📱 Device Security</a>
+                        <a href="email-security.html" class="dropdown-link">📧 Email & Phishing</a>
+                        <a href="physical-security.html" class="dropdown-link">🏢 Physical Security</a>
+                        <a href="remote-wifi-security.html" class="dropdown-link">🌐 Remote / Wi-Fi Security</a>
+                        <a href="ai-sensitive-information.html" class="dropdown-link">🤖 AI & Sensitive Information</a>
+                        <a href="index.html#policies" class="dropdown-link">📜 Security Policies</a>
+                        <a href="faq.html" class="dropdown-link">❓ FAQ</a>
+                        <a href="security-tips.html" class="dropdown-link">📋 SOPS</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a href="index.html#policies" class="nav-link">Policies</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="index.html#news" class="nav-link">News</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                </div>
+
+                <!-- Resources Dropdown -->
+                <div class="nav-item">
+                    <button class="nav-link" type="button">
+                        Resources
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="security-toolkit.html" class="dropdown-link active">🛠️ Employee Security Toolkit</a>
+                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase Strength Evaluator</a>
+                        <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
+                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident Report</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security Incident Report</a>
+                </div>
+            </div>
+
+            <div class="nav-actions-right">
+                <button class="nav-action-btn" onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                    <span id="favText">Add to favorites</span>
+                </button>
+                <button class="nav-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    Site access
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Banner -->
+    <div class="toolkit-hero-card">
+        <div class="hero-content">
+            <h1 class="hero-title">Employee Security <span class="title-green">Toolkit</span></h1>
+            <div class="hero-subtitle">Simple, free tools to help you spot, check and stay safer online.</div>
+            <p class="hero-description">
+                These are free, publicly available tools you can use for basic self-checks on suspicious emails, links, files and passwords. They're not a replacement for IT — just a quick way to get peace of mind.
+            </p>
+        </div>
+        <div class="handwritten-stamp">
+            Be alert.<br>Stay safe.
+        </div>
+    </div>
+
+    <!-- Warning Callout Banner -->
+    <div class="toolkit-warning-card">
+        <div class="warning-icon-box">⚠️</div>
+        <div class="warning-text">
+            <strong>Never paste passwords, internal documents, or confidential files into these public tools</strong> — some make submissions visible to their security community. Use them only for things that are fine to be semi-public (e.g., a suspicious link), and when in doubt, contact IT/Security.
+        </div>
+    </div>
+
+    <!-- Filter Controls Bar -->
+    <div class="toolkit-controls-wrapper">
+        <div class="search-row">
+            <div class="search-input-box">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search tools... (e.g., &quot;password&quot;, &quot;virus&quot;, &quot;url&quot;)" oninput="filterTools()">
+            </div>
+            <button class="category-select-dropdown" type="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <span>All Categories</span>
+            </button>
+        </div>
+
+        <div class="filter-pills-row">
+            <button class="filter-pill active" onclick="setCategoryFilter('all', this)">All</button>
+            <button class="filter-pill" onclick="setCategoryFilter('password-managers', this)">Password Managers</button>
+            <button class="filter-pill" onclick="setCategoryFilter('breach-checkers', this)">Breach & Leak Checkers</button>
+            <button class="filter-pill" onclick="setCategoryFilter('malware-scanning', this)">File & Malware Scanning</button>
+            <button class="filter-pill" onclick="setCategoryFilter('url-phishing', this)">URL & Phishing Checkers</button>
+            <button class="filter-pill" onclick="setCategoryFilter('email-header', this)">Email Header Analysis</button>
+            <button class="filter-pill" onclick="setCategoryFilter('unshorteners', this)">Link Un-shorteners</button>
+            <button class="filter-pill" onclick="setCategoryFilter('domain-trust', this)">Domain & Website Trust Checks</button>
+            <button class="filter-pill" onclick="setCategoryFilter('2fa-apps', this)">Two-Factor Authentication Apps</button>
+            <button class="filter-pill" onclick="setCategoryFilter('reverse-image', this)">Reverse Image Search</button>
+        </div>
+    </div>
+
+    <!-- Quick Scenarios Section -->
+    <div class="quick-scenarios-card">
+        <div class="scenarios-header">
+            <span class="scenarios-header-icon">💡</span>
+            <div class="scenarios-title-box">
+                <h3>Quick Scenarios</h3>
+                <p>A few common situations — and the right tool to use.</p>
+            </div>
+        </div>
+
+        <div class="scenarios-grid">
+            <a href="#tool-virustotal" class="scenario-item-card">
+                <div class="scenario-top-icon">📎</div>
+                <div class="scenario-title">Got a suspicious attachment?</div>
+                <div class="scenario-tool-link">➔ VirusTotal</div>
+            </a>
+
+            <a href="#tool-urlscan" class="scenario-item-card">
+                <div class="scenario-top-icon">🔗</div>
+                <div class="scenario-title">Got a weird link?</div>
+                <div class="scenario-tool-link">➔ urlscan.io</div>
+            </a>
+
+            <a href="#tool-hibp" class="scenario-item-card">
+                <div class="scenario-top-icon">✉️</div>
+                <div class="scenario-title">Wondering if your email was breached?</div>
+                <div class="scenario-tool-link">➔ Have I Been Pwned</div>
+            </a>
+
+            <a href="#tool-mxtoolbox" class="scenario-item-card">
+                <div class="scenario-top-icon">📧</div>
+                <div class="scenario-title">Email looks spoofed?</div>
+                <div class="scenario-tool-link">➔ MXToolbox Header Analyzer</div>
+            </a>
+
+            <a href="#tool-bitwarden" class="scenario-item-card">
+                <div class="scenario-top-icon">🔒</div>
+                <div class="scenario-title">Need stronger passwords?</div>
+                <div class="scenario-tool-link">➔ Bitwarden + Authenticator app</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Categorized Tools Grid -->
+    <div class="toolkit-categories-container" id="toolkitContainer">
+
+        <!-- 1. Password Managers -->
+        <div class="category-block cat-pwd-mgr" data-category="password-managers">
+            <div class="category-header-banner">
+                <div class="category-header-icon">🔑</div>
+                <span>Password Managers</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- Bitwarden -->
+                <div class="tool-item-card" id="tool-bitwarden" data-tags="password vault manager security bitwarden">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #1e3a8a;">🛡️</div>
+                        <div class="tool-details">
+                            <h4>Bitwarden</h4>
+                            <a href="https://bitwarden.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">bitwarden.com</a>
+                            <p class="tool-desc-text">Free password manager with browser extensions and apps; generates and stores unique passwords per site.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Set up and manage your passwords.</span>
+                        </div>
+                        <a href="https://bitwarden.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- KeePass / KeePassXC -->
+                <div class="tool-item-card" id="tool-keepass" data-tags="keepass keepassxc vault offline open source password">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #0d9488;">🔒</div>
+                        <div class="tool-details">
+                            <h4>KeePass / KeePassXC</h4>
+                            <a href="https://keepass.info" target="_blank" rel="noopener noreferrer" class="tool-domain-text">keepass.info</a>
+                            <p class="tool-desc-text">Free, offline, open-source password vault stored locally on your device.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Store sensitive passwords safely.</span>
+                        </div>
+                        <a href="https://keepass.info" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- 1Password -->
+                <div class="tool-item-card" id="tool-1password" data-tags="1password manager enterprise company vault">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #2563eb;">1P</div>
+                        <div class="tool-details">
+                            <h4>1Password</h4>
+                            <a href="https://1password.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">1password.com</a>
+                            <p class="tool-desc-text">Paid, but mention if company already provides licenses.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Use if your company has a license.</span>
+                        </div>
+                        <a href="https://1password.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Breach & Leak Checkers -->
+        <div class="category-block cat-breach" data-category="breach-checkers">
+            <div class="category-header-banner">
+                <div class="category-header-icon">🗄️</div>
+                <span>Breach & Leak Checkers</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- Have I Been Pwned -->
+                <div class="tool-item-card" id="tool-hibp" data-tags="hibp pwned breach email leak haveibeenpwned">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #0d9488;">';</div>
+                        <div class="tool-details">
+                            <h4>Have I Been Pwned</h4>
+                            <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">haveibeenpwned.com</a>
+                            <p class="tool-desc-text">Check if your email or passwords appeared in a known data breach. Free, doesn't store your searches.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check for data breaches.</span>
+                        </div>
+                        <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Google Password Checkup -->
+                <div class="tool-item-card" id="tool-google-checkup" data-tags="google chrome password checkup saved weak breached">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #ea4335;">G</div>
+                        <div class="tool-details">
+                            <h4>Google Password Checkup</h4>
+                            <a href="https://passwords.google.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">passwords.google.com</a>
+                            <p class="tool-desc-text">Built into Chrome; flags reused, weak, or breached saved passwords.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check your saved passwords.</span>
+                        </div>
+                        <a href="https://passwords.google.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Mozilla Monitor -->
+                <div class="tool-item-card" id="tool-firefox-monitor" data-tags="mozilla firefox monitor breach alerts exposures">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #9333ea;">M</div>
+                        <div class="tool-details">
+                            <h4>Mozilla Monitor</h4>
+                            <a href="https://monitor.mozilla.org" target="_blank" rel="noopener noreferrer" class="tool-domain-text">monitor.mozilla.org</a>
+                            <p class="tool-desc-text">Breach monitoring with alerts for new exposures.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Get alerts for new breaches.</span>
+                        </div>
+                        <a href="https://monitor.mozilla.org" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. File & Malware Scanning -->
+        <div class="category-block cat-malware" data-category="malware-scanning">
+            <div class="category-header-banner">
+                <div class="category-header-icon">🛡️</div>
+                <span>File & Malware Scanning</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- VirusTotal -->
+                <div class="tool-item-card" id="tool-virustotal" data-tags="virustotal scan file malware virus attachment link">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #2563eb;">Σ</div>
+                        <div class="tool-details">
+                            <h4>VirusTotal</h4>
+                            <a href="https://virustotal.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">virustotal.com</a>
+                            <p class="tool-desc-text">Scan a suspicious file or link against dozens of antivirus engines at once.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check files or links for malware.</span>
+                        </div>
+                        <a href="https://virustotal.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Sucuri SiteCheck -->
+                <div class="tool-item-card" id="tool-sucuri" data-tags="sucuri sitecheck website malware blacklist scanner">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #059669;">S</div>
+                        <div class="tool-details">
+                            <h4>Sucuri SiteCheck</h4>
+                            <a href="https://sitecheck.sucuri.net" target="_blank" rel="noopener noreferrer" class="tool-domain-text">sitecheck.sucuri.net</a>
+                            <p class="tool-desc-text">Free malware/blacklist scanner for websites.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check if a website is safe.</span>
+                        </div>
+                        <a href="https://sitecheck.sucuri.net" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. URL & Phishing Checkers -->
+        <div class="category-block cat-phishing" data-category="url-phishing">
+            <div class="category-header-banner">
+                <div class="category-header-icon">🔗</div>
+                <span>URL & Phishing Checkers</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- urlscan.io -->
+                <div class="tool-item-card" id="tool-urlscan" data-tags="urlscan sandbox link URL phishing screenshot">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #e11d48;">U</div>
+                        <div class="tool-details">
+                            <h4>urlscan.io</h4>
+                            <a href="https://urlscan.io" target="_blank" rel="noopener noreferrer" class="tool-domain-text">urlscan.io</a>
+                            <p class="tool-desc-text">Scans a URL in a sandboxed browser and shows what it actually does (screenshot, requests, redirects).</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check suspicious links.</span>
+                        </div>
+                        <a href="https://urlscan.io" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Google Safe Browsing -->
+                <div class="tool-item-card" id="tool-google-safebrowsing" data-tags="google safe browsing transparency report unsafe site">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #ea4335;">G</div>
+                        <div class="tool-details">
+                            <h4>Google Safe Browsing Transparency Report</h4>
+                            <a href="https://transparencyreport.google.com/safe-browsing/search" target="_blank" rel="noopener noreferrer" class="tool-domain-text">transparencyreport.google.com</a>
+                            <p class="tool-desc-text">Check if Google has flagged a site as unsafe.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Verify site safety.</span>
+                        </div>
+                        <a href="https://transparencyreport.google.com/safe-browsing/search" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- PhishTank -->
+                <div class="tool-item-card" id="tool-phishtank" data-tags="phishtank database confirmed phishing url link">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #f59e0b;">🐟</div>
+                        <div class="tool-details">
+                            <h4>PhishTank</h4>
+                            <a href="https://phishtank.org" target="_blank" rel="noopener noreferrer" class="tool-domain-text">phishtank.org</a>
+                            <p class="tool-desc-text">Community database of confirmed phishing URLs.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check if a link is a known phishing URL.</span>
+                        </div>
+                        <a href="https://phishtank.org" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- URLVoid -->
+                <div class="tool-item-card" id="tool-urlvoid" data-tags="urlvoid blacklist reputation threat intel">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #2563eb;">V</div>
+                        <div class="tool-details">
+                            <h4>URLVoid</h4>
+                            <a href="https://urlvoid.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">urlvoid.com</a>
+                            <p class="tool-desc-text">Reputation/blacklist check across multiple threat-intel sources.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check URL reputation.</span>
+                        </div>
+                        <a href="https://urlvoid.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Norton Safe Web -->
+                <div class="tool-item-card" id="tool-norton" data-tags="norton safe web score reputation site">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #eab308;">N</div>
+                        <div class="tool-details">
+                            <h4>Norton Safe Web</h4>
+                            <a href="https://safeweb.norton.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">safeweb.norton.com</a>
+                            <p class="tool-desc-text">Reputation-based site safety score, no subscription needed.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check site safety score.</span>
+                        </div>
+                        <a href="https://safeweb.norton.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Email Header Analysis -->
+        <div class="category-block cat-header-analysis" data-category="email-header">
+            <div class="category-header-banner">
+                <div class="category-header-icon">📧</div>
+                <span>Email Header Analysis</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- MXToolbox Email Header Analyzer -->
+                <div class="tool-item-card" id="tool-mxtoolbox" data-tags="mxtoolbox email header analyzer spf dkim dmarc spoof sender">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #0284c7;">MX</div>
+                        <div class="tool-details">
+                            <h4>MXToolbox Email Header Analyzer</h4>
+                            <a href="https://mxtoolbox.com/EmailHeaders.aspx" target="_blank" rel="noopener noreferrer" class="tool-domain-text">mxtoolbox.com/EmailHeaders.aspx</a>
+                            <p class="tool-desc-text">Reveals the real sending server behind an email.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check if an email is genuine.</span>
+                        </div>
+                        <a href="https://mxtoolbox.com/EmailHeaders.aspx" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Google Admin Toolbox Message Header Analyzer -->
+                <div class="tool-item-card" id="tool-google-header" data-tags="google admin toolbox message header analyzer email">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #2563eb;">G</div>
+                        <div class="tool-details">
+                            <h4>Google Admin Toolbox Message Header Analyzer</h4>
+                            <a href="https://toolbox.googleapps.com/apps/messageheader" target="_blank" rel="noopener noreferrer" class="tool-domain-text">toolbox.googleapps.com/apps/messageheader</a>
+                            <p class="tool-desc-text">Same purpose, Google's version.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check email headers.</span>
+                        </div>
+                        <a href="https://toolbox.googleapps.com/apps/messageheader" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Link Un-shorteners -->
+        <div class="category-block cat-unshortener" data-category="unshorteners">
+            <div class="category-header-banner">
+                <div class="category-header-icon">⛓️</div>
+                <span>Link Un-shorteners</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- CheckShortURL -->
+                <div class="tool-item-card" id="tool-checkshorturl" data-tags="checkshorturl unshorten expand bitly t.co tinyurl link">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #0891b2;">🔗</div>
+                        <div class="tool-details">
+                            <h4>CheckShortURL</h4>
+                            <a href="https://checkshorturl.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">checkshorturl.com</a>
+                            <p class="tool-desc-text">Expands shortened links to show the real URL.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>See the real destination.</span>
+                        </div>
+                        <a href="https://checkshorturl.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Unshorten.it -->
+                <div class="tool-item-card" id="tool-unshortenit" data-tags="unshorten.it unshorten expand short url link">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #0284c7;">U</div>
+                        <div class="tool-details">
+                            <h4>Unshorten.it</h4>
+                            <a href="https://unshorten.it" target="_blank" rel="noopener noreferrer" class="tool-domain-text">unshorten.it</a>
+                            <p class="tool-desc-text">Expands shortened links to show the real URL.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>See the real destination.</span>
+                        </div>
+                        <a href="https://unshorten.it" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Domain & Website Trust Checks -->
+        <div class="category-block cat-domain" data-category="domain-trust">
+            <div class="category-header-banner">
+                <div class="category-header-icon">🌐</div>
+                <span>Domain & Website Trust Checks</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- WHOIS Lookup -->
+                <div class="tool-item-card" id="tool-whois" data-tags="whois domain lookup age owner registrar website">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #1d4ed8;">W</div>
+                        <div class="tool-details">
+                            <h4>WHOIS Lookup</h4>
+                            <a href="https://who.is" target="_blank" rel="noopener noreferrer" class="tool-domain-text">who.is</a>
+                            <p class="tool-desc-text">See how old a domain is and who registered it.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check domain age/ownership.</span>
+                        </div>
+                        <a href="https://who.is" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- SSL Labs Server Test -->
+                <div class="tool-item-card" id="tool-ssllabs" data-tags="ssllabs ssl tls https certificate test security grade">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #2563eb;">🔒</div>
+                        <div class="tool-details">
+                            <h4>SSL Labs Server Test</h4>
+                            <a href="https://ssllabs.com/ssltest" target="_blank" rel="noopener noreferrer" class="tool-domain-text">ssllabs.com/ssltest</a>
+                            <p class="tool-desc-text">Checks if a site's HTTPS setup is legitimate.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check for valid HTTPS.</span>
+                        </div>
+                        <a href="https://ssllabs.com/ssltest" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- ScamAdviser -->
+                <div class="tool-item-card" id="tool-scamadviser" data-tags="scamadviser trust score shopping business website scam">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #dc2626;">S</div>
+                        <div class="tool-details">
+                            <h4>ScamAdviser</h4>
+                            <a href="https://scamadviser.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">scamadviser.com</a>
+                            <p class="tool-desc-text">Trust score for unfamiliar shopping/business sites.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check site trust score.</span>
+                        </div>
+                        <a href="https://scamadviser.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Two-Factor Authentication Apps -->
+        <div class="category-block cat-2fa" data-category="2fa-apps">
+            <div class="category-header-banner">
+                <div class="category-header-icon">📱</div>
+                <span>Two-Factor Authentication Apps</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- Google Authenticator -->
+                <div class="tool-item-card" id="tool-google-auth" data-tags="google authenticator 2fa mfa otp security app">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #4285f4;">G</div>
+                        <div class="tool-details">
+                            <h4>Google Authenticator</h4>
+                            <a href="https://google.com/landing/2step" target="_blank" rel="noopener noreferrer" class="tool-domain-text">google.com</a>
+                            <p class="tool-desc-text">Free app generating 2FA login codes for mobile devices.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Enable 2FA for your accounts.</span>
+                        </div>
+                        <a href="https://google.com/landing/2step" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Microsoft Authenticator -->
+                <div class="tool-item-card" id="tool-ms-auth" data-tags="microsoft authenticator 2fa mfa otp azure app">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #0078d4;">M</div>
+                        <div class="tool-details">
+                            <h4>Microsoft Authenticator</h4>
+                            <a href="https://www.microsoft.com/en-us/security/mobile-authenticator-app" target="_blank" rel="noopener noreferrer" class="tool-domain-text">microsoft.com</a>
+                            <p class="tool-desc-text">Free app generating 2FA login codes and push notifications.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Enable 2FA for your accounts.</span>
+                        </div>
+                        <a href="https://www.microsoft.com/en-us/security/mobile-authenticator-app" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- Authy -->
+                <div class="tool-item-card" id="tool-authy" data-tags="authy twilio 2fa mfa backup sync app">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #ec4899;">A</div>
+                        <div class="tool-details">
+                            <h4>Authy</h4>
+                            <a href="https://authy.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">authy.com</a>
+                            <p class="tool-desc-text">Free app generating 2FA login codes with multi-device backup sync.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Enable 2FA for your accounts.</span>
+                        </div>
+                        <a href="https://authy.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Reverse Image Search -->
+        <div class="category-block cat-reverse-img" data-category="reverse-image">
+            <div class="category-header-banner">
+                <div class="category-header-icon">📷</div>
+                <span>Reverse Image Search</span>
+            </div>
+            <div class="category-tools-list">
+                <!-- Google Reverse Image Search -->
+                <div class="tool-item-card" id="tool-google-img" data-tags="google reverse image search photo fake reused check">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #ea4335;">G</div>
+                        <div class="tool-details">
+                            <h4>Google Reverse Image Search</h4>
+                            <a href="https://images.google.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">images.google.com</a>
+                            <p class="tool-desc-text">Find where an image appears online.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check if an image is real or reused.</span>
+                        </div>
+                        <a href="https://images.google.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+
+                <!-- TinEye -->
+                <div class="tool-item-card" id="tool-tineye" data-tags="tineye reverse image search photo authenticity source">
+                    <div class="tool-left-info">
+                        <div class="tool-logo-badge" style="color: #0284c7;">T</div>
+                        <div class="tool-details">
+                            <h4>TinEye</h4>
+                            <a href="https://tineye.com" target="_blank" rel="noopener noreferrer" class="tool-domain-text">tineye.com</a>
+                            <p class="tool-desc-text">Find similar images and their sources.</p>
+                        </div>
+                    </div>
+                    <div class="tool-right-action">
+                        <div class="when-to-use-badge">
+                            <span class="badge-label">When to use</span>
+                            <span>Check image authenticity.</span>
+                        </div>
+                        <a href="https://tineye.com" target="_blank" rel="noopener noreferrer" class="open-tool-btn">Open Tool ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="midas-footer-container">
+        <div class="footer-main-flex">
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo" class="footer-logo-svg">
+                    <div class="brand-title-group">
+                        <span class="brand-title-main">MIDAS CYBER</span>
+                        <span class="brand-title-sub">SECURITY HUB</span>
+                    </div>
+                </div>
+                <div class="brand-tagline">
+                    <div class="tagline-line"></div>
+                    <span>PROTECTING OUR PEOPLE, DATA AND OPERATIONS GLOBALLY</span>
+                </div>
+                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="contact-red-btn">
+                    🚨 REPORT AN INCIDENT NOW
+                </a>
+            </div>
+
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <div class="soc-content">
+                    <span class="soc-title">Need IT or SOC Support?</span>
+                    <span class="soc-subtext">Contact Midas Cyber Intelligence Center (CIC)</span>
+                    <a href="mailto:cic@midassafety.com" class="soc-email-link">📧 cic@midassafety.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Search & Filtering Logic -->
+    <script>
+        let currentCategory = 'all';
+
+        function setCategoryFilter(category, btnElement) {
+            currentCategory = category;
+
+            // Update active state on filter pills
+            const pills = document.querySelectorAll('.filter-pill');
+            pills.forEach(p => p.classList.remove('active'));
+            if (btnElement) {
+                btnElement.classList.add('active');
+            }
+
+            filterTools();
+        }
+
+        function filterTools() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+            const categoryBlocks = document.querySelectorAll('.category-block');
+
+            categoryBlocks.forEach(block => {
+                const blockCat = block.getAttribute('data-category');
+                const tools = block.querySelectorAll('.tool-item-card');
+                let hasVisibleToolsInBlock = false;
+
+                // Check category filter
+                const matchesCategory = (currentCategory === 'all' || currentCategory === blockCat);
+
+                tools.forEach(tool => {
+                    const title = tool.querySelector('h4') ? tool.querySelector('h4').innerText.toLowerCase() : '';
+                    const desc = tool.querySelector('.tool-desc-text') ? tool.querySelector('.tool-desc-text').innerText.toLowerCase() : '';
+                    const tags = tool.getAttribute('data-tags') ? tool.getAttribute('data-tags').toLowerCase() : '';
+
+                    const matchesSearch = query === '' || title.includes(query) || desc.includes(query) || tags.includes(query);
+
+                    if (matchesCategory && matchesSearch) {
+                        tool.style.display = 'flex';
+                        hasVisibleToolsInBlock = true;
+                    } else {
+                        tool.style.display = 'none';
+                    }
+                });
+
+                if (hasVisibleToolsInBlock) {
+                    block.style.display = 'block';
+                } else {
+                    block.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
