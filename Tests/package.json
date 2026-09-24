@@ -1,0 +1,13 @@
+{
+  "name": "midas-cyber-awareness-security-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated Playwright test suite for the Midas Cyber Awareness & Security Hub (static intranet security-education site). Requirement traceability: docs/SRS-Midas-Cyber-Awareness-Security-Hub.md",
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}
