@@ -622,6 +622,161 @@
                 width: 100%;
             }
         }
+
+        /* ========================================================= */
+        /* RESPONSIVE: Mobile & Tablet Layout                         */
+        /* ========================================================= */
+
+        /* Navbar: stacked wrap layout once the horizontal bar would overflow */
+        @media (max-width: 1120px) {
+            .site-navbar,
+            .header-navbar {
+                padding: 8px 14px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .nav-links-left,
+            .header-nav-links {
+                flex-wrap: wrap;
+                gap: 2px 0;
+                width: 100%;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-link,
+            .header-nav-link {
+                padding: 10px 12px;
+                font-size: 0.86rem;
+            }
+
+            .nav-item,
+            .header-nav-item {
+                position: static;
+            }
+
+            .nav-dropdown,
+            .header-dropdown {
+                display: none;
+                position: static;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+                margin: 2px 0 10px 0;
+                transform: none;
+            }
+
+            .nav-actions-right,
+            .header-actions-right {
+                justify-content: space-between;
+                width: 100%;
+                padding-top: 6px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        /* Phone layout */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+                overflow-x: hidden;
+            }
+
+            .site-header-banner,
+            .header-top-banner {
+                padding: 16px 16px;
+                min-height: 0;
+            }
+
+            .site-title-text,
+            .header-title-text {
+                font-size: 1.05rem;
+            }
+
+            .brand-logo-badge img,
+            .header-logo-svg {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .banner-card {
+                padding: 24px 20px;
+                gap: 16px;
+            }
+
+            .banner-title {
+                font-size: 1.7rem;
+            }
+
+            .banner-subtitle {
+                font-size: 0.92rem;
+            }
+
+            .jump-nav-card {
+                padding: 12px 14px;
+            }
+
+            .jump-label {
+                width: 100%;
+            }
+
+            .jump-btn {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+
+            .platform-section {
+                padding: 20px 16px;
+            }
+
+            .platform-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .platform-title-group {
+                gap: 12px;
+            }
+
+            .platform-title-group h2 {
+                font-size: 1.25rem;
+            }
+
+            .platform-icon-wrapper {
+                width: 44px;
+                height: 44px;
+            }
+
+            .section-badge {
+                align-self: flex-start;
+            }
+
+            .step-row {
+                padding: 16px 14px;
+                gap: 14px;
+            }
+
+            .step-icon-bg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .step-text-title {
+                font-size: 0.98rem;
+            }
+
+            .step-text-desc {
+                font-size: 0.86rem;
+            }
+
+            .step-tip-box {
+                font-size: 0.82rem;
+                padding: 10px 12px;
+            }
+        }
     </style>
 </head>
 
@@ -931,11 +1086,7 @@
                     </div>
                 </div>
 
-                <div class="nav-item">
-                    <a href="external-incident-reporting.html" class="nav-link" style="color: #38bdf8;">Security
-                        Incident Report</a>
                 </div>
-            </div>
 
             <div class="nav-actions-right">
                 <button class="nav-action-btn"

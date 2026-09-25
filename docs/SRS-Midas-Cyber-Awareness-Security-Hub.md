@@ -345,8 +345,8 @@ Each subsection below lists the module's responsibilities stated as testable req
 
 ### 4.1 Site-Wide Global Navigation & Shared UI (FND)
 
-**FND-001** (M) The site SHALL render a consistent header on every page consisting of: brand logo (`images/SOC logo.png`), title "Midas Cyber Awareness & Security Hub", and a navigation bar with **Home**, **Topics (dropdown)**, **Policies**, **News**, **FAQ**, **Resources (dropdown)**, and a prominent **Security Incident Report** link.
-- *Current behavior:* Topics dropdown links to all topic pages plus Policies, FAQ, SOPS; Resources dropdown links to the Passphrase Evaluator, Readiness Checklist, and Quick Incident Report; the Incident Report link is highlighted cyan `#38bdf8`.
+**FND-001** (M) The site SHALL render a consistent header on every page consisting of: brand logo (`images/SOC logo.png`), title "Midas Cyber Awareness & Security Hub", and a navigation bar with **Home**, **Topics (dropdown)**, **Policies**, **News**, **FAQ**, and **Resources (dropdown)**.
+- *Current behavior:* Topics dropdown links to all topic pages plus Policies, FAQ, SOPS; Resources dropdown links to the Passphrase Evaluator, Readiness Checklist, and Quick Incident Report.
 
 **FND-002** (M) The Topics dropdown SHALL contain the following items with their targets:
 AI & Sensitive Information → `ai-sensitive-information.html`; Account & Password Security → `account-password-security.html`; Device Security → `device-security.html`; Email & Phishing → `email-security.html`; Physical Security → `physical-security.html`; Remote / Wi-Fi Security → `remote-wifi-security.html`; Security Policies → `index.html#policies`; FAQ → `faq.html`; SOPS → `security-tips.html`.

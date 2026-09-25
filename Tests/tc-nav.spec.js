@@ -15,7 +15,7 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     await expect(navbar).toContainText('Policies');
     await expect(navbar).toContainText('News');
     await expect(navbar).toContainText('FAQ');
-    await expect(navbar.locator('a.nav-link[href="external-incident-reporting.html"]')).toBeVisible();
+    await expect(navbar.locator('a.nav-link[href="external-incident-reporting.html"]')).toHaveCount(0);
   });
 
   test('TC-NAV-02 (FND-002) Topics dropdown exposes all expected links', async ({ page }) => {
@@ -24,6 +24,7 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     await topics.getByRole('button').hover();
     const links = topics.locator('.nav-dropdown a.dropdown-link');
     const expected = [
+      ['security-toolkit.html', /Employee Security Toolkit/],
       ['ai-sensitive-information.html', /AI & Sensitive Information/],
       ['account-password-security.html', /Account & Password\s+Security/],
       ['device-security.html', /Device Security/],
