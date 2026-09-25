@@ -169,13 +169,21 @@
             border-radius: 3px 3px 0 0;
         }
 
-        .nav-item:hover .nav-dropdown,
         .nav-item:focus-within .nav-dropdown,
         .nav-item.open .nav-dropdown {
             opacity: 1 !important;
             visibility: visible !important;
             transform: translateY(0) !important;
             display: block !important;
+        }
+
+        @media (hover: hover) {
+            .nav-item:hover .nav-dropdown {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) !important;
+                display: block !important;
+            }
         }
 
         .nav-dropdown {
@@ -1059,6 +1067,10 @@
             }
         }
 
+        .layer3-cards-row>* {
+            min-width: 0;
+        }
+
         /* Card 1: Information Classification */
         .classification-section-wrapper {
             background: #ffffff;
@@ -1494,6 +1506,181 @@
             font-size: 0.75rem;
             color: #64748b;
             text-align: center;
+        }
+
+        /* ========================================================= */
+        /* RESPONSIVE / MOBILE LAYOUT                                  */
+        /* ========================================================= */
+
+        /* Hero: stack columns below ~1150px */
+        @media (max-width: 1150px) {
+            .ai-hero-banner {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 28px;
+                padding: 36px;
+            }
+
+            .hero-widget-wrapper {
+                width: 100%;
+            }
+
+            .ai-widget-card {
+                width: 100%;
+                max-width: 480px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Tablet / small-laptop nav adjustments */
+        @media (max-width: 760px) {
+            .site-navbar {
+                padding: 0 12px;
+            }
+
+            .nav-links-left {
+                flex-wrap: wrap;
+                gap: 2px 0;
+            }
+
+            .nav-link {
+                padding: 12px 12px;
+                font-size: 0.85rem;
+            }
+
+            .nav-dropdown {
+                min-width: 220px;
+                max-width: 85vw;
+            }
+        }
+
+        /* Phone layout */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+                overflow-x: hidden;
+            }
+
+            /* Top header */
+            .site-header-banner {
+                padding: 16px 16px;
+                min-height: 0;
+            }
+
+            .site-title-text {
+                font-size: 1.05rem;
+            }
+
+            .brand-logo-badge img {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            /* Hero */
+            .ai-hero-banner {
+                min-height: 0;
+                padding: 28px 20px;
+                gap: 24px;
+                border-radius: 12px;
+            }
+
+            .hero-main-title {
+                font-size: 2.1rem;
+            }
+
+            .hero-description {
+                font-size: 0.92rem;
+                margin-bottom: 20px;
+            }
+
+            .hero-values-row {
+                flex-wrap: wrap;
+                gap: 12px 18px;
+            }
+
+            .value-divider {
+                display: none;
+            }
+
+            .ai-widget-card {
+                padding: 24px 20px;
+            }
+
+            .widget-annotation {
+                display: none;
+            }
+
+            /* Result card becomes part of widget flow (no overlap) */
+            .hero-result-card {
+                position: static;
+                margin-top: 12px;
+            }
+
+            /* Video controls */
+            .video-controls-overlay {
+                padding: 12px 12px 10px 12px;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .controls-left,
+            .controls-right {
+                gap: 8px;
+            }
+
+            .video-ctrl-btn {
+                padding: 6px 12px;
+                font-size: 0.78rem;
+            }
+
+            #audioText {
+                display: none;
+            }
+
+            .video-time-text {
+                font-size: 0.72rem;
+            }
+
+            .video-controls-overlay a.video-ctrl-btn span {
+                display: none;
+            }
+
+            /* Section containers */
+            .principles-section-wrapper,
+            .video-section-wrapper {
+                padding: 20px 16px;
+                border-radius: 12px;
+            }
+
+            .principle-detail-box {
+                padding: 20px 16px;
+            }
+
+            .classification-section-wrapper,
+            .redzone-card-item {
+                padding: 20px 16px;
+            }
+
+            .principles-title-group h2,
+            .video-header-row h2,
+            .classification-title-group h2 {
+                font-size: 1.45rem;
+            }
+
+            /* Classification table: scroll horizontally instead of clipping */
+            .classification-table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .info-class-table {
+                min-width: 520px;
+            }
+
+            /* Red Zone card */
+            .red-warning-box-clean {
+                padding: 12px;
+            }
         }
     </style>
 </head>
@@ -2379,6 +2566,64 @@
             font-size: 0.8rem;
             font-weight: 600;
             line-height: 1.2;
+        }
+
+        /* Responsive footer — must follow base footer rules to win the cascade */
+        @media (max-width: 640px) {
+            .midas-footer-container {
+                padding: 24px 16px;
+                margin-top: 32px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-left-brand {
+                min-width: 0;
+                width: 100%;
+            }
+
+            .soc-card {
+                min-width: 0;
+                width: 100%;
+                max-width: 100%;
+                flex: 1 1 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .footer-actions-grid {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .action-item-divider {
+                display: none;
+            }
+
+            .action-btn-circle {
+                width: 64px;
+            }
+
+            .circle-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .brand-title-main,
+            .brand-title-sub {
+                font-size: 1.15rem;
+            }
+
+            .footer-logo-svg {
+                width: 56px;
+                height: 56px;
+            }
         }
     </style>
 
