@@ -183,12 +183,10 @@ test.describe(`TC-PASS · ${MODULE} Account & Password Security`, () => {
     expect(clip).toContain('Win + L');
   });
 
-  test('TC-PASS-10 (FPA-010) Favorites click must not throw a JS error', async ({ page }) => {
-    test.fail(); // G-01: unguarded toggleFavorite() -> ReferenceError on this page
-    const errors = attachErrorCaptureCore(page);
+  test('TC-PASS-10 (FPA-010) Favorites and site-access buttons removed from header', async ({ page }) => {
     await page.goto('/account-password-security.html');
-    await page.locator('.nav-action-btn').first().click();
-    expect(errors).toEqual([]);
+    await expect(page.locator('.nav-action-btn')).toHaveCount(0);
+    await expect(page.locator('#favText')).toHaveCount(0);
   });
 });
 

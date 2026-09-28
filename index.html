@@ -265,7 +265,12 @@
 
         /* Hero Directory Banner */
         .hero-banner {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background:
+                linear-gradient(rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.55) 45%, rgba(30, 41, 59, 0.82) 100%),
+                url('images/index banner.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             border-radius: var(--radius-lg);
             padding: 40px 48px;
             color: #ffffff;
@@ -325,32 +330,6 @@
             color: #cbd5e1;
             line-height: 1.6;
             margin-bottom: 24px;
-        }
-
-        .hero-stats-row {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        .hero-stat-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .stat-num {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #f59e0b;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            font-weight: 600;
-            line-height: 1.2;
         }
 
         /* Section Header */
@@ -838,6 +817,56 @@
             line-height: 1.2;
         }
 
+        /* Navbar: stacked wrap layout once the horizontal bar would overflow */
+        @media (max-width: 1120px) {
+            .site-navbar,
+            .header-navbar {
+                padding: 8px 14px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .nav-links-left,
+            .header-nav-links {
+                flex-wrap: wrap;
+                gap: 2px 0;
+                width: 100%;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-link,
+            .header-nav-link {
+                padding: 10px 12px;
+                font-size: 0.86rem;
+            }
+
+            .nav-item,
+            .header-nav-item {
+                position: static;
+            }
+
+            .nav-dropdown,
+            .header-dropdown {
+                display: none;
+                position: static;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+                margin: 2px 0 10px 0;
+                transform: none;
+            }
+
+            .nav-actions-right,
+            .header-actions-right {
+                justify-content: space-between;
+                width: 100%;
+                padding-top: 6px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+        }
+
         @media (max-width: 960px) {
             .midas-footer-container {
                 padding: 24px 20px;
@@ -886,9 +915,92 @@
                 flex-direction: column;
                 text-align: center;
             }
+        }
 
-            .hero-stats-row {
-                justify-content: center;
+        /* Phone layout */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+                overflow-x: hidden;
+            }
+
+            .site-header-container,
+            .midas-header-container {
+                margin-bottom: 20px;
+            }
+
+            .site-header-banner,
+            .header-top-banner {
+                padding: 16px 16px;
+                min-height: 0;
+            }
+
+            .site-title-text,
+            .header-title-text {
+                font-size: 1.05rem;
+            }
+
+            .brand-logo-badge img,
+            .header-logo-svg {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .hero-banner {
+                padding: 28px 20px;
+            }
+
+            .hero-title {
+                font-size: 1.7rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .filter-input-wrap {
+                min-width: 0;
+                width: 100%;
+            }
+
+            .section-header-title {
+                font-size: 1.25rem;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                margin-bottom: 32px;
+            }
+
+            .topic-card {
+                padding: 22px 18px;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .quick-tools-section {
+                padding: 24px 18px;
+            }
+
+            .quick-tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .midas-footer-container {
+                padding: 24px 16px;
+            }
+
+            .footer-logo-svg {
+                width: 48px;
+                height: 48px;
+            }
+
+            .brand-title-main,
+            .brand-title-sub {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -1005,44 +1117,11 @@
                 </div>
 
                 <div class="nav-item">
-                    <button class="nav-link" type="button">
-                        Resources
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <path d="M6 9l6 6 6-6" />
-                        </svg>
-                    </button>
-                    <div class="nav-dropdown">
-                        <a href="security-toolkit.html" class="dropdown-link">🛠️ Employee Security Toolkit</a>
-                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase
-                            Strength Evaluator</a>
-                        <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
-                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident
-                            Report</a>
-                    </div>
+                    <a href="security-toolkit.html" class="nav-link">Resources</a>
                 </div>
 
                 </div>
 
-            <div class="nav-actions-right">
-                <button class="nav-action-btn"
-                    onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <span id="favText">Add to favorites</span>
-                </button>
-                <button class="nav-action-btn"
-                    onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                    Site access
-                </button>
             </div>
         </nav>
     </div>
@@ -1058,20 +1137,6 @@
                 Explore interactive cybersecurity training modules, essential workplace defense guides, and real-time
                 security tools designed to keep Midas Safety personnel and corporate assets safe.
             </p>
-            <div class="hero-stats-row">
-                <div class="hero-stat-item">
-                    <span class="stat-num">12</span>
-                    <span class="stat-label">Security<br>Topics</span>
-                </div>
-                <div class="hero-stat-item">
-                    <span class="stat-num">7</span>
-                    <span class="stat-label">Active Live<br>Modules</span>
-                </div>
-                <div class="hero-stat-item">
-                    <span class="stat-num">100%</span>
-                    <span class="stat-label">Employee<br>Protection</span>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1096,7 +1161,7 @@
         </div>
     </div>
 
-    <!-- Topics Grid (12 Modules) -->
+    <!-- Topics Grid -->
     <div class="topics-grid" id="topicsContainer">
 
         <!-- Topic 0: AI & Sensitive Information Policy -->
@@ -1159,24 +1224,6 @@
             </div>
         </div>
 
-        <!-- Topic 3: Multi-Factor Authentication -->
-        <div class="topic-card coming-soon" data-title="Multi-Factor Authentication MFA Authenticator OTP">
-            <div>
-                <div class="card-top-row">
-                    <div class="topic-icon-box purple">🛡️</div>
-                    <span class="status-tag planned">In Development</span>
-                </div>
-                <h3 class="card-title">Multi-Factor Authentication (MFA)</h3>
-                <p class="card-desc">
-                    Microsoft Authenticator setup, anti-MFA fatigue prompts, hardware security keys, and emergency
-                    backup codes.
-                </p>
-            </div>
-            <div class="card-footer-action">
-                <span class="action-btn-disabled">Coming Soon</span>
-            </div>
-        </div>
-
         <!-- Topic 4: Phishing & Email Protection -->
         <div class="topic-card active-module" data-title="Phishing Email Security Protection Red Flags Outlook Spotter">
             <div>
@@ -1217,92 +1264,24 @@
             </div>
         </div>
 
-        <!-- Topic 6: Data Protection & Privacy -->
-        <div class="topic-card coming-soon" data-title="Data Protection Privacy Confidential Classification Clean Desk">
-            <div>
-                <div class="card-top-row">
-                    <div class="topic-icon-box gold">💾</div>
-                    <span class="status-tag planned">In Development</span>
-                </div>
-                <h3 class="card-title">Data Protection & Privacy</h3>
-                <p class="card-desc">
-                    Handling confidential files, corporate data classification rules, clean desk guidelines, and secure
-                    document shredding.
-                </p>
-            </div>
-            <div class="card-footer-action">
-                <span class="action-btn-disabled">Coming Soon</span>
-            </div>
-        </div>
-
-        <!-- Topic 7: Social Engineering Awareness -->
-        <div class="topic-card coming-soon" data-title="Social Engineering Pretexting Impersonation Tailgating Vishing">
-            <div>
-                <div class="card-top-row">
-                    <div class="topic-icon-box purple">👥</div>
-                    <span class="status-tag planned">In Development</span>
-                </div>
-                <h3 class="card-title">Social Engineering Awareness</h3>
-                <p class="card-desc">
-                    Defending against pretexting, phone vishing scams, tailgating into facilities, and urgent
-                    psychological manipulation.
-                </p>
-            </div>
-            <div class="card-footer-action">
-                <span class="action-btn-disabled">Coming Soon</span>
-            </div>
-        </div>
-
         <!-- Topic 8: Incident Reporting & Response -->
-        <div class="topic-card coming-soon" data-title="Incident Reporting Response SOC Emergency Escalation Breach">
+        <div class="topic-card active-module" data-title="Incident Reporting Response SOC Emergency Escalation Breach SharePoint Report an Incident">
             <div>
                 <div class="card-top-row">
                     <div class="topic-icon-box blue">🚀</div>
-                    <span class="status-tag planned">In Development</span>
+                    <span class="status-tag active">● Live Portal</span>
                 </div>
                 <h3 class="card-title">Incident Reporting & Response</h3>
                 <p class="card-desc">
                     Fast-action steps when a breach occurs, SOC emergency hotline contacts, and containment procedures.
+                    Submit an incident directly through the Midas SharePoint portal.
                 </p>
             </div>
             <div class="card-footer-action">
-                <span class="action-btn-disabled">Coming Soon</span>
-            </div>
-        </div>
-
-        <!-- Topic 9: Cloud & SaaS Security -->
-        <div class="topic-card coming-soon" data-title="Cloud SaaS Security SharePoint Teams OneDrive Sync">
-            <div>
-                <div class="card-top-row">
-                    <div class="topic-icon-box green">☁️</div>
-                    <span class="status-tag planned">In Development</span>
-                </div>
-                <h3 class="card-title">Cloud & SaaS Security</h3>
-                <p class="card-desc">
-                    SharePoint external sharing permissions, Microsoft Teams link safety, OneDrive file sync, and cloud
-                    access control.
-                </p>
-            </div>
-            <div class="card-footer-action">
-                <span class="action-btn-disabled">Coming Soon</span>
-            </div>
-        </div>
-
-        <!-- Topic 10: Removable Media & Hardware -->
-        <div class="topic-card coming-soon" data-title="Removable Media USB Flash Drive Hardware Peripheral AutoRun">
-            <div>
-                <div class="card-top-row">
-                    <div class="topic-icon-box gold">🔌</div>
-                    <span class="status-tag planned">In Development</span>
-                </div>
-                <h3 class="card-title">Removable Media & Hardware</h3>
-                <p class="card-desc">
-                    USB drive malware risks, unauthorized external hardware peripherals, auto-run infection prevention,
-                    and media wiping.
-                </p>
-            </div>
-            <div class="card-footer-action">
-                <span class="action-btn-disabled">Coming Soon</span>
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx"
+                    class="action-btn-primary" style="background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%); border-color: #ea580c;">
+                    Report Incident ➔
+                </a>
             </div>
         </div>
 
@@ -1446,7 +1425,7 @@
                     </div>
                 </div>
 
-                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="contact-red-btn">Contact</a>
             </div>
 
             <div class="soc-card">

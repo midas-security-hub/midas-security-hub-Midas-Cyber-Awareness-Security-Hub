@@ -1126,6 +1126,262 @@
             height: 32px;
             background: #1e293b;
         }
+
+        /* ========================================================= */
+        /* RESPONSIVE: Mobile & Tablet Layout                         */
+        /* ========================================================= */
+
+        /* Navbar: stacked wrap layout once the horizontal bar would overflow */
+        @media (max-width: 1120px) {
+            .site-navbar,
+            .header-navbar {
+                padding: 8px 14px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .nav-links-left,
+            .header-nav-links {
+                flex-wrap: wrap;
+                gap: 2px 0;
+                width: 100%;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-link,
+            .header-nav-link {
+                padding: 10px 12px;
+                font-size: 0.86rem;
+            }
+
+            .nav-item,
+            .header-nav-item {
+                position: static;
+            }
+
+            .nav-dropdown,
+            .header-dropdown {
+                display: none;
+                position: static;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+                margin: 2px 0 10px 0;
+                transform: none;
+            }
+
+            .nav-actions-right,
+            .header-actions-right {
+                justify-content: space-between;
+                width: 100%;
+                padding-top: 6px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        /* Tablet layout */
+        @media (max-width: 900px) {
+            .banner-card {
+                padding: 32px 28px;
+                min-height: 0;
+            }
+
+            .banner-title {
+                font-size: 1.9rem;
+            }
+
+            .country-section-header {
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .timeline-card {
+                padding: 28px 20px;
+            }
+
+            .timeline-content-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+                min-width: 0;
+            }
+
+            .timeline-info {
+                min-width: 0;
+            }
+
+            .timeline-info h3,
+            .timeline-info p {
+                overflow-wrap: break-word;
+            }
+
+            .timeline-content-card > * {
+                max-width: 100%;
+            }
+
+            .wizard-card {
+                padding: 24px 20px;
+            }
+
+            .notice-card {
+                padding: 16px 18px;
+                gap: 12px;
+            }
+        }
+
+        /* Phone layout */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+                overflow-x: hidden;
+            }
+
+            .site-header-banner,
+            .header-top-banner {
+                padding: 16px 16px;
+                min-height: 0;
+            }
+
+            .site-title-text,
+            .header-title-text {
+                font-size: 1.05rem;
+            }
+
+            .brand-logo-badge img,
+            .header-logo-svg {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .banner-card {
+                padding: 26px 20px;
+            }
+
+            .banner-title {
+                font-size: 1.6rem;
+            }
+
+            .banner-subtitle {
+                font-size: 0.92rem;
+            }
+
+            .country-tabs-bar {
+                padding: 10px 12px;
+                gap: 8px;
+            }
+
+            .country-tab-btn {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .country-section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline-card {
+                padding: 20px 16px;
+            }
+
+            .timeline-container {
+                gap: 22px;
+            }
+
+            .timeline-container::before {
+                left: 28px;
+            }
+
+            .timeline-item {
+                gap: 16px;
+            }
+
+            .timeline-icon-box {
+                width: 56px;
+                height: 56px;
+                font-size: 1.4rem;
+                border-width: 3px;
+            }
+
+            .timeline-content-card {
+                padding: 16px;
+            }
+
+            .action-link-btn {
+                white-space: normal;
+                overflow-wrap: break-word;
+                padding: 9px 14px;
+                font-size: 0.84rem;
+            }
+
+            .wizard-card {
+                padding: 20px 16px;
+            }
+
+            .wizard-result-box {
+                padding: 18px 16px;
+            }
+
+            .wiz-res-title {
+                font-size: 1.05rem;
+            }
+
+            .midas-footer-container {
+                padding: 24px 16px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-left-brand {
+                align-items: center;
+            }
+
+            .brand-top-row {
+                align-items: center;
+                justify-content: center;
+            }
+
+            .soc-card {
+                min-width: 0;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .footer-actions-grid {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .action-item-divider {
+                display: none;
+            }
+
+            .action-btn-circle {
+                width: 64px;
+            }
+
+            .circle-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .action-label {
+                font-size: 0.7rem;
+            }
+        }
     </style>
 </head>
 
@@ -1238,47 +1494,8 @@
                 </div>
 
                 <div class="nav-item">
-                    <button class="nav-link" type="button">
-                        Resources
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <path d="M6 9l6 6 6-6" />
-                        </svg>
-                    </button>
-                    <div class="nav-dropdown">
-                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase
-                            Strength Evaluator</a>
-                        <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
-                        <a href="external-incident-reporting.html" class="dropdown-link active"
-                            style="color: #38bdf8; font-weight: bold;">🚀 Quick Security Incident Report</a>
-                    </div>
+                    <a href="security-toolkit.html" class="nav-link">Resources</a>
                 </div>
-
-                <div class="nav-item">
-                    <a href="external-incident-reporting.html" class="nav-link active" style="color: #38bdf8;">Security
-                        Incident Report</a>
-                </div>
-            </div>
-
-            <div class="nav-actions-right">
-                <button class="nav-action-btn"
-                    onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <span id="favText">Add to favorites</span>
-                </button>
-                <button class="nav-action-btn"
-                    onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                    Site access
-                </button>
             </div>
         </nav>
     </div>
@@ -1683,7 +1900,7 @@
                     </div>
                 </div>
 
-                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="contact-red-btn">Contact</a>
             </div>
 
             <!-- Center Section: SOC Help Card -->

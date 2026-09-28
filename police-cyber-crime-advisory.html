@@ -727,6 +727,279 @@
             justify-content: center;
             flex-shrink: 0;
         }
+
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+        }
+
+        .circle-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 32px;
+            background: #1e293b;
+        }
+
+        /* ========================================================= */
+        /* RESPONSIVE: Mobile & Tablet Layout                         */
+        /* ========================================================= */
+
+        /* Navbar: stacked wrap layout once the horizontal bar would overflow */
+        @media (max-width: 1120px) {
+            .site-navbar,
+            .header-navbar {
+                padding: 8px 14px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .nav-links-left,
+            .header-nav-links {
+                flex-wrap: wrap;
+                gap: 2px 0;
+                width: 100%;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-link,
+            .header-nav-link {
+                padding: 10px 12px;
+                font-size: 0.86rem;
+            }
+
+            .nav-item,
+            .header-nav-item {
+                position: static;
+            }
+
+            .nav-dropdown,
+            .header-dropdown {
+                display: none;
+                position: static;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+                margin: 2px 0 10px 0;
+                transform: none;
+            }
+
+            .nav-actions-right,
+            .header-actions-right {
+                justify-content: space-between;
+                width: 100%;
+                padding-top: 6px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        /* Tablet layout */
+        @media (max-width: 900px) {
+            .hero-advisory-card {
+                padding: 28px 26px;
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .advisory-notice-box {
+                gap: 16px;
+                padding: 26px 24px;
+            }
+        }
+
+        /* Phone layout */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+                overflow-x: hidden;
+            }
+
+            .site-header-container,
+            .midas-header-container {
+                margin-bottom: 20px;
+            }
+
+            .site-header-banner,
+            .header-top-banner {
+                padding: 16px 16px;
+                min-height: 0;
+            }
+
+            .site-title-text,
+            .header-title-text {
+                font-size: 1.05rem;
+            }
+
+            .brand-logo-badge img,
+            .header-logo-svg {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .hero-advisory-card {
+                padding: 24px 18px;
+            }
+
+            .hero-badge-tag {
+                font-size: 0.7rem;
+                padding: 5px 12px;
+            }
+
+            .hero-title {
+                font-size: 1.6rem;
+            }
+
+            .hero-title-sinhala {
+                font-size: 0.95rem;
+            }
+
+            .hero-desc {
+                font-size: 0.92rem;
+            }
+
+            .section-h2 {
+                font-size: 1.25rem;
+            }
+
+            .reporting-channels-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .channel-card {
+                padding: 22px 18px;
+            }
+
+            .card-title-sinhala {
+                font-size: 1.02rem;
+            }
+
+            .email-pill-box {
+                flex-wrap: wrap;
+                align-items: flex-start;
+                padding: 14px 16px;
+            }
+
+            .email-address-text {
+                font-size: 0.92rem;
+            }
+
+            .action-mail-btn {
+                font-size: 0.86rem;
+                padding: 12px 14px;
+            }
+
+            .advisory-notice-box {
+                flex-direction: column;
+                gap: 14px;
+                padding: 20px 16px;
+            }
+
+            .notice-icon-badge {
+                width: 44px;
+                height: 44px;
+                font-size: 1.4rem;
+            }
+
+            .notice-body h3 {
+                font-size: 1.1rem;
+            }
+
+            .notice-body-english {
+                font-size: 0.9rem;
+            }
+
+            .midas-footer-container {
+                padding: 24px 16px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .brand-top-row {
+                align-items: center;
+                justify-content: center;
+            }
+
+            .footer-logo-svg {
+                width: 48px;
+                height: 48px;
+            }
+
+            .brand-title-main,
+            .brand-title-sub {
+                font-size: 1.2rem;
+            }
+
+            .soc-card {
+                min-width: 0;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .footer-actions-grid {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .action-item-divider {
+                display: none;
+            }
+
+            .action-btn-circle {
+                width: 64px;
+            }
+
+            .circle-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .action-label {
+                font-size: 0.7rem;
+            }
+        }
     </style>
 </head>
 
@@ -837,39 +1110,11 @@
                 </div>
 
                 <div class="nav-item">
-                    <button class="nav-link" type="button">
-                        Resources
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <path d="M6 9l6 6 6-6" />
-                        </svg>
-                    </button>
-                    <div class="nav-dropdown">
-                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase Strength Evaluator</a>
-                        <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
-                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident Report</a>
-                    </div>
+                    <a href="security-toolkit.html" class="nav-link">Resources</a>
                 </div>
 
                 </div>
 
-            <div class="nav-actions-right">
-                <button class="nav-action-btn" onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <span id="favText">Add to favorites</span>
-                </button>
-                <button class="nav-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                    Site access
-                </button>
-            </div>
         </nav>
     </div>
 
@@ -981,7 +1226,7 @@
                     </div>
                 </div>
 
-                <a href="mailto:cic@midassafety.com" class="contact-red-btn">Contact</a>
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="contact-red-btn">Contact</a>
             </div>
 
             <!-- Center Section: SOC Help Card -->

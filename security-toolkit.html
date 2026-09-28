@@ -941,6 +941,55 @@
             text-decoration: underline;
         }
 
+        @media (max-width: 1120px) {
+            .site-navbar,
+            .header-navbar {
+                padding: 8px 14px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .nav-links-left,
+            .header-nav-links {
+                flex-wrap: wrap;
+                gap: 2px 0;
+                width: 100%;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-link,
+            .header-nav-link {
+                padding: 10px 12px;
+                font-size: 0.86rem;
+            }
+
+            .nav-item,
+            .header-nav-item {
+                position: static;
+            }
+
+            .nav-dropdown,
+            .header-dropdown {
+                display: none;
+                position: static;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+                margin: 2px 0 10px 0;
+                transform: none;
+            }
+
+            .nav-actions-right,
+            .header-actions-right {
+                justify-content: space-between;
+                width: 100%;
+                padding-top: 6px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+        }
+
         @media (max-width: 900px) {
             body { padding: 16px; }
             .toolkit-hero-card { padding: 32px 24px; }
@@ -948,6 +997,84 @@
             .handwritten-stamp { display: none; }
             .tool-item-card { flex-direction: column; align-items: flex-start; }
             .tool-right-action { width: 100%; justify-content: space-between; margin-top: 12px; }
+        }
+
+        /* Phone layout */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+                overflow-x: hidden;
+            }
+
+            .site-header-banner,
+            .header-top-banner {
+                padding: 16px 16px;
+                min-height: 0;
+            }
+
+            .site-title-text,
+            .header-title-text {
+                font-size: 1.05rem;
+            }
+
+            .brand-logo-badge img,
+            .header-logo-svg {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .toolkit-hero-card {
+                padding: 24px 18px;
+            }
+
+            .hero-title {
+                font-size: 1.7rem;
+            }
+
+            .scenarios-title-box p {
+                font-size: 0.85rem;
+            }
+
+            .toolkit-categories-container {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .tool-item-card {
+                padding: 18px 16px;
+            }
+
+            .tool-right-action {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .midas-footer-container {
+                padding: 24px 16px;
+            }
+
+            .footer-main-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-left-brand {
+                align-items: center;
+            }
+
+            .brand-top-row {
+                align-items: center;
+                justify-content: center;
+            }
+
+            .soc-card {
+                min-width: 0;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -1006,41 +1133,13 @@
                     <a href="faq.html" class="nav-link">FAQ</a>
                 </div>
 
-                <!-- Resources Dropdown -->
+                <!-- Resources -->
                 <div class="nav-item">
-                    <button class="nav-link" type="button">
-                        Resources
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M6 9l6 6 6-6" />
-                        </svg>
-                    </button>
-                    <div class="nav-dropdown">
-                        <a href="security-toolkit.html" class="dropdown-link active">🛠️ Employee Security Toolkit</a>
-                        <a href="account-password-security.html#tab-evaluator" class="dropdown-link">⚡ Passphrase Strength Evaluator</a>
-                        <a href="security-tips.html" class="dropdown-link">📋 Security Readiness Checklist</a>
-                        <a href="external-incident-reporting.html" class="dropdown-link">🚀 Quick Security Incident Report</a>
-                    </div>
+                    <a href="security-toolkit.html" class="nav-link">Resources</a>
                 </div>
 
                 </div>
 
-            <div class="nav-actions-right">
-                <button class="nav-action-btn" onclick="typeof toggleFavorite === 'function' ? toggleFavorite(this) : null">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <span id="favText">Add to favorites</span>
-                </button>
-                <button class="nav-action-btn" onclick="alert('Site Access: You have full employee access to Midas Security Hub.')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                    Site access
-                </button>
-            </div>
         </nav>
     </div>
 
@@ -1717,7 +1816,7 @@
                     <div class="tagline-line"></div>
                     <span>PROTECTING OUR PEOPLE, DATA AND OPERATIONS GLOBALLY</span>
                 </div>
-                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="contact-red-btn">
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="contact-red-btn">
                     🚨 REPORT AN INCIDENT NOW
                 </a>
             </div>

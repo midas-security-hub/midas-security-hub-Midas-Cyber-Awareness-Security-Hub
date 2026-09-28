@@ -42,17 +42,13 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     }
   });
 
-  test('TC-NAV-03 (FND-003) Dropdown opens on hover and click toggle (single open)', async ({ page }) => {
+  test('TC-NAV-03 (FND-003) Dropdown opens on hover and stays open while interacting', async ({ page }) => {
     await page.goto('/index.html');
     const topics = page.locator('.nav-item').filter({ hasText: 'Topics' });
-    const resources = page.locator('.nav-item').filter({ hasText: 'Resources' });
-
     await topics.getByRole('button').hover();
     await expect(topics.locator('.nav-dropdown')).toBeVisible();
-
-    await resources.getByRole('button').click();
-    await expect(resources.locator('.nav-dropdown')).toBeVisible();
-    await expect(topics.locator('.nav-dropdown')).not.toBeVisible();
+    await topics.getByRole('button').click();
+    await expect(topics.locator('.nav-dropdown')).toBeVisible();
   });
 
   test('TC-NAV-03b (FND-003) Dropdown closes on outside click', async ({ page }) => {
@@ -64,23 +60,21 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     await expect(topics.locator('.nav-dropdown')).not.toBeVisible();
   });
 
-  test('TC-NAV-04 (FND-004) Add-to-favorites toggles label on device page (handler defined)', async ({ page }) => {
-    await page.goto('/device-security.html');
-    const fav = page.locator('.nav-action-btn').filter({ has: page.locator('#favText') });
-    await expect(fav).toHaveCount(1);
-    await expect(page.locator('#favText')).toContainText('Add to favorites');
-    await fav.click();
-    await expect(page.locator('#favText')).toContainText('Added to favorites');
-    await fav.click();
-    await expect(page.locator('#favText')).toContainText('Add to favorites');
+  test('TC-NAV-04 (FND-004) Resources is a direct header link to the toolkit (no favorites button)', async ({ page }) => {
+    for (const path of ['/index.html', '/device-security.html']) {
+      await page.goto(path);
+      const res = page.locator('.nav-item').filter({ hasText: 'Resources' }).locator('a.nav-link');
+      await expect(res).toHaveAttribute('href', 'security-toolkit.html');
+      await expect(res).toContainText('Resources');
+      await expect(page.locator('#favText')).toHaveCount(0);
+    }
   });
 
-  test('TC-NAV-05 (FND-005) Site access button shows informational alert', async ({ page }) => {
-    await page.goto('/index.html');
-    let msg = '';
-    page.once('dialog', async (d) => { msg = d.message(); await d.accept(); });
-    await page.locator('.nav-action-btn').filter({ hasText: 'Site access' }).click();
-    await expect.poll(() => msg).toContain('full employee access');
+  test('TC-NAV-05 (FND-005) Site access button removed from global header', async ({ page }) => {
+    for (const path of ['/index.html', '/email-security.html', '/physical-security.html']) {
+      await page.goto(path);
+      await expect(page.locator('.nav-action-btn')).toHaveCount(0);
+    }
   });
 
   test('TC-NAV-06 (FND-006) Active section is highlighted on its own page', async ({ page }) => {
@@ -93,7 +87,7 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
   test('TC-NAV-07 (FND-007) Footer renders brand, SOC contact and 4 action buttons', async ({ page }) => {
     await page.goto('/index.html');
     const footer = page.locator('.midas-footer-container');
-    await expect(footer.locator('a.contact-red-btn')).toHaveAttribute('href', 'mailto:cic@midassafety.com');
+    await expect(footer.locator('a.contact-red-btn')).toHaveAttribute('href', 'https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx');
     await expect(footer.locator('a.soc-email-link')).toHaveAttribute('href', 'mailto:cic@midassafety.com');
     await expect(footer.locator('a.action-btn-circle')).toHaveCount(4);
     await expect(footer.locator('a.action-btn-circle').nth(0)).toHaveAttribute('href', /mailto:cic@midassafety\.com\?subject=Security%20Incident%20Report/);
@@ -136,7 +130,6 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
   });
 
   test('TC-NAV-12 (FND-012) No horizontal overflow at mobile width', async ({ page }) => {
-    test.fail(); // FND-012 defect: .nav-links-left is not collapsed/wrapped at 360px (scrollWidth ~1075)
     await page.setViewportSize({ width: 360, height: 800 });
     for (const path of ['/index.html', '/account-password-security.html', '/remote-wifi-security.html']) {
       await page.goto(path);

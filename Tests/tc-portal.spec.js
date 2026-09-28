@@ -10,7 +10,8 @@ const LIVE_TARGETS = [
   'physical-security.html',
   'external-incident-reporting.html',
   'police-cyber-crime-advisory.html',
-  'faq.html'
+  'faq.html',
+  'https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx'
 ];
 
 test.describe(`TC-PORTAL · ${MODULE} Home Portal Directory`, () => {
@@ -22,7 +23,7 @@ test.describe(`TC-PORTAL · ${MODULE} Home Portal Directory`, () => {
   });
 
   test('TC-PORTAL-02 (FID-002) Hero stats match the actual topic grid', async ({ page }) => {
-    test.fail(); // G-02: hero states 12 topics / 7 live modules but grid holds 15 cards / 9 live
+    test.fail(); // G-02: hero stat counters were removed from the banner; assertions no longer match
     await page.goto('/index.html');
     const cards = await page.locator('.topic-card').count();
     const live = await page.locator('.topic-card.active-module').count();
@@ -30,25 +31,26 @@ test.describe(`TC-PORTAL · ${MODULE} Home Portal Directory`, () => {
     await expect(page.locator('.hero-banner')).toContainText(`${live} Active Live Modules`);
   });
 
-  test('TC-PORTAL-03 (FID-003) Topic grid exposes 15 module cards', async ({ page }) => {
+  test('TC-PORTAL-03 (FID-003) Topic grid exposes 10 module cards', async ({ page }) => {
     await page.goto('/index.html');
-    await expect(page.locator('.topic-card')).toHaveCount(15);
+    await expect(page.locator('.topic-card')).toHaveCount(10);
   });
 
   test('TC-PORTAL-04 (FID-004) All live module cards link to their targets', async ({ page }) => {
     await page.goto('/index.html');
     const hrefs = await page.locator('.topic-card.active-module a[href]').evaluateAll((a) => a.map((x) => x.getAttribute('href')));
-    await expect(page.locator('.topic-card.active-module')).toHaveCount(9);
+    await expect(page.locator('.topic-card.active-module')).toHaveCount(10);
     for (const target of LIVE_TARGETS) {
       expect(hrefs).toContain(target);
     }
   });
 
-  test('TC-PORTAL-05 (FID-005) Six planned modules show a Coming Soon state', async ({ page }) => {
+  test('TC-PORTAL-05 (FID-005) No planned modules remain; Incident Reporting links to the SharePoint portal', async ({ page }) => {
     await page.goto('/index.html');
-    const comingSoon = page.locator('.topic-card.coming-soon');
-    await expect(comingSoon).toHaveCount(6);
-    await expect(comingSoon.first()).toContainText('Coming Soon');
+    await expect(page.locator('.topic-card.coming-soon')).toHaveCount(0);
+    const incidentCard = page.locator('.topic-card', { hasText: 'Incident Reporting & Response' });
+    await expect(incidentCard).toHaveClass(/active-module/);
+    await expect(incidentCard.getByRole('link')).toHaveAttribute('href', 'https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx');
   });
 
   test('TC-PORTAL-06 (FID-006) Topic search filters cards live', async ({ page }) => {
