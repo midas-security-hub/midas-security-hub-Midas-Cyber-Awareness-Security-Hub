@@ -6,7 +6,7 @@ test.describe(`TC-PHYS · ${MODULE} Physical & Social Engineering`, () => {
 
   test('TC-PHYS-01 (FHS-001) Hero shows the core awareness statement and badges', async ({ page }) => {
     await page.goto('/physical-security.html');
-    await expect(page.locator('.hero-physical-banner h1')).toContainText('Physical & Social Engineering Security');
+    await expect(page.locator('.hero-physical-banner h1')).toContainText('Physical Security');
     await expect(page.locator('.hero-physical-banner')).toContainText('Badge Discipline');
     await expect(page.locator('.hero-physical-banner')).toContainText('Visitor Verification');
     await expect(page.locator('.hero-physical-banner')).toContainText('Tailgating Defense');
