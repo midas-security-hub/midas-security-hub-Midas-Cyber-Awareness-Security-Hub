@@ -13,7 +13,6 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     await expect(navbar).toContainText('Home');
     await expect(navbar).toContainText('Topics');
     await expect(navbar).toContainText('Policies');
-    await expect(navbar).toContainText('News');
     await expect(navbar).toContainText('FAQ');
     await expect(navbar.locator('a.nav-link[href="external-incident-reporting.html"]')).toHaveCount(0);
   });
@@ -31,7 +30,7 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
       ['email-security.html', /Email & Phishing/],
       ['physical-security.html', /Physical Security/],
       ['remote-wifi-security.html', /Remote \/ Wi-Fi\s+Security/],
-      ['index.html#policies', /Security Policies/],
+      ['police-cyber-crime-advisory.html', /Police Cyber Crime Advisory/],
       ['faq.html', /FAQ/],
       ['security-tips.html', /SOPS/]
     ];
@@ -64,7 +63,7 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     for (const path of ['/index.html', '/device-security.html']) {
       await page.goto(path);
       const res = page.locator('.nav-item').filter({ hasText: 'Resources' }).locator('a.nav-link');
-      await expect(res).toHaveAttribute('href', 'security-toolkit.html');
+      await expect(res).toHaveAttribute('href', 'https://midas-security-hub.github.io/midas-security-hub-Midas-Cyber-Awareness-Security-Hub/security-toolkit.html');
       await expect(res).toContainText('Resources');
       await expect(page.locator('#favText')).toHaveCount(0);
     }
