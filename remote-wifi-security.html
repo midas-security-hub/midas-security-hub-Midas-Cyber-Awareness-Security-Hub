@@ -2360,7 +2360,7 @@
 
                 <div class="action-item-divider"></div>
 
-                <a href="index.html" class="action-btn-circle">
+                <button type="button" class="action-btn-circle" onclick="openAboutPortal()" style="background:transparent;border:none;cursor:pointer;font-family:inherit;color:#cbd5e1;">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -2370,7 +2370,7 @@
                         </svg>
                     </div>
                     <span class="action-label">About Portal</span>
-                </a>
+                </button>
             </div>
         </div>
     </footer>
@@ -2574,7 +2574,38 @@
                 switchSectionTab('rules'); // Key Security Tips is default
             }
         });
+        function openAboutPortal() {
+            const overlay = document.getElementById('aboutPortalModal');
+            if (overlay) {
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeAboutPortal() {
+            const overlay = document.getElementById('aboutPortalModal');
+            if (overlay) {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
     </script>
+
+    <!-- About Portal Modal -->
+    <div class="modal-overlay" id="aboutPortalModal" style="display:none;">
+        <div class="modal-content" style="max-width:720px;">
+            <button class="modal-close" onclick="closeAboutPortal()">x</button>
+            <h3 style="font-size:1.3rem;font-weight:800;color:#0f172a;margin-bottom:12px;">About the Midas Cyber Awareness & Security Hub</h3>
+            <p style="font-size:0.95rem;color:#475569;line-height:1.6;margin-bottom:16px;">The Midas Cyber Awareness &amp; Security Hub is a centralized platform to equip employees with knowledge and tools to identify, prevent, and respond to cybersecurity threats.</p>
+            <ul style="font-size:0.95rem;color:#475569;line-height:1.7;margin-left:20px;margin-bottom:20px;">
+                <li><strong>Learning modules</strong>: AI, passwords, devices, email/phishing, physical, remote/Wi-Fi security.</li>
+                <li><strong>Practical tools</strong>: Passphrase evaluator, checklists, curated resources.</li>
+                <li><strong>Incident reporting</strong>: Internal via Midas SOC (cic@midassafety.com); external via CERTs and police.</li>
+                <li><strong>Policies &amp; guidance</strong>: SOPS, SharePoint resources, alerts and updates.</li>
+            </ul>
+            <p style="font-size:0.95rem;color:#475569;line-height:1.6;">Built around "Never Trust. Always Verify" to protect Midas Safety's people, data, and operations.</p>
+        </div>
+    </div>
 </body>
 
 </html>
