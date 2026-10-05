@@ -2494,6 +2494,15 @@
             document.getElementById('mEavesdrop').innerText = data.eavesdrop;
             document.getElementById('mMitm').innerText = data.mitm;
             document.getElementById('mAction').innerText = data.action;
+
+            const metricColors = {
+                vpn: { mEncryption: 'green', mEavesdrop: 'green', mMitm: 'green', mAction: 'amber' },
+                hotspot: { mEncryption: 'green', mEavesdrop: 'green', mMitm: 'green', mAction: 'amber' }
+            };
+            const colors = metricColors[modeKey] || { mEncryption: 'red', mEavesdrop: 'red', mMitm: 'red', mAction: 'amber' };
+            for (const id of ['mEncryption', 'mEavesdrop', 'mMitm', 'mAction']) {
+                document.getElementById(id).className = 'metric-val ' + colors[id];
+            }
             document.getElementById('simTip').innerHTML = '<strong>Security Advice:</strong> ' + data.tip;
 
             const line1 = document.getElementById('topoLine');
