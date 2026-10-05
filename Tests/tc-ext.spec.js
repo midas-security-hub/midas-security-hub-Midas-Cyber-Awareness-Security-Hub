@@ -90,4 +90,13 @@ test.describe(`TC-EXT · ${MODULE} External Incident Reporting`, () => {
     await page.waitForTimeout(300);
     expect(errors).toEqual([]);
   });
+
+  test('TC-EXT-10 (FXR-010) Warning advises against using the company email for external reports', async ({ page }) => {
+    await page.goto('/external-incident-reporting.html');
+    const warning = page.locator('.notice-card.warning');
+    await expect(warning).toBeVisible();
+    await expect(warning).toContainText('Never Report External Incidents Using Your Midas Company Email');
+    await expect(warning).toContainText('@midassafety.com');
+    await expect(warning).toContainText('personal email');
+  });
 });
