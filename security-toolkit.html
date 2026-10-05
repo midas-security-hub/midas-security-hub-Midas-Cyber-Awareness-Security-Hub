@@ -465,105 +465,6 @@
             box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
         }
 
-        /* Quick Scenarios Section */
-        .quick-scenarios-card {
-            background: #ffffff;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-light);
-            padding: 24px 28px;
-            margin-bottom: 36px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .scenarios-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .scenarios-header-icon {
-            font-size: 1.5rem;
-        }
-
-        .scenarios-title-box h3 {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-
-        .scenarios-title-box p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .scenarios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .scenario-item-card {
-            background: #f8fafc;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
-            padding: 18px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 14px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .scenario-item-card:hover {
-            background: #ffffff;
-            border-color: #cbd5e1;
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .scenario-top-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: #eff6ff;
-            color: #2563eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .scenario-item-card:nth-child(2) .scenario-top-icon { background: #ecfdf5; color: #10b981; }
-        .scenario-item-card:nth-child(3) .scenario-top-icon { background: #fffbeb; color: #d97706; }
-        .scenario-item-card:nth-child(4) .scenario-top-icon { background: #f3e8ff; color: #9333ea; }
-        .scenario-item-card:nth-child(5) .scenario-top-icon { background: #f0fdf4; color: #16a34a; }
-
-        .scenario-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.35;
-        }
-
-        .scenario-tool-link {
-            font-size: 0.88rem;
-            font-weight: 800;
-            color: var(--blue);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .scenario-item-card:hover .scenario-tool-link {
-            color: var(--blue-hover);
-            text-decoration: underline;
-        }
-
         /* Categorized Tools Layout Grid - 3 Column Responsive Cards Grid */
         .toolkit-categories-container {
             display: grid;
@@ -875,6 +776,50 @@
             transform: translateY(-1px);
         }
 
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+        }
+
+        .circle-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 32px;
+            background: #1e293b;
+        }
+
         .soc-card {
             background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
             border: 1px solid #1e3a5f;
@@ -1032,10 +977,6 @@
                 font-size: 1.7rem;
             }
 
-            .scenarios-title-box p {
-                font-size: 0.85rem;
-            }
-
             .toolkit-categories-container {
                 grid-template-columns: 1fr;
                 gap: 16px;
@@ -1075,6 +1016,29 @@
                 flex-direction: column;
                 text-align: center;
                 align-items: center;
+            }
+
+            .footer-actions-grid {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .action-item-divider {
+                display: none;
+            }
+
+            .action-btn-circle {
+                width: 64px;
+            }
+
+            .circle-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .action-label {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -1184,49 +1148,6 @@
             <button class="filter-pill" onclick="setCategoryFilter('domain-trust', this)">Domain & Website Trust Checks</button>
             <button class="filter-pill" onclick="setCategoryFilter('2fa-apps', this)">Two-Factor Authentication Apps</button>
             <button class="filter-pill" onclick="setCategoryFilter('reverse-image', this)">Reverse Image Search</button>
-        </div>
-    </div>
-
-    <!-- Quick Scenarios Section -->
-    <div class="quick-scenarios-card">
-        <div class="scenarios-header">
-            <span class="scenarios-header-icon">💡</span>
-            <div class="scenarios-title-box">
-                <h3>Quick Scenarios</h3>
-                <p>A few common situations — and the right tool to use.</p>
-            </div>
-        </div>
-
-        <div class="scenarios-grid">
-            <a href="#tool-virustotal" class="scenario-item-card">
-                <div class="scenario-top-icon">📎</div>
-                <div class="scenario-title">Got a suspicious attachment?</div>
-                <div class="scenario-tool-link">➔ VirusTotal</div>
-            </a>
-
-            <a href="#tool-urlscan" class="scenario-item-card">
-                <div class="scenario-top-icon">🔗</div>
-                <div class="scenario-title">Got a weird link?</div>
-                <div class="scenario-tool-link">➔ urlscan.io</div>
-            </a>
-
-            <a href="#tool-hibp" class="scenario-item-card">
-                <div class="scenario-top-icon">✉️</div>
-                <div class="scenario-title">Wondering if your email was breached?</div>
-                <div class="scenario-tool-link">➔ Have I Been Pwned</div>
-            </a>
-
-            <a href="#tool-mxtoolbox" class="scenario-item-card">
-                <div class="scenario-top-icon">📧</div>
-                <div class="scenario-title">Email looks spoofed?</div>
-                <div class="scenario-tool-link">➔ MXToolbox Header Analyzer</div>
-            </a>
-
-            <a href="#tool-bitwarden" class="scenario-item-card">
-                <div class="scenario-top-icon">🔒</div>
-                <div class="scenario-title">Need stronger passwords?</div>
-                <div class="scenario-tool-link">➔ Bitwarden + Authenticator app</div>
-            </a>
         </div>
     </div>
 
@@ -1792,39 +1713,95 @@
     </div>
 
     <!-- Footer -->
-    <div class="midas-footer-container">
+    <footer class="midas-footer-container">
         <div class="footer-main-flex">
             <div class="footer-left-brand">
                 <div class="brand-top-row">
                     <img src="images/SOC logo.png" alt="Midas SOC Logo" class="footer-logo-svg">
+
                     <div class="brand-title-group">
-                        <span class="brand-title-main">MIDAS CYBER</span>
-                        <span class="brand-title-sub">SECURITY HUB</span>
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                        <div class="brand-tagline">
+                            <div class="tagline-line"></div>
+                            <span>Never Trust. Always Verify</span>
+                            <div class="tagline-line"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="brand-tagline">
-                    <div class="tagline-line"></div>
-                    <span>PROTECTING OUR PEOPLE, DATA AND OPERATIONS GLOBALLY</span>
-                </div>
-                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="contact-red-btn">
-                    🚨 REPORT AN INCIDENT NOW
-                </a>
+
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="contact-red-btn">Contact SOC</a>
             </div>
 
             <div class="soc-card">
                 <div class="soc-icon-circle">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                        <path
+                            d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
                     </svg>
                 </div>
                 <div class="soc-content">
-                    <span class="soc-title">Need IT or SOC Support?</span>
-                    <span class="soc-subtext">Contact Midas Cyber Intelligence Center (CIC)</span>
-                    <a href="mailto:cic@midassafety.com" class="soc-email-link">📧 cic@midassafety.com</a>
+                    <div class="soc-title">Need remote access support or reporting an incident?</div>
+                    <div class="soc-subtext">
+                        Contact Security Operations Center at <a href="mailto:cic@midassafety.com"
+                            class="soc-email-link">cic@midassafety.com</a>
+                    </div>
                 </div>
             </div>
+
+            <div class="footer-actions-grid">
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Report Incident</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="security-tips.html" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Security Tips</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="index.html#news" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Alerts & Updates</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="index.html" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <span class="action-label">About Portal</span>
+                </a>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <!-- Interactive Search & Filtering Logic -->
     <script>
