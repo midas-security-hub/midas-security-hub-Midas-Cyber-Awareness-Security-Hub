@@ -89,7 +89,7 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     await expect(footer.locator('a.contact-red-btn')).toHaveAttribute('href', 'https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx');
     await expect(footer.locator('a.soc-email-link')).toHaveAttribute('href', 'mailto:cic@midassafety.com');
     await expect(footer.locator('a.action-btn-circle')).toHaveCount(4);
-    await expect(footer.locator('a.action-btn-circle').nth(0)).toHaveAttribute('href', /mailto:cic@midassafety\.com\?subject=Security%20Incident%20Report/);
+    await expect(footer.locator('a.action-btn-circle').nth(0)).toHaveAttribute('href', 'https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx');
     await expect(footer.locator('a.action-btn-circle').nth(1)).toHaveAttribute('href', 'security-tips.html');
     await expect(footer.locator('a.action-btn-circle').nth(2)).toHaveAttribute('href', 'index.html#news');
     await expect(footer.locator('a.action-btn-circle').nth(3)).toHaveAttribute('href', 'index.html');

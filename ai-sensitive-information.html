@@ -1163,6 +1163,14 @@
             border-right: none;
         }
 
+        .info-class-table td:nth-child(2) {
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+
         .info-class-table tr:last-child td {
             border-bottom: none;
         }
@@ -1411,15 +1419,68 @@
         }
 
         .hero-card-banner {
+            position: relative;
             background-color: #060d1d;
-            background-image: url('images/card-image-2.png');
-            background-size: contain;
+            background-image: url('images/card-image-3.png');
+            background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: center top;
             flex: none;
-            aspect-ratio: 1 / 1;
-            min-height: 0;
+            aspect-ratio: 3 / 4;
+            min-height: 360px;
             width: 100%;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            overflow: hidden;
+        }
+
+.hero-banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.05) 0%, rgba(2, 6, 23, 0.45) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px 24px 12px;
+        }
+
+        .hero-banner-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-brand-logo-svg {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+        }
+
+        .hero-brand-text {
+            color: #e11d48;
+            font-size: 1.25rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .hero-yellow-bar {
+            width: 36px;
+            height: 5px;
+            background-color: #f59e0b;
+            border-radius: 3px;
+            margin-top: 18px;
+            margin-bottom: 16px;
+        }
+
+        .hero-banner-title {
+            color: #ffffff;
+            font-size: 1.65rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+            margin: 0;
+            max-width: 280px;
         }
 
         .three-pillars-row {
@@ -1683,6 +1744,19 @@
             .red-warning-box-clean {
                 padding: 12px;
             }
+
+            .hero-card-banner {
+                aspect-ratio: 16 / 9;
+                min-height: 180px;
+            }
+
+            .hero-banner-overlay {
+                padding: 16px;
+            }
+
+            .hero-banner-title {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -1938,7 +2012,7 @@
 
         <div class="video-player-container">
             <video id="aiPolicyVideo" class="ai-video-element" autoplay loop muted playsinline
-                poster="images/card-image-2.png">
+                poster="images/card-image-3.png">
                 <source src="video/Our%20approach%20to%20responsible%20AI.mp4?v=4" type="video/mp4">
                 <source
                     src="https://midassafety.sharepoint.com/:v:/s/MidasSecurityHub/IQDqLwuP15YjQYtuo2cGx_dZAQUcPd1v8oZZZOLJP9A4QKo?download=1"
@@ -2127,7 +2201,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Marketing materials,<br>press releases, job ads
+                                    Marketing content, published reports, public policies
                                 </td>
                                 <td>
                                     <div class="rule-cell-item">
@@ -2154,7 +2228,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    General business info,<br>non-sensitive documents
+                                    Internal memos, process docs, non-sensitive meeting notes
                                 </td>
                                 <td>
                                     <div class="rule-cell-item">
@@ -2180,7 +2254,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Customer data, financial info,<br>internal strategy
+                                    Customer/employee data, financials, contracts, formulas
                                 </td>
                                 <td>
                                     <div class="rule-cell-item">
@@ -2207,7 +2281,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Personal data, trade secrets,<br>legal, security info
+                                    Regulated personal data (e.g. health, national ID), trade secrets designated as Top Secret, litigation-privileged material
                                 </td>
                                 <td>
                                     <div class="rule-cell-item">
@@ -2300,7 +2374,11 @@
 
         <!-- CARD 3: The right use of AI helps us all do better work. -->
         <div class="hero-right-card">
-            <div class="hero-card-banner"></div>
+            <div class="hero-card-banner">
+                <div class="hero-banner-overlay">
+                    <h3 class="hero-banner-title">The right use of AI helps us all do better work</h3>
+                </div>
+            </div>
 
             <div class="three-pillars-row">
                 <div class="pillar-col-item">
@@ -2675,7 +2753,7 @@
 
             <!-- Right Section: 4 Action Item Buttons -->
             <div class="footer-actions-grid">
-                <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" class="action-btn-circle">
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="action-btn-circle">
                     <div class="circle-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
