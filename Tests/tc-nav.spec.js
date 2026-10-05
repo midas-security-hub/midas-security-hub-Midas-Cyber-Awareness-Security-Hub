@@ -23,16 +23,14 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     await topics.getByRole('button').hover();
     const links = topics.locator('.nav-dropdown a.dropdown-link');
     const expected = [
-      ['security-toolkit.html', /Employee Security Toolkit/],
       ['ai-sensitive-information.html', /AI & Sensitive Information/],
       ['account-password-security.html', /Account & Password\s+Security/],
       ['device-security.html', /Device Security/],
       ['email-security.html', /Email & Phishing/],
       ['physical-security.html', /Physical Security/],
       ['remote-wifi-security.html', /Remote \/ Wi-Fi\s+Security/],
-      ['police-cyber-crime-advisory.html', /Police Cyber Crime Advisory/],
       ['faq.html', /FAQ/],
-      ['security-tips.html', /SOPS/]
+      ['https://midassafety.sharepoint.com/sites/Intranet/Documents/Forms/AllItems.aspx?csf=1&web=1&e=MdZsoE&CID=b3243539%2D3e49%2D4b4c%2D940e%2D2e1698600c62&FolderCTID=0x012000BEA7EA0EF622FA44A600076D9FD5D692&id=%2Fsites%2FIntranet%2FDocuments%2FMSIT%20%2D%20Information%20Security%20Policy', /SOPS/]
     ];
     await expect(links).toHaveCount(expected.length);
     for (const [href, label] of expected) {
@@ -110,10 +108,11 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     }
   });
 
-  test('TC-NAV-10 (FND-010) Topic links are repository-relative (no hard-coded origin)', async ({ page }) => {
+  test('TC-NAV-10 (FND-010) Topic links are repository-relative except the external SOPS link', async ({ page }) => {
     await page.goto('/index.html');
     const hrefs = await page.locator('.nav-dropdown a.dropdown-link').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
     for (const h of hrefs) {
+      if (h.startsWith('https://midassafety.sharepoint.com')) continue;
       expect(h).not.toMatch(/^https?:\/\//);
       expect(h).not.toMatch(/^\/\//);
     }
