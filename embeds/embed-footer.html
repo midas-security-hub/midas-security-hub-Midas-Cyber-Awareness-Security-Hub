@@ -1,30 +1,44 @@
-<!-- Corporate Site Footer matching Midas Security Hub standard -->
+<!-- Corporate Site Footer matching Midas Security Hub standard (SharePoint Embed-ready) -->
 <style>
+    /* ---- Reset: removes the white space and the horizontal scrollbar ---- */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background: transparent;
+        overflow-x: hidden;   /* no horizontal scrollbar */
+        overflow-y: hidden;   /* no vertical scrollbar */
+    }
+
+    body { padding: 4px; }    /* small room so the shadow isn't clipped */
+
     .midas-footer-container {
         width: 100%;
         background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
         border-radius: 16px;
         border: 1px solid #1e293b;
-        padding: 28px 36px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        padding: 24px 28px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
         color: #ffffff;
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        margin-top: 40px;
+        margin: 0;            /* was margin-top: 40px (caused extra space) */
     }
 
     .footer-main-flex {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 32px;
+        gap: 24px;
         flex-wrap: wrap;
     }
 
     .footer-left-brand {
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        min-width: 300px;
+        gap: 14px;
+        min-width: 0;
     }
 
     .brand-top-row {
@@ -46,20 +60,14 @@
         line-height: 1.1;
     }
 
-    .brand-title-main {
-        font-size: 1.5rem;
-        font-weight: 800;
-        letter-spacing: 0.5px;
-        color: #ffffff;
-    }
-
+    .brand-title-main,
     .brand-title-sub {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 800;
         letter-spacing: 0.5px;
-        color: #f59e0b;
-        margin-top: 2px;
     }
+    .brand-title-main { color: #ffffff; }
+    .brand-title-sub  { color: #f59e0b; margin-top: 2px; }
 
     .brand-tagline {
         display: flex;
@@ -92,41 +100,35 @@
         transition: background-color 0.2s ease, transform 0.2s ease;
         box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
     }
-
-    .contact-red-btn:hover {
-        background-color: #be123c;
-        transform: translateY(-1px);
-    }
+    .contact-red-btn:hover { background-color: #be123c; transform: translateY(-1px); }
 
     .soc-card {
         background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
         border: 1px solid #1e3a5f;
         border-radius: 14px;
-        padding: 20px 28px;
+        padding: 18px 24px;
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 18px;
         position: relative;
         overflow: hidden;
-        flex: 1.2;
-        min-width: 320px;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.3);
+        flex: 1 1 280px;      /* can shrink and wrap instead of overflowing */
+        min-width: 0;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 6px 14px rgba(0, 0, 0, 0.3);
     }
 
     .soc-card::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 30%;
-        right: 30%;
+        top: 0; left: 30%; right: 30%;
         height: 2px;
         background: linear-gradient(90deg, transparent, #f59e0b, transparent);
         box-shadow: 0 0 10px #f59e0b;
     }
 
     .soc-icon-circle {
-        width: 60px;
-        height: 60px;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
         background: #040c1a;
         border: 1px solid #1e3a5f;
@@ -136,45 +138,19 @@
         flex-shrink: 0;
     }
 
-    .soc-content {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
+    .soc-content { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .soc-title   { font-size: 1.15rem; font-weight: 700; color: #ffffff; }
+    .soc-subtext { font-size: 0.88rem; color: #94a3b8; overflow-wrap: anywhere; }
 
-    .soc-title {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #ffffff;
-    }
-
-    .soc-subtext {
-        font-size: 0.9rem;
-        color: #94a3b8;
-    }
-
-    .soc-email-link {
-        color: #38bdf8;
-        font-weight: 600;
-        text-decoration: none;
-        transition: color 0.2s ease;
-    }
-
-    .soc-email-link:hover {
-        color: #7dd3fc;
-        text-decoration: underline;
-    }
+    .soc-email-link { color: #38bdf8; font-weight: 600; text-decoration: none; transition: color 0.2s ease; }
+    .soc-email-link:hover { color: #7dd3fc; text-decoration: underline; }
 
     .footer-actions-grid {
         display: flex;
         align-items: center;
-        gap: 16px;
-    }
-
-    .action-item-wrap {
-        display: flex;
-        align-items: center;
-        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;      /* buttons wrap instead of being cut off */
+        gap: 14px;
     }
 
     .action-item-divider {
@@ -195,11 +171,7 @@
         width: 76px;
         text-align: center;
     }
-
-    .action-btn-circle:hover {
-        transform: translateY(-3px);
-        color: #ffffff;
-    }
+    .action-btn-circle:hover { transform: translateY(-3px); color: #ffffff; }
 
     .circle-icon {
         width: 52px;
@@ -212,29 +184,46 @@
         justify-content: center;
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
-
     .action-btn-circle:hover .circle-icon {
         border-color: #f59e0b;
         box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
     }
 
-    .action-label {
-        font-size: 0.8rem;
-        font-weight: 600;
-        line-height: 1.2;
+    .action-label { font-size: 0.8rem; font-weight: 600; line-height: 1.2; }
+
+    /* ---- Tablet / small laptop ---- */
+    @media (max-width: 1100px) {
+        .footer-left-brand,
+        .soc-card { flex: 1 1 100%; }
+        .footer-actions-grid { width: 100%; }
+    }
+
+    /* ---- Mobile ---- */
+    @media (max-width: 600px) {
+        .midas-footer-container { padding: 18px 16px; }
+        .brand-title-main, .brand-title-sub { font-size: 1.15rem; }
+        .action-item-divider { display: none; }
+        .soc-card { flex-direction: column; text-align: center; }
     }
 </style>
 
 <footer class="midas-footer-container">
     <div class="footer-main-flex">
+
         <!-- Left Section: Logo, Title & Contact Button -->
         <div class="footer-left-brand">
             <div class="brand-top-row">
-                <img src="images/SOC%20logo.png" alt="Midas SOC Logo" class="footer-logo-svg" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../images/SOC%20logo.png';}">
+                <!--
+                    IMPORTANT: relative paths (images/...) do NOT work inside a SharePoint Embed web part.
+                    Replace the src below with the full URL of your logo in SharePoint
+                    (e.g. Site Assets / Site Pages library) or a base64 data URI.
+                -->
+                <img src="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SiteAssets/SOC%20logo.png"
+                     alt="Midas SOC Logo" class="footer-logo-svg">
 
                 <div class="brand-title-group">
                     <div class="brand-title-main">CYBER AWARENESS</div>
-                    <div class="brand-title-sub">& SECURITY</div>
+                    <div class="brand-title-sub">&amp; SECURITY</div>
                     <div class="brand-tagline">
                         <div class="tagline-line"></div>
                         <span>Never Trust. Always Verify</span>
@@ -243,7 +232,8 @@
                 </div>
             </div>
 
-            <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="contact-red-btn">Contact</a>
+            <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx"
+               target="_top" class="contact-red-btn">Contact</a>
         </div>
 
         <!-- Center Section: SOC Help Card -->
@@ -252,22 +242,21 @@
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-                    <path
-                        d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
                 </svg>
             </div>
             <div class="soc-content">
                 <div class="soc-title">Need help or want to report something?</div>
                 <div class="soc-subtext">
                     Contact our Security Operations Center (SOC) at
-                    <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                    <a href="mailto:cic@midassafety.com" target="_top" class="soc-email-link">cic@midassafety.com</a>
                 </div>
             </div>
         </div>
 
         <!-- Right Section: 4 Action Item Buttons -->
         <div class="footer-actions-grid">
-            <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="action-btn-circle">
+            <a href="mailto:cic@midassafety.com?subject=Security%20Incident%20Report" target="_top" class="action-btn-circle">
                 <div class="circle-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -279,7 +268,8 @@
 
             <div class="action-item-divider"></div>
 
-            <a href="security-tips.html" class="action-btn-circle">
+            <!-- TODO: replace # with the full SharePoint page URL -->
+            <a href="#" target="_top" class="action-btn-circle">
                 <div class="circle-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                         <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -291,19 +281,21 @@
 
             <div class="action-item-divider"></div>
 
-            <a href="index.html#news" class="action-btn-circle">
+            <!-- TODO: replace # with the full SharePoint page URL -->
+            <a href="#" target="_top" class="action-btn-circle">
                 <div class="circle-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                         <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                     </svg>
                 </div>
-                <span class="action-label">Alerts & Updates</span>
+                <span class="action-label">Alerts &amp; Updates</span>
             </a>
 
             <div class="action-item-divider"></div>
 
-            <a href="about-portal.html" class="action-btn-circle">
+            <!-- TODO: replace # with the full SharePoint page URL -->
+            <a href="#" target="_top" class="action-btn-circle">
                 <div class="circle-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -315,6 +307,6 @@
                 <span class="action-label">About Portal</span>
             </a>
         </div>
+
     </div>
 </footer>
-

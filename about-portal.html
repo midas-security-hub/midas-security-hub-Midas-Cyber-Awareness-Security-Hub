@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Midas Safety Portal | Midas Cyber Security Hub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-dark: #020617;
+            --navy-dark: #0f172a;
+            --navy-medium: #1e293b;
+            --accent-red: #be123c;
+            --accent-red-hover: #9f1239;
+            --accent-red-light: #fff1f2;
+            --accent-gold: #f59e0b;
+            --bg-page: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 24px 40px;
+            width: 100%;
+            max-width: 1680px;
+            margin: 0 auto;
+        }
+
+        /* Top Header Component Styles */
+        .site-header-container {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 28px;
+            border: 1px solid #1e293b;
+            position: relative;
+            z-index: 100;
+        }
+
+        .site-header-banner {
+            background: linear-gradient(90deg, #020617 0%, #0b192e 50%, #030d22 100%);
+            padding: 26px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 110px;
+            overflow: hidden;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .site-header-bg-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .site-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-logo-badge {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .site-title-text {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .site-navbar {
+            background-color: #030712;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 10;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .nav-links-left {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 14px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ffffff;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            right: 16px;
+            height: 3px;
+            background-color: #38bdf8;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            z-index: 1000;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover .nav-dropdown,
+        .nav-item.open .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-link:hover {
+            background: #1e293b;
+            color: #38bdf8;
+            padding-left: 22px;
+        }
+
+        /* ABOUT PORTAL MAIN CARD DESIGN */
+        .portal-about-wrapper {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-card);
+            padding: 44px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portal-about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* Left Column Styling */
+        .portal-left-col {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .portal-brand-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .portal-brand-logo-box {
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, #be123c 0%, #9f1239 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(190, 18, 60, 0.3);
+        }
+
+        .portal-brand-logo-box svg {
+            width: 32px;
+            height: 32px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 2.2;
+        }
+
+        .portal-heading-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portal-title-main {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .portal-title-highlight {
+            color: var(--accent-red);
+        }
+
+        .portal-lead-text {
+            font-size: 1.02rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Red Vertical Quote Accent Box */
+        .portal-quote-box {
+            border-left: 4px solid var(--accent-red);
+            padding-left: 20px;
+            margin: 8px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .quote-line-dark {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .quote-line-red {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-red);
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .portal-tagline-sub {
+            font-size: 0.96rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Bottom Graphic Illustration Card */
+        .portal-graphic-card {
+            background: linear-gradient(180deg, #091328 0%, #030816 100%);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            min-height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 12px;
+            border: 1px solid #1e293b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .portal-graphic-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 160%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(190, 18, 60, 0.25) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .portal-hero-img-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+            mix-blend-mode: luminosity;
+        }
+
+        .shield-badge-overlay {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .shield-icon-outer {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(190, 18, 60, 0.15);
+            border: 2px solid rgba(190, 18, 60, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(190, 18, 60, 0.4), inset 0 0 20px rgba(190, 18, 60, 0.2);
+            animation: pulseShield 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseShield {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(190, 18, 60, 0.4); }
+            50% { transform: scale(1.04); box-shadow: 0 0 45px rgba(190, 18, 60, 0.6); }
+        }
+
+        .shield-icon-outer svg {
+            width: 48px;
+            height: 48px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 2.2;
+        }
+
+        .portal-left-footer-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .badge-priority {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            color: var(--navy-dark);
+        }
+
+        .badge-priority span.check-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #be123c;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+        }
+
+        .brand-footer-name {
+            font-weight: 900;
+            color: var(--accent-red);
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Right Column Feature Cards */
+        .portal-right-col {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+            border-color: #cbd5e1;
+            background: #ffffff;
+        }
+
+        .card-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #ffffff;
+        }
+
+        .card-icon-circle.red-bg {
+            background: #be123c;
+            box-shadow: 0 4px 12px rgba(190, 18, 60, 0.25);
+        }
+
+        .card-icon-circle.dark-bg {
+            background: #1e293b;
+            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.25);
+        }
+
+        .card-icon-circle svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+        }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-header-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            line-height: 1.2;
+        }
+
+        .card-header-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        /* 2-Column Bullet List */
+        .card-bullet-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 16px;
+            margin-top: 6px;
+        }
+
+        .bullet-link-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: #334155;
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .bullet-link-item:hover {
+            color: var(--accent-red);
+            transform: translateX(2px);
+        }
+
+        .bullet-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #64748b;
+            flex-shrink: 0;
+        }
+
+        .bullet-link-item:hover .bullet-dot {
+            background-color: var(--accent-red);
+        }
+
+        /* Footer Component Styles */
+        .midas-footer-container {
+            width: 100%;
+            background: linear-gradient(90deg, #030816 0%, #081326 50%, #030919 100%);
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            padding: 28px 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-top: 24px;
+        }
+
+        .footer-main-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-width: 300px;
+        }
+
+        .brand-top-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-logo-svg {
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
+            object-fit: contain;
+        }
+
+        .brand-title-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title-main {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .brand-title-sub {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+            margin-top: 2px;
+        }
+
+        .brand-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-top: 6px;
+        }
+
+        .tagline-line {
+            height: 2px;
+            width: 24px;
+            background-color: #f59e0b;
+        }
+
+        .contact-red-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e11d48;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 8px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+        }
+
+        .contact-red-btn:hover {
+            background-color: #be123c;
+            transform: translateY(-1px);
+        }
+
+        .soc-card {
+            background: linear-gradient(135deg, #061329 0%, #0a1b38 100%);
+            border: 1px solid #1e3a5f;
+            border-radius: 14px;
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+            flex: 1.2;
+            min-width: 320px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .soc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30%;
+            right: 30%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .soc-icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #040c1a;
+            border: 1px solid #1e3a5f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .soc-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .soc-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .soc-subtext {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .soc-email-link {
+            color: #38bdf8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .soc-email-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        .footer-actions-grid {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .action-item-divider {
+            width: 1px;
+            height: 48px;
+            background-color: #1e293b;
+        }
+
+        .action-btn-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+            width: 76px;
+            text-align: center;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .action-btn-circle:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .circle-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            background: #040c1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn-circle:hover .circle-icon {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .action-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Responsive Layout Breakpoints */
+        @media (max-width: 1024px) {
+            .portal-about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .portal-about-wrapper {
+                padding: 32px 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 16px 12px;
+            }
+
+            .site-header-banner {
+                padding: 20px 20px;
+            }
+
+            .site-title-text {
+                font-size: 1.2rem;
+            }
+
+            .portal-title-main {
+                font-size: 1.6rem;
+            }
+
+            .quote-line-dark,
+            .quote-line-red {
+                font-size: 1.4rem;
+            }
+
+            .card-bullet-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Site Header -->
+    <div class="site-header-container">
+        <div class="site-header-banner">
+            <svg class="site-header-bg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M380 60 H540 L590 20 H700" stroke="#0099FF" stroke-width="1.5" opacity="0.4" />
+                <path d="M430 90 H610 L650 100 H800" stroke="#0099FF" stroke-width="1.5" opacity="0.3" />
+                <circle cx="540" cy="60" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="590" cy="20" r="4" fill="#00D2FF" opacity="0.8" />
+                <circle cx="650" cy="100" r="4" fill="#00D2FF" opacity="0.7" />
+
+                <g transform="translate(680, 20)">
+                    <polygon points="30,0 60,17 60,52 30,69 0,52 0,17" stroke="#0088FF" stroke-width="2.2" fill="#061A3A"
+                        opacity="0.85" />
+                    <path d="M18 26 L30 36 L42 26 M18 26 H42 V44 H18 Z" stroke="#00BFFF" stroke-width="2.2" fill="none" />
+                </g>
+
+                <path d="M740 55 H820" stroke="#0099FF" stroke-width="2" opacity="0.5" />
+
+                <g transform="translate(850, -10)">
+                    <circle cx="60" cy="70" r="55" fill="#0066FF" opacity="0.18" />
+                    <path d="M60 15 C60 15 95 25 105 35 C105 80 85 110 60 125 C35 110 15 80 15 35 C25 25 60 15 60 15 Z"
+                        stroke="#00BFFF" stroke-width="3" fill="#082046" opacity="0.9" />
+                    <rect x="47" y="65" width="26" height="22" rx="4" fill="#00D2FF" />
+                    <path d="M52 65 V55 C52 50.5 55.5 47 60 47 C64.5 47 68 50.5 68 55 V65" stroke="#00D2FF" stroke-width="3"
+                        fill="none" />
+                </g>
+            </svg>
+
+            <div class="site-brand">
+                <div class="brand-logo-badge">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo"
+                        style="width: 56px; height: 56px; object-fit: contain;">
+                </div>
+                <h1 class="site-title-text">Midas Cyber Awareness & Security Hub</h1>
+            </div>
+        </div>
+
+        <nav class="site-navbar">
+            <div class="nav-links-left">
+                <div class="nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub" class="nav-link">Home</a>
+                </div>
+
+                <!-- Topics Dropdown -->
+                <div class="nav-item">
+                    <button class="nav-link" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        Topics
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="security-toolkit.html" class="dropdown-link">🛠️ Employee Security Toolkit</a>
+                        <a href="ai-sensitive-information.html" class="dropdown-link">🤖 AI & Sensitive Information</a>
+                        <a href="account-password-security.html" class="dropdown-link">🔑 Account & Password Security</a>
+                        <a href="device-security.html" class="dropdown-link">📱 Device Security</a>
+                        <a href="email-security.html" class="dropdown-link">📧 Email & Phishing</a>
+                        <a href="physical-security.html" class="dropdown-link">🏢 Physical Security</a>
+                        <a href="remote-wifi-security.html" class="dropdown-link">🌐 Remote / Wi-Fi Security</a>
+                        <a href="police-cyber-crime-advisory.html" class="dropdown-link">🚨 Police Cyber Crime Advisory</a>
+                        <a href="faq.html" class="dropdown-link">❓ FAQ</a>
+                        <a href="security-tips.html" class="dropdown-link">📋 SOPS</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/Intranet/Documents/Forms/AllItems.aspx?csf=1&web=1&e=MdZsoE&CID=b3243539%2D3e49%2D4b4c%2D940e%2D2e1698600c62&FolderCTID=0x012000BEA7EA0EF622FA44A600076D9FD5D692&id=%2Fsites%2FIntranet%2FDocuments%2FMSIT%20%2D%20Information%20Security%20Policy"
+                        target="_blank" rel="noopener noreferrer" class="nav-link">Policies</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="security-toolkit.html" class="nav-link">Resources</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx"
+                        target="_blank" rel="noopener noreferrer" class="nav-link">Report an Incident</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- MAIN ABOUT PORTAL CONTAINER (Matching User Provided Reference Design) -->
+    <main class="portal-about-wrapper">
+        <div class="portal-about-grid">
+
+            <!-- LEFT COLUMN: Welcome, Quote, & Security Graphic -->
+            <div class="portal-left-col">
+                <div class="portal-brand-row">
+                    <div class="portal-brand-logo-box">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
+                        </svg>
+                    </div>
+                    <div class="portal-heading-group">
+                        <h1 class="portal-title-main">Welcome to the <span class="portal-title-highlight">Midas Safety Portal</span></h1>
+                    </div>
+                </div>
+
+                <p class="portal-lead-text">
+                    Your central hub for secure access to tools, resources, and information you need to do your best work — safely and securely.
+                </p>
+
+                <!-- Red Accent Quote Box -->
+                <div class="portal-quote-box">
+                    <span class="quote-line-dark">Secure Access.</span>
+                    <span class="quote-line-red">Strong Impact.</span>
+                </div>
+
+                <p class="portal-tagline-sub">
+                    Stay informed. Stay secure. Together, we build a safer future for Midas Safety across all global operations.
+                </p>
+
+                <!-- Bottom Tech Graphic Card -->
+                <div class="portal-graphic-card">
+                    <img src="images/Sec Tool Kit.png" alt="Midas Security Graphic" class="portal-hero-img-bg" onerror="this.src='images/card-image-3.png';">
+                    <div class="shield-badge-overlay">
+                        <div class="shield-icon-outer">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <rect x="9" y="11" width="6" height="5" rx="1" fill="#ffffff" />
+                                <path d="M10 11V9a2 2 0 1 1 4 0v2" stroke="#ffffff" stroke-width="2" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Priority Note -->
+                <div class="portal-left-footer-bar">
+                    <div class="badge-priority">
+                        <span class="check-icon">✓</span>
+                        <span>Your security. Our priority.</span>
+                    </div>
+                    <div class="brand-footer-name">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        </svg>
+                        <span>MIDAS SAFETY</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: 5 Feature Module Cards Stack -->
+            <div class="portal-right-col">
+
+                <!-- 1. Applications -->
+                <div class="feature-card">
+                    <div class="card-icon-circle red-bg">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                            <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                            <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                            <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-header-title">Applications</h2>
+                        <p class="card-header-desc">Access company applications and security systems you use every day.</p>
+                        <div class="card-bullet-grid">
+                            <a href="security-toolkit.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Employee Security Toolkit</span>
+                            </a>
+                            <a href="account-password-security.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Account & Password Hub</span>
+                            </a>
+                            <a href="device-security.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Device Security Checklist</span>
+                            </a>
+                            <a href="remote-wifi-security.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Remote & Wi-Fi Shield</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Policies & Procedures -->
+                <div class="feature-card">
+                    <div class="card-icon-circle dark-bg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <line x1="10" y1="9" x2="8" y2="9" />
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-header-title">Policies & Procedures</h2>
+                        <p class="card-header-desc">Find company policies, guidelines, and standard operating procedures.</p>
+                        <div class="card-bullet-grid">
+                            <a href="https://midassafety.sharepoint.com/sites/Intranet/Documents/Forms/AllItems.aspx?csf=1&web=1&e=MdZsoE&CID=b3243539%2D3e49%2D4b4c%2D940e%2D2e1698600c62&FolderCTID=0x012000BEA7EA0EF622FA44A600076D9FD5D692&id=%2Fsites%2FIntranet%2FDocuments%2FMSIT%20%2D%20Information%20Security%20Policy" target="_blank" rel="noopener noreferrer" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Information Security Policy</span>
+                            </a>
+                            <a href="security-tips.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Security SOPS & Tips</span>
+                            </a>
+                            <a href="ai-sensitive-information.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>AI & Sensitive Data Rules</span>
+                            </a>
+                            <a href="physical-security.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Physical & Clean Desk</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Security Center -->
+                <div class="feature-card">
+                    <div class="card-icon-circle red-bg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-header-title">Security Center</h2>
+                        <p class="card-header-desc">Tools and resources to help you work securely and report threats.</p>
+                        <div class="card-bullet-grid">
+                            <a href="index.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Security Awareness Hub</span>
+                            </a>
+                            <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" target="_blank" rel="noopener noreferrer" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Report an Incident</span>
+                            </a>
+                            <a href="email-security.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Phishing & Email Safety</span>
+                            </a>
+                            <a href="police-cyber-crime-advisory.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Police Cyber Advisory</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Notifications -->
+                <div class="feature-card">
+                    <div class="card-icon-circle dark-bg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-header-title">Notifications</h2>
+                        <p class="card-header-desc">Stay updated with important announcements and cyber alerts.</p>
+                        <div class="card-bullet-grid">
+                            <a href="index.html#news" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Company Cyber Announcements</span>
+                            </a>
+                            <a href="index.html#news" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Maintenance & System Alerts</span>
+                            </a>
+                            <a href="security-tips.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Threat Intelligence Briefs</span>
+                            </a>
+                            <a href="ai-sensitive-information.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Policy Updates</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Help & Support -->
+                <div class="feature-card">
+                    <div class="card-icon-circle red-bg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-header-title">Help & Support</h2>
+                        <p class="card-header-desc">Get help and support whenever you need assistance.</p>
+                        <div class="card-bullet-grid">
+                            <a href="mailto:cic@midassafety.com" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>IT & SOC Support</span>
+                            </a>
+                            <a href="faq.html" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>FAQs & Knowledge Base</span>
+                            </a>
+                            <a href="mailto:cic@midassafety.com?subject=Portal%20Inquiry" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Contact Us</span>
+                            </a>
+                            <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" target="_blank" rel="noopener noreferrer" class="bullet-link-item">
+                                <span class="bullet-dot"></span>
+                                <span>Submit a Request</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Site Footer Component -->
+    <footer class="midas-footer-container">
+        <div class="footer-main-flex">
+            <!-- Left Section: Logo & Brand -->
+            <div class="footer-left-brand">
+                <div class="brand-top-row">
+                    <img src="images/SOC logo.png" alt="Midas SOC Logo" class="footer-logo-svg">
+                    <div class="brand-title-group">
+                        <div class="brand-title-main">CYBER AWARENESS</div>
+                        <div class="brand-title-sub">& SECURITY</div>
+                        <div class="brand-tagline">
+                            <div class="tagline-line"></div>
+                            <span>Never Trust. Always Verify</span>
+                            <div class="tagline-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="contact-red-btn">Contact</a>
+            </div>
+
+            <!-- Center Section: SOC Help Card -->
+            <div class="soc-card">
+                <div class="soc-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                    </svg>
+                </div>
+                <div class="soc-content">
+                    <div class="soc-title">Need help or want to report something?</div>
+                    <div class="soc-subtext">
+                        Contact our Security Operations Center (SOC) at
+                        <a href="mailto:cic@midassafety.com" class="soc-email-link">cic@midassafety.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section: 4 Action Item Buttons -->
+            <div class="footer-actions-grid">
+                <a href="https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Report Incident</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="security-tips.html" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Security Tips</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="index.html#news" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                    </div>
+                    <span class="action-label">Alerts & Updates</span>
+                </a>
+
+                <div class="action-item-divider"></div>
+
+                <a href="about-portal.html" class="action-btn-circle">
+                    <div class="circle-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <span class="action-label">About Portal</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
