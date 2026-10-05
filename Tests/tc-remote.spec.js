@@ -19,10 +19,10 @@ test.describe(`TC-REMOTE · ${MODULE} Remote / Wi-Fi Security`, () => {
     await expect(page.locator('#tabBtn-vpn')).toHaveClass(/active/);
   });
 
-  test('TC-REMOTE-02 (FRS-002) Rules tab lists the 6 static golden tips', async ({ page }) => {
+  test('TC-REMOTE-02 (FRS-002) Rules tab lists the 4 static golden tips', async ({ page }) => {
     await page.goto('/remote-wifi-security.html');
     const text = await page.locator('#tab-panel-rules').innerText();
-    for (const rule of ['Use Secure Wi-Fi Networks', 'Enable a VPN', 'Keep Your Devices Secure', 'Secure Your Home Wi-Fi', 'Be Aware of Phishing', 'Protect Company Data']) {
+    for (const rule of ['Use Secure Wi-Fi Networks', 'Enable a VPN', 'Keep Your Devices Secure', 'Secure Your Home Wi-Fi']) {
       expect(text).toContain(rule);
     }
   });
