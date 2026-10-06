@@ -90,7 +90,45 @@ test.describe(`TC-NAV · ${MODULE} Global UI`, () => {
     await expect(footer.locator('a.action-btn-circle').nth(0)).toHaveAttribute('href', 'https://midassafety.sharepoint.com/sites/MidasSecurityHub/SitePages/Report-an-Incident%20page.aspx');
     await expect(footer.locator('a.action-btn-circle').nth(1)).toHaveAttribute('href', 'security-tips.html');
     await expect(footer.locator('a.action-btn-circle').nth(2)).toHaveAttribute('href', 'index.html#news');
-    await expect(footer.locator('a.action-btn-circle').nth(3)).toHaveAttribute('href', 'index.html');
+    await expect(footer.locator('a.action-btn-circle').nth(3)).toHaveAttribute('href', 'about-portal.html');
+  });
+
+  test('TC-NAV-07b (FND-007b) About Portal link resolves to the standalone page on every page', async ({ page, request }) => {
+    const res = await request.get('/about-portal.html');
+    expect(res.status()).toBe(200);
+
+    const pages = [
+      'index.html', 'ai-sensitive-information.html', 'account-password-security.html',
+      'device-security.html', 'email-security.html', 'external-incident-reporting.html',
+      'faq.html', 'physical-security.html', 'police-cyber-crime-advisory.html',
+      'remote-wifi-security.html', 'security-tips.html', 'security-toolkit.html'
+    ];
+
+    for (const file of pages) {
+      await page.goto('/' + file);
+      const aboutLink = page.locator('.midas-footer-container a.action-btn-circle', { hasText: 'About Portal' });
+      await expect(aboutLink, `About Portal link missing on ${file}`).toHaveCount(1);
+      await expect(aboutLink, `About Portal link wrong on ${file}`).toHaveAttribute('href', 'about-portal.html');
+    }
+
+    // No page should still wire the old JS-driven popup
+    for (const file of pages) {
+      const body = await (await request.get('/' + file)).text();
+      expect(body, `stale About Portal modal in ${file}`).not.toContain('openAboutPortal');
+      expect(body, `stale About Portal modal in ${file}`).not.toContain('aboutPortalModal');
+    }
+  });
+
+  test('TC-NAV-07c (FND-007c) About Portal page renders its feature cards without console errors', async ({ page }) => {
+    const errors = [];
+    page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+    page.on('pageerror', e => errors.push(e.message));
+
+    await page.goto('/about-portal.html');
+    await expect(page.locator('h1.portal-title-main')).toContainText('Midas Safety Portal');
+    await expect(page.locator('.feature-card')).toHaveCount(5);
+    await expect(page.locator('.midas-footer-container a.action-btn-circle', { hasText: 'About Portal' })).toHaveAttribute('href', 'about-portal.html');
+    expect(errors).toEqual([]);
   });
 
   test('TC-NAV-08 (FND-008) Brand assets use repository-relative paths', async ({ page }) => {
