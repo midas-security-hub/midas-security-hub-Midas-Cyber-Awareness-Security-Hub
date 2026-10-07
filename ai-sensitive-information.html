@@ -2011,16 +2011,7 @@
         <div class="video-player-container">
             <video id="aiPolicyVideo" class="ai-video-element" autoplay loop muted playsinline
                 poster="images/card-image-3.png">
-                <source src="video/Our%20approach%20to%20responsible%20AI.mp4?v=4" type="video/mp4">
-                <source
-                    src="https://midassafety.sharepoint.com/:v:/s/MidasSecurityHub/IQDqLwuP15YjQYtuo2cGx_dZAQUcPd1v8oZZZOLJP9A4QKo?download=1"
-                    type="video/mp4">
-                <source
-                    src="https://midassafety.sharepoint.com/:v:/s/MidasSecurityHub/IQDqLwuP15YjQYtuo2cGx_dZAQUcPd1v8oZZZOLJP9A4QKo?e=fD36HO"
-                    type="video/mp4">
-                <source src="video/Our approach to responsible AI.mp4?v=4" type="video/mp4">
-                <source src="videos/Our approach to responsible AI.mp4?v=4" type="video/mp4">
-                <source src="assets/Our approach to responsible AI.mp4?v=4" type="video/mp4">
+                <source src="video/Final%20-%20Ai%20Policy%20Video.mp4" type="video/mp4">
             </video>
 
             <!-- Video Overlay Control Bar -->
@@ -2039,7 +2030,7 @@
                 </div>
 
                 <div class="controls-right">
-                    <span id="videoTimeDisplay" class="video-time-text">0:00 / 1:30</span>
+                    <span id="videoTimeDisplay" class="video-time-text">0:00 / 1:10</span>
                     <a href="https://midassafety.sharepoint.com/:v:/s/MidasSecurityHub/IQDqLwuP15YjQYtuo2cGx_dZAQUcPd1v8oZZZOLJP9A4QKo?e=fD36HO"
                         target="_blank" rel="noopener noreferrer" class="video-ctrl-btn" style="text-decoration: none;"
                         title="Open video in SharePoint Stream">
@@ -3133,7 +3124,7 @@
                     const currentMin = Math.floor(video.currentTime / 60);
                     const currentSec = Math.floor(video.currentTime % 60).toString().padStart(2, '0');
                     const durationMin = isNaN(video.duration) || !isFinite(video.duration) ? 1 : Math.floor(video.duration / 60);
-                    const durationSec = isNaN(video.duration) || !isFinite(video.duration) ? 30 : Math.floor(video.duration % 60).toString().padStart(2, '0');
+                    const durationSec = isNaN(video.duration) || !isFinite(video.duration) ? 10 : Math.floor(video.duration % 60).toString().padStart(2, '0');
 
                     timeDisplay.innerText = `${currentMin}:${currentSec} / ${durationMin}:${durationSec}`;
                 });
